@@ -8,5 +8,7 @@
     <string name="new_button_string">New</string>
     <string name="preferences_button_string">Preferences</string>
     <string name="data_button_string">Data</string>
+    <string name="title_activity_counters">CountersActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
