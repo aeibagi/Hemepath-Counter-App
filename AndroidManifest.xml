@@ -26,6 +26,10 @@
             android:name="edu.sjsu.hemepathcounter.CountersActivity"
             android:label="@string/title_activity_counters" >
         </activity>
+        <activity
+            android:name="edu.sjsu.hemepathcounter.NewCounterActivity"
+            android:label="@string/title_activity_new_counter" >
+        </activity>
     </application>
 
 </manifest>

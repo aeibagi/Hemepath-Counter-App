@@ -19,5 +19,13 @@
     <string name="cancel_button_string">Cancel</string>
     <string name="about_title">Hemepath Counter</string>
     <string name="menu_about_string">About</string>
+    <string name="title_activity_new_counter">NewCounterActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Create_new_counter">New Counter</string>
+    <string name="Object_name">Name</string>
+    <string name="Modify">Modify</string>
+    <string name="Clear">Clear</string>
+    <string name="Custome_button">Custom Button</string>
+    <string name="Save">Save</string>
 
 </resources>

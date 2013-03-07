@@ -90,6 +90,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			startActivity(intent);
 			break;
 		case R.id.new_button:
+			intent = new Intent(MainActivity.this, NewCounterActivity.class);
+			startActivity(intent);
 			break;
 		case R.id.preferences_button:
 			break;
