@@ -17,7 +17,7 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 	}
 
 	private void initialize() {
-		ModifyButton = (Button) findViewById(R.id.Button_Modify);
+		/*ModifyButton = (Button) findViewById(R.id.Button_Modify);
 		SaveButton = (Button) findViewById(R.id.Button_Save);
 		ClearButton = (Button) findViewById(R.id.Button_Clear);
 		CustomButton = (Button) findViewById(R.id.Button_Custom);
@@ -25,7 +25,7 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 		ModifyButton.setOnClickListener(this);
 		SaveButton.setOnClickListener(this);
 		ClearButton.setOnClickListener(this);
-		CustomButton.setOnClickListener(this);
+		CustomButton.setOnClickListener(this);*/
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 	@Override
 	public void onClick(View v) {
 		
-		switch (v.getId()) {
+		/*switch (v.getId()) {
 		case R.id.Button_Modify:
 			break;
 		case R.id.Button_Clear:
@@ -47,7 +47,7 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 			break;
 		case R.id.Button_Save:
 			break;
-		}
+		}*/
 
 		
 	}
