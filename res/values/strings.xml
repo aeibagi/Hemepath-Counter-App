@@ -26,6 +26,7 @@
     <string name="Modify">Modify</string>
     <string name="Clear">Clear</string>
     <string name="Custome_button">Custom Button</string>
-    <string name="Save">Save</string>
+    <string name="save">Save</string>
+    <string name="title_activity_counting">CountingActivity</string>    
 
 </resources>

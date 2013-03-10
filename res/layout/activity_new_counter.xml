@@ -266,7 +266,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="58dp"
         android:background="@drawable/button_style_green"
-        android:text="@string/Save" />
+        android:text="@string/save" />
 
     <Button
         android:id="@+id/Button_Custom"
