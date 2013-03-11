@@ -178,6 +178,7 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 				File_Name = editBox_enter_name.getText().toString();
 				try {
 					FileOutputStream fos = openFileOutput(File_Name, Context.MODE_PRIVATE);
+					@SuppressWarnings("rawtypes")
 					Iterator itr = userSelection.iterator();
 					while(itr.hasNext()){
 						fos.write(itr.next().toString().getBytes());
@@ -204,6 +205,7 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 		
 	}
 
+
 	@SuppressLint("NewApi")
 	@Override
 	public boolean onChildClick(ExpandableListView parent, View v,
@@ -223,7 +225,10 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 			{
 				userSelection.remove(ChildName);
 			}
+			
+			v.setBackground(getResources().getDrawable(android.R.drawable.list_selector_background));
 			v.setBackground(null);
+			
 		}
 		
 		return true;

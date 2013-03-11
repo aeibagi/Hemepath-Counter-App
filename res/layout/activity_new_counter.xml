@@ -55,15 +55,6 @@
         android:listSelector="@android:color/transparent"
         android:transcriptMode="alwaysScroll" />
 
-    <Button
-        android:id="@+id/Button_Save"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_below="@+id/Button_Clear"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp"
-        android:background="@drawable/button_style_green"
-        android:text="@string/save" />
 
     <Button
         android:id="@+id/Button_Modify"
