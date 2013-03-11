@@ -1,6 +1,9 @@
 package edu.sjsu.hemepathcounter;
 
+import java.io.FileInputStream;
+
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,6 +24,7 @@ public class CountersActivity extends Activity implements View.OnClickListener {
 	private ListView CountersList;
 	private ArrayAdapter<String> CounterListAdaptor;
 	private EditText CountersSearchBox;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +47,22 @@ public class CountersActivity extends Activity implements View.OnClickListener {
 		CountersList = (ListView) findViewById(R.id.Counters_list);
 		CounterListAdaptor = new ArrayAdapter<String>(this,
 				R.layout.counters_list_item, R.id.TextView_Counters_List_items);
-		CounterListAdaptor.add("Counter 1");
+		
+
+		String[] fileNames = getApplicationContext().fileList();
+		for(int i = 0; i < fileNames.length; i++)
+		{
+			CounterListAdaptor.add(fileNames[i]);
+		}
+		/*CounterListAdaptor.add("");
 		CounterListAdaptor.add("Counter 2");
 		CounterListAdaptor.add("Counter 3");
-		CounterListAdaptor.add("Counter 4");
+		CounterListAdaptor.add("Counter 4");*/
+
+		
 		CountersList.setAdapter(CounterListAdaptor);
 	}
+
 
 	private void SetupSearchFilter() {
 		CountersSearchBox.addTextChangedListener(new TextWatcher() {

@@ -27,5 +27,60 @@
     <string name="Clear">Clear</string>
     <string name="Custome_button">Custom Button</string>
     <string name="Save">Save</string>
-
+    
+    
+    <!-- Cell Types for predefined Buttons -->
+    <!-- Cell different types -->
+    <string name=" Default_Basic_Panel">Default/Basic Panel</string>
+    <string name="High_yield_additional">High-yield additional</string>
+    <string name="Mid_yield_additional">Mid-yield additional</string>
+    <string name="Low_yield_additional">Low-yield additional</string>
+    
+    <!--    Default/Basic Panel     -->
+    <string name="Lymphocytes">Lymphs</string>
+    <string name="Monocytes">Monos.</string>
+    <string name="Eosinophils">Eos.</string>
+    <string name="Basophils">Basos.</string>
+    <string name="Neutrophils">PMNs</string>
+    <string name="Bands">Bands</string>
+    <string name="Blasts">Blasts</string>
+    <string name="Reticulocytes">Retics</string>
+    
+    <!-- High-yield additional -->
+    <string name="atypicalLymphocytes">Atyp. lymphs</string>
+    <string name="Meta_myelocytes">M-myelos</string>
+    <string name="Myelocytes">Myelos</string>
+    <string name="Promyelocytes">Promyelos</string>
+    <string name="Promonocytes">Promonos</string>
+    <string name="Red_blood_cells">RBCs</string>
+    <string name="white_Blodd_Cells">WBCs</string>
+    <string name="Plasma_cells ">PCs</string>
+    <string name="Atypical_plasma_cells">Atyp. PCs</string>
+    <string name="Mast_cells ">Mast</string>
+    <string name="Megakaryocytes">Megs</string>
+    
+    <!-- Mid-yield additional -->
+    <string name="Erythroblasts" >E-blasts</string>
+    <string name="proerythroblasts">proeryth.</string>
+    <string name="T_cells">(T)</string>
+    <string name="B_Cells">(B)</string>
+    <string name="CD4Plus_T_cells">CD4+</string>
+    <string name="CD8Plus_T_cells">CD8+</string>
+    <string name="Reed_Sternberg_cells">RS cells</string>
+    
+    <!-- Low-yield additional -->
+    <string name="Atypical_eosinophils">Atyp. eos</string>
+    <string name="Atypical_basophils ">Atyp. basos</string>
+    <string name="Atypical_neutrophils">Atyp. PMNs</string>
+    <string name="Atypical_megakaryocytes">Atyp. megs</string>
+    <string name="Megakaryoblasts">Meg. blasts</string>
+    <string name="Basophilic_normoblasts">B-norm0</string>
+    <string name="Orthochromatophilic_normoblasts">O-normo</string>
+    <string name="Immunoblasts">Im-Blasts</string>
+    <string name="Centroblasts">C-Blasts</string>
+    <string name="Centrocytes">C-cytes</string>
+    <string name="Dendritic_cells">DCs</string>
+    <string name="NK_cells">NK</string>
+   
+        
 </resources>
