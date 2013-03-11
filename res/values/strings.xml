@@ -26,7 +26,6 @@
     <string name="Modify">Modify</string>
     <string name="Clear">Clear</string>
     <string name="Custome_button">Custom Button</string>
-<<<<<<< HEAD
     <string name="Save">Save</string>
     
     
@@ -82,11 +81,7 @@
     <string name="Centrocytes">C-cytes</string>
     <string name="Dendritic_cells">DCs</string>
     <string name="NK_cells">NK</string>
-   
-        
-=======
+
     <string name="save">Save</string>
     <string name="title_activity_counting">CountingActivity</string>    
-
->>>>>>> 672737c4260f02a72a30a360a95baac38da322e0
 </resources>

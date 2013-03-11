@@ -31,33 +31,31 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvName"
         android:layout_centerHorizontal="true"
-        android:hint="Enter name for Counter"
-        android:ems="10">
+        android:ems="10"
+        android:hint="Enter name for Counter" >
     </EditText>
-    
 
     <TextView
-    	    android:id="@+id/tvName"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_below="@+id/view_line_header_title"
-    	    android:layout_marginRight="35dp"
-    	    android:layout_marginTop="42dp"
-    	    android:layout_toLeftOf="@+id/edt_Enter_name"
-    	    android:text="@string/Object_name"
-    	    android:textSize="20dp" />
-    
-<<<<<<< HEAD
-       <ExpandableListView 
-           android:id="@+id/expandable_list_New_Counters"
-           android:layout_width="fill_parent"
-           android:layout_height="wrap_content"
-           android:transcriptMode="alwaysScroll"
-           android:cacheColorHint="#00000000"
-           android:listSelector="@android:color/transparent"
-           android:layout_below="@+id/edt_Enter_name"/>
-=======
-		<Button
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_line_header_title"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="42dp"
+        android:layout_toLeftOf="@+id/edt_Enter_name"
+        android:text="@string/Object_name"
+        android:textSize="20dp" />
+
+    <ExpandableListView
+        android:id="@+id/expandable_list_New_Counters"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt_Enter_name"
+        android:cacheColorHint="#00000000"
+        android:listSelector="@android:color/transparent"
+        android:transcriptMode="alwaysScroll" />
+
+    <Button
         android:id="@+id/Button_Save"
         android:layout_width="150dp"
         android:layout_height="70dp"
@@ -66,28 +64,27 @@
         android:layout_marginTop="58dp"
         android:background="@drawable/button_style_green"
         android:text="@string/save" />
->>>>>>> 672737c4260f02a72a30a360a95baac38da322e0
 
-        <Button
+    <Button
         android:id="@+id/Button_Modify"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_marginLeft="90dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_marginLeft="90dp"
         android:background="@drawable/button_style_yellow"
         android:text="@string/Modify" />
-        
-        <Button
+
+    <Button
         android:id="@+id/Button_Clear"
         android:layout_width="150dp"
         android:layout_height="70dp"
-		android:layout_alignParentBottom="true"
+        android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/Button_Modify"
         android:background="@drawable/button_style_yellow"
         android:text="@string/Clear" />
-        
-        <Button
+
+    <Button
         android:id="@+id/Button_Custom"
         android:layout_width="150dp"
         android:layout_height="70dp"
@@ -95,8 +92,8 @@
         android:layout_toRightOf="@+id/Button_Clear"
         android:background="@drawable/button_style_yellow"
         android:text="@string/Custome_button" />
-        
-        <Button
+
+    <Button
         android:id="@+id/Button_Save"
         android:layout_width="150dp"
         android:layout_height="70dp"
@@ -104,8 +101,5 @@
         android:layout_toRightOf="@+id/Button_Custom"
         android:background="@drawable/button_style_yellow"
         android:text="@string/Save" />
-        
-        
-        
 
-</RelativeLayout>   
+</RelativeLayout>
