@@ -24,11 +24,11 @@
     <string name="Object_name">Name</string>
     
     
-    <string name="Main_Menu">Main Menu</string>
+    <string name="Main_Menu">Main Menu</string><string name="Main_Menu_two_lines">Main\nMenu</string>
     <string name="Modify">Modify</string>
     <string name="Clear">Clear</string>
     <string name="Custom_button">Custom Button</string>
-    <string name="Custom_button_two_lines">Custom\nButton</string>
+    <string name="Custom_button_short">Custom</string>
     <string name="Save">Save</string>
     
     

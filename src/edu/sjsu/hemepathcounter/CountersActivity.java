@@ -57,6 +57,7 @@ public class CountersActivity extends Activity implements View.OnClickListener, 
 				R.layout.counters_list_item, R.id.TextView_Counters_List_items);
 		
 		updateCounterList();
+		CountersList.requestFocus();
 
 		CountersList.setOnItemLongClickListener(this);
 		
