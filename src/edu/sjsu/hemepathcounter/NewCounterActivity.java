@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class NewCounterActivity extends Activity implements View.OnClickListener, ExpandableListView.OnChildClickListener{
@@ -31,9 +32,10 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 	private ExpandableListView mExpandableList;
 	private EditText editBox_enter_name;
 	private String File_Name = "untitled";
-	//private ApplicationDatabaseActivity applicationBaseDatabase;
+	private MyCustomAdapterForExpandableList myCustomAdaptor;
 
-	ArrayList<String> userSelection;
+	private ArrayList<String> userSelection;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
         parent2.setTitle(getResources().getString(R.string.High_yield_additional));
         parent3.setTitle(getResources().getString(R.string.Mid_yield_additional));
         parent4.setTitle(getResources().getString(R.string.Low_yield_additional));
-        CustomParent.setTitle("Custom Text");
+        CustomParent.setTitle("Custom Cells");
         
         // add children to basic/default panel
         arrayChildren1.add(getResources().getString(R.string.Lymphocytes));
@@ -131,7 +133,8 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
         arrayParents.add(CustomParent);
   
         //set the parent & child adaptor to the expandable list
-        mExpandableList.setAdapter(new MyCustomAdapterForExpandableList(NewCounterActivity.this,arrayParents));
+        myCustomAdaptor = new MyCustomAdapterForExpandableList(NewCounterActivity.this,arrayParents);
+        mExpandableList.setAdapter(myCustomAdaptor);
 		
 	}
 
@@ -167,6 +170,7 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 		case R.id.Button_Modify:
 			break;
 		case R.id.Button_Clear:
+			ClearEverything();
 			break;
 		case R.id.Button_Custom:
 			break;
@@ -197,14 +201,13 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 			{
 				Toast.makeText(this, "You did not enter a name for your counter", Toast.LENGTH_SHORT).show();
 			}
-			Toast.makeText(this, CounterName, Toast.LENGTH_SHORT).show();
+			
 			break;
 		
 		}
 
 		
 	}
-
 
 	@SuppressLint("NewApi")
 	@Override
@@ -232,6 +235,11 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 		}
 		
 		return true;
-	}	
+	}
+	
+	private void ClearEverything() {
+		userSelection.clear();
+	    //Toast.makeText(this, "the count is " + b, Toast.LENGTH_SHORT).show();
+	}
 
 }
