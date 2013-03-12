@@ -20,7 +20,6 @@
     <string name="about_title">Hemepath Counter</string>
     <string name="menu_about_string">About</string>
     <string name="title_activity_new_counter">NewCounterActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="Create_new_counter">New Counter</string>
     <string name="Object_name">Name</string>
     
@@ -28,7 +27,8 @@
     <string name="Main_Menu">Main Menu</string>
     <string name="Modify">Modify</string>
     <string name="Clear">Clear</string>
-    <string name="Custome_button">Custom Button</string>
+    <string name="Custom_button">Custom Button</string>
+    <string name="Custom_button_two_lines">Custom\nButton</string>
     <string name="Save">Save</string>
     
     
@@ -87,5 +87,6 @@
     <string name="NK_cells">NK</string>
 
     <string name="save">Save</string>
-    <string name="title_activity_counting">CountingActivity</string>    
+    <string name="title_activity_counting">CountingActivity</string>
+    <string name="enter_counter_name_hint">Enter name for Counter</string>    
 </resources>
