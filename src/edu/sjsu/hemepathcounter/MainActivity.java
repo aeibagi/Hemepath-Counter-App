@@ -2,7 +2,10 @@ package edu.sjsu.hemepathcounter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -54,6 +57,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		newButton.setOnClickListener(this);
 		preferenceButton.setOnClickListener(this);
 		dataButton.setOnClickListener(this);
+		
+		//Set default values if not set already.
+		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 	}
 
 	/**
@@ -99,6 +105,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			startActivity(intent);
 			break;
 		case R.id.preferences_button:
+			intent = new Intent(MainActivity.this, PreferencesActivity.class);
+			startActivity(intent);
 			break;
 		case R.id.data_button:
 			break;

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="pref_mute"
+        android:order="0"
+        android:persistent="true"
+        android:summary="The sound should be muted."
+        android:title="Mute" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="pref_export"
+        android:order="1"
+        android:persistent="true"
+        android:summary="Whether or not to export the data"
+        android:title="Export" />
+
+    <EditTextPreference
+        android:dependency="pref_export"
+        android:dialogMessage="The email to send the data to."
+        android:dialogTitle="Email"
+        android:key="pref_email"
+        android:negativeButtonText="Cancel"
+        android:order="2"
+        android:persistent="true"
+        android:title="Set email address" />
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="pref_timestamp"
+        android:order="3"
+        android:persistent="true"
+        android:summary="Whether or not to include a timestamp with the data."
+        android:title="Include Timestamp" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="pref_show_percent"
+        android:order="4"
+        android:persistent="true"
+        android:summary="Whether or not to show percentages on the buttons&apos; faces."
+        android:title="Show %" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="pref_show_num"
+        android:order="5"
+        android:persistent="true"
+        android:summary="Whether or not to show counts on the buttons&apos; faces."
+        android:title="Show #" />
+
+</PreferenceScreen>

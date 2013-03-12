@@ -34,6 +34,11 @@
             android:name="edu.sjsu.hemepathcounter.CountingActivity"
             android:label="@string/title_activity_counting" >
         </activity>
+        <activity
+            android:name="edu.sjsu.hemepathcounter.PreferencesActivity"
+            android:label="@string/title_activity_preferences"
+            android:theme="@style/SettingsTheme" >
+        </activity>
     </application>
 
 </manifest>

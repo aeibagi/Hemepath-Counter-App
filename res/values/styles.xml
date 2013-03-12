@@ -1,5 +1,4 @@
-<resources>
-
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -16,6 +15,10 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="SettingsTheme" parent="@style/AppTheme">
+        <item name="android:windowBackground">@drawable/clouds</item>
     </style>
 
 </resources>
