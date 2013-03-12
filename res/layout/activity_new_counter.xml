@@ -23,7 +23,7 @@
         android:layout_alignBottom="@+id/view_line_header_title"
         android:layout_centerHorizontal="true"
         android:text="@string/Create_new_counter"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/edt_Enter_name"
@@ -44,7 +44,7 @@
         android:layout_marginTop="42dp"
         android:layout_toLeftOf="@+id/edt_Enter_name"
         android:text="@string/Object_name"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <ExpandableListView
         android:id="@+id/expandable_list_New_Counters"
@@ -55,14 +55,23 @@
         android:listSelector="@android:color/transparent"
         android:transcriptMode="alwaysScroll" />
 
+    <Button
+        android:id="@+id/Button_New_counters_backTo_MainMenu"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/button_style_yellow"
+        android:text="@string/Main_Menu" />
+    
 
     <Button
         android:id="@+id/Button_Modify"
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="90dp"
+        android:layout_toRightOf="@+id/Button_New_counters_backTo_MainMenu"
         android:background="@drawable/button_style_yellow"
         android:text="@string/Modify" />
 

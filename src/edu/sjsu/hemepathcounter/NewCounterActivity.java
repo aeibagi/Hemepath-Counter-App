@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 public class NewCounterActivity extends Activity implements View.OnClickListener, ExpandableListView.OnChildClickListener{
 
-	private Button ModifyButton, SaveButton, ClearButton, CustomButton;
+	private Button ModifyButton, SaveButton, ClearButton, CustomButton, mainMenu;
 	private ExpandableListView mExpandableList;
 	private EditText editBox_enter_name;
 	private String File_Name = "untitled";
@@ -45,14 +45,32 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 		initializePredefinedCells();
 	}
 
-	private void initializePredefinedCells() 
-	{
+	private void initialize() {
+
 		mExpandableList = (ExpandableListView)findViewById(R.id.expandable_list_New_Counters);
 		mExpandableList.requestFocus();
 		mExpandableList.setOnChildClickListener(this);
 		
+		userSelection = new ArrayList<String>();
+		//applicationBaseDatabase = new ApplicationDatabaseActivity();
+		editBox_enter_name = (EditText) findViewById(R.id.edt_Enter_name);
 		
+		mainMenu = (Button) findViewById(R.id.Button_New_counters_backTo_MainMenu);
+		ModifyButton = (Button) findViewById(R.id.Button_Modify);
+		SaveButton = (Button) findViewById(R.id.Button_Save);
+		ClearButton = (Button) findViewById(R.id.Button_Clear);
+		CustomButton = (Button) findViewById(R.id.Button_Custom);
 		
+		mainMenu.setOnClickListener(this);
+		ModifyButton.setOnClickListener(this);
+		SaveButton.setOnClickListener(this);
+		ClearButton.setOnClickListener(this);
+		CustomButton.setOnClickListener(this);
+	}
+	
+	private void initializePredefinedCells() 
+	{
+	
         ArrayList<Parent> arrayParents = new ArrayList<Parent>();
         ArrayList<String> arrayChildren1 = new ArrayList<String>();
         ArrayList<String> arrayChildren2 = new ArrayList<String>();
@@ -138,22 +156,7 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 		
 	}
 
-	private void initialize() {
 
-		userSelection = new ArrayList<String>();
-		//applicationBaseDatabase = new ApplicationDatabaseActivity();
-		editBox_enter_name = (EditText) findViewById(R.id.edt_Enter_name);
-		
-		ModifyButton = (Button) findViewById(R.id.Button_Modify);
-		SaveButton = (Button) findViewById(R.id.Button_Save);
-		ClearButton = (Button) findViewById(R.id.Button_Clear);
-		CustomButton = (Button) findViewById(R.id.Button_Custom);
-		
-		ModifyButton.setOnClickListener(this);
-		SaveButton.setOnClickListener(this);
-		ClearButton.setOnClickListener(this);
-		CustomButton.setOnClickListener(this);
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -167,6 +170,9 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 	public void onClick(View v) {
 		
 		switch (v.getId()) {
+		case R.id.Button_New_counters_backTo_MainMenu:
+			finish();
+			break;
 		case R.id.Button_Modify:
 			break;
 		case R.id.Button_Clear:
@@ -239,7 +245,15 @@ public class NewCounterActivity extends Activity implements View.OnClickListener
 	
 	private void ClearEverything() {
 		userSelection.clear();
-	    //Toast.makeText(this, "the count is " + b, Toast.LENGTH_SHORT).show();
+		initializePredefinedCells();
 	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		finish();
+	}
+	
+	
 
 }

@@ -23,10 +23,14 @@
     <string name="hello_world">Hello world!</string>
     <string name="Create_new_counter">New Counter</string>
     <string name="Object_name">Name</string>
+    
+    
+    <string name="Main_Menu">Main Menu</string>
     <string name="Modify">Modify</string>
     <string name="Clear">Clear</string>
     <string name="Custome_button">Custom Button</string>
     <string name="Save">Save</string>
+    
     
     
     <!-- Cell Types for predefined Buttons -->
