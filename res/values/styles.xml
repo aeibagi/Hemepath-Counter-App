@@ -18,7 +18,7 @@
     </style>
 
     <style name="SettingsTheme" parent="@style/AppTheme">
-        <item name="android:windowBackground">@drawable/clouds</item>
+        <item name="android:windowBackground">@drawable/white_marble</item>
     </style>
 
 </resources>
