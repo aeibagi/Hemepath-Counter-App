@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ButtonBar2"
-        android:layout_centerHorizontal="true" >
+        android:layout_centerHorizontal="true">
 
         <Button
             android:id="@+id/Button_New_counters_backTo_MainMenu"
@@ -89,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" >
+        android:layout_centerHorizontal="true">
 
         <Button
             android:id="@+id/Button_Clear"
@@ -104,7 +104,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:background="@drawable/button_style_green"
+            android:background="@drawable/button_style_yellow"
             android:text="@string/save" />
     </LinearLayout>
 

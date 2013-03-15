@@ -1,7 +1,12 @@
 package edu.sjsu.hemepathcounter;
 
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
 import android.app.Activity;
@@ -20,6 +25,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 /**
  * 
@@ -71,7 +77,32 @@ public class CountersActivity extends Activity implements View.OnClickListener, 
 		{
 			CounterListAdaptor.add(fileNames[i]);
 		}
-		CountersList.setAdapter(CounterListAdaptor);	
+		CountersList.setAdapter(CounterListAdaptor);
+		
+		// an exmple of how to read the files content
+		readFile(fileNames[0]);
+	}
+
+	private void readFile(String fName) {
+		try {
+			FileInputStream fis = openFileInput(fName);
+			InputStreamReader isr = new InputStreamReader(fis);
+			BufferedReader br = new BufferedReader(isr);
+						
+			String sLine = null;
+			String sOutput = "";
+			while ((sLine = br.readLine())!=null)
+			  sOutput += sLine;
+
+			Toast.makeText(this, sOutput, Toast.LENGTH_SHORT).show();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	private void SetupSearchFilter() {

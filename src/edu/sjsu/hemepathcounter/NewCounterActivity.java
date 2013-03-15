@@ -4,11 +4,15 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -29,6 +33,11 @@ public class NewCounterActivity extends Activity implements
 	private MyCustomAdapterForExpandableList myCustomAdaptor;
 
 	private ArrayList<String> userSelection;
+	
+	public static HashMap<String, Boolean> ChildStatus;
+
+	public static Drawable listViewdefaultbackground;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +49,13 @@ public class NewCounterActivity extends Activity implements
 
 	private void initialize() {
 
+		listViewdefaultbackground = getResources().getDrawable(android.R.drawable.list_selector_background);
 		mExpandableList = (ExpandableListView) findViewById(R.id.expandable_list_New_Counters);
 		mExpandableList.requestFocus();
 		mExpandableList.setOnChildClickListener(this);
+		
+		ChildStatus = new HashMap<String, Boolean>();
+	
 
 		userSelection = new ArrayList<String>();
 		// applicationBaseDatabase = new ApplicationDatabaseActivity();
@@ -64,18 +77,19 @@ public class NewCounterActivity extends Activity implements
 
 	private void initializePredefinedCells() {
 
-		ArrayList<Parent> arrayParents = new ArrayList<Parent>();
-		ArrayList<String> arrayChildren1 = new ArrayList<String>();
-		ArrayList<String> arrayChildren2 = new ArrayList<String>();
-		ArrayList<String> arrayChildren3 = new ArrayList<String>();
-		ArrayList<String> arrayChildren4 = new ArrayList<String>();
-		ArrayList<String> CustomarrayChildren = new ArrayList<String>();
+		 ArrayList<Parent> arrayParents = new ArrayList<Parent>();
+		 ArrayList<String> arrayChildren1 = new ArrayList<String>();
+		 ArrayList<String> arrayChildren2 = new ArrayList<String>();
+		 ArrayList<String> arrayChildren3 = new ArrayList<String>();
+		 ArrayList<String> arrayChildren4 = new ArrayList<String>();
+		 ArrayList<String> CustomarrayChildren = new ArrayList<String>();
 
-		Parent parent1 = new Parent();
-		Parent parent2 = new Parent();
-		Parent parent3 = new Parent();
-		Parent parent4 = new Parent();
-		Parent CustomParent = new Parent();
+		 Parent parent1 = new Parent();
+		 Parent parent2 = new Parent();
+		 Parent parent3 = new Parent();
+		 Parent parent4 = new Parent();
+		 Parent CustomParent = new Parent();
+		
 
 		parent1.setTitle(getResources().getString(R.string.Default_Basic_Panel));
 		parent2.setTitle(getResources().getString(
@@ -179,12 +193,11 @@ public class NewCounterActivity extends Activity implements
 		case R.id.Button_Modify:
 			break;
 		case R.id.Button_Clear:
-			ClearEverything();
+			//ClearEverything();
 			break;
 		case R.id.Button_Custom:
 			break;
 		case R.id.Button_Save:
-			String CounterName = editBox_enter_name.getText().toString();
 			if (editBox_enter_name.getText().toString().trim().length() > 0) {
 
 				File_Name = editBox_enter_name.getText().toString();
@@ -229,29 +242,38 @@ public class NewCounterActivity extends Activity implements
 		if (v.getBackground() == null) {
 			userSelection.add(ChildName);
 			v.setBackgroundResource(R.drawable.button_style_green);
+			ChildStatus.put(ChildName, true);
 		} else {
 			if (userSelection.contains(ChildName)) {
 				userSelection.remove(ChildName);
+				ChildStatus.put(ChildName, false);
 			}
-
-			v.setBackground(getResources().getDrawable(
-					android.R.drawable.list_selector_background));
+			v.setBackground(getResources().getDrawable(android.R.drawable.list_selector_background));
 			v.setBackground(null);
-
 		}
 
 		return true;
 	}
 
+	/*@SuppressLint("NewApi")
 	private void ClearEverything() {
 		userSelection.clear();
+		myCustomAdaptor.removeEverything();
+		arrayParents.clear();
+		arrayChildren1.clear();
+		arrayChildren2.clear();
+		arrayChildren3.clear();
+		arrayChildren4.clear();
+		
 		initializePredefinedCells();
-	}
+		
+	}*/
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		finish();
+		//finish();
+
 	}
 
 }

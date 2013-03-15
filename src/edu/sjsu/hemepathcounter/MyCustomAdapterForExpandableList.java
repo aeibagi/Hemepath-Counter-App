@@ -2,6 +2,7 @@ package edu.sjsu.hemepathcounter;
 
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.view.LayoutInflater;
@@ -21,7 +22,7 @@ public class MyCustomAdapterForExpandableList extends BaseExpandableListAdapter 
         inflater = LayoutInflater.from(context);
     }
  
- 
+
     @Override
     //counts the number of group/parent items so the list knows how many times calls getGroupView() method
     public int getGroupCount() {
@@ -77,13 +78,35 @@ public class MyCustomAdapterForExpandableList extends BaseExpandableListAdapter 
         return view;
     }
  
-    @Override
+    @SuppressLint("NewApi")
+	@Override
     //in this method you must set the text to see the children on the list
     public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
         if (view == null) {
             view = inflater.inflate(R.layout.list_item_child_newcounterexpandable, viewGroup,false);
         }
  
+        String keyName = mParent.get(i).getArrayChildren().get(i1);
+        if(!NewCounterActivity.ChildStatus.isEmpty())
+        {
+        	if(NewCounterActivity.ChildStatus.containsKey(keyName))
+        	{
+		        if(NewCounterActivity.ChildStatus.get(keyName) == true)
+		        {
+		        	view.setBackgroundResource(R.drawable.button_style_green);
+		        }
+		        else
+		        {
+					view.setBackground(NewCounterActivity.listViewdefaultbackground);
+					view.setBackground(null);
+		        }
+        	}
+        	else
+        	{
+        		view.setBackground(NewCounterActivity.listViewdefaultbackground);
+				view.setBackground(null);
+        	}
+        }
         TextView textView = (TextView) view.findViewById(R.id.list_item_text_child);
         //"i" is the position of the parent/group in the list and
         //"i1" is the position of the child
@@ -103,4 +126,11 @@ public class MyCustomAdapterForExpandableList extends BaseExpandableListAdapter 
         /* used to make the notifyDataSetChanged() method work */
         super.registerDataSetObserver(observer);
     }
+
+
+	@Override
+	public void onGroupExpanded(int groupPosition) {
+
+		super.onGroupExpanded(groupPosition);
+	}
 }

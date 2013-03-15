@@ -53,6 +53,7 @@
         android:id="@+id/expandable_list_New_Counters"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/Button_Modify"
         android:layout_below="@+id/edt_Enter_name"
         android:cacheColorHint="#00000000"
         android:listSelector="@android:color/transparent"
