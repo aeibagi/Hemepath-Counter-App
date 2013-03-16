@@ -38,7 +38,8 @@ public class CountersActivity extends Activity implements View.OnClickListener, 
 	private ArrayAdapter<String> CounterListAdaptor;
 	private EditText CountersSearchBox;
 	private String ItemSelectedforContextMenuOption = "";
-    private int SelectedItemIndex;
+    @SuppressWarnings("unused")
+	private int SelectedItemIndex;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

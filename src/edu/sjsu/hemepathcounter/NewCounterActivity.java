@@ -6,12 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,9 +16,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 import android.widget.Toast;
 
+/**
+ * 
+ * @author Amir Eibagi
+ * 
+ */
 public class NewCounterActivity extends Activity implements
 		View.OnClickListener, ExpandableListView.OnChildClickListener {
 
@@ -37,6 +38,19 @@ public class NewCounterActivity extends Activity implements
 	public static HashMap<String, Boolean> ChildStatus;
 
 	public static Drawable listViewdefaultbackground;
+	
+	private ArrayList<Parent> arrayParents = new ArrayList<Parent>();
+	private ArrayList<String> arrayChildren1 = new ArrayList<String>();
+	private ArrayList<String> arrayChildren2 = new ArrayList<String>();
+	private ArrayList<String> arrayChildren3 = new ArrayList<String>();
+	private ArrayList<String> arrayChildren4 = new ArrayList<String>();
+	private ArrayList<String> CustomarrayChildren = new ArrayList<String>();
+
+	private Parent parent1 = new Parent();
+	private Parent parent2 = new Parent();
+	private Parent parent3 = new Parent();
+	private Parent parent4 = new Parent();
+	private Parent CustomParent = new Parent();
 
 
 	@Override
@@ -67,29 +81,21 @@ public class NewCounterActivity extends Activity implements
 		ClearButton = (Button) findViewById(R.id.Button_Clear);
 		CustomButton = (Button) findViewById(R.id.Button_Custom);
 
+		
+		
 		mainMenu.setOnClickListener(this);
 		ModifyButton.setOnClickListener(this);
 		SaveButton.setOnClickListener(this);
 		ClearButton.setOnClickListener(this);
 		CustomButton.setOnClickListener(this);
+		
+		// gray out the modify button
+		ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
+		ModifyButton.setClickable(false);
 
 	}
 
 	private void initializePredefinedCells() {
-
-		 ArrayList<Parent> arrayParents = new ArrayList<Parent>();
-		 ArrayList<String> arrayChildren1 = new ArrayList<String>();
-		 ArrayList<String> arrayChildren2 = new ArrayList<String>();
-		 ArrayList<String> arrayChildren3 = new ArrayList<String>();
-		 ArrayList<String> arrayChildren4 = new ArrayList<String>();
-		 ArrayList<String> CustomarrayChildren = new ArrayList<String>();
-
-		 Parent parent1 = new Parent();
-		 Parent parent2 = new Parent();
-		 Parent parent3 = new Parent();
-		 Parent parent4 = new Parent();
-		 Parent CustomParent = new Parent();
-		
 
 		parent1.setTitle(getResources().getString(R.string.Default_Basic_Panel));
 		parent2.setTitle(getResources().getString(
@@ -193,7 +199,7 @@ public class NewCounterActivity extends Activity implements
 		case R.id.Button_Modify:
 			break;
 		case R.id.Button_Clear:
-			//ClearEverything();
+			ClearEverything();
 			break;
 		case R.id.Button_Custom:
 			break;
@@ -252,22 +258,31 @@ public class NewCounterActivity extends Activity implements
 			v.setBackground(null);
 		}
 
+		if(userSelection.isEmpty() || userSelection.size() > 1)
+		{
+			ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
+			ModifyButton.setClickable(false);
+		}
+		else if(userSelection.size() == 1)
+		{
+			ModifyButton.setBackgroundResource(R.drawable.button_style_yellow);
+			ModifyButton.setClickable(true);
+		}
 		return true;
 	}
 
-	/*@SuppressLint("NewApi")
+	@SuppressLint("NewApi")
 	private void ClearEverything() {
 		userSelection.clear();
-		myCustomAdaptor.removeEverything();
+		ChildStatus.clear();
 		arrayParents.clear();
 		arrayChildren1.clear();
 		arrayChildren2.clear();
 		arrayChildren3.clear();
-		arrayChildren4.clear();
-		
+		arrayChildren4.clear();	
 		initializePredefinedCells();
 		
-	}*/
+	}
 
 	@Override
 	protected void onPause() {
