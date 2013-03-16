@@ -81,7 +81,7 @@ public class CountersActivity extends Activity implements View.OnClickListener, 
 		CountersList.setAdapter(CounterListAdaptor);
 		
 		// an exmple of how to read the files content
-		readFile(fileNames[0]);
+		//readFile(fileNames[0]);
 	}
 
 	private void readFile(String fName) {

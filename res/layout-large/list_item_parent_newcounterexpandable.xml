@@ -16,13 +16,13 @@ android:padding="10dp"
 android:layout_weight="1"
 android:layout_marginLeft="35dp" />
  
-<Button
+<!--  <Button
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="button"
 android:focusable="false"
 android:layout_gravity="right"
 android:focusableInTouchMode="false"
-android:id="@+id/button"/>
+android:id="@+id/button"/>-->
  
 </LinearLayout>
