@@ -2,11 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundshape"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/backgroundshape"
     tools:context=".Custom_Moify_ButtonActivity" >
 
     <View
@@ -15,16 +15,16 @@
         android:layout_height="2dip"
         android:layout_marginTop="20dp"
         android:background="#000000" />
-    
+
     <TextView
         android:id="@+id/tvtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/Create_new_counter"
+        android:text="@string/Custom_button"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+
     <TextView
         android:id="@+id/tvName_Custom_modify"
         android:layout_width="wrap_content"
@@ -34,77 +34,98 @@
         android:layout_alignLeft="@+id/view_line_header_title"
         android:text="@string/Object_name"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-        <TextView
+
+    <TextView
         android:id="@+id/tvChooseColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvName_Custom_modify"
         android:layout_below="@+id/edt_Enter_name_Custom_modify"
         android:layout_marginTop="28dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/Choose_color" />
+        android:text="@string/Choose_color"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvChooseColor"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp" >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/iB_CustomColor_Green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button1" />
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/green" />
 
-            <Button
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button2" />
+                android:layout_marginLeft="5dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/orange" />
 
-            <Button
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button3" />
+                android:layout_marginLeft="5dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/blue_green_family_26878e" />
 
-            <Button
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button4" />
+                android:layout_marginLeft="5dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/yellow" />
 
-            <Button
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button5" />
+                android:layout_marginLeft="5dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/blue_purple_6666cc" />
 
-            <Button
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button6" />
+                android:layout_marginLeft="5dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/orangefamily_ffae61" />
 
-            <Button
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button7" />
+                android:layout_marginLeft="5dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/greenfamily_00cc99" />
 
-            <Button
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button8" />
+                android:layout_marginLeft="5dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/blue_0000ff" />
 
-            <Button
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button9" />
+                android:layout_marginLeft="5dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/purpule_663366" />
 
-            <Button
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button10" />
+                android:layout_marginLeft="5dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/pink_ff0099" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -121,6 +142,42 @@
         <requestFocus />
     </EditText>
 
+    <TextView
+        android:id="@+id/tvSound_Custome_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/horizontalScrollView1"
+        android:layout_below="@+id/horizontalScrollView1"
+        android:layout_marginTop="70dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/Choose_Sound" />
 
+    <Button
+        android:id="@+id/btn_create_custom_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/button_style_yellow"
+        android:text="@string/create_button" />
+
+    <Button
+        android:id="@+id/btn_exit_custom_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button_style_yellow"
+        android:text="@string/Exit_custome_button" />
+
+    <Button
+        
+        android:id="@+id/btn_modify_custom_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_style_yellow"
+        android:text="@string/Modify" />
 
 </RelativeLayout>

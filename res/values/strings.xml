@@ -91,4 +91,8 @@
 
     <!-- Custome_Modify_Button_Activity -->
     <string name="Choose_color">Select a Color: </string>
+    <string name="Choose_Sound">Select a Sound: </string>
+    <string name="create_button">Create</string>
+    <string name="Exit_custome_button">Exit</string>
+
 </resources>

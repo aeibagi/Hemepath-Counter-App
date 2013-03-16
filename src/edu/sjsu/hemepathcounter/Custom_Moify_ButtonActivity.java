@@ -2,14 +2,23 @@ package edu.sjsu.hemepathcounter;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.Menu;
+import android.widget.ImageButton;
 
 public class Custom_Moify_ButtonActivity extends Activity {
 
+	ImageButton Ib_green;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_custom__moify__button);
+		initialize();
+	}
+
+	private void initialize() {
+		Ib_green = (ImageButton) findViewById(R.id.iB_CustomColor_Green);
 	}
 
 	@Override
