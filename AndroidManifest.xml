@@ -39,6 +39,14 @@
             android:label="@string/title_activity_preferences"
             android:theme="@style/SettingsTheme" >
         </activity>
+        <activity
+            android:name="edu.sjsu.hemepathcounter.Custom_Modify_ButtonActivity"
+            android:label="@string/title_activity_custom__modify__button" >
+        </activity>
+        <activity
+            android:name="edu.sjsu.hemepathcounter.Custom_Moify_ButtonActivity"
+            android:label="@string/title_activity_custom__moify__button" >
+        </activity>
     </application>
 
 </manifest>

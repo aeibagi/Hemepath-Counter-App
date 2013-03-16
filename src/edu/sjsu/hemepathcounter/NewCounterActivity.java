@@ -9,6 +9,7 @@ import java.util.Iterator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
@@ -202,6 +203,8 @@ public class NewCounterActivity extends Activity implements
 			ClearEverything();
 			break;
 		case R.id.Button_Custom:
+			Intent intent = new Intent(NewCounterActivity.this, Custom_Moify_ButtonActivity.class);
+			startActivity(intent);
 			break;
 		case R.id.Button_Save:
 			if (editBox_enter_name.getText().toString().trim().length() > 0) {

@@ -22,25 +22,22 @@
     <string name="title_activity_new_counter">NewCounterActivity</string>
     <string name="Create_new_counter">New Counter</string>
     <string name="Object_name">Name</string>
-    
-    
-    <string name="Main_Menu">Main Menu</string><string name="Main_Menu_two_lines">Main\nMenu</string>
+    <string name="Main_Menu">Main Menu</string>
+    <string name="Main_Menu_two_lines">Main\nMenu</string>
     <string name="Modify">Modify</string>
     <string name="Clear">Clear</string>
     <string name="Custom_button">Custom Button</string>
     <string name="Custom_button_short">Custom</string>
     <string name="Save">Save</string>
-    
-    
-    
+
     <!-- Cell Types for predefined Buttons -->
     <!-- Cell different types -->
     <string name=" Default_Basic_Panel">Default/Basic Panel</string>
     <string name="High_yield_additional">High-yield additional</string>
     <string name="Mid_yield_additional">Mid-yield additional</string>
     <string name="Low_yield_additional">Low-yield additional</string>
-    
-    <!--    Default/Basic Panel     -->
+
+    <!-- Default/Basic Panel -->
     <string name="Lymphocytes">Lymphs</string>
     <string name="Monocytes">Monos.</string>
     <string name="Eosinophils">Eos.</string>
@@ -49,7 +46,7 @@
     <string name="Bands">Bands</string>
     <string name="Blasts">Blasts</string>
     <string name="Reticulocytes">Retics</string>
-    
+
     <!-- High-yield additional -->
     <string name="atypicalLymphocytes">Atyp. lymphs</string>
     <string name="Meta_myelocytes">M-myelos</string>
@@ -62,16 +59,16 @@
     <string name="Atypical_plasma_cells">Atyp. PCs</string>
     <string name="Mast_cells ">Mast</string>
     <string name="Megakaryocytes">Megs</string>
-    
+
     <!-- Mid-yield additional -->
-    <string name="Erythroblasts" >E-blasts</string>
+    <string name="Erythroblasts">E-blasts</string>
     <string name="proerythroblasts">proeryth.</string>
     <string name="T_cells">(T)</string>
     <string name="B_Cells">(B)</string>
     <string name="CD4Plus_T_cells">CD4+</string>
     <string name="CD8Plus_T_cells">CD8+</string>
     <string name="Reed_Sternberg_cells">RS cells</string>
-    
+
     <!-- Low-yield additional -->
     <string name="Atypical_eosinophils">Atyp. eos</string>
     <string name="Atypical_basophils ">Atyp. basos</string>
@@ -85,9 +82,13 @@
     <string name="Centrocytes">C-cytes</string>
     <string name="Dendritic_cells">DCs</string>
     <string name="NK_cells">NK</string>
-
     <string name="save">Save</string>
     <string name="title_activity_counting">CountingActivity</string>
     <string name="title_activity_preferences">PreferencesActivity</string>
-    <string name="enter_counter_name_hint">Enter name for Counter</string>    
+    <string name="enter_counter_name_hint">Enter name for Counter</string>
+    <string name="title_activity_custom__moify__button">Custom_Moify_ButtonActivity</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- Custome_Modify_Button_Activity -->
+    <string name="Choose_color">Select a Color: </string>
 </resources>
