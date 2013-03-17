@@ -180,4 +180,23 @@
         android:background="@drawable/button_style_yellow"
         android:text="@string/Modify" />
 
+    <Spinner
+        android:id="@+id/SP_Sound_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/spinner_style"
+        android:layout_toRightOf="@+id/tvSound_Custome_activity"
+        android:layout_below="@+id/horizontalScrollView1"
+        android:layout_marginTop="65dp" 
+        android:layout_marginLeft="5dp"/>
+
+    <ImageButton
+        android:id="@+id/ibSpeakerIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvSound_Custome_activity"
+        android:layout_below="@+id/tvSound_Custome_activity"
+        android:background="?android:selectableItemBackground"
+        android:src="@drawable/speaker_icon"/>
+
 </RelativeLayout>
