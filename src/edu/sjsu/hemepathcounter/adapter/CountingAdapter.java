@@ -1,5 +1,7 @@
 package edu.sjsu.hemepathcounter.adapter;
 
+import java.text.DecimalFormat;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,8 +51,13 @@ public class CountingAdapter extends BaseAdapter {
         
         CellData cell = getItem(position);
         holder.name.setText(cell.name);
-        holder.number.setText(cell.number + "");        
-        //holder.percent.setText(cell.name / mData.);
+        holder.number.setText(cell.number + "");
+        
+        DecimalFormat df = new DecimalFormat("#.##");        
+        if (mData.total == 0)
+        	holder.percent.setText("0%");
+        else 
+        	holder.percent.setText(String.format(df.format(100.0 * cell.number / mData.total))  + "%");
         
         convertView.setBackgroundResource(R.color.red);
         

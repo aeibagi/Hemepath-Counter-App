@@ -93,12 +93,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		switch (v.getId()) {
 		case R.id.counters_button:
 			//Calling CountingActivity for testing - Minh
-			/*intent = new Intent(MainActivity.this, CountingActivity.class);
-			startActivity(intent);*/
-			
-			intent = new Intent(MainActivity.this, CountersActivity.class);
+			intent = new Intent(MainActivity.this, CountingActivity.class);
 			startActivity(intent);
 			
+			/*
+			intent = new Intent(MainActivity.this, CountersActivity.class);
+			startActivity(intent);
+			*/
 			break;
 		case R.id.new_button:
 			intent = new Intent(MainActivity.this, NewCounterActivity.class);

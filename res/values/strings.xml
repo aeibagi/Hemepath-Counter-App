@@ -94,5 +94,9 @@
     <string name="Choose_Sound">Select a Sound: </string>
     <string name="create_button">Create</string>
     <string name="Exit_custome_button">Exit</string>
+    
+    <!-- Counting_Activity -->
+    <string name="counting_activity_save">Save</string>
+    <string name="counting_activity_undo">Undo</string>
 
 </resources>
