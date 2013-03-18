@@ -29,6 +29,7 @@ public class Custom_Moify_ButtonActivity extends Activity implements OnItemSelec
 	}
 
 	private void initialize() {
+		
 		soundHolder.add(R.raw.sounds_1015_news_bringer);
 		soundHolder.add(R.raw.sounds_1066_may_i_have_your_attention);
 		soundHolder.add(R.raw.sounds_824_twirl);
