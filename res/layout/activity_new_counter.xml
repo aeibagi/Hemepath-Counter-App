@@ -13,15 +13,6 @@
     tools:context=".NewCounterActivity" >
 
     <TextView
-        android:id="@+id/tvtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/Create_new_counter"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +26,6 @@
         android:id="@+id/edt_Enter_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvtitle"
         android:layout_toRightOf="@id/tvName"
         android:ems="10"
         android:hint="@string/enter_counter_name_hint" />

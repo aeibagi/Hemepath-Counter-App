@@ -98,5 +98,6 @@
     <!-- Counting_Activity -->
     <string name="counting_activity_save">Save</string>
     <string name="counting_activity_undo">Undo</string>
+    <string name="search_counters_hint">Search Counters..</string>
 
 </resources>

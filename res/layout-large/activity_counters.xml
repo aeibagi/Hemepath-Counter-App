@@ -14,7 +14,7 @@
         android:id="@+id/EditBox_Counters_Search"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="Search Counters.."
+        android:hint="@string/search_counters_hint"
         android:inputType="textVisiblePassword"/>
    
    <ListView

@@ -16,35 +16,15 @@
         android:id="@+id/EditBox_Counters_Search"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="Search Counters.."
+        android:hint="@string/search_counters_hint"
         android:inputType="textVisiblePassword" />
 
     <ListView
         android:id="@+id/Counters_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/CountersActivity_mainMenu_button"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/EditBox_Counters_Search" >
-
     </ListView>
-
-    <Button
-        android:id="@+id/CountersActivity_mainMenu_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="Main Menu"
-        android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/CountersActivity_back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="Back"
-        android:textSize="20sp" />
 
 </RelativeLayout>
