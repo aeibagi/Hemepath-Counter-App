@@ -1,6 +1,14 @@
-package edu.sjsu.hemepathcounter;
+package edu.sjsu.hemepathcounter.adapter;
 
 import java.util.ArrayList;
+
+import edu.sjsu.hemepathcounter.NewCounterActivity;
+import edu.sjsu.hemepathcounter.Parent;
+import edu.sjsu.hemepathcounter.R;
+import edu.sjsu.hemepathcounter.R.drawable;
+import edu.sjsu.hemepathcounter.R.id;
+import edu.sjsu.hemepathcounter.R.layout;
+import edu.sjsu.hemepathcounter.model.CellButton;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -86,7 +94,7 @@ public class MyCustomAdapterForExpandableList extends BaseExpandableListAdapter 
             view = inflater.inflate(R.layout.list_item_child_newcounterexpandable, viewGroup,false);
         }
  
-        String keyName = mParent.get(i).getArrayChildren().get(i1);
+        CellButton keyName = mParent.get(i).getArrayChildren().get(i1);
         if(!NewCounterActivity.ChildStatus.isEmpty())
         {
         	if(NewCounterActivity.ChildStatus.containsKey(keyName))
@@ -110,7 +118,7 @@ public class MyCustomAdapterForExpandableList extends BaseExpandableListAdapter 
         TextView textView = (TextView) view.findViewById(R.id.list_item_text_child);
         //"i" is the position of the parent/group in the list and
         //"i1" is the position of the child
-        textView.setText(mParent.get(i).getArrayChildren().get(i1));
+        textView.setText(mParent.get(i).getArrayChildren().get(i1).getName());
  
         //return the entire view
         return view;

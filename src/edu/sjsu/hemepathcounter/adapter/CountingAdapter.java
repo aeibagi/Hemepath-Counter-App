@@ -9,24 +9,24 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import edu.sjsu.hemepathcounter.R;
-import edu.sjsu.hemepathcounter.model.CellData;
-import edu.sjsu.hemepathcounter.model.CountingData;
+import edu.sjsu.hemepathcounter.model.CellButton;
+import edu.sjsu.hemepathcounter.model.Counter;
 
 public class CountingAdapter extends BaseAdapter {
 
-	public CountingAdapter(Context context, CountingData data) {
+	public CountingAdapter(Context context, Counter data) {
 		mContext = context;
 		mData = data;
 	}
 	
 	@Override
 	public int getCount() {
-		return mData.cells.size();		
+		return mData.getCells().size();		
 	}
 
 	@Override
-	public CellData getItem(int position) {		
-		return mData.cells.get(position);
+	public CellButton getItem(int position) {		
+		return mData.getCells().get(position);
 	}
 
 	@Override
@@ -49,23 +49,23 @@ public class CountingAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         
-        CellData cell = getItem(position);
-        holder.name.setText(cell.name);
-        holder.number.setText(cell.number + "");
+        CellButton cell = getItem(position);
+        holder.name.setText(cell.getName());
+        holder.number.setText(cell.getCount() + "");
         
         DecimalFormat df = new DecimalFormat("#.##");        
-        if (mData.total == 0)
+        if (mData.getTotal() == 0)
         	holder.percent.setText("0%");
         else 
-        	holder.percent.setText(String.format(df.format(100.0 * cell.number / mData.total))  + "%");
+        	holder.percent.setText(String.format(df.format(100.0 * cell.getCount() / mData.getTotal()))  + "%");
         
-        convertView.setBackgroundResource(R.color.red);
+        convertView.setBackgroundResource(cell.getColor());
         
 		return convertView;
 	}
 	
 	private Context mContext;
-	private CountingData mData;
+	private Counter mData;
 	
 	private class ViewHolder {
         private TextView name;

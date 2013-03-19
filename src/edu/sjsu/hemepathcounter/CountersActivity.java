@@ -1,17 +1,9 @@
 package edu.sjsu.hemepathcounter;
 
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,24 +14,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
+import edu.sjsu.hemepathcounter.model.Counter;
+import edu.sjsu.hemepathcounter.model.CounterHolder;
 
 /**
  * 
  * @author Amir Eibagi
+ * @author Jake Karnes
  * 
  */
-public class CountersActivity extends Activity implements View.OnClickListener, AdapterView.OnItemLongClickListener {
-	private Button mainMenuButton, backButton;
+public class CountersActivity extends Activity implements
+		AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 	private ListView CountersList;
-	private ArrayAdapter<String> CounterListAdaptor;
+	private ArrayAdapter<Counter> CounterListAdaptor;
 	private EditText CountersSearchBox;
-	private String ItemSelectedforContextMenuOption = "";
-    @SuppressWarnings("unused")
-	private int SelectedItemIndex;
+	private Counter ItemSelectedforContextMenuOption = null;
+	private CounterHolder holder;
+	private FileManager manager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,59 +44,27 @@ public class CountersActivity extends Activity implements View.OnClickListener, 
 	}
 
 	private void initialize() {
-		// initialize the button and setup actionlisteners
-		mainMenuButton = (Button) findViewById(R.id.CountersActivity_mainMenu_button);
-		backButton = (Button) findViewById(R.id.CountersActivity_back_button);
-		mainMenuButton.setOnClickListener(this);
-		backButton.setOnClickListener(this);
+		manager = new FileManager(getApplicationContext());
+		holder = manager.getCounterHolder();
 		// initialize the Search box
 		CountersSearchBox = (EditText) findViewById(R.id.EditBox_Counters_Search);
 		// setting up the list for the counters
 		CountersList = (ListView) findViewById(R.id.Counters_list);
-		CounterListAdaptor = new ArrayAdapter<String>(this,
+		CounterListAdaptor = new ArrayAdapter<Counter>(this,
 				R.layout.counters_list_item, R.id.TextView_Counters_List_items);
-		
+
 		updateCounterList();
 		CountersList.requestFocus();
 
 		CountersList.setOnItemLongClickListener(this);
-		
-	}
+		CountersList.setOnItemClickListener(this);
 
+	}
 
 	private void updateCounterList() {
-		String[] fileNames = getApplicationContext().fileList();
-		Arrays.sort(fileNames);
-		for(int i = 0; i < fileNames.length; i++)
-		{
-			CounterListAdaptor.add(fileNames[i]);
-		}
+		CounterListAdaptor.addAll(holder.getCounters());
 		CountersList.setAdapter(CounterListAdaptor);
-		
-		// an exmple of how to read the files content
-		//readFile(fileNames[0]);
-	}
 
-	private void readFile(String fName) {
-		try {
-			FileInputStream fis = openFileInput(fName);
-			InputStreamReader isr = new InputStreamReader(fis);
-			BufferedReader br = new BufferedReader(isr);
-						
-			String sLine = null;
-			String sOutput = "";
-			while ((sLine = br.readLine())!=null)
-			  sOutput += sLine;
-
-			Toast.makeText(this, sOutput, Toast.LENGTH_SHORT).show();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 	}
 
 	private void SetupSearchFilter() {
@@ -139,110 +100,113 @@ public class CountersActivity extends Activity implements View.OnClickListener, 
 	}
 
 	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.CountersActivity_mainMenu_button:
-			break;
-		case R.id.CountersActivity_back_button:
-			break;
-		}
-
+	public void onItemClick(AdapterView<?> arg0, View v, int position,
+			long id) {
+		ItemSelectedforContextMenuOption = (Counter) CountersList
+				.getItemAtPosition(position);
+		Intent i = new Intent(CountersActivity.this, CountingActivity.class);
+		i.putExtra("counter", ItemSelectedforContextMenuOption);
+		startActivity(i);
+		holder.incrementCounterUse(ItemSelectedforContextMenuOption);
+		manager.updateCounterHolder(holder);
 	}
 
 	@Override
 	public boolean onItemLongClick(AdapterView<?> arg0, View v, int position,
 			long id) {
-		ItemSelectedforContextMenuOption = (String) CountersList.getItemAtPosition(position);
-		SelectedItemIndex = position;
+		ItemSelectedforContextMenuOption = (Counter) CountersList
+				.getItemAtPosition(position);
 		registerForContextMenu(arg0);
 		return false;
-	}  
-	
-	@Override  
-	public void onCreateContextMenu(ContextMenu menu, View v,ContextMenuInfo menuInfo) {  
-	super.onCreateContextMenu(menu, v, menuInfo);  
-	    menu.setHeaderTitle("Options");  
-	    menu.add(0, v.getId(), 0, "Rename");  
-	    menu.add(0, v.getId(), 0, "Delete");  
 	}
-	
-	 @Override  
-	 public boolean onContextItemSelected(MenuItem item) 
-	 {	 
-	     if(item.getTitle()=="Rename")
-	     {
-	     	AlertDialog.Builder renameDialogBox = createRenameDialogBox();
-	     	renameDialogBox.show();
-	     }  	    
-	     else if(item.getTitle()=="Delete")
-	     {
-	       	AlertDialog quitDialogBox = createQuitDialogBox();
-	       	quitDialogBox.show();
-	     }	 
-	     return true;  
-	 }
 
-	
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		menu.setHeaderTitle("Options");
+		menu.add(0, v.getId(), 0, "Rename");
+		menu.add(0, v.getId(), 0, "Delete");
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		if (item.getTitle() == "Rename") {
+			AlertDialog.Builder renameDialogBox = createRenameDialogBox();
+			renameDialogBox.show();
+		} else if (item.getTitle() == "Delete") {
+			AlertDialog quitDialogBox = createQuitDialogBox();
+			quitDialogBox.show();
+		}
+		return true;
+	}
+
 	private AlertDialog.Builder createRenameDialogBox() {
 		AlertDialog.Builder renameDialog = new AlertDialog.Builder(this);
-        renameDialog.setTitle("Rename");
-        renameDialog.setMessage("Rename  " +  ItemSelectedforContextMenuOption + " to:");
-        renameDialog.setIcon(R.drawable.rename_icon);
-        final EditText NewFileName = new EditText(this);
-        NewFileName.setHint("Enter new file name");
-        renameDialog.setView(NewFileName);
-        renameDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		renameDialog.setTitle("Rename");
+		renameDialog.setMessage("Rename  " + ItemSelectedforContextMenuOption
+				+ " to:");
+		renameDialog.setIcon(R.drawable.rename_icon);
+		final EditText newName = new EditText(this);
+		newName.setHint("Enter new file name");
+		renameDialog.setView(newName);
+		renameDialog.setPositiveButton("OK",
+				new DialogInterface.OnClickListener() {
 
-            public void onClick(DialogInterface dialog, int arg1) {
-            	File oldFile = getApplicationContext().getFileStreamPath(ItemSelectedforContextMenuOption);
-            	oldFile.renameTo(new File(getApplicationContext().getFilesDir(), NewFileName.getText().toString()));
-            	CounterListAdaptor.clear();
-            	updateCounterList();
-            	dialog.dismiss();
-            }
-        });
+					public void onClick(DialogInterface dialog, int arg1) {
+						holder.renameCounter(ItemSelectedforContextMenuOption, newName
+								.getText().toString());
+						manager.updateCounterHolder(holder);
+						CounterListAdaptor.clear();
+						updateCounterList();
+						dialog.dismiss();
+					}
+				});
 
-        renameDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		renameDialog.setNegativeButton("Cancel",
+				new DialogInterface.OnClickListener() {
 
-            public void onClick(DialogInterface dialog, int arg1) {
-            	dialog.dismiss();
-            }
-        });
+					public void onClick(DialogInterface dialog, int arg1) {
+						dialog.dismiss();
+					}
+				});
 
-    
 		return renameDialog;
 	}
 
 	private AlertDialog createQuitDialogBox() {
-		 AlertDialog myQuittingDialogBox =new AlertDialog.Builder(this) 
-         //set message, title, and icon
-         .setTitle("Delete") 
-         .setMessage("Do you want to Delete " +  ItemSelectedforContextMenuOption + "?") 
-         .setIcon(R.drawable.delete_icon)
+		AlertDialog myQuittingDialogBox = new AlertDialog.Builder(this)
+				// set message, title, and icon
+				.setTitle("Delete")
+				.setMessage(
+						"Do you want to Delete "
+								+ ItemSelectedforContextMenuOption + "?")
+				.setIcon(R.drawable.delete_icon)
 
-         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				.setPositiveButton("Yes",
+						new DialogInterface.OnClickListener() {
 
-             public void onClick(DialogInterface dialog, int whichButton) { 
-    	    	 deleteFile(ItemSelectedforContextMenuOption);
-    	    	 updateAdaptorListForRemove(ItemSelectedforContextMenuOption);
-                 dialog.dismiss();
-             }
-             
+							public void onClick(DialogInterface dialog,
+									int whichButton) {
+								updateAdaptorListForRemove(ItemSelectedforContextMenuOption);
+								dialog.dismiss();
+							}
 
-         })
+						})
 
-         .setNegativeButton("No", new DialogInterface.OnClickListener() {
-             public void onClick(DialogInterface dialog, int which) {
-                 dialog.dismiss();
-             }
-         })
-         .create();
+				.setNegativeButton("No", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				}).create();
 		return myQuittingDialogBox;
 	}
 
-
-	private void updateAdaptorListForRemove(String s) {
-		CounterListAdaptor.remove(s);
+	private void updateAdaptorListForRemove(Counter itemToRemove) {
+		holder.remove(itemToRemove);
+		manager.updateCounterHolder(holder);
+		CounterListAdaptor.remove(itemToRemove);
 		CountersList.setAdapter(CounterListAdaptor);
-	}  
+	}
+
 }

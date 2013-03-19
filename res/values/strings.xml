@@ -38,63 +38,102 @@
     <string name="Low_yield_additional">Low-yield additional</string>
 
     <!-- Default/Basic Panel -->
-    <string name="Lymphocytes">Lymphs</string>
-    <string name="Monocytes">Monos.</string>
-    <string name="Eosinophils">Eos.</string>
-    <string name="Basophils">Basos.</string>
-    <string name="Neutrophils">PMNs</string>
+    <string name="Lymphocytes">Lymphocytes</string>
+    <string name="Lymphocytes_abbr">Lymphs.</string>
+    <string name="Monocytes">Monocytes</string>
+    <string name="Monocytes_abbr">Monos.</string>
+    <string name="Eosinophils">Eosinophils</string>
+    <string name="Eosinophils_abbr">Eos.</string>
+    <string name="Basophils">Basophils</string>
+    <string name="Basophils_abbr">Basos.</string>
+    <string name="Neutrophils">Neutrophils</string>
+    <string name="Neutrophils_abbr">PMNs</string>
     <string name="Bands">Bands</string>
+    <string name="Bands_abbr">Bands</string>
     <string name="Blasts">Blasts</string>
-    <string name="Reticulocytes">Retics</string>
+    <string name="Blasts_abbr">Blasts</string>
+    <string name="Reticulocytes">Reticulocytes</string>
+    <string name="Reticulocytes_abbr">Retics</string>
 
     <!-- High-yield additional -->
-    <string name="atypicalLymphocytes">Atyp. lymphs</string>
-    <string name="Meta_myelocytes">M-myelos</string>
-    <string name="Myelocytes">Myelos</string>
-    <string name="Promyelocytes">Promyelos</string>
-    <string name="Promonocytes">Promonos</string>
-    <string name="Red_blood_cells">RBCs</string>
-    <string name="white_Blodd_Cells">WBCs</string>
-    <string name="Plasma_cells ">PCs</string>
-    <string name="Atypical_plasma_cells">Atyp. PCs</string>
-    <string name="Mast_cells ">Mast</string>
-    <string name="Megakaryocytes">Megs</string>
+    <string name="AtypicalLymphocytes">Atypical Lymphocytes</string>
+    <string name="AtypicalLymphocytes_abbr">Atyp. lymphs</string>
+    <string name="Meta_myelocytes">Meta myelocytes</string>
+    <string name="Meta_myelocytes_abbr">M-myelos</string>
+    <string name="Myelocytes">Myelocytes</string>
+    <string name="Myelocytes_abbr">Myelos</string>
+    <string name="Promyelocytes">Promyelocytes</string>
+    <string name="Promyelocytes_abbr">Promyelos</string>
+    <string name="Promonocytes">Promonocytes</string>
+    <string name="Promonocytes_abbr">Promonos</string>
+    <string name="Red_blood_cells">Red blood cells</string>
+    <string name="Red_blood_cells_abbr">RBCs</string>
+    <string name="White_Blood_Cells">White Blood Cells</string>
+    <string name="White_Blood_Cells_abbr">WBCs</string>
+    <string name="Plasma_cells">Plasma cells</string>
+    <string name="Plasma_cells_abbr">PCs</string>
+    <string name="Atypical_plasma_cells">Atypical plasma cells</string>
+    <string name="Atypical_plasma_cells_abbr">Atyp. PCs</string>
+    <string name="Mast_cells">Mast cells</string>
+    <string name="Mast_cells_abbr">Mast</string>
+    <string name="Megakaryocytes">Megakaryocytes</string>
+    <string name="Megakaryocytes_abbr">Megs</string>
 
     <!-- Mid-yield additional -->
-    <string name="Erythroblasts">E-blasts</string>
-    <string name="proerythroblasts">proeryth.</string>
-    <string name="T_cells">(T)</string>
-    <string name="B_Cells">(B)</string>
-    <string name="CD4Plus_T_cells">CD4+</string>
-    <string name="CD8Plus_T_cells">CD8+</string>
-    <string name="Reed_Sternberg_cells">RS cells</string>
+    <string name="Erythroblasts">Erythroblasts</string>
+    <string name="Erythroblasts_abbr">E-blasts</string>
+    <string name="Proerythroblasts">Proerythroblasts</string>
+    <string name="Proerythroblasts_abbr">Proeryth.</string>
+    <string name="T_cells">T cells</string>
+    <string name="T_cells_abbr">(T)</string>
+    <string name="B_Cells">B Cells</string>
+    <string name="B_Cells_abbr">(B)</string>
+    <string name="CD4Plus_T_cells">CD4Plus T cells</string>
+    <string name="CD4Plus_T_cells_abbr">CD4+</string>
+    <string name="CD8Plus_T_cells">CD8Plus T cells</string>
+    <string name="CD8Plus_T_cells_abbr">CD8+</string>
+    <string name="Reed_Sternberg_cells">Reed Sternberg cells</string>
+    <string name="Reed_Sternberg_cells_abbr">RS cells</string>
 
     <!-- Low-yield additional -->
-    <string name="Atypical_eosinophils">Atyp. eos</string>
-    <string name="Atypical_basophils ">Atyp. basos</string>
-    <string name="Atypical_neutrophils">Atyp. PMNs</string>
-    <string name="Atypical_megakaryocytes">Atyp. megs</string>
-    <string name="Megakaryoblasts">Meg. blasts</string>
-    <string name="Basophilic_normoblasts">B-norm0</string>
-    <string name="Orthochromatophilic_normoblasts">O-normo</string>
-    <string name="Immunoblasts">Im-Blasts</string>
-    <string name="Centroblasts">C-Blasts</string>
-    <string name="Centrocytes">C-cytes</string>
-    <string name="Dendritic_cells">DCs</string>
-    <string name="NK_cells">NK</string>
+    <string name="Atypical_eosinophils">Atypical eosinophils</string>
+    <string name="Atypical_eosinophils_abbr">Atyp. eos</string>
+    <string name="Atypical_basophils">Atypical basophils</string>
+    <string name="Atypical_basophils_abbr">Atyp. basos</string>
+    <string name="Atypical_neutrophils">Atypical neutrophils</string>
+    <string name="Atypical_neutrophils_abbr">Atyp. PMNs</string>
+    <string name="Atypical_megakaryocytes">Atypical megakaryocytes</string>
+    <string name="Atypical_megakaryocytes_abbr">Atyp. megs</string>
+    <string name="Megakaryoblasts">Megakaryoblasts</string>
+    <string name="Megakaryoblasts_abbr">Meg. blasts</string>
+    <string name="Basophilic_normoblasts">Basophilic normoblasts</string>
+    <string name="Basophilic_normoblasts_abbr">B-norm0</string>
+    <string name="Orthochromatophilic_normoblasts">Orthochromatophilic normoblasts</string>
+    <string name="Orthochromatophilic_normoblasts_abbr">O-normo</string>
+    <string name="Immunoblasts">Immunoblasts</string>
+    <string name="Immunoblasts_abbr">Im-Blasts</string>
+    <string name="Centroblasts">Centroblasts</string>
+    <string name="Centroblasts_abbr">C-Blasts</string>
+    <string name="Centrocytes">Centrocytes</string>
+    <string name="Centrocytes_abbr">C-cytes</string>
+    <string name="Dendritic_cells">Dendritic_cells</string>
+    <string name="Dendritic_cells_abbr">DCs</string>
+    <string name="NK_cells">NK_cells</string>
+    <string name="NK_cells_abbr">NK</string>
+    
+    
     <string name="save">Save</string>
     <string name="title_activity_counting">CountingActivity</string>
     <string name="title_activity_preferences">PreferencesActivity</string>
     <string name="enter_counter_name_hint">Enter name for Counter</string>
-    <string name="title_activity_custom__moify__button">Custom_Moify_ButtonActivity</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_custom__modify__button">Custom_Moify_ButtonActivity</string>
 
-    <!-- Custome_Modify_Button_Activity -->
+    <!-- Custom_Modify_Button_Activity -->
     <string name="Choose_color">Select a Color: </string>
     <string name="Choose_Sound">Select a Sound: </string>
     <string name="create_button">Create</string>
     <string name="Exit_custome_button">Exit</string>
-    
+
     <!-- Counting_Activity -->
     <string name="counting_activity_save">Save</string>
     <string name="counting_activity_undo">Undo</string>

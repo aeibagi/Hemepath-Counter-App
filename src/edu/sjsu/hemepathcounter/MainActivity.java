@@ -1,5 +1,7 @@
 package edu.sjsu.hemepathcounter;
 
+import edu.sjsu.hemepathcounter.model.Counter;
+import edu.sjsu.hemepathcounter.model.CounterHolder;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -24,11 +27,15 @@ import android.widget.ListView;
  * @author Jake Karnes
  * 
  */
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener,
+		AdapterView.OnItemClickListener {
 
 	private ListView favoritesListView;
-	private ArrayAdapter<String> adapter;
+	private ArrayAdapter<Counter> adapter;
 	private Button counterButton, newButton, preferenceButton, dataButton;
+	private FileManager manager;
+	private CounterHolder holder;
+	private Counter itemSelected;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +43,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		setContentView(R.layout.activity_main);
 		initialize();
 
-		adapter = new ArrayAdapter<String>(this,
+		adapter = new ArrayAdapter<Counter>(this,
 				android.R.layout.simple_list_item_1);
-		adapter.add("Favorite 1");
-		adapter.add("Favorite 2");
-		adapter.add("Favorite 3");
-		adapter.add("Favorite 4");
+		setupFavorites();
+		favoritesListView.setOnItemClickListener(this);
+	}
+
+	private void setupFavorites() {
+		adapter.clear();
+		manager = new FileManager(getApplicationContext());
+		holder = manager.getCounterHolder();
+		adapter.addAll(holder.getFavoriteCounters());
 		favoritesListView.setAdapter(adapter);
 	}
 
@@ -57,8 +69,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		newButton.setOnClickListener(this);
 		preferenceButton.setOnClickListener(this);
 		dataButton.setOnClickListener(this);
-		
-		//Set default values if not set already.
+
+		// Set default values if not set already.
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 	}
 
@@ -67,9 +79,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.main, menu);
-	    return true;
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return true;
 	}
 
 	/** Menu Item Click Listener */
@@ -92,14 +104,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		Intent intent;
 		switch (v.getId()) {
 		case R.id.counters_button:
-			//Calling CountingActivity for testing - Minh
-			intent = new Intent(MainActivity.this, CountingActivity.class);
-			startActivity(intent);
-			
-			/*
+			// Calling CountingActivity for testing - Minh
+			// intent = new Intent(MainActivity.this, CountingActivity.class);
+			// startActivity(intent);
+
 			intent = new Intent(MainActivity.this, CountersActivity.class);
 			startActivity(intent);
-			*/
+
 			break;
 		case R.id.new_button:
 			intent = new Intent(MainActivity.this, NewCounterActivity.class);
@@ -112,6 +123,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		case R.id.data_button:
 			break;
 		}
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View v, int position,
+			long id) {
+		itemSelected = (Counter) favoritesListView
+				.getItemAtPosition(position);
+		Intent i = new Intent(MainActivity.this, CountingActivity.class);
+		i.putExtra("counter", itemSelected);
+		startActivity(i);
+		holder.incrementCounterUse(itemSelected);
+		manager.updateCounterHolder(holder);
+	}
+	
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		setupFavorites();
 	}
 
 }

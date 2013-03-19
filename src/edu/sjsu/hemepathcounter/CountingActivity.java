@@ -12,11 +12,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import edu.sjsu.hemepathcounter.adapter.CountingAdapter;
-import edu.sjsu.hemepathcounter.model.CountingData;
+import edu.sjsu.hemepathcounter.model.Counter;
 
 public class CountingActivity extends Activity {
 
-	private CountingData mData;
+	private Counter mData;
 	private CountingAdapter mAdapter;
 	private ArrayList<Integer> mSequence;
 	
@@ -26,7 +26,7 @@ public class CountingActivity extends Activity {
 		setContentView(R.layout.activity_counting);
 		
 		//Loading data from database depends New Counting or Favorites
-		mData = new CountingData();
+		mData = getIntent().getParcelableExtra("counter");
 		mAdapter = new CountingAdapter(this, mData);
 		mSequence = new ArrayList<Integer>();
 		
@@ -35,8 +35,8 @@ public class CountingActivity extends Activity {
 	    
 	    gridview.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-	            mData.cells.get(position).number++;
-	            mData.total++;
+	            mData.getCells().get(position).incrementCount();
+	            mData.incrementTotal();
 	            mSequence.add(position);
 	            mAdapter.notifyDataSetChanged();     
 	            //play sound ....
@@ -52,8 +52,8 @@ public class CountingActivity extends Activity {
 				if (mSequence.size() > 0) {
 					int position = mSequence.get(mSequence.size() - 1);
 					mSequence.remove(mSequence.size() - 1);
-					mData.cells.get(position).number--;
-					mData.total--;
+					mData.getCells().get(position).decrementCount();
+					mData.decrementTotal();
 		            mAdapter.notifyDataSetChanged();
 				}
 			}

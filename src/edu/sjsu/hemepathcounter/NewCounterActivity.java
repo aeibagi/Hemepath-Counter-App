@@ -6,6 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+
+import edu.sjsu.hemepathcounter.adapter.MyCustomAdapterForExpandableList;
+import edu.sjsu.hemepathcounter.model.ButtonHolder;
+import edu.sjsu.hemepathcounter.model.CellButton;
+import edu.sjsu.hemepathcounter.model.Counter;
+import edu.sjsu.hemepathcounter.model.CounterHolder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -34,18 +40,21 @@ public class NewCounterActivity extends Activity implements
 	private String File_Name = "untitled";
 	private MyCustomAdapterForExpandableList myCustomAdaptor;
 
-	private ArrayList<String> userSelection;
-	
-	public static HashMap<String, Boolean> ChildStatus;
+	private ArrayList<CellButton> userSelection;
+
+	public static HashMap<CellButton, Boolean> ChildStatus;
+
+	public FileManager manager;
+	public ButtonHolder holder;
 
 	public static Drawable listViewdefaultbackground;
-	
+
 	private ArrayList<Parent> arrayParents = new ArrayList<Parent>();
-	private ArrayList<String> arrayChildren1 = new ArrayList<String>();
-	private ArrayList<String> arrayChildren2 = new ArrayList<String>();
-	private ArrayList<String> arrayChildren3 = new ArrayList<String>();
-	private ArrayList<String> arrayChildren4 = new ArrayList<String>();
-	private ArrayList<String> CustomarrayChildren = new ArrayList<String>();
+	private ArrayList<CellButton> defaultButtons = new ArrayList<CellButton>();
+	private ArrayList<CellButton> highYieldButtons = new ArrayList<CellButton>();
+	private ArrayList<CellButton> midYieldButtons = new ArrayList<CellButton>();
+	private ArrayList<CellButton> lowYieldButtons = new ArrayList<CellButton>();
+	private ArrayList<CellButton> customButtons = new ArrayList<CellButton>();
 
 	private Parent parent1 = new Parent();
 	private Parent parent2 = new Parent();
@@ -53,26 +62,25 @@ public class NewCounterActivity extends Activity implements
 	private Parent parent4 = new Parent();
 	private Parent CustomParent = new Parent();
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_counter);
 		initialize();
-		initializePredefinedCells();
+		initializeCells();
 	}
 
 	private void initialize() {
 
-		listViewdefaultbackground = getResources().getDrawable(android.R.drawable.list_selector_background);
+		listViewdefaultbackground = getResources().getDrawable(
+				android.R.drawable.list_selector_background);
 		mExpandableList = (ExpandableListView) findViewById(R.id.expandable_list_New_Counters);
 		mExpandableList.requestFocus();
 		mExpandableList.setOnChildClickListener(this);
-		
-		ChildStatus = new HashMap<String, Boolean>();
-	
 
-		userSelection = new ArrayList<String>();
+		ChildStatus = new HashMap<CellButton, Boolean>();
+
+		userSelection = new ArrayList<CellButton>();
 		// applicationBaseDatabase = new ApplicationDatabaseActivity();
 		editBox_enter_name = (EditText) findViewById(R.id.edt_Enter_name);
 
@@ -82,21 +90,22 @@ public class NewCounterActivity extends Activity implements
 		ClearButton = (Button) findViewById(R.id.Button_Clear);
 		CustomButton = (Button) findViewById(R.id.Button_Custom);
 
-		
-		
 		mainMenu.setOnClickListener(this);
 		ModifyButton.setOnClickListener(this);
 		SaveButton.setOnClickListener(this);
 		ClearButton.setOnClickListener(this);
 		CustomButton.setOnClickListener(this);
-		
+
 		// gray out the modify button
 		ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
 		ModifyButton.setClickable(false);
 
 	}
 
-	private void initializePredefinedCells() {
+	private void initializeCells() {
+
+		manager = new FileManager(getApplicationContext());
+		holder = manager.getButtonHolder();
 
 		parent1.setTitle(getResources().getString(R.string.Default_Basic_Panel));
 		parent2.setTitle(getResources().getString(
@@ -107,68 +116,18 @@ public class NewCounterActivity extends Activity implements
 				.getString(R.string.Low_yield_additional));
 		CustomParent.setTitle("Custom Cells");
 
+		defaultButtons = holder.getDefaultButtons();
+		highYieldButtons = holder.getHighYieldButtons();
+		midYieldButtons = holder.getMidYieldButtons();
+		lowYieldButtons = holder.getLowYieldButtons();
+		customButtons = holder.getCustomButtons();
+
 		// add children to basic/default panel
-		arrayChildren1.add(getResources().getString(R.string.Lymphocytes));
-		arrayChildren1.add(getResources().getString(R.string.Monocytes));
-		arrayChildren1.add(getResources().getString(R.string.Eosinophils));
-		arrayChildren1.add(getResources().getString(R.string.Basophils));
-		arrayChildren1.add(getResources().getString(R.string.Neutrophils));
-		arrayChildren1.add(getResources().getString(R.string.Bands));
-		arrayChildren1.add(getResources().getString(R.string.Blasts));
-		arrayChildren1.add(getResources().getString(R.string.Reticulocytes));
-
-		// add children to High_yield_additional panel
-		arrayChildren2.add(getResources().getString(
-				R.string.atypicalLymphocytes));
-		arrayChildren2.add(getResources().getString(R.string.Meta_myelocytes));
-		arrayChildren2.add(getResources().getString(R.string.Myelocytes));
-		arrayChildren2.add(getResources().getString(R.string.Promyelocytes));
-		arrayChildren2.add(getResources().getString(R.string.Promonocytes));
-		arrayChildren2.add(getResources().getString(R.string.Red_blood_cells));
-		arrayChildren2
-				.add(getResources().getString(R.string.white_Blodd_Cells));
-		arrayChildren2.add(getResources().getString(R.string.Plasma_cells));
-		arrayChildren2.add(getResources().getString(
-				R.string.Atypical_plasma_cells));
-		arrayChildren2.add(getResources().getString(R.string.Mast_cells));
-		arrayChildren2.add(getResources().getString(R.string.Megakaryocytes));
-
-		// add children to Mid_yield_additional panel
-		arrayChildren3.add(getResources().getString(R.string.Erythroblasts));
-		arrayChildren3.add(getResources().getString(R.string.proerythroblasts));
-		arrayChildren3.add(getResources().getString(R.string.T_cells));
-		arrayChildren3.add(getResources().getString(R.string.B_Cells));
-		arrayChildren3.add(getResources().getString(R.string.CD4Plus_T_cells));
-		arrayChildren3.add(getResources().getString(R.string.CD8Plus_T_cells));
-		arrayChildren3.add(getResources().getString(
-				R.string.Reed_Sternberg_cells));
-
-		// add children to Low_yield_additional panel
-		arrayChildren4.add(getResources().getString(
-				R.string.Atypical_eosinophils));
-		arrayChildren4.add(getResources()
-				.getString(R.string.Atypical_basophils));
-		arrayChildren4.add(getResources().getString(
-				R.string.Atypical_neutrophils));
-		arrayChildren4.add(getResources().getString(
-				R.string.Atypical_megakaryocytes));
-		arrayChildren4.add(getResources().getString(R.string.Megakaryoblasts));
-		arrayChildren4.add(getResources().getString(
-				R.string.Basophilic_normoblasts));
-		arrayChildren4.add(getResources().getString(
-				R.string.Orthochromatophilic_normoblasts));
-		arrayChildren4.add(getResources().getString(R.string.Immunoblasts));
-		arrayChildren4.add(getResources().getString(R.string.Centroblasts));
-		arrayChildren4.add(getResources().getString(R.string.Centrocytes));
-		arrayChildren4.add(getResources().getString(R.string.Dendritic_cells));
-		arrayChildren4.add(getResources().getString(R.string.NK_cells));
-
-		// set parents adapter
-		parent1.setArrayChildren(arrayChildren1);
-		parent2.setArrayChildren(arrayChildren2);
-		parent3.setArrayChildren(arrayChildren3);
-		parent4.setArrayChildren(arrayChildren4);
-		CustomParent.setArrayChildren(CustomarrayChildren);
+		parent1.setArrayChildren(defaultButtons);
+		parent2.setArrayChildren(highYieldButtons);
+		parent3.setArrayChildren(midYieldButtons);
+		parent4.setArrayChildren(lowYieldButtons);
+		CustomParent.setArrayChildren(customButtons);
 
 		arrayParents.add(parent1);
 		arrayParents.add(parent2);
@@ -198,35 +157,33 @@ public class NewCounterActivity extends Activity implements
 			finish();
 			break;
 		case R.id.Button_Modify:
+			Intent intent = new Intent(NewCounterActivity.this,
+					Custom_Modify_ButtonActivity.class);
+			intent.putExtra("button", userSelection.get(0));
+			startActivityForResult(intent,1);
 			break;
 		case R.id.Button_Clear:
 			ClearEverything();
 			break;
 		case R.id.Button_Custom:
-			Intent intent = new Intent(NewCounterActivity.this, Custom_Moify_ButtonActivity.class);
-			startActivity(intent);
+			Intent intent2 = new Intent(NewCounterActivity.this,
+					Custom_Modify_ButtonActivity.class);
+			startActivityForResult(intent2,1);
 			break;
 		case R.id.Button_Save:
-			if (editBox_enter_name.getText().toString().trim().length() > 0) {
-
-				File_Name = editBox_enter_name.getText().toString();
-				try {
-					FileOutputStream fos = openFileOutput(File_Name,
-							Context.MODE_PRIVATE);
-					@SuppressWarnings("rawtypes")
-					Iterator itr = userSelection.iterator();
-					while (itr.hasNext()) {
-						fos.write(itr.next().toString().getBytes());
-					}
-					fos.close();
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			String name = editBox_enter_name.getText().toString().trim();
+			if (name.length() > 0) {
+				if (!userSelection.isEmpty()) {
+					CounterHolder counterHolder = manager.getCounterHolder();
+					counterHolder.addCounter(new Counter(name, userSelection));
+					manager.updateCounterHolder(counterHolder);
+					finish();
+				} else {
+					Toast.makeText(this,
+							"You did not add any buttons.",
+							Toast.LENGTH_SHORT).show();
 				}
-				finish();
+
 			} else {
 				Toast.makeText(this,
 						"You did not enter a name for your counter",
@@ -244,8 +201,8 @@ public class NewCounterActivity extends Activity implements
 	public boolean onChildClick(ExpandableListView parent, View v,
 			int groupPosition, int childPosition, long id) {
 
-		String ChildName = parent.getExpandableListAdapter()
-				.getChild(groupPosition, childPosition).toString();
+		CellButton ChildName = (CellButton) parent.getExpandableListAdapter()
+				.getChild(groupPosition, childPosition);
 
 		// highlight and un-highlight
 		if (v.getBackground() == null) {
@@ -257,17 +214,15 @@ public class NewCounterActivity extends Activity implements
 				userSelection.remove(ChildName);
 				ChildStatus.put(ChildName, false);
 			}
-			v.setBackground(getResources().getDrawable(android.R.drawable.list_selector_background));
+			v.setBackground(getResources().getDrawable(
+					android.R.drawable.list_selector_background));
 			v.setBackground(null);
 		}
 
-		if(userSelection.isEmpty() || userSelection.size() > 1)
-		{
+		if (userSelection.isEmpty() || userSelection.size() > 1) {
 			ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
 			ModifyButton.setClickable(false);
-		}
-		else if(userSelection.size() == 1)
-		{
+		} else if (userSelection.size() == 1) {
 			ModifyButton.setBackgroundResource(R.drawable.button_style_yellow);
 			ModifyButton.setClickable(true);
 		}
@@ -279,18 +234,18 @@ public class NewCounterActivity extends Activity implements
 		userSelection.clear();
 		ChildStatus.clear();
 		arrayParents.clear();
-		arrayChildren1.clear();
-		arrayChildren2.clear();
-		arrayChildren3.clear();
-		arrayChildren4.clear();	
-		initializePredefinedCells();
-		
+		defaultButtons.clear();
+		highYieldButtons.clear();
+		midYieldButtons.clear();
+		lowYieldButtons.clear();
+		initializeCells();
+
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		//finish();
+		// finish();
 
 	}
 
