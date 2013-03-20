@@ -1,10 +1,12 @@
 package edu.sjsu.hemepathcounter.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class CellButton implements Parcelable {
+public class CellButton implements Parcelable, JSONable {
 	private String name;
 	private String abbr;
 	private Integer sound_id;
@@ -21,6 +23,14 @@ public class CellButton implements Parcelable {
 
 	public CellButton(Parcel in) {
 		readFromParcel(in);
+		count = 0;
+	}
+
+	public CellButton() {
+		name = null;
+		abbr = null;
+		sound_id = null;
+		color_id = null;
 		count = 0;
 	}
 
@@ -82,5 +92,24 @@ public class CellButton implements Parcelable {
 
 	public int getCount() {
 		return count;
+	}
+
+	@Override
+	public JSONObject toJSONObject() throws JSONException {
+		JSONObject jo = new JSONObject();
+		jo.put("name", name);
+		jo.put("abbr", abbr);
+		jo.put("sound_id", sound_id);
+		jo.put("color_id", color_id);
+		return jo;
+	}
+
+	@Override
+	public void fromJSONObject(JSONObject src) throws JSONException {
+		this.name = src.getString("name");
+		this.abbr = src.getString("abbr");
+		this.sound_id = src.getInt("sound_id");
+		this.color_id = src.getInt("color_id");
+		this.count = 0;
 	}
 }

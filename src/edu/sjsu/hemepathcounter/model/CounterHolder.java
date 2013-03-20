@@ -4,12 +4,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class CounterHolder {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class CounterHolder implements JSONable{
 	private static final int NUM_FAVORTIES = 4;
 	ArrayList<Counter> counters;
 
 	public CounterHolder(ArrayList<Counter> count) {
 		counters = count;
+	}
+
+	public CounterHolder() {
+		counters = new ArrayList<Counter>();
 	}
 
 	/**
@@ -63,6 +71,28 @@ public class CounterHolder {
 
 	public void incrementCounterUse(Counter selected) {
 		counters.get(counters.indexOf(selected)).incrementUses();
+	}
+
+	@Override
+	public JSONObject toJSONObject() throws JSONException {
+		JSONObject jo = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		for (Counter c : counters) {
+			jsonArray.put(c.toJSONObject());
+		}
+		jo.put("counters", jsonArray);
+		return jo;
+	}
+
+	@Override
+	public void fromJSONObject(JSONObject src) throws JSONException {
+		JSONArray jsonArray = src.getJSONArray("counters");
+		this.counters = new ArrayList<Counter>();
+		for(int i = 0; i<jsonArray.length();i++){
+			Counter c =  new Counter();
+			c.fromJSONObject(jsonArray.getJSONObject(i));
+			counters.add(c);
+		}
 	}
 
 }

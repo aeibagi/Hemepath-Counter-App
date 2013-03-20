@@ -9,11 +9,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.util.Log;
-
-import com.google.gson.Gson;
-
 import edu.sjsu.hemepathcounter.model.ButtonHolder;
 import edu.sjsu.hemepathcounter.model.CellButton;
 import edu.sjsu.hemepathcounter.model.Counter;
@@ -39,7 +39,7 @@ public class FileManager {
 		// Load the counter holder if necessary
 		if (counterHolder == null) {
 			Log.d("FILE_MANGER", "Loading counter from file.");
-			Gson gson = new Gson();
+			counterHolder = new CounterHolder();
 			try {
 				// Fill counterHolder
 				FileInputStream fis = context
@@ -52,9 +52,10 @@ public class FileManager {
 					JSONString = JSONString + readString;
 					readString = buffreader.readLine();
 				}
-				counterHolder = gson.fromJson(JSONString, CounterHolder.class);
 				if (JSONString.isEmpty()) {
 					createCounterHolderFile();
+				} else {
+					counterHolder.fromJSONObject(new JSONObject(JSONString));
 				}
 				fis.close();
 
@@ -62,6 +63,9 @@ public class FileManager {
 				// The file doesn't exist. Create file with default counters
 				createCounterHolderFile();
 			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -201,11 +205,10 @@ public class FileManager {
 	public void updateCounterHolder(CounterHolder newCounterHolder) {
 		Log.d("FILE_MANGER", "Updating CounterHolder file.");
 		this.counterHolder = newCounterHolder;
-		Gson gson = new Gson();
 		try {
 			FileOutputStream fileOutput = context.openFileOutput(
 					counterHolderFileName, Context.MODE_PRIVATE);
-			String json = gson.toJson(newCounterHolder);
+			String json = newCounterHolder.toJSONObject().toString();
 			OutputStreamWriter writer = new OutputStreamWriter(fileOutput);
 			writer.write(json);
 			Log.d("FILE_MANGER", "Closing CounterHolder file.");
@@ -218,6 +221,9 @@ public class FileManager {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -225,7 +231,7 @@ public class FileManager {
 		// Load the data holder if necessary
 		if (dataHolder == null) {
 			Log.d("FILE_MANGER", "Loading dataHolder from file.");
-			Gson gson = new Gson();
+			dataHolder = new DataHolder();
 			try {
 				// Fill dataHolder
 				FileInputStream fis = context.openFileInput(dataHolderFileName);
@@ -237,9 +243,10 @@ public class FileManager {
 					JSONString = JSONString + readString;
 					readString = buffreader.readLine();
 				}
-				dataHolder = gson.fromJson(JSONString, DataHolder.class);
 				if (JSONString.isEmpty()) {
 					createDataHolderFile();
+				} else {
+					dataHolder.fromJSONObject(new JSONObject(JSONString));
 				}
 				fis.close();
 
@@ -247,6 +254,9 @@ public class FileManager {
 				// The file doesn't exist. Create file with default counters
 				createDataHolderFile();
 			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -261,11 +271,10 @@ public class FileManager {
 	public void updateDataHolder(DataHolder newDataHolder) {
 		Log.d("FILE_MANGER", "Updating DataHolder file.");
 		this.dataHolder = newDataHolder;
-		Gson gson = new Gson();
 		try {
 			FileOutputStream fileOutput = context.openFileOutput(
 					dataHolderFileName, Context.MODE_PRIVATE);
-			String json = gson.toJson(newDataHolder);
+			String json = newDataHolder.toJSONObject().toString();
 			OutputStreamWriter writer = new OutputStreamWriter(fileOutput);
 			writer.write(json);
 			Log.d("FILE_MANGER", "Closing CounterHolder file.");
@@ -278,6 +287,9 @@ public class FileManager {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
@@ -286,7 +298,7 @@ public class FileManager {
 		// Load the button holder if necessary
 		if (buttonHolder == null) {
 			Log.d("FILE_MANGER", "Loading buttonHolder from file.");
-			Gson gson = new Gson();
+			buttonHolder = new ButtonHolder();
 			try {
 				// Fill buttonHolder
 				FileInputStream fis = context
@@ -299,9 +311,10 @@ public class FileManager {
 					JSONString = JSONString + readString;
 					readString = buffreader.readLine();
 				}
-				buttonHolder = gson.fromJson(JSONString, ButtonHolder.class);
 				if (JSONString.isEmpty()) {
 					createButtonHolderFile();
+				} else {
+					buttonHolder.fromJSONObject(new JSONObject(JSONString));
 				}
 				fis.close();
 
@@ -309,6 +322,9 @@ public class FileManager {
 				// The file doesn't exist. Create file with default counters
 				createButtonHolderFile();
 			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -536,11 +552,10 @@ public class FileManager {
 	public void updateButtonHolder(ButtonHolder newButtonHolder) {
 		Log.d("FILE_MANGER", "Updating ButtonHolder file.");
 		this.buttonHolder = newButtonHolder;
-		Gson gson = new Gson();
 		try {
 			FileOutputStream fileOutput = context.openFileOutput(
 					buttonHolderFileName, Context.MODE_PRIVATE);
-			String json = gson.toJson(newButtonHolder);
+			String json = newButtonHolder.toJSONObject().toString();
 			OutputStreamWriter writer = new OutputStreamWriter(fileOutput);
 			writer.write(json);
 			Log.d("FILE_MANGER", "Closing CounterHolder file.");
@@ -551,6 +566,9 @@ public class FileManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

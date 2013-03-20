@@ -2,10 +2,14 @@ package edu.sjsu.hemepathcounter.model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Counter implements Parcelable {
+public class Counter implements Parcelable, JSONable {
 	private ArrayList<CellButton> buttons;
 	private int total;
 	private String name;
@@ -42,6 +46,13 @@ public class Counter implements Parcelable {
 
 	public Counter(Parcel in) {
 		readFromParcel(in);
+	}
+
+	public Counter() {
+		buttons = new ArrayList<CellButton>();
+		name = null;
+		total = 0;
+		numUses = 0;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -81,7 +92,7 @@ public class Counter implements Parcelable {
 	public void setName(String newName) {
 		name = newName;
 	}
-	
+
 	@Override
 	public String toString() {
 		return name;
@@ -90,4 +101,33 @@ public class Counter implements Parcelable {
 	public void incrementUses() {
 		numUses++;
 	}
+
+	@Override
+	public JSONObject toJSONObject() throws JSONException {
+		JSONObject jo = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		for (CellButton c : buttons) {
+			jsonArray.put(c.toJSONObject());
+		}
+		jo.put("buttons", jsonArray);
+		jo.put("total", total);
+		jo.put("name", name);
+		jo.put("numUses", numUses);
+		return jo;
+	}
+
+	@Override
+	public void fromJSONObject(JSONObject src) throws JSONException {
+		JSONArray jsonArray = src.getJSONArray("buttons");
+		this.buttons = new ArrayList<CellButton>();
+		for(int i = 0; i<jsonArray.length();i++){
+			CellButton c = new CellButton();
+			c.fromJSONObject(jsonArray.getJSONObject(i));
+			buttons.add(c);
+		}
+		this.total = src.getInt("total");
+		this.name = src.getString("name");
+		this.numUses = src.getInt("numUses");
+	}
+
 }

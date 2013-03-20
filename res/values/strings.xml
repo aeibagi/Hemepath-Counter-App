@@ -32,7 +32,7 @@
 
     <!-- Cell Types for predefined Buttons -->
     <!-- Cell different types -->
-    <string name=" Default_Basic_Panel">Default/Basic Panel</string>
+    <string name="Default_Basic_Panel">Default/Basic Panel</string>
     <string name="High_yield_additional">High-yield additional</string>
     <string name="Mid_yield_additional">Mid-yield additional</string>
     <string name="Low_yield_additional">Low-yield additional</string>
