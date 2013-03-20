@@ -1,13 +1,9 @@
 package edu.sjsu.hemepathcounter;
 
-import edu.sjsu.hemepathcounter.model.Counter;
-import edu.sjsu.hemepathcounter.model.CounterHolder;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import edu.sjsu.hemepathcounter.model.Counter;
+import edu.sjsu.hemepathcounter.model.CounterHolder;
 
 /**
  * This is the application's default landing page or main menu. The user will
@@ -126,17 +124,15 @@ public class MainActivity extends Activity implements View.OnClickListener,
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> arg0, View v, int position,
-			long id) {
-		itemSelected = (Counter) favoritesListView
-				.getItemAtPosition(position);
+	public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
+		itemSelected = (Counter) favoritesListView.getItemAtPosition(position);
 		Intent i = new Intent(MainActivity.this, CountingActivity.class);
 		i.putExtra("counter", itemSelected);
 		startActivity(i);
 		holder.incrementCounterUse(itemSelected);
 		manager.updateCounterHolder(holder);
 	}
-	
+
 	@Override
 	protected void onRestart() {
 		super.onRestart();

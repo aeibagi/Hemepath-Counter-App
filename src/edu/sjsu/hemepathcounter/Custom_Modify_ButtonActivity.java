@@ -2,12 +2,9 @@ package edu.sjsu.hemepathcounter;
 
 import java.util.ArrayList;
 
-import edu.sjsu.hemepathcounter.model.CellButton;
-
+import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.app.Activity;
-import android.graphics.Color;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import edu.sjsu.hemepathcounter.model.CellButton;
 
 public class Custom_Modify_ButtonActivity extends Activity implements
 		OnItemSelectedListener, View.OnClickListener {
@@ -64,8 +62,9 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 		sound_dropDown_menu.setAdapter(SpinnerAdapter);
 		sound_dropDown_menu.setOnItemSelectedListener(this);
 
-		if(modifiedButton!=null){
-			((EditText) findViewById(R.id.edt_Enter_name_Custom_modify)).setText(modifiedButton.getName());
+		if (modifiedButton != null) {
+			((EditText) findViewById(R.id.edt_Enter_name_Custom_modify))
+					.setText(modifiedButton.getName());
 		}
 	}
 

@@ -2,14 +2,6 @@ package edu.sjsu.hemepathcounter.adapter;
 
 import java.util.ArrayList;
 
-import edu.sjsu.hemepathcounter.NewCounterActivity;
-import edu.sjsu.hemepathcounter.Parent;
-import edu.sjsu.hemepathcounter.R;
-import edu.sjsu.hemepathcounter.R.drawable;
-import edu.sjsu.hemepathcounter.R.id;
-import edu.sjsu.hemepathcounter.R.layout;
-import edu.sjsu.hemepathcounter.model.CellButton;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.DataSetObserver;
@@ -18,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+import edu.sjsu.hemepathcounter.NewCounterActivity;
+import edu.sjsu.hemepathcounter.Parent;
+import edu.sjsu.hemepathcounter.R;
+import edu.sjsu.hemepathcounter.model.CellButton;
 
 public class MyCustomAdapterForExpandableList extends BaseExpandableListAdapter {
  

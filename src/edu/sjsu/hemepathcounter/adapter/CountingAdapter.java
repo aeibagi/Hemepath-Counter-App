@@ -20,8 +20,6 @@ public class CountingAdapter extends BaseAdapter {
 	private SharedPreferences preferences;
 	private boolean showNumbers;
 	private boolean showPercents;
-	private boolean muted;
-
 	public CountingAdapter(Context context, Counter data) {
 		mContext = context;
 		mData = data;

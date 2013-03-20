@@ -6,8 +6,6 @@ import java.util.Iterator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.graphics.Paint.Join;
-
 public class Data implements JSONable {
 	private HashMap<String, Integer> map;
 	private int total;
@@ -15,16 +13,20 @@ public class Data implements JSONable {
 	public Data(HashMap<String, Integer> inMap) {
 		map = inMap;
 		total = 0;
+		for (String key : map.keySet()) {
+			total += map.get(key).intValue();
+		}
 	}
 
 	public Data() {
 		map = new HashMap<String, Integer>();
 		total = 0;
 	}
-	
+
 	public HashMap<String, Integer> getMap() {
 		return map;
 	}
+
 	public int getTotal() {
 		return total;
 	}

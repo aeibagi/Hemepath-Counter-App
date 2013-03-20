@@ -1,20 +1,10 @@
 package edu.sjsu.hemepathcounter;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
-import edu.sjsu.hemepathcounter.adapter.MyCustomAdapterForExpandableList;
-import edu.sjsu.hemepathcounter.model.ButtonHolder;
-import edu.sjsu.hemepathcounter.model.CellButton;
-import edu.sjsu.hemepathcounter.model.Counter;
-import edu.sjsu.hemepathcounter.model.CounterHolder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -24,10 +14,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
+import edu.sjsu.hemepathcounter.adapter.MyCustomAdapterForExpandableList;
+import edu.sjsu.hemepathcounter.model.ButtonHolder;
+import edu.sjsu.hemepathcounter.model.CellButton;
+import edu.sjsu.hemepathcounter.model.Counter;
+import edu.sjsu.hemepathcounter.model.CounterHolder;
 
 /**
  * 
  * @author Amir Eibagi
+ * @author Jake Karnes
  * 
  */
 public class NewCounterActivity extends Activity implements
@@ -37,7 +33,6 @@ public class NewCounterActivity extends Activity implements
 			mainMenu;
 	private ExpandableListView mExpandableList;
 	private EditText editBox_enter_name;
-	private String File_Name = "untitled";
 	private MyCustomAdapterForExpandableList myCustomAdaptor;
 
 	private ArrayList<CellButton> userSelection;
@@ -160,7 +155,7 @@ public class NewCounterActivity extends Activity implements
 			Intent intent = new Intent(NewCounterActivity.this,
 					Custom_Modify_ButtonActivity.class);
 			intent.putExtra("button", userSelection.get(0));
-			startActivityForResult(intent,1);
+			startActivityForResult(intent, 1);
 			break;
 		case R.id.Button_Clear:
 			ClearEverything();
@@ -168,7 +163,7 @@ public class NewCounterActivity extends Activity implements
 		case R.id.Button_Custom:
 			Intent intent2 = new Intent(NewCounterActivity.this,
 					Custom_Modify_ButtonActivity.class);
-			startActivityForResult(intent2,1);
+			startActivityForResult(intent2, 1);
 			break;
 		case R.id.Button_Save:
 			String name = editBox_enter_name.getText().toString().trim();
@@ -179,8 +174,7 @@ public class NewCounterActivity extends Activity implements
 					manager.updateCounterHolder(counterHolder);
 					finish();
 				} else {
-					Toast.makeText(this,
-							"You did not add any buttons.",
+					Toast.makeText(this, "You did not add any buttons.",
 							Toast.LENGTH_SHORT).show();
 				}
 

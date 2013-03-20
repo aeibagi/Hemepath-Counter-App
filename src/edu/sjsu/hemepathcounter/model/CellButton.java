@@ -34,7 +34,6 @@ public class CellButton implements Parcelable, JSONable {
 		count = 0;
 	}
 
-	@SuppressWarnings("deprecation")
 	private void readFromParcel(Parcel in) {
 		name = in.readString();
 		abbr = in.readString();
