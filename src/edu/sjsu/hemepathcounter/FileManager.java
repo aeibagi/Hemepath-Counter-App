@@ -78,7 +78,7 @@ public class FileManager {
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Lymphocytes), context.getResources().getString(
 				R.string.Lymphocytes_abbr), R.raw.sounds_1015_news_bringer,
-				R.drawable.blue_0000ff));
+				R.drawable.light_bluefamily_5ddcd3_048));
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Monocytes), context.getResources().getString(
 				R.string.Monocytes_abbr),
@@ -107,7 +107,7 @@ public class FileManager {
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Reticulocytes), context.getResources().getString(
 				R.string.Reticulocytes_abbr), R.raw.sounds_902_oh_boy,
-				R.drawable.pink_ff0099));
+				R.drawable.light_pink_fb97c9_048));
 
 		Counter counter1 = new Counter("Default Counter", buttonList1);
 
@@ -124,7 +124,7 @@ public class FileManager {
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Myelocytes), context.getResources().getString(
 				R.string.Myelocytes_abbr), R.raw.sounds_930_conclusion,
-				R.drawable.blue_0000ff));
+				R.drawable.light_blueish_81b3ff_048));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Promyelocytes), context.getResources().getString(
 				R.string.Promyelocytes_abbr), R.raw.sounds_931_whatever,
@@ -154,7 +154,7 @@ public class FileManager {
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Mast_cells), context.getResources().getString(
 				R.string.Mast_cells_abbr), R.raw.sounds_824_twirl,
-				R.drawable.pink_ff0099));
+				R.drawable.light_purple_d28dfa_048));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Megakaryocytes), context.getResources().getString(
 				R.string.Megakaryocytes_abbr),
@@ -171,7 +171,7 @@ public class FileManager {
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.Proerythroblasts), context.getResources().getString(
 				R.string.Proerythroblasts_abbr), R.raw.sounds_898_braking,
-				R.drawable.blue_0000ff));
+				R.drawable.blue_green_family_26878e));
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.T_cells), context.getResources().getString(
 				R.string.T_cells_abbr), R.raw.sounds_900_you_know,
@@ -336,7 +336,7 @@ public class FileManager {
 		CellButton butt1 = new CellButton(context.getResources().getString(
 				R.string.Lymphocytes), context.getResources().getString(
 				R.string.Lymphocytes_abbr), R.raw.sounds_1015_news_bringer,
-				R.drawable.blue_0000ff);
+				R.drawable.light_bluefamily_5ddcd3_048);
 		CellButton butt2 = new CellButton(context.getResources().getString(
 				R.string.Monocytes), context.getResources().getString(
 				R.string.Monocytes_abbr),
@@ -365,7 +365,7 @@ public class FileManager {
 		CellButton butt8 = new CellButton(context.getResources().getString(
 				R.string.Reticulocytes), context.getResources().getString(
 				R.string.Reticulocytes_abbr), R.raw.sounds_902_oh_boy,
-				R.drawable.pink_ff0099);
+				R.drawable.purpule_663366);
 
 		ArrayList<CellButton> defaultCells = new ArrayList<CellButton>();
 		defaultCells.add(butt1);
@@ -388,7 +388,7 @@ public class FileManager {
 		CellButton butt11 = new CellButton(context.getResources().getString(
 				R.string.Myelocytes), context.getResources().getString(
 				R.string.Myelocytes_abbr), R.raw.sounds_930_conclusion,
-				R.drawable.blue_0000ff);
+				R.drawable.light_blueish_81b3ff_048);
 		CellButton butt12 = new CellButton(context.getResources().getString(
 				R.string.Promyelocytes), context.getResources().getString(
 				R.string.Promyelocytes_abbr), R.raw.sounds_931_whatever,
@@ -418,7 +418,7 @@ public class FileManager {
 		CellButton butt18 = new CellButton(context.getResources().getString(
 				R.string.Mast_cells), context.getResources().getString(
 				R.string.Mast_cells_abbr), R.raw.sounds_824_twirl,
-				R.drawable.pink_ff0099);
+				R.drawable.light_pink_fb97c9_048);
 		CellButton butt19 = new CellButton(context.getResources().getString(
 				R.string.Megakaryocytes), context.getResources().getString(
 				R.string.Megakaryocytes_abbr),
@@ -444,7 +444,7 @@ public class FileManager {
 		CellButton butt21 = new CellButton(context.getResources().getString(
 				R.string.Proerythroblasts), context.getResources().getString(
 				R.string.Proerythroblasts_abbr), R.raw.sounds_898_braking,
-				R.drawable.blue_0000ff);
+				R.drawable.blue_purple_6666cc);
 		CellButton butt22 = new CellButton(context.getResources().getString(
 				R.string.T_cells), context.getResources().getString(
 				R.string.T_cells_abbr), R.raw.sounds_900_you_know,
@@ -482,7 +482,7 @@ public class FileManager {
 		CellButton butt28 = new CellButton(context.getResources().getString(
 				R.string.Atypical_basophils), context.getResources().getString(
 				R.string.Atypical_basophils_abbr),
-				R.raw.sounds_949_you_wouldnt_believe, R.drawable.pink_ff0099);
+				R.raw.sounds_949_you_wouldnt_believe, R.drawable.light_pink_fb97c9_048);
 		CellButton butt29 = new CellButton(context.getResources().getString(
 				R.string.Atypical_neutrophils), context.getResources()
 				.getString(R.string.Atypical_neutrophils_abbr),
@@ -498,7 +498,7 @@ public class FileManager {
 		CellButton butt32 = new CellButton(context.getResources().getString(
 				R.string.Megakaryoblasts), context.getResources().getString(
 				R.string.Megakaryoblasts_abbr), R.raw.sounds_1015_news_bringer,
-				R.drawable.blue_0000ff);
+				R.drawable.light_brown_c78540_048);
 		CellButton butt33 = new CellButton(context.getResources().getString(
 				R.string.Basophilic_normoblasts), context.getResources()
 				.getString(R.string.Basophilic_normoblasts_abbr),
@@ -528,7 +528,7 @@ public class FileManager {
 		CellButton butt39 = new CellButton(context.getResources().getString(
 				R.string.NK_cells), context.getResources().getString(
 				R.string.NK_cells_abbr), R.raw.sounds_902_oh_boy,
-				R.drawable.pink_ff0099);
+				R.drawable.light_whitegray_e7d2ef_048);
 
 		ArrayList<CellButton> lowYield = new ArrayList<CellButton>();
 		lowYield.add(butt27);

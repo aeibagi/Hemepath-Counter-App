@@ -163,6 +163,7 @@ public class NewCounterActivity extends Activity implements
 		case R.id.Button_Custom:
 			Intent intent2 = new Intent(NewCounterActivity.this,
 					Custom_Modify_ButtonActivity.class);
+			intent2.putExtra("ModifyorCustom", "Custom");
 			startActivityForResult(intent2, 1);
 			break;
 		case R.id.Button_Save:

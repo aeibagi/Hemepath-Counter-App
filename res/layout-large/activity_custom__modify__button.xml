@@ -109,12 +109,6 @@
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/greenfamily_00cc99" />
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:background="?android:selectableItemBackground"
-                android:src="@drawable/blue_0000ff" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -123,12 +117,7 @@
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/purpule_663366" />
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:background="?android:selectableItemBackground"
-                android:src="@drawable/pink_ff0099" />
+      
         </LinearLayout>
     </HorizontalScrollView>
 
