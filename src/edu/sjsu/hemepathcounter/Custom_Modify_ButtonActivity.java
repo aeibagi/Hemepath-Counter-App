@@ -2,7 +2,9 @@ package edu.sjsu.hemepathcounter;
 
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
@@ -41,6 +43,8 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 	ImageButton selectedButton;
 	ArrayList<Integer> soundHolder = new ArrayList<Integer>();
 	private CellButton modifiedButton;
+	
+	Drawable SaveBackGroundresource;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +120,8 @@ public class Custom_Modify_ButtonActivity extends Activity implements
         iB_lighter_pinkpurple_cc6699_072.setOnClickListener(this);
         iB_veylight_green_ffff99_072.setOnClickListener(this);
         
+        SaveBackGroundresource = iB_Color_Green.getBackground();
+        
         selectedButton = iB_Color_Green;
         selectedButton.setBackgroundResource(R.drawable.ib_border);
         SelectedButtonBackground = R.id.iB_Color_Green;
@@ -176,6 +182,7 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public void onClick(View v) {
 
@@ -187,134 +194,134 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 			myMediaPlayer.start();
 			break;
 		case R.id.iB_Color_Green:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_Color_Green;
 			iB_Color_Green.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_Color_Green;
 			break;
 			
 		case R.id.iB_Color_orage:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_Color_orage;
 			iB_Color_orage.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_Color_orage;
 			break;
 		case R.id.iB_blue_green_family_26878e:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_blue_green_family_26878e;
 			iB_blue_green_family_26878e.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_blue_green_family_26878e;
 			break;
 		case R.id.iB_Color_yellow:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_Color_yellow;
 			iB_Color_yellow.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_Color_yellow;
 			break;
 		case R.id.iB_blue_purple_6666cc:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_blue_purple_6666cc;
 			iB_blue_purple_6666cc.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_blue_purple_6666cc;
 			break;
 		case R.id.iB_orangefamily_ffae61:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_orangefamily_ffae61;
 			iB_orangefamily_ffae61.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_orangefamily_ffae61;
 			break;
 		case R.id.iB_greenfamily_00cc99:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_greenfamily_00cc99;
 			iB_greenfamily_00cc99.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_greenfamily_00cc99;
 			break;
 		case R.id.iB_purpule_663366:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_purpule_663366;
 			iB_purpule_663366.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_purpule_663366;
 			break;
 		case R.id.iB_dark_oragne_d1692c_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_dark_oragne_d1692c_072;
 			iB_dark_oragne_d1692c_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_dark_oragne_d1692c_072;
 			break;
 		case R.id.iB_darker_purple_5861be:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_darker_purple_5861be;
 			iB_darker_purple_5861be.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_darker_purple_5861be;
 			break;
 		case R.id.iB_gray_familyone_adafb1_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_gray_familyone_adafb1_072;
 			iB_gray_familyone_adafb1_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_gray_familyone_adafb1_072;
 			break;
 		case R.id.iB_light_bluefamily_5ddcd3_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_bluefamily_5ddcd3_072;
 			iB_light_bluefamily_5ddcd3_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_light_bluefamily_5ddcd3_072;
 			break;
 		case R.id.iB_light_blueish_81b3ff_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_blueish_81b3ff_072;
 			iB_light_blueish_81b3ff_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_light_blueish_81b3ff_072;
 			break;
 		case R.id.iB_light_brown_c78540_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_brown_c78540_072;
 			iB_light_brown_c78540_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_light_brown_c78540_072;
 			break;
 		case  R.id.iB_light_orange_ffae61_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_orange_ffae61_072;
 			iB_light_orange_ffae61_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_light_orange_ffae61_072;
 			break;
 		case  R.id.iB_light_grayblue_8387aa_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_grayblue_8387aa_072;
 			iB_light_grayblue_8387aa_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_light_grayblue_8387aa_072;
 			break;
 		case  R.id.iB_light_pink_fb97c9_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_pink_fb97c9_072;
 			iB_light_pink_fb97c9_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_light_pink_fb97c9_072;
 			break;
 		case  R.id.iB_light_gray_9198aa_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_gray_9198aa_072;
 			iB_light_gray_9198aa_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_light_gray_9198aa_072;
 			break;
 		case  R.id.iB_light_purple_d28dfa_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_purple_d28dfa_072;
 			iB_light_purple_d28dfa_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_light_purple_d28dfa_072;
 			break;
 		case  R.id.iB_light_whitegray_e7d2ef_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_whitegray_e7d2ef_072;
 			iB_light_whitegray_e7d2ef_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_light_whitegray_e7d2ef_072;
 			break;
 		case  R.id.iB_lighter_pinkpurple_cc6699_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_lighter_pinkpurple_cc6699_072;
 			iB_lighter_pinkpurple_cc6699_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground =  R.id.iB_lighter_pinkpurple_cc6699_072;
 			break;
 		case  R.id.iB_veylight_green_ffff99_072:
-			selectedButton.setBackgroundResource(android.R.color.transparent);
+			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_veylight_green_ffff99_072;
 			iB_veylight_green_ffff99_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_veylight_green_ffff99_072;
