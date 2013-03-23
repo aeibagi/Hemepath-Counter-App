@@ -43,7 +43,7 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 	ImageButton selectedButton;
 	ArrayList<Integer> soundHolder = new ArrayList<Integer>();
 	private CellButton modifiedButton;
-	
+	MediaPlayer myMediaPlayer;
 	Drawable SaveBackGroundresource;
 
 	@Override
@@ -186,11 +186,17 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 	@Override
 	public void onClick(View v) {
 
+		
 		switch (v.getId()) {
 		case R.id.ibSpeakerIcon:
-			MediaPlayer myMediaPlayer = MediaPlayer.create(
+			if(myMediaPlayer != null)
+			{
+				myMediaPlayer.release();
+			}
+			myMediaPlayer = MediaPlayer.create(
 					Custom_Modify_ButtonActivity.this,
 					soundHolder.get(SoundIndex));
+			
 			myMediaPlayer.start();
 			break;
 		case R.id.iB_Color_Green:

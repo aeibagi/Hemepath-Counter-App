@@ -22,6 +22,7 @@ public class CountingActivity extends Activity {
 	private CountingAdapter mAdapter;
 	private ArrayList<Integer> mSequence;
 	private boolean muted;
+	private MediaPlayer player;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,11 @@ public class CountingActivity extends Activity {
 					int position, long id) {
 				// play sound ....
 				if (!muted) {
-					MediaPlayer player = MediaPlayer.create(
+					if(player != null)
+					{
+						player.release();
+					}
+				    player = MediaPlayer.create(
 							CountingActivity.this,
 							mData.getCells().get(position).getSound());
 					player.start();
