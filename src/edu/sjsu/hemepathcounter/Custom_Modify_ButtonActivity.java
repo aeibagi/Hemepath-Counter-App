@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+import edu.sjsu.hemepathcounter.model.ButtonHolder;
 import edu.sjsu.hemepathcounter.model.CellButton;
 
 public class Custom_Modify_ButtonActivity extends Activity implements
@@ -51,12 +52,13 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_custom__modify__button);
 		modifiedButton = getIntent().getParcelableExtra("button");
+		mode = getIntent().getStringExtra("ModifyorCustom");
 		initialize();
 	}
 
 	private void initialize() {
 
-		mode = getIntent().getStringExtra("ModifyorCustom");
+		
 		soundHolder.add(R.raw.sounds_1015_news_bringer);
 		soundHolder.add(R.raw.sounds_1066_may_i_have_your_attention);
 		soundHolder.add(R.raw.sounds_824_twirl);
@@ -139,6 +141,11 @@ public class Custom_Modify_ButtonActivity extends Activity implements
         {
         	btn_modify.setBackgroundResource(R.drawable.button_style_gray);
         	btn_modify.setClickable(false);
+        }
+        else if(mode.equals("Modify"))
+        {
+        	btn_creat.setBackgroundResource(R.drawable.button_style_gray);
+        	btn_creat.setClickable(false);
         }
         
         enter_name_for_customModify_buttons = (EditText) findViewById(R.id.edt_Enter_name_Custom_modify);
@@ -338,6 +345,9 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 			if (name.length() > 0) 
 			{
 				CellButton customCell = new CellButton(name, "",selectedSound, SelectedButtonBackground);
+				// I need a button holder?
+				ButtonHolder btn_holder = new ButtonHolder();
+				btn_holder.addCustomButton(customCell);
 			}
 			else 
 			{

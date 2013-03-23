@@ -155,6 +155,7 @@ public class NewCounterActivity extends Activity implements
 			Intent intent = new Intent(NewCounterActivity.this,
 					Custom_Modify_ButtonActivity.class);
 			intent.putExtra("button", userSelection.get(0));
+			intent.putExtra("ModifyorCustom", "Modify");
 			startActivityForResult(intent, 1);
 			break;
 		case R.id.Button_Clear:
