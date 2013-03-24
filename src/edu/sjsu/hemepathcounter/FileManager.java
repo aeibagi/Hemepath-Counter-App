@@ -77,36 +77,36 @@ public class FileManager {
 		ArrayList<CellButton> buttonList1 = new ArrayList<CellButton>();
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Lymphocytes), context.getResources().getString(
-				R.string.Lymphocytes_abbr), R.raw.sounds_1015_news_bringer,
+				R.string.Lymphocytes_abbr), R.raw.arpeggio,
 				R.drawable.light_bluefamily_5ddcd3_048));
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Monocytes), context.getResources().getString(
 				R.string.Monocytes_abbr),
-				R.raw.sounds_1066_may_i_have_your_attention,
+				R.raw.attention,
 				R.drawable.blue_green_family_26878e));
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Eosinophils), context.getResources().getString(
-				R.string.Eosinophils_abbr), R.raw.sounds_824_twirl,
+				R.string.Eosinophils_abbr), R.raw.beep1,
 				R.drawable.blue_purple_6666cc));
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Basophils), context.getResources().getString(
-				R.string.Basophils_abbr), R.raw.sounds_874_gets_in_the_way,
+				R.string.Basophils_abbr), R.raw.way,
 				R.drawable.green));
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Neutrophils), context.getResources().getString(
-				R.string.Neutrophils_abbr), R.raw.sounds_882_solemn,
+				R.string.Neutrophils_abbr), R.raw.beep2,
 				R.drawable.greenfamily_00cc99));
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Bands), context.getResources().getString(
-				R.string.Bands_abbr), R.raw.sounds_898_braking,
+				R.string.Bands_abbr), R.raw.brake,
 				R.drawable.orange));
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Blasts), context.getResources().getString(
-				R.string.Blasts_abbr), R.raw.sounds_900_you_know,
+				R.string.Blasts_abbr), R.raw.know,
 				R.drawable.orangefamily_ffae61));
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Reticulocytes), context.getResources().getString(
-				R.string.Reticulocytes_abbr), R.raw.sounds_902_oh_boy,
+				R.string.Reticulocytes_abbr), R.raw.dark,
 				R.drawable.light_pink_fb97c9_048));
 
 		Counter counter1 = new Counter("Default Counter", buttonList1);
@@ -116,49 +116,49 @@ public class FileManager {
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.AtypicalLymphocytes), context.getResources()
 				.getString(R.string.AtypicalLymphocytes_abbr),
-				R.raw.sounds_908_sting, R.drawable.purpule_663366));
+				R.raw.sting, R.drawable.light_blueish_81b3ff_048));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Meta_myelocytes), context.getResources().getString(
 				R.string.Meta_myelocytes_abbr),
-				R.raw.sounds_917_communication_channel, R.drawable.yellow));
+				R.raw.here, R.drawable.yellow));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Myelocytes), context.getResources().getString(
-				R.string.Myelocytes_abbr), R.raw.sounds_930_conclusion,
+				R.string.Myelocytes_abbr), R.raw.stopper,
 				R.drawable.light_blueish_81b3ff_048));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Promyelocytes), context.getResources().getString(
-				R.string.Promyelocytes_abbr), R.raw.sounds_931_whatever,
+				R.string.Promyelocytes_abbr), R.raw.high,
 				R.drawable.blue_green_family_26878e));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Promonocytes), context.getResources().getString(
 				R.string.Promonocytes_abbr),
-				R.raw.sounds_949_you_wouldnt_believe,
+				R.raw.believe,
 				R.drawable.blue_purple_6666cc));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Red_blood_cells), context.getResources().getString(
-				R.string.Red_blood_cells_abbr), R.raw.sounds_951_pedantic,
+				R.string.Red_blood_cells_abbr), R.raw.question,
 				R.drawable.green));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.White_Blood_Cells), context.getResources().getString(
-				R.string.White_Blood_Cells_abbr), R.raw.sounds_998_awareness,
+				R.string.White_Blood_Cells_abbr), R.raw.look,
 				R.drawable.greenfamily_00cc99));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Plasma_cells), context.getResources().getString(
-				R.string.Plasma_cells_abbr), R.raw.sounds_1015_news_bringer,
+				R.string.Plasma_cells_abbr), R.raw.arpeggio,
 				R.drawable.orange));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Atypical_plasma_cells), context.getResources()
 				.getString(R.string.Atypical_plasma_cells_abbr),
-				R.raw.sounds_1066_may_i_have_your_attention,
+				R.raw.attention,
 				R.drawable.orangefamily_ffae61));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Mast_cells), context.getResources().getString(
-				R.string.Mast_cells_abbr), R.raw.sounds_824_twirl,
+				R.string.Mast_cells_abbr), R.raw.dramatic,
 				R.drawable.light_purple_d28dfa_048));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Megakaryocytes), context.getResources().getString(
 				R.string.Megakaryocytes_abbr),
-				R.raw.sounds_874_gets_in_the_way, R.drawable.purpule_663366));
+				R.raw.know, R.drawable.light_pink_fb97c9_048));
 
 		Counter counter2 = new Counter("High Yield Counter", buttonList2);
 
@@ -166,33 +166,33 @@ public class FileManager {
 
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.Erythroblasts), context.getResources().getString(
-				R.string.Erythroblasts_abbr), R.raw.sounds_882_solemn,
+				R.string.Erythroblasts_abbr), R.raw.dramatic,
 				R.drawable.yellow));
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.Proerythroblasts), context.getResources().getString(
-				R.string.Proerythroblasts_abbr), R.raw.sounds_898_braking,
+				R.string.Proerythroblasts_abbr), R.raw.brake,
 				R.drawable.blue_green_family_26878e));
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.T_cells), context.getResources().getString(
-				R.string.T_cells_abbr), R.raw.sounds_900_you_know,
+				R.string.T_cells_abbr), R.raw.close,
 				R.drawable.blue_green_family_26878e));
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.B_Cells), context.getResources().getString(
-				R.string.B_Cells_abbr), R.raw.sounds_902_oh_boy,
+				R.string.B_Cells_abbr), R.raw.dark,
 				R.drawable.blue_purple_6666cc));
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.CD4Plus_T_cells), context.getResources().getString(
-				R.string.CD4Plus_T_cells_abbr), R.raw.sounds_908_sting,
+				R.string.CD4Plus_T_cells_abbr), R.raw.sting,
 				R.drawable.green));
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.CD8Plus_T_cells), context.getResources().getString(
 				R.string.CD8Plus_T_cells_abbr),
-				R.raw.sounds_917_communication_channel,
+				R.raw.stopper,
 				R.drawable.greenfamily_00cc99));
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.Reed_Sternberg_cells), context.getResources()
 				.getString(R.string.Reed_Sternberg_cells_abbr),
-				R.raw.sounds_930_conclusion, R.drawable.orange));
+				R.raw.shoot, R.drawable.orange));
 
 		Counter counter3 = new Counter("Mid Yield Counter", buttonList3);
 		ArrayList<Counter> list = new ArrayList<Counter>();
@@ -335,37 +335,37 @@ public class FileManager {
 		Log.d("FILE_MANGER", "Creating ButtonHolder file.");
 		CellButton butt1 = new CellButton(context.getResources().getString(
 				R.string.Lymphocytes), context.getResources().getString(
-				R.string.Lymphocytes_abbr), R.raw.sounds_1015_news_bringer,
+				R.string.Lymphocytes_abbr), R.raw.believe,
 				R.drawable.light_bluefamily_5ddcd3_048);
 		CellButton butt2 = new CellButton(context.getResources().getString(
 				R.string.Monocytes), context.getResources().getString(
 				R.string.Monocytes_abbr),
-				R.raw.sounds_1066_may_i_have_your_attention,
+				R.raw.attention,
 				R.drawable.blue_green_family_26878e);
 		CellButton butt3 = new CellButton(context.getResources().getString(
 				R.string.Eosinophils), context.getResources().getString(
-				R.string.Eosinophils_abbr), R.raw.sounds_824_twirl,
+				R.string.Eosinophils_abbr), R.raw.way,
 				R.drawable.blue_purple_6666cc);
 		CellButton butt4 = new CellButton(context.getResources().getString(
 				R.string.Basophils), context.getResources().getString(
-				R.string.Basophils_abbr), R.raw.sounds_874_gets_in_the_way,
+				R.string.Basophils_abbr), R.raw.look,
 				R.drawable.green);
 		CellButton butt5 = new CellButton(context.getResources().getString(
 				R.string.Neutrophils), context.getResources().getString(
-				R.string.Neutrophils_abbr), R.raw.sounds_882_solemn,
+				R.string.Neutrophils_abbr), R.raw.here,
 				R.drawable.greenfamily_00cc99);
 		CellButton butt6 = new CellButton(context.getResources().getString(
 				R.string.Bands), context.getResources().getString(
-				R.string.Bands_abbr), R.raw.sounds_898_braking,
+				R.string.Bands_abbr), R.raw.high,
 				R.drawable.orange);
 		CellButton butt7 = new CellButton(context.getResources().getString(
 				R.string.Blasts), context.getResources().getString(
-				R.string.Blasts_abbr), R.raw.sounds_900_you_know,
+				R.string.Blasts_abbr), R.raw.know,
 				R.drawable.orangefamily_ffae61);
 		CellButton butt8 = new CellButton(context.getResources().getString(
 				R.string.Reticulocytes), context.getResources().getString(
-				R.string.Reticulocytes_abbr), R.raw.sounds_902_oh_boy,
-				R.drawable.purpule_663366);
+				R.string.Reticulocytes_abbr), R.raw.dark,
+				R.drawable.light_orange_ffae61_048);
 
 		ArrayList<CellButton> defaultCells = new ArrayList<CellButton>();
 		defaultCells.add(butt1);
@@ -380,49 +380,49 @@ public class FileManager {
 		CellButton butt9 = new CellButton(context.getResources().getString(
 				R.string.AtypicalLymphocytes), context.getResources()
 				.getString(R.string.AtypicalLymphocytes_abbr),
-				R.raw.sounds_908_sting, R.drawable.purpule_663366);
+				R.raw.sting, R.drawable.light_grayblue_8387aa_048);
 		CellButton butt10 = new CellButton(context.getResources().getString(
 				R.string.Meta_myelocytes), context.getResources().getString(
 				R.string.Meta_myelocytes_abbr),
-				R.raw.sounds_917_communication_channel, R.drawable.yellow);
+				R.raw.arpeggio, R.drawable.yellow);
 		CellButton butt11 = new CellButton(context.getResources().getString(
 				R.string.Myelocytes), context.getResources().getString(
-				R.string.Myelocytes_abbr), R.raw.sounds_930_conclusion,
+				R.string.Myelocytes_abbr), R.raw.stopper,
 				R.drawable.light_blueish_81b3ff_048);
 		CellButton butt12 = new CellButton(context.getResources().getString(
 				R.string.Promyelocytes), context.getResources().getString(
-				R.string.Promyelocytes_abbr), R.raw.sounds_931_whatever,
+				R.string.Promyelocytes_abbr), R.raw.close,
 				R.drawable.blue_green_family_26878e);
 		CellButton butt13 = new CellButton(context.getResources().getString(
 				R.string.Promonocytes), context.getResources().getString(
 				R.string.Promonocytes_abbr),
-				R.raw.sounds_949_you_wouldnt_believe,
+				R.raw.believe,
 				R.drawable.blue_purple_6666cc);
 		CellButton butt14 = new CellButton(context.getResources().getString(
 				R.string.Red_blood_cells), context.getResources().getString(
-				R.string.Red_blood_cells_abbr), R.raw.sounds_951_pedantic,
+				R.string.Red_blood_cells_abbr), R.raw.beep1,
 				R.drawable.green);
 		CellButton butt15 = new CellButton(context.getResources().getString(
 				R.string.White_Blood_Cells), context.getResources().getString(
-				R.string.White_Blood_Cells_abbr), R.raw.sounds_998_awareness,
+				R.string.White_Blood_Cells_abbr), R.raw.dramatic,
 				R.drawable.greenfamily_00cc99);
 		CellButton butt16 = new CellButton(context.getResources().getString(
 				R.string.Plasma_cells), context.getResources().getString(
-				R.string.Plasma_cells_abbr), R.raw.sounds_1015_news_bringer,
+				R.string.Plasma_cells_abbr), R.raw.brake,
 				R.drawable.orange);
 		CellButton butt17 = new CellButton(context.getResources().getString(
 				R.string.Atypical_plasma_cells), context.getResources()
 				.getString(R.string.Atypical_plasma_cells_abbr),
-				R.raw.sounds_1066_may_i_have_your_attention,
+				R.raw.beep2,
 				R.drawable.orangefamily_ffae61);
 		CellButton butt18 = new CellButton(context.getResources().getString(
 				R.string.Mast_cells), context.getResources().getString(
-				R.string.Mast_cells_abbr), R.raw.sounds_824_twirl,
+				R.string.Mast_cells_abbr), R.raw.attention,
 				R.drawable.light_pink_fb97c9_048);
 		CellButton butt19 = new CellButton(context.getResources().getString(
 				R.string.Megakaryocytes), context.getResources().getString(
 				R.string.Megakaryocytes_abbr),
-				R.raw.sounds_874_gets_in_the_way, R.drawable.purpule_663366);
+				R.raw.question, R.drawable.light_whitegray_e7d2ef_048);
 
 		ArrayList<CellButton> highYield = new ArrayList<CellButton>();
 		highYield.add(butt9);
@@ -439,33 +439,33 @@ public class FileManager {
 
 		CellButton butt20 = new CellButton(context.getResources().getString(
 				R.string.Erythroblasts), context.getResources().getString(
-				R.string.Erythroblasts_abbr), R.raw.sounds_882_solemn,
+				R.string.Erythroblasts_abbr), R.raw.arpeggio,
 				R.drawable.yellow);
 		CellButton butt21 = new CellButton(context.getResources().getString(
 				R.string.Proerythroblasts), context.getResources().getString(
-				R.string.Proerythroblasts_abbr), R.raw.sounds_898_braking,
+				R.string.Proerythroblasts_abbr), R.raw.brake,
 				R.drawable.blue_purple_6666cc);
 		CellButton butt22 = new CellButton(context.getResources().getString(
 				R.string.T_cells), context.getResources().getString(
-				R.string.T_cells_abbr), R.raw.sounds_900_you_know,
+				R.string.T_cells_abbr), R.raw.know,
 				R.drawable.blue_green_family_26878e);
 		CellButton butt23 = new CellButton(context.getResources().getString(
 				R.string.B_Cells), context.getResources().getString(
-				R.string.B_Cells_abbr), R.raw.sounds_902_oh_boy,
+				R.string.B_Cells_abbr), R.raw.dark,
 				R.drawable.blue_purple_6666cc);
 		CellButton butt24 = new CellButton(context.getResources().getString(
 				R.string.CD4Plus_T_cells), context.getResources().getString(
-				R.string.CD4Plus_T_cells_abbr), R.raw.sounds_908_sting,
+				R.string.CD4Plus_T_cells_abbr), R.raw.sting,
 				R.drawable.green);
 		CellButton butt25 = new CellButton(context.getResources().getString(
 				R.string.CD8Plus_T_cells), context.getResources().getString(
 				R.string.CD8Plus_T_cells_abbr),
-				R.raw.sounds_917_communication_channel,
+				R.raw.way,
 				R.drawable.greenfamily_00cc99);
 		CellButton butt26 = new CellButton(context.getResources().getString(
 				R.string.Reed_Sternberg_cells), context.getResources()
 				.getString(R.string.Reed_Sternberg_cells_abbr),
-				R.raw.sounds_930_conclusion, R.drawable.orange);
+				R.raw.here, R.drawable.orange);
 		ArrayList<CellButton> midYield = new ArrayList<CellButton>();
 		midYield.add(butt20);
 		midYield.add(butt21);
@@ -478,56 +478,56 @@ public class FileManager {
 		CellButton butt27 = new CellButton(context.getResources().getString(
 				R.string.Atypical_eosinophils), context.getResources()
 				.getString(R.string.Atypical_eosinophils_abbr),
-				R.raw.sounds_931_whatever, R.drawable.orangefamily_ffae61);
+				R.raw.high, R.drawable.orangefamily_ffae61);
 		CellButton butt28 = new CellButton(context.getResources().getString(
 				R.string.Atypical_basophils), context.getResources().getString(
 				R.string.Atypical_basophils_abbr),
-				R.raw.sounds_949_you_wouldnt_believe, R.drawable.light_pink_fb97c9_048);
+				R.raw.arpeggio, R.drawable.light_pink_fb97c9_048);
 		CellButton butt29 = new CellButton(context.getResources().getString(
 				R.string.Atypical_neutrophils), context.getResources()
 				.getString(R.string.Atypical_neutrophils_abbr),
-				R.raw.sounds_951_pedantic, R.drawable.purpule_663366);
+				R.raw.attention, R.drawable.light_brown_c78540_048);
 		CellButton butt30 = new CellButton(context.getResources().getString(
 				R.string.Atypical_neutrophils), context.getResources()
 				.getString(R.string.Atypical_neutrophils_abbr),
-				R.raw.sounds_951_pedantic, R.drawable.purpule_663366);
+				R.raw.dark, R.drawable.light_blueish_81b3ff_048);
 		CellButton butt31 = new CellButton(context.getResources().getString(
 				R.string.Atypical_megakaryocytes), context.getResources()
 				.getString(R.string.Atypical_megakaryocytes_abbr),
-				R.raw.sounds_998_awareness, R.drawable.yellow);
+				R.raw.know, R.drawable.yellow);
 		CellButton butt32 = new CellButton(context.getResources().getString(
 				R.string.Megakaryoblasts), context.getResources().getString(
-				R.string.Megakaryoblasts_abbr), R.raw.sounds_1015_news_bringer,
+				R.string.Megakaryoblasts_abbr), R.raw.beep1,
 				R.drawable.light_brown_c78540_048);
 		CellButton butt33 = new CellButton(context.getResources().getString(
 				R.string.Basophilic_normoblasts), context.getResources()
 				.getString(R.string.Basophilic_normoblasts_abbr),
-				R.raw.sounds_1066_may_i_have_your_attention,
+				R.raw.shoot,
 				R.drawable.blue_green_family_26878e);
 		CellButton butt34 = new CellButton(context.getResources().getString(
 				R.string.Orthochromatophilic_normoblasts), context
 				.getResources().getString(
 						R.string.Orthochromatophilic_normoblasts_abbr),
-				R.raw.sounds_824_twirl, R.drawable.blue_purple_6666cc);
+				R.raw.beep2, R.drawable.blue_purple_6666cc);
 		CellButton butt35 = new CellButton(context.getResources().getString(
 				R.string.Immunoblasts), context.getResources().getString(
-				R.string.Immunoblasts_abbr), R.raw.sounds_874_gets_in_the_way,
+				R.string.Immunoblasts_abbr), R.raw.stopper,
 				R.drawable.green);
 		CellButton butt36 = new CellButton(context.getResources().getString(
 				R.string.Centroblasts), context.getResources().getString(
-				R.string.Centroblasts_abbr), R.raw.sounds_882_solemn,
+				R.string.Centroblasts_abbr), R.raw.believe,
 				R.drawable.greenfamily_00cc99);
 		CellButton butt37 = new CellButton(context.getResources().getString(
 				R.string.Centrocytes), context.getResources().getString(
-				R.string.Centrocytes_abbr), R.raw.sounds_898_braking,
+				R.string.Centrocytes_abbr), R.raw.brake,
 				R.drawable.orange);
 		CellButton butt38 = new CellButton(context.getResources().getString(
 				R.string.Dendritic_cells), context.getResources().getString(
-				R.string.Dendritic_cells_abbr), R.raw.sounds_900_you_know,
+				R.string.Dendritic_cells_abbr), R.raw.way,
 				R.drawable.orangefamily_ffae61);
 		CellButton butt39 = new CellButton(context.getResources().getString(
 				R.string.NK_cells), context.getResources().getString(
-				R.string.NK_cells_abbr), R.raw.sounds_902_oh_boy,
+				R.string.NK_cells_abbr), R.raw.dark,
 				R.drawable.light_whitegray_e7d2ef_048);
 
 		ArrayList<CellButton> lowYield = new ArrayList<CellButton>();

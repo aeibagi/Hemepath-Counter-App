@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -23,9 +24,11 @@ import edu.sjsu.hemepathcounter.model.CellButton;
 public class Custom_Modify_ButtonActivity extends Activity implements
 		OnItemSelectedListener, View.OnClickListener {
 
-	ImageButton iB_Color_Green, iB_Color_orage, iB_blue_green_family_26878e,
+	private FileManager myFileManager;
+	private ButtonHolder myButtonHolder;
+	private ImageButton iB_Color_Green, iB_Color_orage, iB_blue_green_family_26878e,
 	            iB_Color_yellow, iB_blue_purple_6666cc, iB_orangefamily_ffae61,
-	            iB_greenfamily_00cc99, iB_purpule_663366, iB_dark_oragne_d1692c_072,
+	            iB_greenfamily_00cc99, iB_dark_oragne_d1692c_072,
 	            iB_darker_purple_5861be, iB_gray_familyone_adafb1_072, 
 	            iB_light_bluefamily_5ddcd3_072, iB_light_blueish_81b3ff_072, 
 	            iB_light_brown_c78540_072, iB_light_orange_ffae61_072, 
@@ -33,19 +36,19 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 	            iB_light_gray_9198aa_072, iB_light_purple_d28dfa_072, 
 	            iB_light_whitegray_e7d2ef_072, iB_lighter_pinkpurple_cc6699_072,
 	            iB_veylight_green_ffff99_072;
-	ImageButton speaker_button;
-	Spinner sound_dropDown_menu;
-	int SoundIndex, selectedSound, SelectedButtonBackground;
+	private ImageButton speaker_button;
+	private Spinner sound_dropDown_menu;
+	private int SoundIndex, selectedSound, SelectedButtonBackground;
 	
-	String mode;
+	private String mode;
 	
-	Button btn_creat, btn_modify, btn_exit;
-	EditText enter_name_for_customModify_buttons;
-	ImageButton selectedButton;
-	ArrayList<Integer> soundHolder = new ArrayList<Integer>();
+	private Button btn_creat, btn_modify, btn_exit;
+	private EditText enter_name_for_customModify_buttons;
+	private ImageButton selectedButton;
+	private ArrayList<Integer> soundHolder = new ArrayList<Integer>();
 	private CellButton modifiedButton;
-	MediaPlayer myMediaPlayer;
-	Drawable SaveBackGroundresource;
+	private MediaPlayer myMediaPlayer;
+	private Drawable SaveBackGroundresource;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,22 +61,25 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 
 	private void initialize() {
 
-		
-		soundHolder.add(R.raw.sounds_1015_news_bringer);
-		soundHolder.add(R.raw.sounds_1066_may_i_have_your_attention);
-		soundHolder.add(R.raw.sounds_824_twirl);
-		soundHolder.add(R.raw.sounds_874_gets_in_the_way);
-		soundHolder.add(R.raw.sounds_882_solemn);
-		soundHolder.add(R.raw.sounds_898_braking);
-		soundHolder.add(R.raw.sounds_900_you_know);
-		soundHolder.add(R.raw.sounds_902_oh_boy);
-		soundHolder.add(R.raw.sounds_908_sting);
-		soundHolder.add(R.raw.sounds_917_communication_channel);
-		soundHolder.add(R.raw.sounds_930_conclusion);
-		soundHolder.add(R.raw.sounds_931_whatever);
-		soundHolder.add(R.raw.sounds_949_you_wouldnt_believe);
-		soundHolder.add(R.raw.sounds_951_pedantic);
-		soundHolder.add(R.raw.sounds_998_awareness);
+		myFileManager = new FileManager(getApplicationContext());
+		soundHolder.add(R.raw.arpeggio);
+		soundHolder.add(R.raw.attention);
+		soundHolder.add(R.raw.beep1);
+		soundHolder.add(R.raw.beep2);
+		soundHolder.add(R.raw.believe);
+		soundHolder.add(R.raw.brake);
+		soundHolder.add(R.raw.close);
+		soundHolder.add(R.raw.dark);
+		soundHolder.add(R.raw.dramatic);
+		soundHolder.add(R.raw.here);
+		soundHolder.add(R.raw.high);
+		soundHolder.add(R.raw.know);
+		soundHolder.add(R.raw.look);
+		soundHolder.add(R.raw.question);
+		soundHolder.add(R.raw.shoot);
+		soundHolder.add(R.raw.sting);
+		soundHolder.add(R.raw.stopper);
+		soundHolder.add(R.raw.way);
 
 		//set up the cImagebuttons for the colors:
 		iB_Color_Green = (ImageButton) findViewById(R.id.iB_Color_Green);	
@@ -83,7 +89,6 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 		iB_blue_purple_6666cc = (ImageButton) findViewById(R.id.iB_blue_purple_6666cc); 
 		iB_orangefamily_ffae61 = (ImageButton) findViewById(R.id.iB_orangefamily_ffae61);
         iB_greenfamily_00cc99 =(ImageButton) findViewById(R.id.iB_greenfamily_00cc99); 
-        iB_purpule_663366 = (ImageButton) findViewById(R.id.iB_purpule_663366); 
         iB_dark_oragne_d1692c_072 = (ImageButton) findViewById(R.id.iB_dark_oragne_d1692c_072);
         iB_darker_purple_5861be =(ImageButton) findViewById(R.id.iB_darker_purple_5861be); 
         iB_gray_familyone_adafb1_072= (ImageButton) findViewById(R.id.iB_gray_familyone_adafb1_072); 
@@ -106,7 +111,6 @@ public class Custom_Modify_ButtonActivity extends Activity implements
         iB_blue_purple_6666cc.setOnClickListener(this);
         iB_orangefamily_ffae61.setOnClickListener(this);
         iB_greenfamily_00cc99.setOnClickListener(this); 
-        iB_purpule_663366.setOnClickListener(this);
         iB_dark_oragne_d1692c_072.setOnClickListener(this);
         iB_darker_purple_5861be.setOnClickListener(this);
         iB_gray_familyone_adafb1_072.setOnClickListener(this);
@@ -249,12 +253,6 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 			iB_greenfamily_00cc99.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.id.iB_greenfamily_00cc99;
 			break;
-		case R.id.iB_purpule_663366:
-			selectedButton.setBackground(SaveBackGroundresource);
-			selectedButton = iB_purpule_663366;
-			iB_purpule_663366.setBackgroundResource(R.drawable.ib_border);
-			SelectedButtonBackground = R.id.iB_purpule_663366;
-			break;
 		case R.id.iB_dark_oragne_d1692c_072:
 			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_dark_oragne_d1692c_072;
@@ -345,9 +343,14 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 			if (name.length() > 0) 
 			{
 				CellButton customCell = new CellButton(name, "",selectedSound, SelectedButtonBackground);
-				// I need a button holder?
-				ButtonHolder btn_holder = new ButtonHolder();
-				btn_holder.addCustomButton(customCell);
+				myButtonHolder = myFileManager.getButtonHolder();
+				myButtonHolder.addCustomButton(customCell);
+				myFileManager.updateButtonHolder(myButtonHolder);
+				Intent intent = new Intent(Custom_Modify_ButtonActivity.this, NewCounterActivity.class);
+				intent.putExtra("Created_custom_button", true);
+				intent.putExtra("Custom_Button", customCell);
+				setResult(Activity.RESULT_OK, intent);
+				finish();	
 			}
 			else 
 			{

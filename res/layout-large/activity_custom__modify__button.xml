@@ -90,13 +90,7 @@
                 android:src="@drawable/greenfamily_00cc99" />
 
 
-            <ImageButton
-                android:id="@+id/iB_purpule_663366"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:background="?android:selectableItemBackground"
-                android:src="@drawable/purpule_663366" />
+
             
             <ImageButton
                 android:id="@+id/iB_dark_oragne_d1692c_072"

@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="SoundArray">
-            <item>News Bringer</item>
+            <item>Arpeggio</item>
             <item >Attention</item>
-            <item >Twirl</item>
-            <item >In the way</item>
-            <item >Solemn</item>
-            <item >Braking</item>
-            <item >You Know</item>
-            <item >String</item>
-            <item >Oh Boy</item>
-            <item >Communication Channel</item>
-            <item >Conclusion</item>
-            <item >Whatever</item>
-            <item >Wont Believe</item>
-            <item >Pedantic</item>
-            <item >Awareness</item>
+            <item >Beep1</item>
+            <item >Beep2</item>
+            <item >Believe</item>
+            <item >Brake</item>
+            <item >Close</item>
+            <item >Dark</item>
+            <item >Dramatic</item>
+            <item >Here</item>
+            <item >High</item>
+            <item >Know</item>
+            <item >Look</item>
+            <item >Question</item>
+            <item >Shoot</item>
+            <item >Sting</item>
+            <item >Stopper</item>
+            <item >Way</item>
      </string-array>
 </resources>

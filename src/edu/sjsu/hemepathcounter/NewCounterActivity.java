@@ -56,6 +56,8 @@ public class NewCounterActivity extends Activity implements
 	private Parent parent3 = new Parent();
 	private Parent parent4 = new Parent();
 	private Parent CustomParent = new Parent();
+	
+   private CellButton created_custom_button;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -156,7 +158,7 @@ public class NewCounterActivity extends Activity implements
 					Custom_Modify_ButtonActivity.class);
 			intent.putExtra("button", userSelection.get(0));
 			intent.putExtra("ModifyorCustom", "Modify");
-			startActivityForResult(intent, 1);
+			startActivityForResult(intent, 2);
 			break;
 		case R.id.Button_Clear:
 			ClearEverything();
@@ -243,6 +245,31 @@ public class NewCounterActivity extends Activity implements
 		super.onPause();
 		// finish();
 
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		switch(requestCode)
+		{ 
+		    case (1):
+		    	if (resultCode == Activity.RESULT_OK) 
+			    { 
+		    		created_custom_button = data.getParcelableExtra("Custom_Button");
+		    		customButtons = holder.getCustomButtons();
+		    		customButtons.add(created_custom_button);
+		    		//CustomParent.setArrayChildren(customButtons);
+			    }
+		    	break;
+		    case (2):
+		    	if (resultCode == Activity.RESULT_OK) 
+			    { 
+		    		
+			    }
+		    	break;
+		    	
+		}
 	}
 
 }
