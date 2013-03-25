@@ -5,11 +5,18 @@ import java.util.HashMap;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
@@ -27,7 +34,7 @@ import edu.sjsu.hemepathcounter.model.CounterHolder;
  * 
  */
 public class NewCounterActivity extends Activity implements
-		View.OnClickListener, ExpandableListView.OnChildClickListener {
+		View.OnClickListener, ExpandableListView.OnChildClickListener, AdapterView.OnItemLongClickListener {
 
 	private Button ModifyButton, SaveButton, ClearButton, CustomButton,
 			mainMenu;
@@ -57,7 +64,8 @@ public class NewCounterActivity extends Activity implements
 	private Parent parent4 = new Parent();
 	private Parent CustomParent = new Parent();
 	
-   private CellButton created_custom_button;
+   private CellButton created_custom_button, ItemSelectedforContextMenuOption;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +82,7 @@ public class NewCounterActivity extends Activity implements
 		mExpandableList = (ExpandableListView) findViewById(R.id.expandable_list_New_Counters);
 		mExpandableList.requestFocus();
 		mExpandableList.setOnChildClickListener(this);
+		mExpandableList.setOnItemLongClickListener(this);
 
 		ChildStatus = new HashMap<CellButton, Boolean>();
 
@@ -240,6 +249,79 @@ public class NewCounterActivity extends Activity implements
 
 	}
 
+	
+	@Override
+	public boolean onItemLongClick(AdapterView<?> arg0, View v, int position,
+			long id) {
+		ItemSelectedforContextMenuOption = (CellButton) mExpandableList.getItemAtPosition(position);
+		registerForContextMenu(arg0);
+		return false;
+	}
+	
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		menu.setHeaderTitle("Options");
+		menu.add(0, v.getId(), 0, "Edit");
+		menu.add(0, v.getId(), 0, "Delete");
+	}
+	
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		if (item.getTitle() == "Edit") {
+			EditButton();
+		} else if (item.getTitle() == "Delete") {
+			AlertDialog quitDialogBox = createQuitDialogBox();
+			quitDialogBox.show();
+		}
+		return true;
+	}
+
+
+	private void EditButton() 
+	{
+		Intent intent = new Intent(NewCounterActivity.this,
+				Custom_Modify_ButtonActivity.class);
+		intent.putExtra("button", ItemSelectedforContextMenuOption);
+		intent.putExtra("ModifyorCustom", "Modify");
+		startActivityForResult(intent, 2);
+	}
+	
+	private AlertDialog createQuitDialogBox() {
+		AlertDialog myQuittingDialogBox = new AlertDialog.Builder(this)
+		// set message, title, and icon
+		.setTitle("Delete")
+		.setMessage(
+				"Do you want to Delete "
+						+ ItemSelectedforContextMenuOption.getName() + "?")
+		.setIcon(R.drawable.delete_icon)
+
+		.setPositiveButton("Yes",
+				new DialogInterface.OnClickListener() {
+
+					public void onClick(DialogInterface dialog,
+							int whichButton) {
+						updateExpandableListAdaptorListForRemove(ItemSelectedforContextMenuOption);
+						dialog.dismiss();
+					}
+
+				})
+
+		.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		}).create();
+		return myQuittingDialogBox;
+	}
+
+
+	private void updateExpandableListAdaptorListForRemove(CellButton itemToRemove) {
+		holder.remove(itemToRemove);
+		manager.updateButtonHolder(holder);
+		myCustomAdaptor.notifyDataSetChanged();
+	}
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -259,13 +341,18 @@ public class NewCounterActivity extends Activity implements
 		    		created_custom_button = data.getParcelableExtra("Custom_Button");
 		    		customButtons = holder.getCustomButtons();
 		    		customButtons.add(created_custom_button);
-		    		//CustomParent.setArrayChildren(customButtons);
+		    		myCustomAdaptor.notifyDataSetChanged();
+		    		
 			    }
 		    	break;
 		    case (2):
 		    	if (resultCode == Activity.RESULT_OK) 
 			    { 
-		    		
+		    		holder.renameButton(ItemSelectedforContextMenuOption, data.getStringExtra("newName"));
+                    holder.changeColorofButton(ItemSelectedforContextMenuOption, data.getIntExtra("newColor", 0));
+                    holder.changeSoundofButton(ItemSelectedforContextMenuOption, data.getIntExtra("newSound", 0));
+		    		manager.updateButtonHolder(holder);
+		    		myCustomAdaptor.notifyDataSetChanged();
 			    }
 		    	break;
 		    	

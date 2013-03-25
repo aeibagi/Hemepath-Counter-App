@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import edu.sjsu.hemepathcounter.Custom_Modify_ButtonActivity;
 
 public class ButtonHolder implements JSONable {
 	ArrayList<CellButton> defaultButtons;
@@ -53,7 +54,105 @@ public class ButtonHolder implements JSONable {
 	public void addCustomButton(CellButton newButton) {
 		customButtons.add(newButton);
 	}
+	
+	public void remove(CellButton ButtonToRemove)
+	{
+		if(defaultButtons.contains(ButtonToRemove))
+		{
+			defaultButtons.remove(defaultButtons.indexOf(ButtonToRemove));
+		}
+		else if(highYieldButtons.contains(ButtonToRemove))
+		{
+			highYieldButtons.remove(highYieldButtons.indexOf(ButtonToRemove));
+		}
+		else if(midYieldButtons.contains(ButtonToRemove))
+		{
+			midYieldButtons.remove(midYieldButtons.indexOf(ButtonToRemove));
+		}
+		else if(lowYieldButtons.contains(ButtonToRemove))
+		{
+			lowYieldButtons.remove(lowYieldButtons.indexOf(ButtonToRemove));
+		}
+		else if(customButtons.contains(ButtonToRemove))
+		{
+			customButtons.remove(customButtons.indexOf(ButtonToRemove));
+		}
+	}
+	
+	public void renameButton(CellButton itemSelectedforContextMenuOption,
+			String newName) {
+		
+		if(defaultButtons.contains(itemSelectedforContextMenuOption))
+		{
+			defaultButtons.get(defaultButtons.indexOf(itemSelectedforContextMenuOption)).setName(newName);
+		}
+		else if(highYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			highYieldButtons.get(highYieldButtons.indexOf(itemSelectedforContextMenuOption)).setName(newName);
+		}
+		else if(midYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			midYieldButtons.get(midYieldButtons.indexOf(itemSelectedforContextMenuOption)).setName(newName);
+		}
+		else if(lowYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			lowYieldButtons.get(lowYieldButtons.indexOf(itemSelectedforContextMenuOption)).setName(newName);
+		}
+		else if(customButtons.contains(itemSelectedforContextMenuOption))
+		{
+			customButtons.get(customButtons.indexOf(itemSelectedforContextMenuOption)).setName(newName);
+		}
+	}
+	
+	public void changeSoundofButton(CellButton itemSelectedforContextMenuOption,
+			Integer newSound) {
+		
+		if(defaultButtons.contains(itemSelectedforContextMenuOption))
+		{
+			defaultButtons.get(defaultButtons.indexOf(itemSelectedforContextMenuOption)).setSound(newSound);
+		}
+		else if(highYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			highYieldButtons.get(highYieldButtons.indexOf(itemSelectedforContextMenuOption)).setSound(newSound);
+		}
+		else if(midYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			midYieldButtons.get(midYieldButtons.indexOf(itemSelectedforContextMenuOption)).setSound(newSound);
+		}
+		else if(lowYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			lowYieldButtons.get(lowYieldButtons.indexOf(itemSelectedforContextMenuOption)).setSound(newSound);
+		}
+		else if(customButtons.contains(itemSelectedforContextMenuOption))
+		{
+			customButtons.get(customButtons.indexOf(itemSelectedforContextMenuOption)).setSound(newSound);
+		}
+	}
 
+	public void changeColorofButton(CellButton itemSelectedforContextMenuOption,
+			Integer newColor) {
+		
+		if(defaultButtons.contains(itemSelectedforContextMenuOption))
+		{
+			defaultButtons.get(defaultButtons.indexOf(itemSelectedforContextMenuOption)).setColor(newColor);
+		}
+		else if(highYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			highYieldButtons.get(highYieldButtons.indexOf(itemSelectedforContextMenuOption)).setColor(newColor);
+		}
+		else if(midYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			midYieldButtons.get(midYieldButtons.indexOf(itemSelectedforContextMenuOption)).setColor(newColor);
+		}
+		else if(lowYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			lowYieldButtons.get(lowYieldButtons.indexOf(itemSelectedforContextMenuOption)).setColor(newColor);
+		}
+		else if(customButtons.contains(itemSelectedforContextMenuOption))
+		{
+			customButtons.get(customButtons.indexOf(itemSelectedforContextMenuOption)).setColor(newColor);
+		}
+	}
 	@Override
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = new JSONObject();

@@ -93,6 +93,20 @@ public class CellButton implements Parcelable, JSONable {
 		return count;
 	}
 
+	public void setName(String newName) {
+		name = newName;
+	}
+	
+	public void setSound(Integer newSound)
+	{
+		sound_id = newSound;
+	}
+	
+	public void setColor(Integer newColor)
+	{
+		color_id = newColor;
+	}
+
 	@Override
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = new JSONObject();
