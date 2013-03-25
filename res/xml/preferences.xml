@@ -7,11 +7,24 @@
         android:order="0"
         android:persistent="true"
         android:summary="The sound should be muted."
-        android:title="Mute" />
+        android:title="Mute"
+        android:disableDependentsState="true" />
+
+    <ListPreference
+        android:defaultValue="20"
+        android:dependency="pref_mute"
+        android:entries="@array/notify"
+        android:entryValues="@array/notifyValues"
+        android:key="pref_notify"
+        android:order="1"
+        android:persistent="true"
+        android:summary="Make a sound after X clicks per button."
+        android:title="Notify at..." />
+
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="pref_export"
-        android:order="1"
+        android:order="2"
         android:persistent="true"
         android:summary="Whether or not to export the data"
         android:title="Export" />
@@ -22,28 +35,28 @@
         android:dialogTitle="Email"
         android:key="pref_email"
         android:negativeButtonText="Cancel"
-        android:order="2"
+        android:order="3"
         android:persistent="true"
         android:title="Set email address" />
 
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="pref_timestamp"
-        android:order="3"
+        android:order="4"
         android:persistent="true"
         android:summary="Whether or not to include a timestamp with the data."
         android:title="Include Timestamp" />
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="pref_show_percent"
-        android:order="4"
+        android:order="5"
         android:persistent="true"
         android:summary="Whether or not to show percentages on the buttons&apos; faces."
         android:title="Show %" />
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="pref_show_num"
-        android:order="5"
+        android:order="6"
         android:persistent="true"
         android:summary="Whether or not to show counts on the buttons&apos; faces."
         android:title="Show #" />

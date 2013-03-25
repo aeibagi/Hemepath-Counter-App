@@ -9,6 +9,7 @@ import android.util.Log;
 public class PreferencesActivity extends Activity {
 
 	public static final String MUTE = "pref_mute";
+	public static final String NOTIFY = "pref_notify";
 	public static final String EMAIL = "pref_email";
 	public static final String EXPORT = "pref_export";
 	public static final String TIMESTAMP = "pref_timestamp";
@@ -33,6 +34,9 @@ public class PreferencesActivity extends Activity {
 
 		String settingsDebugMessage = "Mute: "
 				+ preferences.getBoolean(PreferencesActivity.MUTE, false)
+				+ "\n";
+		settingsDebugMessage = "Notify at: "
+				+ preferences.getString(NOTIFY, "20")
 				+ "\n";
 		settingsDebugMessage += "Export: "
 				+ preferences.getBoolean(PreferencesActivity.EXPORT, false)

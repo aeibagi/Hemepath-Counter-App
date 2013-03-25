@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="notify">
+        <item name="1">1 Click</item>
+        <item name="10">10 Clicks</item>
+        <item name="20">20 Clicks</item>
+        <item name="50">50 Clicks</item>
+        <item name="100">100 Clicks</item>
+    </string-array>
+    <string-array name="notifyValues">
+        <item name="1">1</item>
+        <item name="10">10</item>
+        <item name="20">20</item>
+        <item name="50">50</item>
+        <item name="100">100</item>
+    </string-array>
+
+</resources>

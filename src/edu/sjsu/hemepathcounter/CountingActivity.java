@@ -3,6 +3,7 @@ package edu.sjsu.hemepathcounter;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -14,6 +15,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import edu.sjsu.hemepathcounter.adapter.CountingAdapter;
+import edu.sjsu.hemepathcounter.model.CellButton;
 import edu.sjsu.hemepathcounter.model.Counter;
 
 public class CountingActivity extends Activity {
@@ -23,13 +25,17 @@ public class CountingActivity extends Activity {
 	private ArrayList<Integer> mSequence;
 	private boolean muted;
 	private MediaPlayer player;
+	private int notify;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_counting);
-		muted = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
-				PreferencesActivity.MUTE, false);
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		muted = preferences.getBoolean(PreferencesActivity.MUTE, false);
+		notify = Integer.parseInt(preferences.getString(PreferencesActivity.NOTIFY, "20"));
+
 		// Loading data from database depends New Counting or Favorites
 		mData = getIntent().getParcelableExtra("counter");
 		mAdapter = new CountingAdapter(this, mData);
@@ -41,18 +47,17 @@ public class CountingActivity extends Activity {
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
+				CellButton button = mData.getCells().get(position);
+				button.incrementCount();
 				// play sound ....
-				if (!muted) {
-					if(player != null)
-					{
+				if (!muted && (button.getCount() % notify == 0)) {
+					if (player != null) {
 						player.release();
 					}
-				    player = MediaPlayer.create(
-							CountingActivity.this,
-							mData.getCells().get(position).getSound());
+					player = MediaPlayer.create(CountingActivity.this, mData
+							.getCells().get(position).getSound());
 					player.start();
 				}
-				mData.getCells().get(position).incrementCount();
 				mData.incrementTotal();
 				mSequence.add(position);
 				mAdapter.notifyDataSetChanged();
