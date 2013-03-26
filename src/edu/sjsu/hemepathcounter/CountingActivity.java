@@ -3,13 +3,15 @@ package edu.sjsu.hemepathcounter;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -18,7 +20,7 @@ import edu.sjsu.hemepathcounter.adapter.CountingAdapter;
 import edu.sjsu.hemepathcounter.model.CellButton;
 import edu.sjsu.hemepathcounter.model.Counter;
 
-public class CountingActivity extends Activity {
+public class CountingActivity extends Activity implements View.OnClickListener{
 
 	private Counter mData;
 	private CountingAdapter mAdapter;
@@ -63,41 +65,22 @@ public class CountingActivity extends Activity {
 				mAdapter.notifyDataSetChanged();
 			}
 		});
-
+		
 		// Undo button
 		Button btnUndo = (Button) findViewById(R.id.counting_activity_undo);
-		btnUndo.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (mSequence.size() > 0) {
-					int position = mSequence.get(mSequence.size() - 1);
-					mSequence.remove(mSequence.size() - 1);
-					mData.getCells().get(position).decrementCount();
-					mData.decrementTotal();
-					mAdapter.notifyDataSetChanged();
-				}
-			}
-		});
+		btnUndo.setOnClickListener(this);
 
 		// Save button
 		Button btnSave = (Button) findViewById(R.id.counting_activity_save);
-		btnSave.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// Save mData to file.
-			}
-		});
+		btnSave.setOnClickListener(this);
 		
 		//Clear button
 		Button btnClear = (Button) findViewById(R.id.counting_activity_clear);
-		btnClear.setOnClickListener(new OnClickListener() {			
-			@Override
-			public void onClick(View v) {				
-				mSequence.clear();
-				mData.reset();
-				mAdapter.notifyDataSetChanged();
-			}
-		});
+		btnClear.setOnClickListener(this);
+		
+		//Main button
+		Button btnMain = (Button) findViewById(R.id.counting_activity_main);
+		btnMain.setOnClickListener(this);
 	}
 
 	@Override
@@ -105,6 +88,57 @@ public class CountingActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.counting, menu);
 		return true;
+	}
+
+	@Override
+	public void onClick(View v) {
+		Intent intent;
+		AlertDialog.Builder builder;
+		
+		switch (v.getId()) {
+			case R.id.counting_activity_undo:
+				if (mSequence.size() > 0) {
+					int position = mSequence.get(mSequence.size() - 1);
+					mSequence.remove(mSequence.size() - 1);
+					mData.getCells().get(position).decrementCount();
+					mData.decrementTotal();
+					mAdapter.notifyDataSetChanged();
+				}
+				break;
+			case R.id.counting_activity_clear:
+				builder = new AlertDialog.Builder(this);
+		        builder.setMessage(R.string.counting_activity_clear_title)
+		               .setPositiveButton(R.string.counting_activity_clear, new DialogInterface.OnClickListener() {
+		                   public void onClick(DialogInterface dialog, int id) {
+		                	   mSequence.clear();
+		                	   mData.reset();
+		                	   mAdapter.notifyDataSetChanged();
+		                   }
+		               })
+		               .setNegativeButton(R.string.counting_activity_cancel, new DialogInterface.OnClickListener() {
+		                   public void onClick(DialogInterface dialog, int id) {
+		                       // User cancelled the dialog
+		                   }
+		               });
+		        builder.show();
+				break;
+			case R.id.counting_activity_save:
+				//get name for the counter after finishing counting
+								
+				finish();
+				intent = new Intent(CountingActivity.this, DisplayDataActivity.class);
+				intent.putExtra("counter", mData);
+				startActivity(intent);				
+				break;
+			case R.id.counting_activity_main:
+				finish();
+				intent = new Intent(CountingActivity.this, MainActivity.class);
+				startActivity(intent);				
+				break;
+			default:
+				break;
+		}
+		
 	}
 
 }

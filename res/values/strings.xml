@@ -120,8 +120,6 @@
     <string name="Dendritic_cells_abbr">DCs</string>
     <string name="NK_cells">NK_cells</string>
     <string name="NK_cells_abbr">NK</string>
-    
-    
     <string name="save">Save</string>
     <string name="title_activity_counting">CountingActivity</string>
     <string name="title_activity_preferences">PreferencesActivity</string>
@@ -134,11 +132,15 @@
     <string name="create_button">Create</string>
     <string name="Exit_custome_button">Exit</string>
 
-    <!-- Counting_Activity -->    
+    <!-- Counting_Activity -->
     <string name="counting_activity_undo">Undo</string>
     <string name="counting_activity_clear">Clear</string>
     <string name="counting_activity_save">Save</string>
-        
+    <string name="counting_activity_main">Main</string>
+    <string name="counting_activity_clear_title">Please confirm to clear all data!</string>
+    <string name="counting_activity_cancel">Cancel</string>
     <string name="search_counters_hint">Search Counters..</string>
+    <string name="title_activity_display_data">DisplayDataActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

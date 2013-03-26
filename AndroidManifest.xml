@@ -43,6 +43,10 @@
             android:name="edu.sjsu.hemepathcounter.Custom_Modify_ButtonActivity"
             android:label="@string/title_activity_custom__modify__button" >
         </activity>
+        <activity
+            android:name="edu.sjsu.hemepathcounter.DisplayDataActivity"
+            android:label="@string/title_activity_display_data" >
+        </activity>
     </application>
 
 </manifest>

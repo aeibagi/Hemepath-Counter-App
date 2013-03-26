@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import edu.sjsu.hemepathcounter.Custom_Modify_ButtonActivity;
 
 public class ButtonHolder implements JSONable {
 	ArrayList<CellButton> defaultButtons;
