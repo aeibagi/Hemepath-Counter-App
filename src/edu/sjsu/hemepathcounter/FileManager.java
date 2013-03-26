@@ -20,7 +20,7 @@ import edu.sjsu.hemepathcounter.model.Counter;
 import edu.sjsu.hemepathcounter.model.CounterHolder;
 import edu.sjsu.hemepathcounter.model.DataHolder;
 
-public class FileManager {
+public final class FileManager {
 	private final String dataHolderFileName = "dataHolderFile.dat";
 	private final String counterHolderFileName = "counterHolderFile.dat";
 	private final String buttonHolderFileName = "buttonHolderFile.dat";
@@ -29,12 +29,21 @@ public class FileManager {
 	private DataHolder dataHolder = null;
 	private ButtonHolder buttonHolder = null;
 	private Context context;
+	private static FileManager sInstance;
 
 	public FileManager(Context c) {
 		Log.d("FILE_MANGER", "Creating new FileManager.");
-		context = c;
+		context = c;		
 	}
 
+	public static synchronized FileManager getInstance(Context context) {
+        if (sInstance == null) {
+            sInstance = new FileManager(context);
+        }
+
+        return sInstance;
+    }  
+    
 	public CounterHolder getCounterHolder() {
 		// Load the counter holder if necessary
 		if (counterHolder == null) {

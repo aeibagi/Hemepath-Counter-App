@@ -108,8 +108,9 @@ public class NewCounterActivity extends Activity implements
 	}
 
 	private void initializeCells() {
-
-		manager = new FileManager(getApplicationContext());
+		//manager = new FileManager(getApplicationContext());
+		
+		manager = FileManager.getInstance(getApplicationContext());	
 		holder = manager.getButtonHolder();
 
 		parent1.setTitle(getResources().getString(R.string.Default_Basic_Panel));
