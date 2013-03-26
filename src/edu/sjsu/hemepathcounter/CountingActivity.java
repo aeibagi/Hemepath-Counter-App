@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,7 +24,7 @@ import edu.sjsu.hemepathcounter.model.Data;
 import edu.sjsu.hemepathcounter.model.DataHolder;
 
 public class CountingActivity extends Activity implements View.OnClickListener{
-
+	private static final String TAG = "CountingActivity";
 	private Counter mData;
 	private CountingAdapter mAdapter;
 	private ArrayList<Integer> mSequence;
@@ -34,6 +35,7 @@ public class CountingActivity extends Activity implements View.OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "Starting new Counting Activity.");
 		setContentView(R.layout.activity_counting);
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
@@ -107,11 +109,13 @@ public class CountingActivity extends Activity implements View.OnClickListener{
 				mAdapter.notifyDataSetChanged();				
 				break;
 			case R.id.counting_activity_clear:
+				Log.d(TAG, "Clear button clicked.");
 				if (mData.getTotal() == 0) break;
 				builder = new AlertDialog.Builder(this);
 		        builder.setMessage(R.string.counting_activity_clear_title)
 		               .setPositiveButton(R.string.counting_activity_clear, new DialogInterface.OnClickListener() {
 		                   public void onClick(DialogInterface dialog, int id) {
+		                	   Log.d(TAG, "Clearing Counting Activity.");
 		                	   mSequence.clear();
 		                	   mData.reset();
 		                	   mAdapter.notifyDataSetChanged();
@@ -120,13 +124,14 @@ public class CountingActivity extends Activity implements View.OnClickListener{
 		               .setNegativeButton(R.string.counting_activity_cancel, new DialogInterface.OnClickListener() {
 		                   public void onClick(DialogInterface dialog, int id) {
 		                       // User cancelled the dialog
+		                	   Log.d(TAG, "User cancelled clearing the Counting Activity.");
 		                   }
 		               });
 		        builder.show();
 				break;
 			case R.id.counting_activity_save:
 				//get name for the counter after finishing counting
-				
+				Log.d(TAG, "Creating Data Object and saving.");
 				//Save data to database
 				FileManager manager = FileManager.getInstance(getApplicationContext()); 
 				DataHolder mDataHolder = manager.getDataHolder();
@@ -140,6 +145,7 @@ public class CountingActivity extends Activity implements View.OnClickListener{
 				startActivity(intent);				
 				break;
 			case R.id.counting_activity_main:
+				Log.d(TAG, "Main Menu Button clicked.");
 				finish();
 				intent = new Intent(CountingActivity.this, MainActivity.class);
 				startActivity(intent);				

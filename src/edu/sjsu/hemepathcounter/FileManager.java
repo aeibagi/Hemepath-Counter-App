@@ -21,6 +21,7 @@ import edu.sjsu.hemepathcounter.model.CounterHolder;
 import edu.sjsu.hemepathcounter.model.DataHolder;
 
 public final class FileManager {
+	private static final String TAG = "FileManager";
 	private final String dataHolderFileName = "dataHolderFile.dat";
 	private final String counterHolderFileName = "counterHolderFile.dat";
 	private final String buttonHolderFileName = "buttonHolderFile.dat";
@@ -32,12 +33,12 @@ public final class FileManager {
 	private static FileManager sInstance;
 
 	private FileManager(Context c) {
-		Log.d("FILE_MANGER", "Creating new FileManager.");
+		Log.d(TAG, "Creating new FileManager.");
 		context = c;		
 	}
 
 	public static synchronized FileManager getInstance(Context context) {
-		Log.d("FILE_MANGER", "Getting FileManager.");
+		Log.d(TAG, "Getting FileManager.");
         if (sInstance == null) {
             sInstance = new FileManager(context);
         }
@@ -48,7 +49,7 @@ public final class FileManager {
 	public CounterHolder getCounterHolder() {
 		// Load the counter holder if necessary
 		if (counterHolder == null) {
-			Log.d("FILE_MANGER", "Loading counter from file.");
+			Log.d(TAG, "Loading counter from file.");
 			counterHolder = new CounterHolder();
 			try {
 				// Fill counterHolder
@@ -83,7 +84,7 @@ public final class FileManager {
 	}
 
 	private void createCounterHolderFile() {
-		Log.d("FILE_MANGER", "Creating counterHolder file.");
+		Log.d(TAG, "Creating counterHolder file.");
 		ArrayList<CellButton> buttonList1 = new ArrayList<CellButton>();
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Lymphocytes), context.getResources().getString(
@@ -213,7 +214,7 @@ public final class FileManager {
 	}
 
 	public void updateCounterHolder(CounterHolder newCounterHolder) {
-		Log.d("FILE_MANGER", "Updating CounterHolder file.");
+		Log.d(TAG, "Updating CounterHolder file.");
 		this.counterHolder = newCounterHolder;
 		try {
 			FileOutputStream fileOutput = context.openFileOutput(
@@ -221,7 +222,7 @@ public final class FileManager {
 			String json = newCounterHolder.toJSONObject().toString();
 			OutputStreamWriter writer = new OutputStreamWriter(fileOutput);
 			writer.write(json);
-			Log.d("FILE_MANGER", "Closing CounterHolder file.");
+			Log.d(TAG, "Closing CounterHolder file.");
 			writer.flush();
 			writer.close();
 			fileOutput.close();
@@ -240,7 +241,7 @@ public final class FileManager {
 	public DataHolder getDataHolder() {
 		// Load the data holder if necessary
 		if (dataHolder == null) {
-			Log.d("FILE_MANGER", "Loading dataHolder from file.");
+			Log.d(TAG, "Loading dataHolder from file.");
 			dataHolder = new DataHolder();
 			try {
 				// Fill dataHolder
@@ -274,12 +275,12 @@ public final class FileManager {
 	}
 
 	private void createDataHolderFile() {
-		Log.d("FILE_MANGER", "creating dataHolder file.");
+		Log.d(TAG, "creating dataHolder file.");
 		updateDataHolder(new DataHolder());
 	}
 
 	public void updateDataHolder(DataHolder newDataHolder) {
-		Log.d("FILE_MANGER", "Updating DataHolder file.");
+		Log.d(TAG, "Updating DataHolder file.");
 		this.dataHolder = newDataHolder;
 		try {
 			FileOutputStream fileOutput = context.openFileOutput(
@@ -287,7 +288,7 @@ public final class FileManager {
 			String json = newDataHolder.toJSONObject().toString();
 			OutputStreamWriter writer = new OutputStreamWriter(fileOutput);
 			writer.write(json);
-			Log.d("FILE_MANGER", "Closing CounterHolder file.");
+			Log.d(TAG, "Closing CounterHolder file.");
 			writer.flush();
 			writer.close();
 			fileOutput.close();
@@ -307,7 +308,7 @@ public final class FileManager {
 	public ButtonHolder getButtonHolder() {
 		// Load the button holder if necessary
 		if (buttonHolder == null) {
-			Log.d("FILE_MANGER", "Loading buttonHolder from file.");
+			Log.d(TAG, "Loading buttonHolder from file.");
 			buttonHolder = new ButtonHolder();
 			try {
 				// Fill buttonHolder
@@ -342,7 +343,7 @@ public final class FileManager {
 	}
 
 	private void createButtonHolderFile() {
-		Log.d("FILE_MANGER", "Creating ButtonHolder file.");
+		Log.d(TAG, "Creating ButtonHolder file.");
 		CellButton butt1 = new CellButton(context.getResources().getString(
 				R.string.Lymphocytes), context.getResources().getString(
 				R.string.Lymphocytes_abbr), R.raw.believe,
@@ -560,7 +561,7 @@ public final class FileManager {
 	}
 
 	public void updateButtonHolder(ButtonHolder newButtonHolder) {
-		Log.d("FILE_MANGER", "Updating ButtonHolder file.");
+		Log.d(TAG, "Updating ButtonHolder file.");
 		this.buttonHolder = newButtonHolder;
 		try {
 			FileOutputStream fileOutput = context.openFileOutput(
@@ -568,7 +569,7 @@ public final class FileManager {
 			String json = newButtonHolder.toJSONObject().toString();
 			OutputStreamWriter writer = new OutputStreamWriter(fileOutput);
 			writer.write(json);
-			Log.d("FILE_MANGER", "Closing CounterHolder file.");
+			Log.d(TAG, "Closing CounterHolder file.");
 			writer.flush();
 			writer.close();
 			fileOutput.close();

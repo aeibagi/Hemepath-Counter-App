@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -27,6 +28,7 @@ import edu.sjsu.hemepathcounter.model.CounterHolder;
  */
 public class CountersActivity extends Activity implements
 		AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
+	private static final String TAG = "CountersActivity";
 	private ListView CountersList;
 	private ArrayAdapter<Counter> CounterListAdaptor;
 	private EditText CountersSearchBox;
@@ -37,6 +39,7 @@ public class CountersActivity extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "Starting new Counters Activity.");
 		setContentView(R.layout.activity_counters);
 		initialize();
 		SetupSearchFilter();
@@ -100,8 +103,8 @@ public class CountersActivity extends Activity implements
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> arg0, View v, int position,
-			long id) {
+	public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
+		Log.d(TAG, "Counter Selected.");
 		ItemSelectedforContextMenuOption = (Counter) CountersList
 				.getItemAtPosition(position);
 		Intent i = new Intent(CountersActivity.this, CountingActivity.class);
@@ -114,6 +117,7 @@ public class CountersActivity extends Activity implements
 	@Override
 	public boolean onItemLongClick(AdapterView<?> arg0, View v, int position,
 			long id) {
+		Log.d(TAG, "Counter selected with long-click.");
 		ItemSelectedforContextMenuOption = (Counter) CountersList
 				.getItemAtPosition(position);
 		registerForContextMenu(arg0);
@@ -135,27 +139,29 @@ public class CountersActivity extends Activity implements
 			AlertDialog.Builder renameDialogBox = createRenameDialogBox();
 			renameDialogBox.show();
 		} else if (item.getTitle() == "Delete") {
-			AlertDialog quitDialogBox = createQuitDialogBox();
-			quitDialogBox.show();
+			AlertDialog deleteDialogBox = createDeleteDialogBox();
+			deleteDialogBox.show();
 		}
 		return true;
 	}
 
 	private AlertDialog.Builder createRenameDialogBox() {
+		Log.d(TAG, "Creating rename dialog.");
 		AlertDialog.Builder renameDialog = new AlertDialog.Builder(this);
 		renameDialog.setTitle("Rename");
 		renameDialog.setMessage("Rename  " + ItemSelectedforContextMenuOption
 				+ " to:");
 		renameDialog.setIcon(R.drawable.rename_icon);
 		final EditText newName = new EditText(this);
-		newName.setHint("Enter new file name");
+		newName.setHint("Enter new counter name");
 		renameDialog.setView(newName);
 		renameDialog.setPositiveButton("OK",
 				new DialogInterface.OnClickListener() {
 
 					public void onClick(DialogInterface dialog, int arg1) {
-						holder.renameCounter(ItemSelectedforContextMenuOption, newName
-								.getText().toString());
+						Log.d(TAG, "Saving Counters new name.");
+						holder.renameCounter(ItemSelectedforContextMenuOption,
+								newName.getText().toString());
 						manager.updateCounterHolder(holder);
 						CounterListAdaptor.clear();
 						updateCounterList();
@@ -167,6 +173,7 @@ public class CountersActivity extends Activity implements
 				new DialogInterface.OnClickListener() {
 
 					public void onClick(DialogInterface dialog, int arg1) {
+						Log.d(TAG, "NOT saving counters new name.");
 						dialog.dismiss();
 					}
 				});
@@ -174,7 +181,8 @@ public class CountersActivity extends Activity implements
 		return renameDialog;
 	}
 
-	private AlertDialog createQuitDialogBox() {
+	private AlertDialog createDeleteDialogBox() {
+		Log.d(TAG, "Creating delete dialog box.");
 		AlertDialog myQuittingDialogBox = new AlertDialog.Builder(this)
 				// set message, title, and icon
 				.setTitle("Delete")
@@ -188,6 +196,7 @@ public class CountersActivity extends Activity implements
 
 							public void onClick(DialogInterface dialog,
 									int whichButton) {
+								Log.d(TAG, "Deleting Counter.");
 								updateAdaptorListForRemove(ItemSelectedforContextMenuOption);
 								dialog.dismiss();
 							}
@@ -196,6 +205,7 @@ public class CountersActivity extends Activity implements
 
 				.setNegativeButton("No", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
+						Log.d(TAG, "NOT deleting Counter.");
 						dialog.dismiss();
 					}
 				}).create();
@@ -203,6 +213,7 @@ public class CountersActivity extends Activity implements
 	}
 
 	private void updateAdaptorListForRemove(Counter itemToRemove) {
+		Log.d(TAG, "Updating Adaptor.");
 		holder.remove(itemToRemove);
 		manager.updateCounterHolder(holder);
 		CounterListAdaptor.remove(itemToRemove);

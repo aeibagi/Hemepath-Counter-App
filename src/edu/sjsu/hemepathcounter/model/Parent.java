@@ -1,8 +1,7 @@
-package edu.sjsu.hemepathcounter;
+package edu.sjsu.hemepathcounter.model;
 
 import java.util.ArrayList;
 
-import edu.sjsu.hemepathcounter.model.CellButton;
 
 public class Parent {
     private String mTitle;

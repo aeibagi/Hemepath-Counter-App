@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class PreferencesActivity extends Activity {
-
+	private static final String TAG = "PreferencesActivity";
 	public static final String MUTE = "pref_mute";
 	public static final String NOTIFY = "pref_notify";
 	public static final String EMAIL = "pref_email";
@@ -19,6 +19,7 @@ public class PreferencesActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "Starting Preferences Activity.");
 
 		logCurrentSettings();
 
@@ -54,7 +55,7 @@ public class PreferencesActivity extends Activity {
 		settingsDebugMessage += "Show Num: "
 				+ preferences.getBoolean(PreferencesActivity.SHOW_NUM, true)
 				+ "\n";
-		Log.d("Preferences Activity", settingsDebugMessage);
+		Log.d(TAG, settingsDebugMessage);
 	}
 
 }

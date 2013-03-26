@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,7 +24,7 @@ import edu.sjsu.hemepathcounter.model.CellButton;
 
 public class Custom_Modify_ButtonActivity extends Activity implements
 		OnItemSelectedListener, View.OnClickListener {
-
+	private static final String TAG = "Custom_Modify_ButtonActivity";
 	private FileManager manager;
 	private ButtonHolder holder;
 	private ImageButton iB_Color_Green, iB_Color_orage, iB_blue_green_family_26878e,
@@ -56,6 +57,7 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "Starting new Custom Modify ButtonActivity");
 		setContentView(R.layout.activity_custom__modify__button);
 		modifiedButton = getIntent().getParcelableExtra("button");
 		mode = getIntent().getStringExtra("ModifyorCustom");
@@ -345,6 +347,7 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 			String name = enter_name_for_customModify_buttons.getText().toString().trim();
 			if (name.length() > 0) 
 			{
+				Log.d(TAG, "Saving newly created button.");
 				CellButton customCell = new CellButton(name, "cust",selectedSound, SelectedButtonBackground);
 				holder = manager.getButtonHolder();
 				holder.addCustomButton(customCell);
@@ -367,6 +370,7 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 			holder = manager.getButtonHolder();
 			if (ModifiedName.length() > 0) 
 			{
+				Log.d(TAG, "Passing back modified button.");
 				Intent intent = new Intent(Custom_Modify_ButtonActivity.this, NewCounterActivity.class);
 				intent.putExtra("Modified_button", true);
 				intent.putExtra("newName", ModifiedName);

@@ -8,7 +8,7 @@ import android.view.Menu;
 import edu.sjsu.hemepathcounter.model.*;
 
 public class DisplayDataActivity extends Activity {
-
+	private static final String TAG = "DisplayDataActivity";
 	private Data mData;
 
 	@Override
@@ -18,8 +18,7 @@ public class DisplayDataActivity extends Activity {
 
 		// Loading data from CountingActivity or DataActivity
 		mData = getIntent().getParcelableExtra("data");
-		Log.d("DisplayDataActivity",
-				"Displaying data with timestamp: " + mData.getTimestamp());
+		Log.d(TAG, "Displaying data with timestamp: " + mData.getTimestamp());
 
 	}
 

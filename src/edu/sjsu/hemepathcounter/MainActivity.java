@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,7 +28,7 @@ import edu.sjsu.hemepathcounter.model.CounterHolder;
  */
 public class MainActivity extends Activity implements View.OnClickListener,
 		AdapterView.OnItemClickListener {
-
+	private static final String TAG = "MainActivity";
 	private ListView favoritesListView;
 	private ArrayAdapter<Counter> adapter;
 	private Button counterButton, newButton, preferenceButton, dataButton;
@@ -38,6 +39,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "Starting Main Activity");
 		setContentView(R.layout.activity_main);
 		initialize();
 
@@ -88,6 +90,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
 		// Handle item selection
 		switch (item.getItemId()) {
 		case R.id.menu_options_about:
+			Log.d(TAG, "Showing App About Dialog.");
 			DialogPrompt.showAppAboutDialog(this);
 			return true;
 
@@ -125,6 +128,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
+		Log.d(TAG, "Favorite Selected.");
 		itemSelected = (Counter) favoritesListView.getItemAtPosition(position);
 		Intent i = new Intent(MainActivity.this, CountingActivity.class);
 		i.putExtra("counter", itemSelected);
@@ -135,6 +139,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
 
 	@Override
 	protected void onRestart() {
+		Log.d(TAG, "Restarting Main Activity");
 		super.onRestart();
 		setupFavorites();
 	}

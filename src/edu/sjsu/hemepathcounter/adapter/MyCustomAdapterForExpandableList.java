@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 import edu.sjsu.hemepathcounter.NewCounterActivity;
-import edu.sjsu.hemepathcounter.Parent;
 import edu.sjsu.hemepathcounter.R;
 import edu.sjsu.hemepathcounter.model.CellButton;
+import edu.sjsu.hemepathcounter.model.Parent;
 
 public class MyCustomAdapterForExpandableList extends BaseExpandableListAdapter {
  

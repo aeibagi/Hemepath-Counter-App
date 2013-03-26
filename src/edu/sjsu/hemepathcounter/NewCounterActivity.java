@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -25,6 +26,7 @@ import edu.sjsu.hemepathcounter.model.ButtonHolder;
 import edu.sjsu.hemepathcounter.model.CellButton;
 import edu.sjsu.hemepathcounter.model.Counter;
 import edu.sjsu.hemepathcounter.model.CounterHolder;
+import edu.sjsu.hemepathcounter.model.Parent;
 
 /**
  * 
@@ -33,8 +35,9 @@ import edu.sjsu.hemepathcounter.model.CounterHolder;
  * 
  */
 public class NewCounterActivity extends Activity implements
-		View.OnClickListener, ExpandableListView.OnChildClickListener, AdapterView.OnItemLongClickListener {
-
+		View.OnClickListener, ExpandableListView.OnChildClickListener,
+		AdapterView.OnItemLongClickListener {
+	private static final String TAG = "NewCounterActivity";
 	private Button ModifyButton, SaveButton, ClearButton, CustomButton,
 			mainMenu;
 	private ExpandableListView mExpandableList;
@@ -62,13 +65,13 @@ public class NewCounterActivity extends Activity implements
 	private Parent parent3 = new Parent();
 	private Parent parent4 = new Parent();
 	private Parent CustomParent = new Parent();
-	
-   private CellButton created_custom_button, ItemSelectedforContextMenuOption;
 
+	private CellButton created_custom_button, ItemSelectedforContextMenuOption;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "Creating new \"New Counter Activity\".");
 		setContentView(R.layout.activity_new_counter);
 		initialize();
 		initializeCells();
@@ -108,9 +111,7 @@ public class NewCounterActivity extends Activity implements
 	}
 
 	private void initializeCells() {
-		//manager = new FileManager(getApplicationContext());
-		
-		manager = FileManager.getInstance(getApplicationContext());	
+		manager = FileManager.getInstance(getApplicationContext());
 		holder = manager.getButtonHolder();
 
 		parent1.setTitle(getResources().getString(R.string.Default_Basic_Panel));
@@ -160,9 +161,11 @@ public class NewCounterActivity extends Activity implements
 
 		switch (v.getId()) {
 		case R.id.Button_New_counters_backTo_MainMenu:
+			Log.d(TAG, "Main Menu Button Selected.");
 			finish();
 			break;
 		case R.id.Button_Modify:
+			Log.d(TAG, "Modify Button Selected.");
 			Intent intent = new Intent(NewCounterActivity.this,
 					Custom_Modify_ButtonActivity.class);
 			intent.putExtra("button", userSelection.get(0));
@@ -170,15 +173,18 @@ public class NewCounterActivity extends Activity implements
 			startActivityForResult(intent, 2);
 			break;
 		case R.id.Button_Clear:
+			Log.d(TAG, "Clear Button Selected.");
 			ClearEverything();
 			break;
 		case R.id.Button_Custom:
+			Log.d(TAG, "Custom Button Selected.");
 			Intent intent2 = new Intent(NewCounterActivity.this,
 					Custom_Modify_ButtonActivity.class);
 			intent2.putExtra("ModifyorCustom", "Custom");
 			startActivityForResult(intent2, 1);
 			break;
 		case R.id.Button_Save:
+			Log.d(TAG, "Save Button Selected.");
 			String name = editBox_enter_name.getText().toString().trim();
 			if (name.length() > 0) {
 				if (!userSelection.isEmpty()) {
@@ -238,6 +244,7 @@ public class NewCounterActivity extends Activity implements
 
 	@SuppressLint("NewApi")
 	private void ClearEverything() {
+		Log.d(TAG, "Clearing everything.");
 		userSelection.clear();
 		ChildStatus.clear();
 		arrayParents.clear();
@@ -249,15 +256,15 @@ public class NewCounterActivity extends Activity implements
 
 	}
 
-	
 	@Override
 	public boolean onItemLongClick(AdapterView<?> arg0, View v, int position,
 			long id) {
-		ItemSelectedforContextMenuOption = (CellButton) mExpandableList.getItemAtPosition(position);
+		ItemSelectedforContextMenuOption = (CellButton) mExpandableList
+				.getItemAtPosition(position);
 		registerForContextMenu(arg0);
 		return false;
 	}
-	
+
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
@@ -266,7 +273,7 @@ public class NewCounterActivity extends Activity implements
 		menu.add(0, v.getId(), 0, "Edit");
 		menu.add(0, v.getId(), 0, "Delete");
 	}
-	
+
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		if (item.getTitle() == "Edit") {
@@ -278,50 +285,50 @@ public class NewCounterActivity extends Activity implements
 		return true;
 	}
 
-
-	private void EditButton() 
-	{
+	private void EditButton() {
 		Intent intent = new Intent(NewCounterActivity.this,
 				Custom_Modify_ButtonActivity.class);
 		intent.putExtra("button", ItemSelectedforContextMenuOption);
 		intent.putExtra("ModifyorCustom", "Modify");
 		startActivityForResult(intent, 2);
 	}
-	
+
 	private AlertDialog createQuitDialogBox() {
 		AlertDialog myQuittingDialogBox = new AlertDialog.Builder(this)
-		// set message, title, and icon
-		.setTitle("Delete")
-		.setMessage(
-				"Do you want to Delete "
-						+ ItemSelectedforContextMenuOption.getName() + "?")
-		.setIcon(R.drawable.delete_icon)
+				// set message, title, and icon
+				.setTitle("Delete")
+				.setMessage(
+						"Do you want to Delete "
+								+ ItemSelectedforContextMenuOption.getName()
+								+ "?")
+				.setIcon(R.drawable.delete_icon)
 
-		.setPositiveButton("Yes",
-				new DialogInterface.OnClickListener() {
+				.setPositiveButton("Yes",
+						new DialogInterface.OnClickListener() {
 
-					public void onClick(DialogInterface dialog,
-							int whichButton) {
-						updateExpandableListAdaptorListForRemove(ItemSelectedforContextMenuOption);
+							public void onClick(DialogInterface dialog,
+									int whichButton) {
+								updateExpandableListAdaptorListForRemove(ItemSelectedforContextMenuOption);
+								dialog.dismiss();
+							}
+
+						})
+
+				.setNegativeButton("No", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
 						dialog.dismiss();
 					}
-
-				})
-
-		.setNegativeButton("No", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
-			}
-		}).create();
+				}).create();
 		return myQuittingDialogBox;
 	}
 
-
-	private void updateExpandableListAdaptorListForRemove(CellButton itemToRemove) {
+	private void updateExpandableListAdaptorListForRemove(
+			CellButton itemToRemove) {
 		holder.remove(itemToRemove);
 		manager.updateButtonHolder(holder);
 		myCustomAdaptor.notifyDataSetChanged();
 	}
+
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -331,31 +338,35 @@ public class NewCounterActivity extends Activity implements
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		Log.d(TAG, "Recieving result.");
 		super.onActivityResult(requestCode, resultCode, data);
-		
-		switch(requestCode)
-		{ 
-		    case (1):
-		    	if (resultCode == Activity.RESULT_OK) 
-			    { 
-		    		created_custom_button = data.getParcelableExtra("Custom_Button");
-		    		customButtons = holder.getCustomButtons();
-		    		customButtons.add(created_custom_button);
-		    		myCustomAdaptor.notifyDataSetChanged();
-		    		
-			    }
-		    	break;
-		    case (2):
-		    	if (resultCode == Activity.RESULT_OK) 
-			    { 
-		    		holder.renameButton(ItemSelectedforContextMenuOption, data.getStringExtra("newName"));
-                    holder.changeColorofButton(ItemSelectedforContextMenuOption, data.getIntExtra("newColor", 0));
-                    holder.changeSoundofButton(ItemSelectedforContextMenuOption, data.getIntExtra("newSound", 0));
-		    		manager.updateButtonHolder(holder);
-		    		myCustomAdaptor.notifyDataSetChanged();
-			    }
-		    	break;
-		    	
+
+		switch (requestCode) {
+		case (1):
+			if (resultCode == Activity.RESULT_OK) {
+				Log.d(TAG, "Adding created custom button.");
+				created_custom_button = data
+						.getParcelableExtra("Custom_Button");
+				customButtons = holder.getCustomButtons();
+				customButtons.add(created_custom_button);
+				myCustomAdaptor.notifyDataSetChanged();
+
+			}
+			break;
+		case (2):
+			if (resultCode == Activity.RESULT_OK) {
+				Log.d(TAG, "Changing already present button.");
+				holder.renameButton(ItemSelectedforContextMenuOption,
+						data.getStringExtra("newName"));
+				holder.changeColorofButton(ItemSelectedforContextMenuOption,
+						data.getIntExtra("newColor", 0));
+				holder.changeSoundofButton(ItemSelectedforContextMenuOption,
+						data.getIntExtra("newSound", 0));
+				manager.updateButtonHolder(holder);
+				myCustomAdaptor.notifyDataSetChanged();
+			}
+			break;
+
 		}
 	}
 
