@@ -142,5 +142,6 @@
     <string name="search_counters_hint">Search Counters..</string>
     <string name="title_activity_display_data">DisplayDataActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_modify_counter">ModifyCounterActivity</string>
 
 </resources>
