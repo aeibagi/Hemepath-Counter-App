@@ -87,6 +87,17 @@ public class CountingActivity extends Activity {
 				// Save mData to file.
 			}
 		});
+		
+		//Clear button
+		Button btnClear = (Button) findViewById(R.id.counting_activity_clear);
+		btnClear.setOnClickListener(new OnClickListener() {			
+			@Override
+			public void onClick(View v) {				
+				mSequence.clear();
+				mData.reset();
+				mAdapter.notifyDataSetChanged();
+			}
+		});
 	}
 
 	@Override

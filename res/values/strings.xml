@@ -134,9 +134,11 @@
     <string name="create_button">Create</string>
     <string name="Exit_custome_button">Exit</string>
 
-    <!-- Counting_Activity -->
-    <string name="counting_activity_save">Save</string>
+    <!-- Counting_Activity -->    
     <string name="counting_activity_undo">Undo</string>
+    <string name="counting_activity_clear">Clear</string>
+    <string name="counting_activity_save">Save</string>
+        
     <string name="search_counters_hint">Search Counters..</string>
 
 </resources>

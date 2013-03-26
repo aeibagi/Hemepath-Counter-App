@@ -21,6 +21,10 @@ public class CellButton implements Parcelable, JSONable {
 		count = 0;
 	}
 
+	public void reset() {
+		count = 0;
+	}
+	
 	public CellButton(Parcel in) {
 		readFromParcel(in);
 		count = 0;

@@ -22,18 +22,65 @@
 	    android:stretchMode="columnWidth"
 	    android:gravity="center"/>
     
-    <Button
-        android:id="@+id/counting_activity_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/counting_activity_save"
-        />
-    
-    <Button
-        android:id="@+id/counting_activity_undo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/counting_activity_undo"
-        />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal" >
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_marginLeft="4dip"
+            android:layout_marginRight="4dip"
+            android:background="?android:attr/dividerVertical"
+            android:layout_alignParentTop="true"/>
+        
+        <Button
+	        android:id="@+id/counting_activity_undo"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+	        android:text="@string/counting_activity_undo"         
+            android:background="?android:attr/selectableItemBackground"  />
+        
+        <View
+            android:id="@+id/counting_activity_picker_helper1"
+            android:layout_width="1dip"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/counting_activity_undo"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dip"
+            android:layout_marginTop="4dip"
+            android:background="?android:attr/dividerVertical" />
+        
+        <Button
+	        android:id="@+id/counting_activity_clear"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/counting_activity_picker_helper1"	      
+            android:text="@string/counting_activity_clear"     
+            android:background="?android:attr/selectableItemBackground" />
+        
+        <View
+            android:id="@+id/counting_activity_picker_helper2"
+            android:layout_width="1dip"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/counting_activity_clear"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dip"
+            android:layout_marginTop="4dip"
+            android:background="?android:attr/dividerVertical" />
+        
+	    <Button
+	        android:id="@+id/counting_activity_save"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/counting_activity_picker_helper2"	        
+	        android:text="@string/counting_activity_save"
+	        android:background="?android:attr/selectableItemBackground" />	    	    
 
+    </RelativeLayout>
 </LinearLayout>
