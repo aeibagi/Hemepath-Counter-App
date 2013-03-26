@@ -63,7 +63,6 @@ public class Counter implements Parcelable, JSONable {
 
 	@SuppressWarnings("unchecked")
 	private void readFromParcel(Parcel in) {
-
 		buttons = in.createTypedArrayList(CellButton.CREATOR);
 		total = in.readInt();
 		name = in.readString();

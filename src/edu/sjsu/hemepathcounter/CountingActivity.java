@@ -19,6 +19,7 @@ import android.widget.GridView;
 import edu.sjsu.hemepathcounter.adapter.CountingAdapter;
 import edu.sjsu.hemepathcounter.model.CellButton;
 import edu.sjsu.hemepathcounter.model.Counter;
+import edu.sjsu.hemepathcounter.model.DataHolder;
 
 public class CountingActivity extends Activity implements View.OnClickListener{
 
@@ -97,15 +98,15 @@ public class CountingActivity extends Activity implements View.OnClickListener{
 		
 		switch (v.getId()) {
 			case R.id.counting_activity_undo:
-				if (mSequence.size() > 0) {
-					int position = mSequence.get(mSequence.size() - 1);
-					mSequence.remove(mSequence.size() - 1);
-					mData.getCells().get(position).decrementCount();
-					mData.decrementTotal();
-					mAdapter.notifyDataSetChanged();
-				}
+				if (mSequence.size() == 0) break;
+				int position = mSequence.get(mSequence.size() - 1);
+				mSequence.remove(mSequence.size() - 1);
+				mData.getCells().get(position).decrementCount();
+				mData.decrementTotal();
+				mAdapter.notifyDataSetChanged();				
 				break;
 			case R.id.counting_activity_clear:
+				if (mData.getTotal() == 0) break;
 				builder = new AlertDialog.Builder(this);
 		        builder.setMessage(R.string.counting_activity_clear_title)
 		               .setPositiveButton(R.string.counting_activity_clear, new DialogInterface.OnClickListener() {
@@ -124,10 +125,16 @@ public class CountingActivity extends Activity implements View.OnClickListener{
 				break;
 			case R.id.counting_activity_save:
 				//get name for the counter after finishing counting
-								
+				
+				//Save data to database
+				FileManager manager = FileManager.getInstance(getApplicationContext()); 
+				DataHolder mDataHolder = manager.getDataHolder();
+				mDataHolder.addData(mData);
+				manager.updateDataHolder(mDataHolder);
+				
 				finish();
 				intent = new Intent(CountingActivity.this, DisplayDataActivity.class);
-				intent.putExtra("counter", mData);
+				intent.putExtra("data", mData);
 				startActivity(intent);				
 				break;
 			case R.id.counting_activity_main:
