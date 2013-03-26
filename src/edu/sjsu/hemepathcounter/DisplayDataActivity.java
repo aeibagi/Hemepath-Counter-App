@@ -2,22 +2,25 @@ package edu.sjsu.hemepathcounter;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 
 import edu.sjsu.hemepathcounter.model.*;
 
 public class DisplayDataActivity extends Activity {
 
-	private Counter mData;
-	
+	private Data mData;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_display_data);
-		
+
 		// Loading data from CountingActivity or DataActivity
-		mData = getIntent().getParcelableExtra("counter");
-		
+		mData = getIntent().getParcelableExtra("data");
+		Log.d("DisplayDataActivity",
+				"Displaying data with timestamp: " + mData.getTimestamp());
+
 	}
 
 	@Override

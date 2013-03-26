@@ -49,7 +49,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
 
 	private void setupFavorites() {
 		adapter.clear();
-		manager = new FileManager(getApplicationContext());
+		manager = FileManager.getInstance(getApplicationContext());
 		holder = manager.getCounterHolder();
 		adapter.addAll(holder.getFavoriteCounters());
 		favoritesListView.setAdapter(adapter);

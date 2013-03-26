@@ -46,7 +46,7 @@ public class ModifyCounterActivity extends Activity implements View.OnClickListe
 	}
 
 	private void initiailize() {
-		manager = new FileManager(getApplicationContext());
+		manager = FileManager.getInstance(getApplicationContext());
 		myCounterHolder = manager.getCounterHolder();
 		
         finish_button = (Button) findViewById(R.id.btn_edit_counter_finish);

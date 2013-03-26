@@ -44,7 +44,7 @@ public class CountersActivity extends Activity implements
 	}
 
 	private void initialize() {
-		manager = new FileManager(getApplicationContext());
+		manager = FileManager.getInstance(getApplicationContext());
 		holder = manager.getCounterHolder();
 		// initialize the Search box
 		CountersSearchBox = (EditText) findViewById(R.id.EditBox_Counters_Search);

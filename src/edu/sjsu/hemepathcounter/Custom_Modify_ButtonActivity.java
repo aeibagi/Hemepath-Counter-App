@@ -64,7 +64,7 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 
 	private void initialize() {
 
-		manager = new FileManager(getApplicationContext());
+		manager = FileManager.getInstance(getApplicationContext());
 		soundHolder.add(R.raw.arpeggio);
 		soundHolder.add(R.raw.attention);
 		soundHolder.add(R.raw.beep1);

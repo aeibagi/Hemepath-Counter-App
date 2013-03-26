@@ -31,16 +31,17 @@ public final class FileManager {
 	private Context context;
 	private static FileManager sInstance;
 
-	public FileManager(Context c) {
+	private FileManager(Context c) {
 		Log.d("FILE_MANGER", "Creating new FileManager.");
 		context = c;		
 	}
 
 	public static synchronized FileManager getInstance(Context context) {
+		Log.d("FILE_MANGER", "Getting FileManager.");
         if (sInstance == null) {
             sInstance = new FileManager(context);
         }
-
+        
         return sInstance;
     }  
     

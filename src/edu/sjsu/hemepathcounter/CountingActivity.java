@@ -19,6 +19,7 @@ import android.widget.GridView;
 import edu.sjsu.hemepathcounter.adapter.CountingAdapter;
 import edu.sjsu.hemepathcounter.model.CellButton;
 import edu.sjsu.hemepathcounter.model.Counter;
+import edu.sjsu.hemepathcounter.model.Data;
 import edu.sjsu.hemepathcounter.model.DataHolder;
 
 public class CountingActivity extends Activity implements View.OnClickListener{
@@ -129,12 +130,13 @@ public class CountingActivity extends Activity implements View.OnClickListener{
 				//Save data to database
 				FileManager manager = FileManager.getInstance(getApplicationContext()); 
 				DataHolder mDataHolder = manager.getDataHolder();
-				mDataHolder.addData(mData);
+				Data data = new Data(mData, getApplicationContext());
+				mDataHolder.addData(data);
 				manager.updateDataHolder(mDataHolder);
 				
 				finish();
 				intent = new Intent(CountingActivity.this, DisplayDataActivity.class);
-				intent.putExtra("data", mData);
+				intent.putExtra("data", data);
 				startActivity(intent);				
 				break;
 			case R.id.counting_activity_main:
