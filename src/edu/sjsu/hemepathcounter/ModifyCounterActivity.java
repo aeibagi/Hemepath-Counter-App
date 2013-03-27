@@ -36,7 +36,7 @@ public class ModifyCounterActivity extends Activity implements
 	private FileManager manager;
 	private CounterHolder myCounterHolder;
 	private Button finish_button;
-
+	private String originalName;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.d(TAG, "Starting new Modify Counter Activity");
@@ -66,6 +66,7 @@ public class ModifyCounterActivity extends Activity implements
 		if(mData != null)
 		{
 			modify_counter_name.setText(mData.getName());
+			originalName = mData.getName();
 		}
 
 	}
@@ -98,8 +99,11 @@ public class ModifyCounterActivity extends Activity implements
 					}
 				}
 				manager.updateCounterHolder(myCounterHolder);
-				Toast.makeText(this, "Counter has renmed to " + name,
+				if(!name.equals(originalName))
+				{
+					Toast.makeText(this, "Counter has renmed to " + name,
 						Toast.LENGTH_SHORT).show();
+				}
 				finish();
 			}
 			else 
@@ -107,8 +111,8 @@ public class ModifyCounterActivity extends Activity implements
 				Toast.makeText(this, "You did Not Enter a Name for the Counter",
 						Toast.LENGTH_SHORT).show();
 			}
-			
 			break;
+			
 		}
 
 	}
