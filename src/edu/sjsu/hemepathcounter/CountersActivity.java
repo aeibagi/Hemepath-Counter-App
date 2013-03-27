@@ -131,6 +131,7 @@ public class CountersActivity extends Activity implements
 		menu.setHeaderTitle("Options");
 		menu.add(0, v.getId(), 0, "Rename");
 		menu.add(0, v.getId(), 0, "Delete");
+		menu.add(0, v.getId(), 0, "Edit");
 	}
 
 	@Override
@@ -141,6 +142,11 @@ public class CountersActivity extends Activity implements
 		} else if (item.getTitle() == "Delete") {
 			AlertDialog deleteDialogBox = createDeleteDialogBox();
 			deleteDialogBox.show();
+		}
+		else if (item.getTitle() == "Edit") {
+			Intent i = new Intent(CountersActivity.this, ModifyCounterActivity.class);
+			i.putExtra("counter", ItemSelectedforContextMenuOption);
+			startActivity(i);
 		}
 		return true;
 	}

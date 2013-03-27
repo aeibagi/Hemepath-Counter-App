@@ -112,6 +112,10 @@ public class CellButton implements Parcelable, JSONable {
 	}
 
 	@Override
+	public String toString() {
+		return name;
+	}
+	@Override
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = new JSONObject();
 		jo.put("name", name);
