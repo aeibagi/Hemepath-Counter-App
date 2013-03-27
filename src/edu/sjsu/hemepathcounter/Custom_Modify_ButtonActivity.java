@@ -135,7 +135,7 @@ public class Custom_Modify_ButtonActivity extends Activity implements
         
         selectedButton = iB_Color_Green;
         selectedButton.setBackgroundResource(R.drawable.ib_border);
-        SelectedButtonBackground = R.id.iB_Color_Green;
+        SelectedButtonBackground = R.drawable.green;
         
         selectedSound = soundHolder.get(0);
         
@@ -350,8 +350,8 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 				Log.d(TAG, "Saving newly created button.");
 				CellButton customCell = new CellButton(name, "cust",selectedSound, SelectedButtonBackground);
 				holder = manager.getButtonHolder();
-				holder.addCustomButton(customCell);
-				manager.updateButtonHolder(holder);
+				//holder.addCustomButton(customCell);
+				//manager.updateButtonHolder(holder);
 				Intent intent = new Intent(Custom_Modify_ButtonActivity.this, NewCounterActivity.class);
 				intent.putExtra("Created_custom_button", true);
 				intent.putExtra("Custom_Button", customCell);

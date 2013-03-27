@@ -56,7 +56,9 @@ public class CountingActivity extends Activity implements View.OnClickListener{
 				CellButton button = mData.getCells().get(position);
 				button.incrementCount();
 				// play sound ....
-				if (!muted && (button.getCount() % notify == 0)) {
+				if (!muted && (button.getCount() % notify == 0))
+				//if(!muted)
+				{
 					if (player != null) {
 						player.release();
 					}

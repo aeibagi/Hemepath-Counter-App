@@ -129,29 +129,29 @@ public class CountersActivity extends Activity implements
 			ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		menu.setHeaderTitle("Options");
-		menu.add(0, v.getId(), 0, "Rename");
+		//menu.add(0, v.getId(), 0, "Rename");
 		menu.add(0, v.getId(), 0, "Delete");
 		menu.add(0, v.getId(), 0, "Edit");
 	}
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-		if (item.getTitle() == "Rename") {
+		/*if (item.getTitle() == "Rename") {
 			AlertDialog.Builder renameDialogBox = createRenameDialogBox();
 			renameDialogBox.show();
-		} else if (item.getTitle() == "Delete") {
+		} else*/ if (item.getTitle() == "Delete") {
 			AlertDialog deleteDialogBox = createDeleteDialogBox();
 			deleteDialogBox.show();
 		}
 		else if (item.getTitle() == "Edit") {
 			Intent i = new Intent(CountersActivity.this, ModifyCounterActivity.class);
 			i.putExtra("counter", ItemSelectedforContextMenuOption);
-			startActivity(i);
+			startActivityForResult(i, 1);
 		}
 		return true;
 	}
 
-	private AlertDialog.Builder createRenameDialogBox() {
+	/*private AlertDialog.Builder createRenameDialogBox() {
 		Log.d(TAG, "Creating rename dialog.");
 		AlertDialog.Builder renameDialog = new AlertDialog.Builder(this);
 		renameDialog.setTitle("Rename");
@@ -185,7 +185,7 @@ public class CountersActivity extends Activity implements
 				});
 
 		return renameDialog;
-	}
+	}*/
 
 	private AlertDialog createDeleteDialogBox() {
 		Log.d(TAG, "Creating delete dialog box.");
@@ -226,4 +226,11 @@ public class CountersActivity extends Activity implements
 		CountersList.setAdapter(CounterListAdaptor);
 	}
 
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		CounterListAdaptor.notifyDataSetChanged();
+	}
+	
 }

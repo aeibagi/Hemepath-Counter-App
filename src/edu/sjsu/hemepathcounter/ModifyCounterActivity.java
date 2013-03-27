@@ -1,8 +1,12 @@
 package edu.sjsu.hemepathcounter;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -15,6 +19,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+import edu.sjsu.hemepathcounter.model.ButtonHolder;
 import edu.sjsu.hemepathcounter.model.CellButton;
 import edu.sjsu.hemepathcounter.model.Counter;
 import edu.sjsu.hemepathcounter.model.CounterHolder;
@@ -42,7 +48,7 @@ public class ModifyCounterActivity extends Activity implements
 	private void initiailize() {
 		manager = FileManager.getInstance(getApplicationContext());
 		myCounterHolder = manager.getCounterHolder();
-
+		
 		finish_button = (Button) findViewById(R.id.btn_edit_counter_finish);
 		finish_button.setOnClickListener(this);
 
@@ -56,6 +62,11 @@ public class ModifyCounterActivity extends Activity implements
 				android.R.layout.simple_list_item_1, mData.getCells());
 
 		edit_buttoninCounters_list.setAdapter(modify_counter_adaptor);
+		
+		if(mData != null)
+		{
+			modify_counter_name.setText(mData.getName());
+		}
 
 	}
 
@@ -72,6 +83,31 @@ public class ModifyCounterActivity extends Activity implements
 		switch (v.getId()) {
 		case R.id.btn_edit_counter_finish:
 			Log.d(TAG, "Finishing Modify Counter Activity");
+			
+			String name = modify_counter_name.getText().toString().trim();
+			Counter c;
+			if (name.length() > 0) 
+			{
+				ArrayList<Counter> listofCounters = myCounterHolder.getCounters();
+				
+				for (int i = 0; i < listofCounters.size(); i++) {
+					c = listofCounters.get(i);
+					if(c.getName().equals(mData.getName()))
+					{
+						myCounterHolder.renameCounter(c, name);
+					}
+				}
+				manager.updateCounterHolder(myCounterHolder);
+				Toast.makeText(this, "Counter has renmed to " + name,
+						Toast.LENGTH_SHORT).show();
+				finish();
+			}
+			else 
+			{
+				Toast.makeText(this, "You did Not Enter a Name for the Counter",
+						Toast.LENGTH_SHORT).show();
+			}
+			
 			break;
 		}
 
@@ -110,12 +146,13 @@ public class ModifyCounterActivity extends Activity implements
 	}
 
 	private void EditButton() {
-		/*
-		 * Intent intent = new Intent(ModifyCounterActivity.this,
-		 * Custom_Modify_ButtonActivity.class); intent.putExtra("button",
-		 * ItemSelectedforContextMenuOption); intent.putExtra("ModifyorCustom",
-		 * "Modify"); startActivityForResult(intent, 1);
-		 */
+		
+		 Intent intent = new Intent(ModifyCounterActivity.this,
+		 Custom_Modify_ButtonActivity.class); 
+		 intent.putExtra("button",ItemSelectedforContextMenuOption); 
+		 intent.putExtra("ModifyorCustom","Modify");
+		 startActivityForResult(intent, 1);
+		 
 
 	}
 
@@ -150,7 +187,67 @@ public class ModifyCounterActivity extends Activity implements
 
 	private void updateExpandableListAdaptorListForRemove(
 			CellButton itemToRemove) {
+		Counter c;
+		ArrayList<CellButton> listofButtons;
+		mData.removeaButton(itemToRemove);
+		modify_counter_adaptor.notifyDataSetChanged();
+		ArrayList<Counter> listofCounters = myCounterHolder.getCounters();
+		
+		for (int i = 0; i < listofCounters.size(); i++) {
+			c = listofCounters.get(i);
+			if(c.getName().equals(mData.getName()))
+			{
+				listofButtons = c.getCells();
+				for (int j =0; j < listofButtons.size(); j++)
+				{
+					if(listofButtons.get(j).getName().equals(itemToRemove.getName()))
+					{
+						listofButtons.remove(j);
+					}
+				}
+			}
+		}
+		manager.updateCounterHolder(myCounterHolder);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		Log.d(TAG, "Recieving result.");
+		super.onActivityResult(requestCode, resultCode, data);
 
+		switch (requestCode) {
+		case (1):
+			if (resultCode == Activity.RESULT_OK) {
+				Log.d(TAG, "Changing already present button.");
+				
+				Counter c;
+				ArrayList<CellButton> listofButtons = null;
+				ArrayList<Counter> listofCounters = myCounterHolder.getCounters();
+				
+				for (int i = 0; i < listofCounters.size(); i++) {
+					c = listofCounters.get(i);
+					if(c.getName().equals(mData.getName()))
+					{
+						listofButtons = c.getCells();
+						for (int j =0; j < listofButtons.size(); j++)
+						{
+							if(listofButtons.get(j).getName().equals(ItemSelectedforContextMenuOption.getName()))
+							{
+								listofButtons.get(j).setName(data.getStringExtra("newName"));
+								listofButtons.get(j).setColor(data.getIntExtra("newColor", 0));
+								listofButtons.get(j).setSound(data.getIntExtra("newSound", 0));
+							}
+						}
+					}
+				}
+				modify_counter_adaptor.notifyDataSetChanged();
+				modify_counter_adaptor.clear();
+				modify_counter_adaptor.addAll(listofButtons);
+				manager.updateCounterHolder(myCounterHolder);
+			}
+			break;
+
+		}
 	}
 
 }

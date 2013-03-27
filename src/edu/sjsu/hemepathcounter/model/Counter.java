@@ -20,6 +20,10 @@ public class Counter implements Parcelable, JSONable {
 		this.buttons = inButtons;
 	}
 
+	public void removeaButton(CellButton itemToRemove)
+	{
+		buttons.remove(itemToRemove);
+	}
 	public void reset() {
 		total = 0;
 		for (CellButton cell : buttons)
