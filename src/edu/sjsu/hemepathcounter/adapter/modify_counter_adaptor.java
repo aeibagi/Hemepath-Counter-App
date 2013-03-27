@@ -68,7 +68,7 @@ public class modify_counter_adaptor extends BaseAdapter{
         //"i1" is the position of the child
         textView.setText(mCellData.get(i).getName());
  
-        preview_button.setText(textView.getText().toString());
+        preview_button.setText(mCellData.get(i).getAbbr());
         preview_button.setBackgroundResource(mCellData.get(i).getColor());
         final int pos1 = i;
 

@@ -129,7 +129,7 @@ public class MyCustomAdapterForExpandableList extends BaseExpandableListAdapter 
         //"i1" is the position of the child
         textView.setText(mParent.get(i).getArrayChildren().get(i1).getName());
  
-        preview_button.setText(textView.getText().toString());
+        preview_button.setText(mParent.get(i).getArrayChildren().get(i1).getAbbr());
         preview_button.setBackgroundResource(mParent.get(i).getArrayChildren().get(i1).getColor());
         final int pos1 = i;
         final int pos2 = i1;
