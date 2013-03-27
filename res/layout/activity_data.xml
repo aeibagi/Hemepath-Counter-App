@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundshape"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".DataActivity" >
+
+    <EditText
+        android:id="@+id/EditBox_Data_Search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/search_data_hint"
+        android:inputType="textVisiblePassword" />
+
+    <ListView
+        android:id="@+id/Data_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/view_data_button"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/EditBox_Data_Search" >
+    </ListView>
+
+    <Button
+        android:id="@+id/view_data_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Data_list"
+        android:layout_alignParentBottom="true"
+        android:text="@string/view_string" />
+
+    <Button
+        android:id="@+id/export_multiple_data_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/view_data_button"
+        android:layout_alignBottom="@+id/view_data_button"
+        android:layout_alignRight="@+id/Data_list"
+        android:text="@string/export_string" />
+
+</RelativeLayout>

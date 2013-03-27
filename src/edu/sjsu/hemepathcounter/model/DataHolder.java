@@ -40,4 +40,8 @@ public class DataHolder implements JSONable {
 		data.add(newData);
 	}
 
+	public void remove(Data itemToRemove) {
+		data.remove(itemToRemove);
+	}
+
 }

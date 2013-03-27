@@ -122,6 +122,8 @@ public class MainActivity extends Activity implements View.OnClickListener,
 			startActivity(intent);
 			break;
 		case R.id.data_button:
+			intent = new Intent(MainActivity.this, DataActivity.class);
+			startActivity(intent);
 			break;
 		}
 	}

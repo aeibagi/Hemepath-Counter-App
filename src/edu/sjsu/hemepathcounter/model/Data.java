@@ -2,9 +2,9 @@ package edu.sjsu.hemepathcounter.model;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map.Entry;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -64,9 +64,13 @@ public class Data implements Parcelable, JSONable {
 	@Override
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = new JSONObject();
+		JSONArray keyArray = new JSONArray(map.keySet());
+		JSONArray valueArray = new JSONArray();
 		for (String key : map.keySet()) {
-			jo.put(key, map.get(key).intValue());
+			valueArray.put(map.get(key));
 		}
+		jo.put("keyArray", keyArray);
+		jo.put("valueArray", valueArray);
 		jo.put("timestamp", timestamp);
 		return jo;
 	}
@@ -74,11 +78,10 @@ public class Data implements Parcelable, JSONable {
 	@Override
 	public void fromJSONObject(JSONObject src) throws JSONException {
 		map = new HashMap<String, Integer>();
-		@SuppressWarnings("unchecked")
-		Iterator<String> keys = src.keys();
-		while (keys.hasNext()) {
-			String key = keys.next();
-			map.put(key, src.getInt(key));
+		JSONArray jsonKeys = src.getJSONArray("keyArray");
+		JSONArray jsonValues = src.getJSONArray("valueArray");
+		for (int i = 0; i < jsonKeys.length(); i++) {
+			map.put((String) jsonKeys.get(i), (Integer) jsonValues.get(i));
 		}
 		timestamp = src.getString("timestamp");
 		total = 0;
@@ -123,4 +126,62 @@ public class Data implements Parcelable, JSONable {
 			return new Data[size];
 		}
 	};
+
+	public String toString() {
+		return timestamp;
+	}
+
+	public String getCSVasString() {
+		String csv = "";
+		csv += "Name";
+		csv += ',';
+		csv += "Count";
+		csv += '\n';
+
+		for (String key : map.keySet()) {
+			csv += key;
+			csv += ',';
+			csv += "" + map.get(key);
+			csv += '\n';
+		}
+		return csv;
+
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((map == null) ? 0 : map.hashCode());
+		result = prime * result
+				+ ((timestamp == null) ? 0 : timestamp.hashCode());
+		result = prime * result + total;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Data))
+			return false;
+		Data other = (Data) obj;
+		if (map == null) {
+			if (other.map != null)
+				return false;
+		} else if (!map.equals(other.map))
+			return false;
+		if (timestamp == null) {
+			if (other.timestamp != null)
+				return false;
+		} else if (!timestamp.equals(other.timestamp))
+			return false;
+		if (total != other.total)
+			return false;
+		return true;
+	}
+	
+	
 }
