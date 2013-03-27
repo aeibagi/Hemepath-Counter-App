@@ -2,7 +2,7 @@ package edu.sjsu.hemepathcounter;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
+import edu.sjsu.hemepathcounter.adapter.modify_counter_adaptor;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -27,6 +27,7 @@ import edu.sjsu.hemepathcounter.model.CounterHolder;
 
 public class ModifyCounterActivity extends Activity implements
 		View.OnClickListener, AdapterView.OnItemClickListener {
+	
 	private static final String TAG = "ModifyCounterActivity";
 	private EditText modify_counter_name;
 	private ListView edit_buttoninCounters_list;
@@ -37,6 +38,8 @@ public class ModifyCounterActivity extends Activity implements
 	private CounterHolder myCounterHolder;
 	private Button finish_button;
 	private String originalName;
+	
+	private modify_counter_adaptor counter_adaptor;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.d(TAG, "Starting new Modify Counter Activity");
@@ -57,11 +60,14 @@ public class ModifyCounterActivity extends Activity implements
 
 		edit_buttoninCounters_list = (ListView) findViewById(R.id.list_view_counters);
 		edit_buttoninCounters_list.setOnItemClickListener(this);
+		
+		counter_adaptor = new modify_counter_adaptor(ModifyCounterActivity.this, mData.getCells());
 
-		modify_counter_adaptor = new ArrayAdapter<CellButton>(this,
-				android.R.layout.simple_list_item_1, mData.getCells());
+		// please keep this
+		/*modify_counter_adaptor = new ArrayAdapter<CellButton>(this,
+				android.R.layout.simple_list_item_1, mData.getCells());*/
 
-		edit_buttoninCounters_list.setAdapter(modify_counter_adaptor);
+		edit_buttoninCounters_list.setAdapter(counter_adaptor);
 		
 		if(mData != null)
 		{
@@ -194,7 +200,9 @@ public class ModifyCounterActivity extends Activity implements
 		Counter c;
 		ArrayList<CellButton> listofButtons;
 		mData.removeaButton(itemToRemove);
-		modify_counter_adaptor.notifyDataSetChanged();
+		// please keep this
+		//modify_counter_adaptor.notifyDataSetChanged();
+		counter_adaptor.notifyDataSetChanged();
 		ArrayList<Counter> listofCounters = myCounterHolder.getCounters();
 		
 		for (int i = 0; i < listofCounters.size(); i++) {
@@ -244,9 +252,14 @@ public class ModifyCounterActivity extends Activity implements
 						}
 					}
 				}
-				modify_counter_adaptor.notifyDataSetChanged();
+				// please keep this
+				/*modify_counter_adaptor.notifyDataSetChanged();
 				modify_counter_adaptor.clear();
-				modify_counter_adaptor.addAll(listofButtons);
+				modify_counter_adaptor.addAll(listofButtons);*/
+				
+				counter_adaptor.notifyDataSetChanged();
+				counter_adaptor.clearData();
+				counter_adaptor.setData(listofButtons);
 				manager.updateCounterHolder(myCounterHolder);
 			}
 			break;

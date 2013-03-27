@@ -5,13 +5,19 @@ import java.util.ArrayList;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import edu.sjsu.hemepathcounter.Custom_Modify_ButtonActivity;
+import edu.sjsu.hemepathcounter.FileManager;
 import edu.sjsu.hemepathcounter.NewCounterActivity;
 import edu.sjsu.hemepathcounter.R;
+import edu.sjsu.hemepathcounter.model.ButtonHolder;
 import edu.sjsu.hemepathcounter.model.CellButton;
 import edu.sjsu.hemepathcounter.model.Parent;
 
@@ -20,10 +26,14 @@ public class MyCustomAdapterForExpandableList extends BaseExpandableListAdapter 
  
     private LayoutInflater inflater;
     private ArrayList<Parent> mParent;
- 
+    private Button preview_button;
+    private MediaPlayer myMediaPlayer;
+    private Context mContext;
+    
     public MyCustomAdapterForExpandableList(Context context, ArrayList<Parent> parent){
         mParent = parent;
         inflater = LayoutInflater.from(context);
+        mContext = context;
     }
  
 
@@ -90,6 +100,9 @@ public class MyCustomAdapterForExpandableList extends BaseExpandableListAdapter 
             view = inflater.inflate(R.layout.list_item_child_newcounterexpandable, viewGroup,false);
         }
  
+        preview_button = (Button) view.findViewById(R.id.button_preview);
+        
+        
         CellButton keyName = mParent.get(i).getArrayChildren().get(i1);
         if(!NewCounterActivity.ChildStatus.isEmpty())
         {
@@ -116,6 +129,27 @@ public class MyCustomAdapterForExpandableList extends BaseExpandableListAdapter 
         //"i1" is the position of the child
         textView.setText(mParent.get(i).getArrayChildren().get(i1).getName());
  
+        preview_button.setText(textView.getText().toString());
+        preview_button.setBackgroundResource(mParent.get(i).getArrayChildren().get(i1).getColor());
+        final int pos1 = i;
+        final int pos2 = i1;
+        preview_button.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(myMediaPlayer != null)
+				{
+					myMediaPlayer.release();
+				}
+				myMediaPlayer = MediaPlayer.create(
+						mContext,
+						mParent.get(pos1).getArrayChildren().get(pos2).getSound());
+				
+				myMediaPlayer.start();
+				
+			}
+		});
+        
         //return the entire view
         return view;
     }

@@ -16,5 +16,14 @@
               android:padding="10dp"
               android:layout_marginLeft="5dp"/>
  
- 
+  <Button
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:focusable="false"
+	android:text="button"
+	android:background="?android:selectableItemBackground"
+	android:layout_gravity="right"
+	android:focusableInTouchMode="false"
+	android:id="@+id/button_preview"/>
+  
 </LinearLayout>

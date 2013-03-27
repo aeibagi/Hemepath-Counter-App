@@ -107,7 +107,7 @@ public class NewCounterActivity extends Activity implements
 		// gray out the modify button
 		ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
 		ModifyButton.setClickable(false);
-
+		
 	}
 
 	private void initializeCells() {
@@ -204,7 +204,6 @@ public class NewCounterActivity extends Activity implements
 			}
 
 			break;
-
 		}
 
 	}
@@ -214,9 +213,11 @@ public class NewCounterActivity extends Activity implements
 	public boolean onChildClick(ExpandableListView parent, View v,
 			int groupPosition, int childPosition, long id) {
 
+		
 		CellButton ChildName = (CellButton) parent.getExpandableListAdapter()
 				.getChild(groupPosition, childPosition);
 
+		
 		// highlight and un-highlight
 		if (v.getBackground() == null) {
 			userSelection.add(ChildName);
