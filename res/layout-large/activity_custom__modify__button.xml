@@ -12,16 +12,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Custom_Modify_ButtonActivity" >
 
-    <TextView
-        android:id="@+id/tvChooseColor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvAbbr_Custom_modify"
-        android:layout_below="@+id/edt_Enter_name_Custom_modify"
-        android:layout_marginTop="28dp"
-        android:text="@string/Choose_color"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView1"
         android:layout_width="wrap_content"
@@ -89,9 +79,6 @@
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/greenfamily_00cc99" />
 
-
-
-            
             <ImageButton
                 android:id="@+id/iB_dark_oragne_d1692c_048"
                 android:layout_width="wrap_content"
@@ -99,7 +86,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/dark_oragne_d1692c_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_darker_purple_5861be"
                 android:layout_width="wrap_content"
@@ -107,7 +94,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/darker_purple_5861be" />
-            
+
             <ImageButton
                 android:id="@+id/iB_gray_familyone_adafb1_072"
                 android:layout_width="wrap_content"
@@ -115,7 +102,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/gray_familyone_adafb1_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_light_bluefamily_5ddcd3_072"
                 android:layout_width="wrap_content"
@@ -123,7 +110,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/light_bluefamily_5ddcd3_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_light_blueish_81b3ff_072"
                 android:layout_width="wrap_content"
@@ -131,7 +118,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/light_blueish_81b3ff_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_light_brown_c78540_072"
                 android:layout_width="wrap_content"
@@ -139,7 +126,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/light_brown_c78540_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_light_orange_ffae61_072"
                 android:layout_width="wrap_content"
@@ -147,7 +134,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/light_orange_ffae61_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_light_grayblue_8387aa_072"
                 android:layout_width="wrap_content"
@@ -155,7 +142,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/light_grayblue_8387aa_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_light_pink_fb97c9_072"
                 android:layout_width="wrap_content"
@@ -163,7 +150,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/light_pink_fb97c9_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_light_gray_9198aa_072"
                 android:layout_width="wrap_content"
@@ -171,7 +158,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/light_gray_9198aa_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_light_purple_d28dfa_072"
                 android:layout_width="wrap_content"
@@ -179,7 +166,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/light_purple_d28dfa_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_light_whitegray_e7d2ef_072"
                 android:layout_width="wrap_content"
@@ -187,7 +174,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/light_whitegray_e7d2ef_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_lighter_pinkpurple_cc6699_072"
                 android:layout_width="wrap_content"
@@ -195,7 +182,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/lighter_pinkpurple_cc6699_048" />
-            
+
             <ImageButton
                 android:id="@+id/iB_veylight_green_ffff99_072"
                 android:layout_width="wrap_content"
@@ -203,11 +190,6 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/veylight_green_ffff99_048" />
-            
-            
-            
-            
-
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -240,29 +222,8 @@
         android:background="?android:selectableItemBackground"
         android:src="@drawable/speaker_icon" />
 
-    <EditText
-        android:id="@+id/edt_Enter_name_Custom_modify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/tvAbbr_Custom_modify"
-        android:ems="10"
-        android:hint="@string/enter_counter_name_hint" >
-
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:id="@+id/tvAbbr_Custom_modify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/edt_Enter_name_Custom_modify"
-        android:layout_alignBottom="@+id/edt_Enter_name_Custom_modify"
-        android:layout_alignLeft="@+id/horizontalScrollView1"
-        android:text="@string/Object_name"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <LinearLayout
+        android:id="@+id/linearLayout1"
         style="?android:attr/buttonBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -293,5 +254,53 @@
             android:background="@drawable/button_style_yellow"
             android:text="@string/Modify" />
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/edt_Enter_name_Custom_modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/Name_label"
+        android:ems="10"
+        android:hint="@string/enter_counter_name_hint" />
+
+    <TextView
+        android:id="@+id/tvChooseColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/horizontalScrollView1"
+        android:layout_below="@+id/Abbr_label"
+        android:text="@string/Choose_color"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/Name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edt_Enter_name_Custom_modify"
+        android:layout_alignBottom="@+id/edt_Enter_name_Custom_modify"
+        android:layout_alignLeft="@+id/Abbr_label"
+        android:text="@string/Object_name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/edt_Enter_abbr_Custom_modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_Enter_name_Custom_modify"
+        android:layout_below="@+id/edt_Enter_name_Custom_modify"
+        android:ems="10"
+        android:hint="@string/enter_counter_abbr_hint" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/Abbr_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edt_Enter_abbr_Custom_modify"
+        android:layout_alignBottom="@+id/edt_Enter_abbr_Custom_modify"
+        android:layout_toLeftOf="@+id/linearLayout1"
+        android:text="@string/Object_abbr"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

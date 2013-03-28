@@ -59,6 +59,7 @@ public class ModifyCounterActivity extends Activity implements
 		mData = getIntent().getParcelableExtra("counter");
 
 		edit_buttoninCounters_list = (ListView) findViewById(R.id.list_view_counters);
+		edit_buttoninCounters_list.requestFocus();
 		edit_buttoninCounters_list.setOnItemClickListener(this);
 		
 		counter_adaptor = new modify_counter_adaptor(ModifyCounterActivity.this, mData.getCells());

@@ -291,8 +291,6 @@
         android:layout_below="@+id/edt_Enter_name_Custom_modify"
         android:ems="10"
         android:hint="@string/enter_counter_abbr_hint" >
-
-        <requestFocus />
     </EditText>
 
     <TextView
