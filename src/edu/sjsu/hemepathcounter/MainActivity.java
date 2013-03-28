@@ -97,7 +97,6 @@ public class MainActivity extends Activity implements View.OnClickListener,
 		default:
 			return super.onOptionsItemSelected(item);
 		}
-
 	}
 
 	@Override

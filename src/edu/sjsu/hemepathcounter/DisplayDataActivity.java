@@ -1,15 +1,17 @@
 package edu.sjsu.hemepathcounter;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-
-import edu.sjsu.hemepathcounter.model.*;
+import android.widget.ListView;
+import edu.sjsu.hemepathcounter.adapter.DisplayDataAdapter;
+import edu.sjsu.hemepathcounter.model.Data;
 
 public class DisplayDataActivity extends Activity {
 	private static final String TAG = "DisplayDataActivity";
 	private Data mData;
+	private DisplayDataAdapter mAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,11 @@ public class DisplayDataActivity extends Activity {
 		// Loading data from CountingActivity or DataActivity
 		mData = getIntent().getParcelableExtra("data");
 		Log.d(TAG, "Displaying data with timestamp: " + mData.getTimestamp());
+		
+		mAdapter = new DisplayDataAdapter(this, mData);
+
+		ListView listview = (ListView) findViewById(R.id.display_data_activity_listview);
+		listview.setAdapter(mAdapter);
 
 	}
 

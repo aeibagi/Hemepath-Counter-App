@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,11 +6,56 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="@drawable/white_marble"
     tools:context=".DisplayDataActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
-</RelativeLayout>
+    <ListView          
+        android:id="@+id/display_data_activity_listview"
+        android:layout_weight="1"
+        android:layout_width="fill_parent" 
+        android:layout_height="0dp"      
+        android:gravity="center"/>
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal" >
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_marginLeft="4dip"
+            android:layout_marginRight="4dip"
+            android:background="?android:attr/dividerVertical"/>
+        
+        <Button
+            android:id="@+id/display_data_activity_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/display_data_activity_main"         
+            android:background="?android:attr/selectableItemBackground"  />
+        
+        <View
+            android:id="@+id/display_data_activity_picker_helper"
+            android:layout_width="1dip"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/display_data_activity_main"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dip"
+            android:layout_marginTop="4dip"
+            android:background="?android:attr/dividerVertical" />
+        
+        <Button
+            android:id="@+id/counting_activity_export"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/display_data_activity_picker_helper"       
+            android:text="@string/display_data_activity_export"     
+            android:background="?android:attr/selectableItemBackground" />
+        
+    </RelativeLayout>
+</LinearLayout>

@@ -47,7 +47,7 @@ public class CountingActivity extends Activity implements View.OnClickListener{
 		mAdapter = new CountingAdapter(this, mData);
 		mSequence = new ArrayList<Integer>();
 
-		GridView gridview = (GridView) findViewById(R.id.gridview);
+		GridView gridview = (GridView) findViewById(R.id.counting_activity_gridview);		
 		gridview.setAdapter(mAdapter);
 
 		gridview.setOnItemClickListener(new OnItemClickListener() {
