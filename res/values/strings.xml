@@ -22,6 +22,7 @@
     <string name="title_activity_new_counter">NewCounterActivity</string>
     <string name="Create_new_counter">New Counter</string>
     <string name="Object_name">Name</string>
+    <string name="Object_abbr">Abbr.</string>
     <string name="Main_Menu">Main Menu</string>
     <string name="Main_Menu_two_lines">Main\nMenu</string>
     <string name="Modify">Modify</string>
@@ -124,6 +125,7 @@
     <string name="title_activity_counting">Counting Activity</string>
     <string name="title_activity_preferences">Preferences Activity</string>
     <string name="enter_counter_name_hint">Enter name for Counter</string>
+    <string name="enter_counter_abbr_hint">Enter abbreviation</string>
     <string name="title_activity_custom__modify__button">Custom_Moify_ButtonActivity</string>
 
     <!-- Custom_Modify_Button_Activity -->

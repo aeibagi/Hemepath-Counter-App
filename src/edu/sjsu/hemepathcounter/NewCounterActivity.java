@@ -348,8 +348,9 @@ public class NewCounterActivity extends Activity implements
 				Log.d(TAG, "Adding created custom button.");
 				created_custom_button = data
 						.getParcelableExtra("Custom_Button");
+				holder = manager.getButtonHolder();
 				customButtons = holder.getCustomButtons();
-				customButtons.add(created_custom_button);
+				ChildStatus.put(created_custom_button, true);
 				myCustomAdaptor.notifyDataSetChanged();
 
 			}
