@@ -93,20 +93,20 @@ public class NewCounterActivity extends Activity implements
 		editBox_enter_name = (EditText) findViewById(R.id.edt_Enter_name);
 
 		mainMenu = (Button) findViewById(R.id.Button_New_counters_backTo_MainMenu);
-		//ModifyButton = (Button) findViewById(R.id.Button_Modify);
+		ModifyButton = (Button) findViewById(R.id.Button_Modify);
 		SaveButton = (Button) findViewById(R.id.Button_Save);
 		ClearButton = (Button) findViewById(R.id.Button_Clear);
 		CustomButton = (Button) findViewById(R.id.Button_Custom);
 
 		mainMenu.setOnClickListener(this);
-		//ModifyButton.setOnClickListener(this);
+		ModifyButton.setOnClickListener(this);
 		SaveButton.setOnClickListener(this);
 		ClearButton.setOnClickListener(this);
 		CustomButton.setOnClickListener(this);
 
-		// gray out the modify button
-		//ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
-		//ModifyButton.setClickable(false);
+		 //gray out the modify button
+		ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
+		ModifyButton.setClickable(false);
 		
 	}
 
@@ -165,12 +165,12 @@ public class NewCounterActivity extends Activity implements
 			finish();
 			break;
 		case R.id.Button_Modify:
-			/*Log.d(TAG, "Modify Button Selected.");
+			Log.d(TAG, "Modify Button Selected.");
 			Intent intent = new Intent(NewCounterActivity.this,
 					Custom_Modify_ButtonActivity.class);
 			intent.putExtra("button", userSelection.get(0));
 			intent.putExtra("ModifyorCustom", "Modify");
-			startActivityForResult(intent, 2);*/
+			startActivityForResult(intent, 2);
 			break;
 		case R.id.Button_Clear:
 			Log.d(TAG, "Clear Button Selected.");
@@ -233,13 +233,13 @@ public class NewCounterActivity extends Activity implements
 			v.setBackground(null);
 		}
 
-		/*if (userSelection.isEmpty() || userSelection.size() > 1) {
+		if (userSelection.isEmpty() || userSelection.size() > 1) {
 			ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
 			ModifyButton.setClickable(false);
 		} else if (userSelection.size() == 1) {
 			ModifyButton.setBackgroundResource(R.drawable.button_style_yellow);
 			ModifyButton.setClickable(true);
-		}*/
+		}
 		return true;
 	}
 
