@@ -1,5 +1,6 @@
 package edu.sjsu.hemepathcounter.model;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -8,11 +9,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.sjsu.hemepathcounter.NewCounterActivity;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.text.format.DateFormat;
 
 public class Data implements Parcelable, JSONable {
 	private HashMap<String, Integer> map;
@@ -27,10 +29,8 @@ public class Data implements Parcelable, JSONable {
 		}
 
 		// Format the timestamp and set the variable
-		java.text.DateFormat dateFormat = DateFormat.getDateFormat(context);
-		java.text.DateFormat timeFormat = DateFormat.getTimeFormat(context);
-		Date d = new Date();
-		timestamp = dateFormat.format(d) + " " + timeFormat.format(d);
+		DateFormat format = DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.MEDIUM);
+		timestamp = format.format(new Date());
 
 		// Set the total
 		total = 0;

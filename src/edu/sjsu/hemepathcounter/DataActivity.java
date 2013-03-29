@@ -161,8 +161,10 @@ public class DataActivity extends Activity implements OnClickListener,
 									int whichButton) {
 								Log.d(TAG, "Viewing data.");
 								dialog.dismiss();
-								Intent intent = new Intent(DataActivity.this, DisplayDataActivity.class);
-								intent.putExtra("data", ItemSelectedforContextMenuOption);
+								Intent intent = new Intent(DataActivity.this,
+										DisplayDataActivity.class);
+								intent.putExtra("data",
+										ItemSelectedforContextMenuOption);
 								startActivity(intent);
 							}
 
@@ -314,13 +316,14 @@ public class DataActivity extends Activity implements OnClickListener,
 				}
 			try {
 				FileOutputStream openFileOutput = openFileOutput(
-						exportData.hashCode() + ".csv",
+						exportData.getTimestamp() + ".csv",
 						Context.MODE_WORLD_READABLE);
 				openFileOutput.write(exportData.getCSVasString().getBytes());
 				openFileOutput.flush();
 				openFileOutput.close();
 
-				File path = getFileStreamPath(exportData.hashCode() + ".csv");
+				File path = getFileStreamPath(exportData.getTimestamp()
+						+ ".csv");
 
 				Intent i = new Intent(Intent.ACTION_SEND);
 				i.setType("plain/text");
@@ -355,12 +358,13 @@ public class DataActivity extends Activity implements OnClickListener,
 				ArrayList<Uri> uris = new ArrayList<Uri>();
 				for (Data d : selectedData) {
 					FileOutputStream openFileOutput = openFileOutput(
-							d.hashCode() + ".csv", Context.MODE_WORLD_READABLE);
+							d.getTimestamp() + ".csv",
+							Context.MODE_WORLD_READABLE);
 					openFileOutput.write(d.getCSVasString().getBytes());
 					openFileOutput.flush();
 					openFileOutput.close();
 
-					File path = getFileStreamPath(d.hashCode() + ".csv");
+					File path = getFileStreamPath(d.getTimestamp() + ".csv");
 					uris.add(Uri.fromFile(path));
 				}
 				Intent i = new Intent(Intent.ACTION_SEND_MULTIPLE);
@@ -374,7 +378,9 @@ public class DataActivity extends Activity implements OnClickListener,
 				i.putExtra(Intent.EXTRA_SUBJECT, "Hemepath Counter App Data");
 				i.putExtra(
 						Intent.EXTRA_TEXT,
-						"Here is the data that you exported. There should be one file attached to this email. It will be of the type \".csv\"");
+						"Here is the data that you exported. There should be "
+								+ selectedData.size()
+								+ " files attached to this email. They will be of the type \".csv\"");
 				startActivity(Intent.createChooser(i, "E-mail"));
 			} catch (IOException e) {
 				Log.e(TAG, "Exporting to email failed", e);
@@ -390,7 +396,7 @@ public class DataActivity extends Activity implements OnClickListener,
 		Log.d(TAG, "Clearing out the data files used to export.");
 		ArrayList<String> possibleFileNames = new ArrayList<String>();
 		for (Data d : holder.getData()) {
-			possibleFileNames.add(d.hashCode() + ".csv");
+			possibleFileNames.add(d.getTimestamp() + ".csv");
 		}
 		for (File actualFile : getFilesDir().listFiles()) {
 			if (possibleFileNames.contains(actualFile.getName())) {

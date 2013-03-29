@@ -56,12 +56,11 @@ public class DisplayDataActivity extends Activity implements
 
 	@Override
 	public void onClick(View v) {
-		Intent intent;
 		switch (v.getId()) {
 		case R.id.display_data_activity_main:
 			Log.d(TAG, "Main Menu Button clicked.");
 			finish();
-			intent = new Intent(DisplayDataActivity.this, MainActivity.class);
+			Intent intent = new Intent(DisplayDataActivity.this, MainActivity.class);
 			startActivity(intent);
 			break;
 		case R.id.display_data_activity_export:
@@ -117,12 +116,12 @@ public class DisplayDataActivity extends Activity implements
 		try {
 			Data exportData = mData;
 			FileOutputStream openFileOutput = openFileOutput(
-					exportData.hashCode() + ".csv", Context.MODE_WORLD_READABLE);
+					exportData.getTimestamp() + ".csv", Context.MODE_WORLD_READABLE);
 			openFileOutput.write(exportData.getCSVasString().getBytes());
 			openFileOutput.flush();
 			openFileOutput.close();
 
-			File path = getFileStreamPath(exportData.hashCode() + ".csv");
+			File path = getFileStreamPath(exportData.getTimestamp() + ".csv");
 
 			Intent intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("plain/text");
