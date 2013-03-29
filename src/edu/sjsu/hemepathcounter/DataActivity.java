@@ -257,7 +257,7 @@ public class DataActivity extends Activity implements OnClickListener,
 			// check if exporting is enabled.
 			if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
 					PreferencesActivity.EXPORT, false)) {
-				Log.d(TAG, "Export enabled.");
+				Log.d(TAG, "Export enabled. Exporting now.");
 				exportSelected();
 			} else {
 				Log.d(TAG, "Export disabled.");
