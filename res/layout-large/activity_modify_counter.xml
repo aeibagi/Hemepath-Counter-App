@@ -45,8 +45,18 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_alignParentBottom="true"
-       android:layout_centerHorizontal="true"
+       android:layout_alignParentLeft="true"
        android:background="@drawable/button_style_yellow"
        android:text="Finish" />
+
+   <Button
+       android:id="@+id/btn_edit_counter_ModifyLayout"
+       style="?android:attr/buttonBarButtonStyle"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentRight="true"
+       android:text="Modify layout" 
+       android:background="@drawable/button_style_yellow"/>
 
 </RelativeLayout>
