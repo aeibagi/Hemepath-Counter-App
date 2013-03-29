@@ -23,7 +23,7 @@ import edu.sjsu.hemepathcounter.model.Counter;
 import edu.sjsu.hemepathcounter.model.Data;
 import edu.sjsu.hemepathcounter.model.DataHolder;
 
-public class CountingActivity extends Activity implements View.OnClickListener{
+public class CountingActivity extends Activity implements View.OnClickListener {
 	private static final String TAG = "CountingActivity";
 	private Counter mData;
 	private CountingAdapter mAdapter;

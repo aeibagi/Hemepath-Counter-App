@@ -50,7 +50,7 @@
             android:background="?android:attr/dividerVertical" />
         
         <Button
-            android:id="@+id/counting_activity_export"
+            android:id="@+id/display_data_activity_export"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/display_data_activity_picker_helper"       
