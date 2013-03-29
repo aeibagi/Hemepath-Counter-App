@@ -174,6 +174,8 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 		if (modifiedButton != null) {
 			((EditText) findViewById(R.id.edt_Enter_name_Custom_modify))
 					.setText(modifiedButton.getName());
+			((EditText)findViewById(R.id.edt_Enter_abbr_Custom_modify))
+			.setText(modifiedButton.getAbbr());
 		}
 	}
 
