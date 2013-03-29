@@ -1,5 +1,7 @@
 package edu.sjsu.hemepathcounter.adapter;
 
+import java.text.DecimalFormat;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,16 +17,19 @@ public class DisplayDataAdapter extends BaseAdapter {
 	public DisplayDataAdapter(Context context, Data data) {
 		mContext = context;
 		mData = data;
+		mKeys = mData.getMap().keySet().toArray(new String[0]);
 	}
 
 	@Override
 	public int getCount() {
-		return mData.getMap().size();
+		return mKeys.length;
 	}
 
 	@Override
 	public CellButton getItem(int position) {
-		CellButton cell = new CellButton();
+		String key = mKeys[position]; //reserve the order
+		CellButton cell = new CellButton(key, "", -1, -1);
+		cell.setCount(mData.getMap().get(key));
 		return cell;
 	}
 
@@ -48,35 +53,22 @@ public class DisplayDataAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		/*
 		CellButton cell = getItem(position);
 		holder.name.setText(cell.getName());
-		if (showNumbers) {
-			holder.number.setText(cell.getCount() + "");
-		}else{
-			holder.number.setText("");
-		}
+		holder.number.setText(cell.getCount() + "");
+		
 		DecimalFormat df = new DecimalFormat("#.##");
-		if (showPercents) {
-			if (mData.getTotal() == 0)
-				holder.percent.setText("0%");
-			else
-				holder.percent.setText(String.format(df.format(100.0
-						* cell.getCount() / mData.getTotal()))
-						+ "%");
-		}else{
-			holder.percent.setText("");
-		}
-		*/
+		holder.percent.setText(String.format(df.format(100.0 * cell.getCount() / mData.getTotal())) + "%");
+		
 		//convertView.setBackgroundResource(cell.getColor());
-
 
 		return convertView;
 	}
 
 	private Context mContext;
 	private Data mData;
-
+	private String[] mKeys;
+		
 	private class ViewHolder {
 		private TextView name;
 		private TextView number;

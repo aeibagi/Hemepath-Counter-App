@@ -80,6 +80,10 @@ public class CellButton implements Parcelable, JSONable {
 	public String getName() {
 		return name;
 	}
+	
+	public void setCount(int _count) {
+		count = _count;
+	}
 
 	public String getAbbr() {
 		return abbr;
