@@ -174,7 +174,30 @@ public class NewCounterActivity extends Activity implements
 			break;
 		case R.id.Button_Clear:
 			Log.d(TAG, "Clear Button Selected.");
-			ClearEverything();
+			AlertDialog ClearDialogBox = new AlertDialog.Builder(this)
+			// set message, title, and icon
+			.setTitle("Clear Everything?")
+			.setMessage(
+					"Are you sure you want to clear your selection?")
+			.setIcon(R.drawable.delete_icon)
+
+			.setPositiveButton("Yes",
+					new DialogInterface.OnClickListener() {
+
+						public void onClick(DialogInterface dialog,
+								int whichButton) {
+							ClearEverything();
+							dialog.dismiss();
+						}
+
+					})
+
+			.setNegativeButton("No", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			}).create();
+			ClearDialogBox.show();
 			break;
 		case R.id.Button_Custom:
 			Log.d(TAG, "Custom Button Selected.");
@@ -249,10 +272,10 @@ public class NewCounterActivity extends Activity implements
 		userSelection.clear();
 		ChildStatus.clear();
 		arrayParents.clear();
-		defaultButtons.clear();
-		highYieldButtons.clear();
-		midYieldButtons.clear();
-		lowYieldButtons.clear();
+		//defaultButtons.clear();
+		//highYieldButtons.clear();
+		//midYieldButtons.clear();
+		//lowYieldButtons.clear();
 		initializeCells();
 
 	}
@@ -328,6 +351,14 @@ public class NewCounterActivity extends Activity implements
 		holder.remove(itemToRemove);
 		manager.updateButtonHolder(holder);
 		myCustomAdaptor.notifyDataSetChanged();
+		userSelection.remove(userSelection.indexOf(itemToRemove));
+		if (userSelection.isEmpty() || userSelection.size() > 1) {
+			ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
+			ModifyButton.setClickable(false);
+		} else if (userSelection.size() == 1) {
+			ModifyButton.setBackgroundResource(R.drawable.button_style_yellow);
+			ModifyButton.setClickable(true);
+		}
 	}
 
 	@Override
