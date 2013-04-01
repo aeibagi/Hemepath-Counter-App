@@ -105,6 +105,10 @@ public class CellButton implements Parcelable, JSONable {
 		name = newName;
 	}
 	
+	public void setAbbr(String newAbbr)
+	{
+		abbr = newAbbr;
+	}
 	public void setSound(Integer newSound)
 	{
 		sound_id = newSound;

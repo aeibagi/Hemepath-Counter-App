@@ -362,11 +362,11 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 					.toString().trim();
 			String abbr = enter_abbr_for_customModify_buttons.getText()
 					.toString().trim();
-			if (name.length() > 0) {
+			if (name.length() > 0 && abbr.length() > 0) {
 				Log.d(TAG, "Saving newly created button.");
 				CellButton customCell;
 				if (abbr.isEmpty()) {
-					customCell = new CellButton(name, "cust", selectedSound,
+					customCell = new CellButton(name, name, selectedSound,
 							SelectedButtonBackground);
 				} else {
 					customCell = new CellButton(name, abbr, selectedSound,
@@ -383,7 +383,7 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 				finish();
 			} else {
 				Toast.makeText(this,
-						"You did Not Enter a Name for the new Button",
+						"You did Not Enter a Name or abbreviation for the new Button",
 						Toast.LENGTH_SHORT).show();
 			}
 
@@ -391,19 +391,21 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 		case R.id.btn_modify_custom_button:
 			String ModifiedName = enter_name_for_customModify_buttons.getText()
 					.toString().trim();
+			String ModifiedAbrr = enter_abbr_for_customModify_buttons.getText().toString().trim();
 			holder = manager.getButtonHolder();
-			if (ModifiedName.length() > 0) {
+			if (ModifiedName.length() > 0 && ModifiedAbrr.length() > 0) {
 				Log.d(TAG, "Passing back modified button.");
 				Intent intent = new Intent(Custom_Modify_ButtonActivity.this,
 						NewCounterActivity.class);
 				intent.putExtra("Modified_button", true);
 				intent.putExtra("newName", ModifiedName);
+				intent.putExtra("newAbrr", ModifiedAbrr);
 				intent.putExtra("newSound", selectedSound);
 				intent.putExtra("newColor", SelectedButtonBackground);
 				setResult(Activity.RESULT_OK, intent);
 				finish();
 			} else {
-				Toast.makeText(this, "You did Not Enter a Name",
+				Toast.makeText(this, "You did Not Enter a Name or Abbreviation for the Button",
 						Toast.LENGTH_SHORT).show();
 			}
 			break;

@@ -391,6 +391,8 @@ public class NewCounterActivity extends Activity implements
 				Log.d(TAG, "Changing already present button.");
 				holder.renameButton(ItemSelectedforContextMenuOption,
 						data.getStringExtra("newName"));
+				holder.changeAbbrofButton(ItemSelectedforContextMenuOption, 
+						data.getStringExtra("newAbrr"));
 				holder.changeColorofButton(ItemSelectedforContextMenuOption,
 						data.getIntExtra("newColor", 0));
 				holder.changeSoundofButton(ItemSelectedforContextMenuOption,

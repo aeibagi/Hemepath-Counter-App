@@ -103,6 +103,32 @@ public class ButtonHolder implements JSONable {
 		}
 	}
 	
+	public void changeAbbrofButton(CellButton itemSelectedforContextMenuOption,
+			String newAbbr) {
+		if(defaultButtons.contains(itemSelectedforContextMenuOption))
+		{
+			defaultButtons.get(defaultButtons.indexOf(itemSelectedforContextMenuOption)).setAbbr(newAbbr);
+		}
+		else if(highYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			highYieldButtons.get(highYieldButtons.indexOf(itemSelectedforContextMenuOption)).setAbbr(newAbbr);
+		}
+		else if(midYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			midYieldButtons.get(midYieldButtons.indexOf(itemSelectedforContextMenuOption)).setAbbr(newAbbr);
+		}
+		else if(lowYieldButtons.contains(itemSelectedforContextMenuOption))
+		{
+			lowYieldButtons.get(lowYieldButtons.indexOf(itemSelectedforContextMenuOption)).setAbbr(newAbbr);
+		}
+		else if(customButtons.contains(itemSelectedforContextMenuOption))
+		{
+			customButtons.get(customButtons.indexOf(itemSelectedforContextMenuOption)).setAbbr(newAbbr);
+		}
+		
+	}
+	
+	
 	public void changeSoundofButton(CellButton itemSelectedforContextMenuOption,
 			Integer newSound) {
 		
