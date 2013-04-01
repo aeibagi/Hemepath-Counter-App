@@ -272,6 +272,9 @@ public class NewCounterActivity extends Activity implements
 		userSelection.clear();
 		ChildStatus.clear();
 		arrayParents.clear();
+		//gray out the modify button
+		ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
+		ModifyButton.setClickable(false);
 		//defaultButtons.clear();
 		//highYieldButtons.clear();
 		//midYieldButtons.clear();
