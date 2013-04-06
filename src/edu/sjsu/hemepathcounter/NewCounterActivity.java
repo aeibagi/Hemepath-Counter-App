@@ -213,7 +213,7 @@ public class NewCounterActivity extends Activity implements
 			Log.d(TAG, "Custom Button Selected.");
 			Intent intent2 = new Intent(NewCounterActivity.this,
 					Custom_Modify_ButtonActivity.class);
-			intent2.putExtra("ModifyorCustom", "Custom");
+			intent2.putExtra("mode", "Custom");
 			startActivityForResult(intent2, 1);
 			break;
 		case R.id.Button_Save:
