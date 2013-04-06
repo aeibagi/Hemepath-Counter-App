@@ -70,7 +70,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="@string/favorites"
-        android:textSize="16sp"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

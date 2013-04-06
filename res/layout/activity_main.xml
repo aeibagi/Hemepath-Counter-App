@@ -52,12 +52,23 @@
             android:text="@string/data_button_string" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/Tv_favorites_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/favorites"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+        
     <ListView
+        android:layout_below="@+id/Tv_favorites_small"
         android:id="@+id/favorites_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonColumn"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" >
 
     </ListView>

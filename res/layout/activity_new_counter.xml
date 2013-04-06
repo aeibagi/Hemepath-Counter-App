@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundshape"
+    android:background="@drawable/green_background"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
@@ -12,6 +12,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".NewCounterActivity" >
 
+
+    
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
@@ -20,7 +22,8 @@
         android:layout_alignBottom="@+id/edt_Enter_name"
         android:layout_alignLeft="@+id/expandable_list_New_Counters"
         android:text="@string/Object_name"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:textColor="@android:color/holo_orange_light"/>
 
     <EditText
         android:id="@+id/edt_Enter_name"
@@ -28,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/tvName"
         android:ems="10"
-        android:hint="@string/enter_counter_name_hint" />
+        android:hint="@string/enter_counter_name_hint" 
+        android:textColorHint="@android:color/holo_blue_light"/>
 
     <ExpandableListView
         android:id="@+id/expandable_list_New_Counters"
