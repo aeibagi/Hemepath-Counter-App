@@ -161,7 +161,7 @@ public class ModifyCounterActivity extends Activity implements
 		 Intent intent = new Intent(ModifyCounterActivity.this,
 		 Custom_Modify_ButtonActivity.class); 
 		 intent.putExtra("button",ItemSelectedforContextMenuOption); 
-		 intent.putExtra("ModifyorCustom","Modify");
+		 intent.putExtra("mode","Modify");
 		 startActivityForResult(intent, 1);
 		 
 

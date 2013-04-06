@@ -28,7 +28,7 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 	private FileManager manager;
 	private ButtonHolder holder;
 	private ImageButton iB_Color_Green, iB_Color_orage,
-			iB_blue_green_family_26878e, iB_Color_yellow,
+			iB_Color_yellow,
 			iB_blue_purple_6666cc, iB_orangefamily_ffae61,
 			iB_greenfamily_00cc99, iB_dark_oragne_d1692c_072,
 			iB_darker_purple_5861be, iB_gray_familyone_adafb1_072,
@@ -91,7 +91,6 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 		// set up the cImagebuttons for the colors:
 		iB_Color_Green = (ImageButton) findViewById(R.id.iB_Color_Green);
 		iB_Color_orage = (ImageButton) findViewById(R.id.iB_Color_orage);
-		iB_blue_green_family_26878e = (ImageButton) findViewById(R.id.iB_blue_green_family_26878e);
 		iB_Color_yellow = (ImageButton) findViewById(R.id.iB_Color_yellow);
 		iB_blue_purple_6666cc = (ImageButton) findViewById(R.id.iB_blue_purple_6666cc);
 		iB_orangefamily_ffae61 = (ImageButton) findViewById(R.id.iB_orangefamily_ffae61);
@@ -113,7 +112,6 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 
 		iB_Color_Green.setOnClickListener(this);
 		iB_Color_orage.setOnClickListener(this);
-		iB_blue_green_family_26878e.setOnClickListener(this);
 		iB_Color_yellow.setOnClickListener(this);
 		iB_blue_purple_6666cc.setOnClickListener(this);
 		iB_orangefamily_ffae61.setOnClickListener(this);
@@ -227,13 +225,6 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 			selectedButton = iB_Color_orage;
 			iB_Color_orage.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.drawable.orange;
-			break;
-		case R.id.iB_blue_green_family_26878e:
-			selectedButton.setBackground(SaveBackGroundresource);
-			selectedButton = iB_blue_green_family_26878e;
-			iB_blue_green_family_26878e
-					.setBackgroundResource(R.drawable.ib_border);
-			SelectedButtonBackground = R.drawable.blue_green_family_26878e;
 			break;
 		case R.id.iB_Color_yellow:
 			selectedButton.setBackground(SaveBackGroundresource);

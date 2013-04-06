@@ -94,7 +94,7 @@ public final class FileManager {
 				R.string.Monocytes), context.getResources().getString(
 				R.string.Monocytes_abbr),
 				R.raw.attention,
-				R.drawable.blue_green_family_26878e));
+				R.drawable.light_brown_c78540_048));
 		buttonList1.add(new CellButton(context.getResources().getString(
 				R.string.Eosinophils), context.getResources().getString(
 				R.string.Eosinophils_abbr), R.raw.beep1,
@@ -139,7 +139,7 @@ public final class FileManager {
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Promyelocytes), context.getResources().getString(
 				R.string.Promyelocytes_abbr), R.raw.high,
-				R.drawable.blue_green_family_26878e));
+				R.drawable.light_whitegray_e7d2ef_048));
 		buttonList2.add(new CellButton(context.getResources().getString(
 				R.string.Promonocytes), context.getResources().getString(
 				R.string.Promonocytes_abbr),
@@ -182,11 +182,11 @@ public final class FileManager {
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.Proerythroblasts), context.getResources().getString(
 				R.string.Proerythroblasts_abbr), R.raw.brake,
-				R.drawable.blue_green_family_26878e));
+				R.drawable.blue_purple_6666cc));
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.T_cells), context.getResources().getString(
 				R.string.T_cells_abbr), R.raw.close,
-				R.drawable.blue_green_family_26878e));
+				R.drawable.light_orange_ffae61_048));
 		buttonList3.add(new CellButton(context.getResources().getString(
 				R.string.B_Cells), context.getResources().getString(
 				R.string.B_Cells_abbr), R.raw.dark,
@@ -352,7 +352,7 @@ public final class FileManager {
 				R.string.Monocytes), context.getResources().getString(
 				R.string.Monocytes_abbr),
 				R.raw.attention,
-				R.drawable.blue_green_family_26878e);
+				R.drawable.gray_familyone_adafb1_048);
 		CellButton butt3 = new CellButton(context.getResources().getString(
 				R.string.Eosinophils), context.getResources().getString(
 				R.string.Eosinophils_abbr), R.raw.way,
@@ -403,7 +403,7 @@ public final class FileManager {
 		CellButton butt12 = new CellButton(context.getResources().getString(
 				R.string.Promyelocytes), context.getResources().getString(
 				R.string.Promyelocytes_abbr), R.raw.close,
-				R.drawable.blue_green_family_26878e);
+				R.drawable.light_blueish_81b3ff_048);
 		CellButton butt13 = new CellButton(context.getResources().getString(
 				R.string.Promonocytes), context.getResources().getString(
 				R.string.Promonocytes_abbr),
@@ -459,7 +459,7 @@ public final class FileManager {
 		CellButton butt22 = new CellButton(context.getResources().getString(
 				R.string.T_cells), context.getResources().getString(
 				R.string.T_cells_abbr), R.raw.know,
-				R.drawable.blue_green_family_26878e);
+				R.drawable.light_grayblue_8387aa_048);
 		CellButton butt23 = new CellButton(context.getResources().getString(
 				R.string.B_Cells), context.getResources().getString(
 				R.string.B_Cells_abbr), R.raw.dark,
@@ -514,7 +514,7 @@ public final class FileManager {
 				R.string.Basophilic_normoblasts), context.getResources()
 				.getString(R.string.Basophilic_normoblasts_abbr),
 				R.raw.shoot,
-				R.drawable.blue_green_family_26878e);
+				R.drawable.light_pink_fb97c9_048);
 		CellButton butt34 = new CellButton(context.getResources().getString(
 				R.string.Orthochromatophilic_normoblasts), context
 				.getResources().getString(

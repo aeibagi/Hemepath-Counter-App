@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundshape"
+    android:background="@drawable/background1"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
@@ -39,13 +39,7 @@
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/orange" />
 
-            <ImageButton
-                android:id="@+id/iB_blue_green_family_26878e"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:background="?android:selectableItemBackground"
-                android:src="@drawable/blue_green_family_26878e" />
+
 
             <ImageButton
                 android:id="@+id/iB_Color_yellow"
@@ -262,7 +256,8 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/Name_label"
         android:ems="10"
-        android:hint="@string/enter_counter_name_hint" />
+        android:hint="@string/enter_counter_name_hint"
+        android:textColorHint="@android:color/white" />
 
     <TextView
         android:id="@+id/tvChooseColor"
@@ -290,7 +285,8 @@
         android:layout_alignLeft="@+id/edt_Enter_name_Custom_modify"
         android:layout_below="@+id/edt_Enter_name_Custom_modify"
         android:ems="10"
-        android:hint="@string/enter_counter_abbr_hint" >
+        android:hint="@string/enter_counter_abbr_hint"
+        android:textColorHint="@android:color/white" >
     </EditText>
 
     <TextView
