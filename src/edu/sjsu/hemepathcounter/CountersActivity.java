@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import edu.sjsu.hemepathcounter.model.Counter;
@@ -27,7 +28,7 @@ import edu.sjsu.hemepathcounter.model.CounterHolder;
  * 
  */
 public class CountersActivity extends Activity implements
-		AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
+		AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, View.OnClickListener {
 	private static final String TAG = "CountersActivity";
 	private ListView CountersList;
 	private ArrayAdapter<Counter> CounterListAdaptor;
@@ -35,6 +36,7 @@ public class CountersActivity extends Activity implements
 	private Counter ItemSelectedforContextMenuOption = null;
 	private CounterHolder holder;
 	private FileManager manager;
+	private Button btn_MainMenu, btn_NewCounter, btn_Displayresult;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,13 @@ public class CountersActivity extends Activity implements
 
 		CountersList.setOnItemLongClickListener(this);
 		CountersList.setOnItemClickListener(this);
-
+		
+		btn_MainMenu =  (Button) findViewById(R.id.btn_counters_mainMenu);
+		btn_MainMenu.setOnClickListener(this);
+		btn_NewCounter = (Button) findViewById(R.id.btn_counters_New_Counter);
+		btn_NewCounter.setOnClickListener(this);
+		btn_Displayresult = (Button) findViewById(R.id.btn_counters_DisplayData);
+		btn_Displayresult.setOnClickListener(this);
 	}
 
 	private void updateCounterList() {
@@ -231,6 +239,33 @@ public class CountersActivity extends Activity implements
 		// TODO Auto-generated method stub
 		super.onResume();
 		CounterListAdaptor.notifyDataSetChanged();
+	}
+
+	@Override
+	public void onClick(View v) {
+		Intent intent;
+		switch(v.getId())
+		{
+		     case R.id.btn_counters_mainMenu:
+		    	 finish();
+		    	 break;
+		     case R.id.btn_counters_New_Counter:
+		    	 intent = new Intent(CountersActivity.this, NewCounterActivity.class);
+		    	 intent.putExtra("mode", "CoutersActivity");
+				 startActivity(intent);
+		    	 break;
+		     case R.id.btn_counters_DisplayData:
+		    	 intent = new Intent(CountersActivity.this, DataActivity.class);
+				 startActivity(intent);
+		    	 break;
+		}
+		
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
 	}
 	
 }

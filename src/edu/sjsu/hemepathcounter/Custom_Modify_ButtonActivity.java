@@ -62,7 +62,7 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 		Log.d(TAG, "Starting new Custom Modify ButtonActivity");
 		setContentView(R.layout.activity_custom__modify__button);
 		modifiedButton = getIntent().getParcelableExtra("button");
-		mode = getIntent().getStringExtra("ModifyorCustom");
+		mode = getIntent().getStringExtra("mode");
 		initialize();
 	}
 

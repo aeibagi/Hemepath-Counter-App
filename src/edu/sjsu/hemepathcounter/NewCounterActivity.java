@@ -67,12 +67,14 @@ public class NewCounterActivity extends Activity implements
 	private Parent CustomParent = new Parent();
 
 	private CellButton created_custom_button, ItemSelectedforContextMenuOption;
-
+    private String mode = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.d(TAG, "Creating new \"New Counter Activity\".");
 		setContentView(R.layout.activity_new_counter);
+		if(getIntent().hasExtra("mode")){
+		    mode = getIntent().getStringExtra("mode");}
 		initialize();
 		initializeCells();
 	}
@@ -107,6 +109,14 @@ public class NewCounterActivity extends Activity implements
 		 //gray out the modify button
 		ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
 		ModifyButton.setClickable(false);
+		
+		if(mode != null)
+		{
+			if(mode.equals("CoutersActivity"))
+			{
+				mainMenu.setText("Back to\n Main Menu");
+			}
+		}
 		
 	}
 
@@ -169,7 +179,7 @@ public class NewCounterActivity extends Activity implements
 			Intent intent = new Intent(NewCounterActivity.this,
 					Custom_Modify_ButtonActivity.class);
 			intent.putExtra("button", userSelection.get(0));
-			intent.putExtra("ModifyorCustom", "Modify");
+			intent.putExtra("mode", "Modify");
 			startActivityForResult(intent, 2);
 			break;
 		case R.id.Button_Clear:
