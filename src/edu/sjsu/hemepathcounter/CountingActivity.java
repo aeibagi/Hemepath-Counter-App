@@ -56,9 +56,7 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 				CellButton button = mData.getCells().get(position);
 				button.incrementCount();
 				// play sound ....
-				if (!muted && (button.getCount() % notify == 0))
-				//if(!muted)
-				{
+				if (!muted && (button.getCount() % notify == 0)) {
 					if (player != null) {
 						player.release();
 					}
@@ -144,12 +142,14 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 				finish();
 				intent = new Intent(CountingActivity.this, DisplayDataActivity.class);
 				intent.putExtra("data", data);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);				
 				break;
 			case R.id.counting_activity_main:
 				Log.d(TAG, "Main Menu Button clicked.");
 				finish();
 				intent = new Intent(CountingActivity.this, MainActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);				
 				break;
 			default:

@@ -61,6 +61,7 @@ public class DisplayDataActivity extends Activity implements
 			Log.d(TAG, "Main Menu Button clicked.");
 			finish();
 			Intent intent = new Intent(DisplayDataActivity.this, MainActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			break;
 		case R.id.display_data_activity_export:
