@@ -252,6 +252,21 @@ public class DataActivity extends Activity implements OnClickListener,
 		switch (v.getId()) {
 		case R.id.view_data_button:
 			Log.d(TAG, "View button clicked");
+			// Find selected data
+			int len = DataList.getCount();
+			SparseBooleanArray checked = DataList.getCheckedItemPositions();
+			Data viewData = null;
+			for (int i = 0; i < len; i++)
+				if (checked.get(i)) {
+					viewData = (Data) DataList.getItemAtPosition(i);
+				}
+			
+			//Start other activity.
+			Intent intent = new Intent(DataActivity.this, DisplayDataActivity.class);
+			intent.putExtra("data", viewData);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);	
+			finish();
 			break;
 		case R.id.export_multiple_data_button:
 			Log.d(TAG, "Export button clicked");
