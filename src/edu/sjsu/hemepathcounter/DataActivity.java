@@ -337,8 +337,14 @@ public class DataActivity extends Activity implements OnClickListener,
 				openFileOutput.flush();
 				openFileOutput.close();
 
-				File path = getFileStreamPath(exportData.getTimestamp()
-						+ ".csv");
+				File path = null;
+				if(PreferenceManager
+							.getDefaultSharedPreferences(this).getBoolean(PreferencesActivity.TIMESTAMP, true)){
+					path = getFileStreamPath(exportData.getTimestamp() + ".csv");
+				}
+				else{
+					path = getFileStreamPath(exportData.hashCode() + ".csv");
+				}
 
 				Intent i = new Intent(Intent.ACTION_SEND);
 				i.setType("plain/text");
@@ -378,8 +384,14 @@ public class DataActivity extends Activity implements OnClickListener,
 					openFileOutput.write(d.getCSVasString().getBytes());
 					openFileOutput.flush();
 					openFileOutput.close();
-
-					File path = getFileStreamPath(d.getTimestamp() + ".csv");
+					File path = null;
+					if(PreferenceManager
+								.getDefaultSharedPreferences(this).getBoolean(PreferencesActivity.TIMESTAMP, true)){
+						path = getFileStreamPath(d.getTimestamp() + ".csv");
+					}
+					else{
+						path = getFileStreamPath(d.hashCode() + ".csv");
+					}
 					uris.add(Uri.fromFile(path));
 				}
 				Intent i = new Intent(Intent.ACTION_SEND_MULTIPLE);
@@ -412,6 +424,7 @@ public class DataActivity extends Activity implements OnClickListener,
 		ArrayList<String> possibleFileNames = new ArrayList<String>();
 		for (Data d : holder.getData()) {
 			possibleFileNames.add(d.getTimestamp() + ".csv");
+			possibleFileNames.add(d.hashCode()+ ".csv");
 		}
 		for (File actualFile : getFilesDir().listFiles()) {
 			if (possibleFileNames.contains(actualFile.getName())) {

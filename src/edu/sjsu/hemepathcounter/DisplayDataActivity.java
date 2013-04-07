@@ -60,7 +60,8 @@ public class DisplayDataActivity extends Activity implements
 		case R.id.display_data_activity_main:
 			Log.d(TAG, "Main Menu Button clicked.");
 			finish();
-			Intent intent = new Intent(DisplayDataActivity.this, MainActivity.class);
+			Intent intent = new Intent(DisplayDataActivity.this,
+					MainActivity.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			break;
@@ -117,12 +118,19 @@ public class DisplayDataActivity extends Activity implements
 		try {
 			Data exportData = mData;
 			FileOutputStream openFileOutput = openFileOutput(
-					exportData.getTimestamp() + ".csv", Context.MODE_WORLD_READABLE);
+					exportData.getTimestamp() + ".csv",
+					Context.MODE_WORLD_READABLE);
 			openFileOutput.write(exportData.getCSVasString().getBytes());
 			openFileOutput.flush();
 			openFileOutput.close();
 
-			File path = getFileStreamPath(exportData.getTimestamp() + ".csv");
+			File path = null;
+			if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
+					PreferencesActivity.TIMESTAMP, true)) {
+				path = getFileStreamPath(exportData.getTimestamp() + ".csv");
+			} else {
+				path = getFileStreamPath(exportData.hashCode() + ".csv");
+			}
 
 			Intent intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("plain/text");
