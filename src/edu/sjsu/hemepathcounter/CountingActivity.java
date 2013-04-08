@@ -135,7 +135,7 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 				//Save data to database
 				FileManager manager = FileManager.getInstance(getApplicationContext()); 
 				DataHolder mDataHolder = manager.getDataHolder();
-				Data data = new Data(mData, getApplicationContext());
+				Data data = new Data(mData);
 				mDataHolder.addData(data);
 				manager.updateDataHolder(mDataHolder);
 				

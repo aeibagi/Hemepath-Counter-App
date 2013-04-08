@@ -17,10 +17,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 import edu.sjsu.hemepathcounter.model.ButtonHolder;
 import edu.sjsu.hemepathcounter.model.CellButton;
+import edu.sjsu.hemepathcounter.model.CellButton.CellType;
 
 public class Custom_Modify_ButtonActivity extends Activity implements
 		OnItemSelectedListener, View.OnClickListener {
@@ -48,6 +50,7 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 	private String mode;
 
 	private Button btn_creat, btn_modify, btn_exit;
+	private RadioGroup cellTypeGroup;
 	private EditText enter_name_for_customModify_buttons;
 	private EditText enter_abbr_for_customModify_buttons;
 	private ImageButton selectedButton;
@@ -175,6 +178,8 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 			((EditText)findViewById(R.id.edt_Enter_abbr_Custom_modify))
 			.setText(modifiedButton.getAbbr());
 		}
+		
+		cellTypeGroup = (RadioGroup) findViewById(R.id.radioCellType);
 	}
 
 	@Override
@@ -353,15 +358,30 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 					.toString().trim();
 			String abbr = enter_abbr_for_customModify_buttons.getText()
 					.toString().trim();
+			CellType type = null;
+			switch (cellTypeGroup.getCheckedRadioButtonId()) {
+			case R.id.myeloidButton:
+				type = CellType.MYELOID;
+				break;
+			case R.id.erythroidButton:
+				type = CellType.ERYTHROID;
+				break;
+			case R.id.otherButton:
+				type = CellType.OTHER;
+				break;
+			default:
+				type = CellType.OTHER;
+				break;
+			}
 			if (name.length() > 0 && abbr.length() > 0) {
 				Log.d(TAG, "Saving newly created button.");
 				CellButton customCell;
 				if (abbr.isEmpty()) {
 					customCell = new CellButton(name, name, selectedSound,
-							SelectedButtonBackground);
+							SelectedButtonBackground, type);
 				} else {
 					customCell = new CellButton(name, abbr, selectedSound,
-							SelectedButtonBackground);
+							SelectedButtonBackground, type);
 				}
 				holder = manager.getButtonHolder();
 				holder.addCustomButton(customCell);

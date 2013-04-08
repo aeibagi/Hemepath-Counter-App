@@ -2,20 +2,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/white_marble"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    android:background="@drawable/white_marble"
     tools:context=".DisplayDataActivity" >
 
-    <ListView          
+    <ListView
         android:id="@+id/display_data_activity_listview"
-        android:layout_weight="1"
-        android:layout_width="fill_parent" 
-        android:layout_height="0dp"      
-        android:gravity="center"/>
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.78"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/MEratioView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textIsSelectable="true" />
     
     <RelativeLayout
         android:layout_width="fill_parent"

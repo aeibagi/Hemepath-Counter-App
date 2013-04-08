@@ -1,6 +1,7 @@
 package edu.sjsu.hemepathcounter.model;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -9,9 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.sjsu.hemepathcounter.NewCounterActivity;
+import edu.sjsu.hemepathcounter.model.CellButton.CellType;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -20,16 +20,25 @@ public class Data implements Parcelable, JSONable {
 	private HashMap<String, Integer> map;
 	private int total;
 	private String timestamp;
+	private double MEratio;
 
-	public Data(Counter counter, Context context) {
+	public Data(Counter counter) {
 		// Fill the map with the names of the buttons, and their counts.
 		map = new HashMap<String, Integer>();
+		double Mcount = 0;
+		double Ecount = 0;
 		for (CellButton c : counter.getCells()) {
 			map.put(c.getName(), c.getCount());
+			if (c.getType() == CellType.MYELOID) {
+				Mcount += c.getCount();
+			} else if (c.getType() == CellType.ERYTHROID) {
+				Ecount += c.getCount();
+			}
 		}
 
 		// Format the timestamp and set the variable
-		DateFormat format = DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.MEDIUM);
+		DateFormat format = DateFormat.getDateTimeInstance(DateFormat.DEFAULT,
+				DateFormat.MEDIUM);
 		timestamp = format.format(new Date());
 
 		// Set the total
@@ -37,11 +46,15 @@ public class Data implements Parcelable, JSONable {
 		for (String key : map.keySet()) {
 			total += map.get(key).intValue();
 		}
+
+		MEratio = Mcount / Ecount;
+
 	}
 
 	public Data() {
 		map = new HashMap<String, Integer>();
 		total = 0;
+		MEratio = 0.0;
 		timestamp = "";
 	}
 
@@ -61,6 +74,10 @@ public class Data implements Parcelable, JSONable {
 		return timestamp;
 	}
 
+	public double getMEratio() {
+		return MEratio;
+	}
+
 	@Override
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = new JSONObject();
@@ -72,6 +89,7 @@ public class Data implements Parcelable, JSONable {
 		jo.put("keyArray", keyArray);
 		jo.put("valueArray", valueArray);
 		jo.put("timestamp", timestamp);
+		jo.put("MEration", MEratio);
 		return jo;
 	}
 
@@ -88,6 +106,7 @@ public class Data implements Parcelable, JSONable {
 		for (String key : map.keySet()) {
 			total += map.get(key).intValue();
 		}
+		MEratio = src.getDouble("MEratio");
 	}
 
 	private void readFromParcel(Parcel in) {
@@ -98,6 +117,7 @@ public class Data implements Parcelable, JSONable {
 		}
 		total = in.readInt();
 		timestamp = in.readString();
+		MEratio = in.readDouble();
 	}
 
 	@Override
@@ -114,6 +134,7 @@ public class Data implements Parcelable, JSONable {
 		dest.writeBundle(b);
 		dest.writeInt(total);
 		dest.writeString(timestamp);
+		dest.writeDouble(MEratio);
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -132,18 +153,26 @@ public class Data implements Parcelable, JSONable {
 	}
 
 	public String getCSVasString() {
+		DecimalFormat df = new DecimalFormat("#.##");
 		String csv = "";
 		csv += "Name";
 		csv += ',';
 		csv += "Count";
+		csv += ',';
+		csv += "Percentage";
 		csv += '\n';
 
 		for (String key : map.keySet()) {
 			csv += key;
 			csv += ',';
 			csv += "" + map.get(key);
+			csv += ',';
+			csv += "" + String.format(df.format(100.0 * map.get(key) / total))
+					+ "%";
 			csv += '\n';
 		}
+
+		csv += "ME Ratio = " + df.format(MEratio) + ":1";
 		return csv;
 
 	}
@@ -182,6 +211,5 @@ public class Data implements Parcelable, JSONable {
 			return false;
 		return true;
 	}
-	
-	
+
 }

@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Hemepath Counter</string>
-    <string name="version_name">2012-03-26</string>
+    <string name="version_name">2012-04-07</string>
     <string name="action_settings">Settings</string>
     <string name="favorites">Favorites</string>
     <string name="counters_button_string">Counters</string>
@@ -79,6 +79,8 @@
     <string name="Mast_cells_abbr">Mast</string>
     <string name="Megakaryocytes">Megakaryocytes</string>
     <string name="Megakaryocytes_abbr">Megs</string>
+    <string name="Myeloid">Myeloid</string>
+    <string name="Myeloid_abbr">Myeloid</string>
 
     <!-- Mid-yield additional -->
     <string name="Erythroblasts">Erythroblasts</string>
@@ -154,5 +156,8 @@
     <string name="title_activity_data">List of Data</string>
     <string name="view_string">View</string>
     <string name="export_string">Export</string>
+    
+    <string name="Erythroid">Erythroid</string>
+    <string name="Other">Other</string>
 
 </resources>

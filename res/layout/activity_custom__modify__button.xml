@@ -39,8 +39,6 @@
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/orange" />
 
-
-
             <ImageButton
                 android:id="@+id/iB_Color_yellow"
                 android:layout_width="wrap_content"
@@ -187,26 +185,6 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <TextView
-        android:id="@+id/tvSound_Custome_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/horizontalScrollView1"
-        android:layout_below="@+id/horizontalScrollView1"
-        android:layout_marginTop="70dp"
-        android:text="@string/Choose_Sound"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <Spinner
-        android:id="@+id/SP_Sound_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/horizontalScrollView1"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="65dp"
-        android:layout_toRightOf="@+id/tvSound_Custome_activity"
-        android:background="@drawable/spinner_style" />
-
     <ImageButton
         android:id="@+id/ibSpeakerIcon"
         android:layout_width="wrap_content"
@@ -298,5 +276,50 @@
         android:layout_toLeftOf="@+id/linearLayout1"
         android:text="@string/Object_abbr"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/SP_Sound_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSound_Custome_activity"
+        android:layout_toRightOf="@+id/tvSound_Custome_activity"
+        android:background="@drawable/spinner_style" />
+
+    <TextView
+        android:id="@+id/tvSound_Custome_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/horizontalScrollView1"
+        android:text="@string/Choose_Sound"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <RadioGroup
+        android:id="@+id/radioCellType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ibSpeakerIcon"
+        android:layout_below="@+id/SP_Sound_menu"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/myeloidButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Myeloid" />
+
+        <RadioButton
+            android:id="@+id/erythroidButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Erythroid" />
+
+        <RadioButton
+            android:id="@+id/otherButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/Other" />
+    </RadioGroup>
 
 </RelativeLayout>

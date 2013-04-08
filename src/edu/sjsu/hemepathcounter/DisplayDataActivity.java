@@ -3,6 +3,7 @@ package edu.sjsu.hemepathcounter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,6 +18,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import edu.sjsu.hemepathcounter.adapter.DisplayDataAdapter;
 import edu.sjsu.hemepathcounter.model.Data;
 
@@ -39,6 +41,10 @@ public class DisplayDataActivity extends Activity implements
 		mAdapter = new DisplayDataAdapter(this, mData);
 		ListView listview = (ListView) findViewById(R.id.display_data_activity_listview);
 		listview.setAdapter(mAdapter);
+		
+		//Set MERatio
+		TextView MEratio = (TextView) findViewById(R.id.MEratioView);
+		MEratio.setText("ME Ratio = " + new DecimalFormat("#.##").format(mData.getMEratio()) + ":1");
 
 		// Set up button
 		Button btnMain = (Button) findViewById(R.id.display_data_activity_main);

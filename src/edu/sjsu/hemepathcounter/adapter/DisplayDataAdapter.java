@@ -11,6 +11,7 @@ import android.widget.TextView;
 import edu.sjsu.hemepathcounter.R;
 import edu.sjsu.hemepathcounter.model.CellButton;
 import edu.sjsu.hemepathcounter.model.Data;
+import edu.sjsu.hemepathcounter.model.CellButton.CellType;
 
 public class DisplayDataAdapter extends BaseAdapter {
 	
@@ -28,7 +29,7 @@ public class DisplayDataAdapter extends BaseAdapter {
 	@Override
 	public CellButton getItem(int position) {
 		String key = mKeys[position]; //reserve the order
-		CellButton cell = new CellButton(key, "", -1, -1);
+		CellButton cell = new CellButton(key, "", -1, -1, CellType.OTHER);
 		cell.setCount(mData.getMap().get(key));
 		return cell;
 	}
