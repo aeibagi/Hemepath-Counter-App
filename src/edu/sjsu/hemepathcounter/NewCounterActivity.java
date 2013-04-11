@@ -208,7 +208,7 @@ public class NewCounterActivity extends Activity implements
 					dialog.dismiss();
 				}
 			}).create();
-			ClearDialogBox.show();
+			if (!userSelection.isEmpty()){ClearDialogBox.show();}
 			break;
 		case R.id.Button_Custom:
 			Log.d(TAG, "Custom Button Selected.");
