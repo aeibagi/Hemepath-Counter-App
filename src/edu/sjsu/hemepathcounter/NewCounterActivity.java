@@ -294,12 +294,15 @@ public class NewCounterActivity extends Activity implements
 	}
 
 	@Override
-	public boolean onItemLongClick(AdapterView<?> arg0, View v, int position,
-			long id) {
-		ItemSelectedforContextMenuOption = (CellButton) mExpandableList
-				.getItemAtPosition(position);
-		registerForContextMenu(arg0);
-		return false;
+	public boolean onItemLongClick(AdapterView<?> arg0, View v, int position, long id) {
+		if (ExpandableListView.getPackedPositionType(id) == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
+            ItemSelectedforContextMenuOption = (CellButton) mExpandableList.getItemAtPosition(position);
+    		registerForContextMenu(arg0);
+            
+    		return false;
+        }
+
+		return true;
 	}
 
 	@Override
