@@ -329,7 +329,7 @@ public class NewCounterActivity extends Activity implements
 		Intent intent = new Intent(NewCounterActivity.this,
 				Custom_Modify_ButtonActivity.class);
 		intent.putExtra("button", ItemSelectedforContextMenuOption);
-		intent.putExtra("ModifyorCustom", "Modify");
+		intent.putExtra("mode", "Modify");
 		startActivityForResult(intent, 2);
 	}
 
@@ -367,7 +367,10 @@ public class NewCounterActivity extends Activity implements
 		holder.remove(itemToRemove);
 		manager.updateButtonHolder(holder);
 		myCustomAdaptor.notifyDataSetChanged();
-		userSelection.remove(userSelection.indexOf(itemToRemove));
+		if(userSelection.contains(itemToRemove))
+		{
+			userSelection.remove(userSelection.indexOf(itemToRemove));
+		}
 		if (userSelection.isEmpty() || userSelection.size() > 1) {
 			ModifyButton.setBackgroundResource(R.drawable.button_style_gray);
 			ModifyButton.setClickable(false);
