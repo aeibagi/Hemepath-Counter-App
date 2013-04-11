@@ -45,6 +45,7 @@ public class ModifyCounterActivity extends Activity implements
 		Log.d(TAG, "Starting new Modify Counter Activity");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_modify_counter);
+		setTitle("Modify Existing Counter");
 		initiailize();
 	}
 

@@ -66,6 +66,13 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 		setContentView(R.layout.activity_custom__modify__button);
 		modifiedButton = getIntent().getParcelableExtra("button");
 		mode = getIntent().getStringExtra("mode");
+		if (mode.equals("Custom")) {
+			setTitle("Create a Custom Button");
+		}
+		else if (mode.equals("Modify"))
+		{
+			setTitle("Modify Existing Button");
+		}
 		initialize();
 	}
 

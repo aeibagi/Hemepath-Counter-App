@@ -43,6 +43,7 @@ public class CountersActivity extends Activity implements
 		super.onCreate(savedInstanceState);
 		Log.d(TAG, "Starting new Counters Activity.");
 		setContentView(R.layout.activity_counters);
+		setTitle("List of Available Counters");
 		initialize();
 		SetupSearchFilter();
 

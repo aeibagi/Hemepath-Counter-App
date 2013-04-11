@@ -52,6 +52,7 @@ public class DataActivity extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		Log.d(TAG, "Starting new Data Activity.");
 		setContentView(R.layout.activity_data);
+		setTitle("View & Export Results");
 		initialize();
 		SetupSearchFilter();
 	}

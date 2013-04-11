@@ -22,7 +22,7 @@ public class PreferencesActivity extends Activity {
 		Log.d(TAG, "Starting Preferences Activity.");
 
 		logCurrentSettings();
-
+        setTitle("Settings");
 		// Display the fragment as the main content.
 		getFragmentManager().beginTransaction()
 				.replace(android.R.id.content, new PreferencesFragment())

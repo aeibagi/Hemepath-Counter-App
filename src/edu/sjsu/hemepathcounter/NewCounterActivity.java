@@ -72,6 +72,7 @@ public class NewCounterActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.d(TAG, "Creating new \"New Counter Activity\".");
+		setTitle("Create a New Counter");
 		setContentView(R.layout.activity_new_counter);
 		if(getIntent().hasExtra("mode")){
 		    mode = getIntent().getStringExtra("mode");}
