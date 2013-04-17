@@ -115,7 +115,7 @@ public class NewCounterActivity extends Activity implements
 		{
 			if(mode.equals("CoutersActivity"))
 			{
-				mainMenu.setText("Back to\n Counters Menu");
+				mainMenu.setText("Counters");
 			}
 		}
 		

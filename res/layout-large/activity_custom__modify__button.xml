@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvChooseColor"
-        android:layout_marginTop="5dp" >
+        android:layout_marginTop="12dp" >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -191,9 +191,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/horizontalScrollView1"
         android:layout_below="@+id/horizontalScrollView1"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:text="@string/Choose_Sound"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Spinner
         android:id="@+id/SP_Sound_menu"
@@ -201,7 +201,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/horizontalScrollView1"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="45dp"
         android:layout_toRightOf="@+id/tvSound_Custome_activity"
         android:background="@drawable/spinner_style" />
 
@@ -212,6 +212,7 @@
         android:layout_alignLeft="@+id/tvSound_Custome_activity"
         android:layout_below="@+id/tvSound_Custome_activity"
         android:background="?android:selectableItemBackground"
+        android:layout_marginTop="12dp"
         android:src="@drawable/speaker_icon" />
 
     <LinearLayout
@@ -225,24 +226,24 @@
         <Button
             android:id="@+id/btn_create_custom_Button"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
             android:background="@drawable/button_style_yellow"
             android:text="@string/create_button" />
 
         <Button
             android:id="@+id/btn_exit_custom_button"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
             android:background="@drawable/button_style_yellow"
             android:text="@string/Exit_custome_button" />
 
         <Button
             android:id="@+id/btn_modify_custom_button"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+        	android:layout_height="70dp"
             android:background="@drawable/button_style_yellow"
             android:text="@string/Modify" />
     </LinearLayout>
@@ -252,6 +253,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:maxLength="30"
         android:layout_toRightOf="@+id/Name_label"
         android:ems="10"
         android:hint="@string/enter_counter_name_hint"
@@ -263,8 +266,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/horizontalScrollView1"
         android:layout_below="@+id/Abbr_label"
+        android:layout_marginTop="50dp"
         android:text="@string/Choose_color"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
         android:id="@+id/Name_label"
@@ -272,15 +276,16 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/edt_Enter_name_Custom_modify"
         android:layout_alignBottom="@+id/edt_Enter_name_Custom_modify"
-        android:layout_alignLeft="@+id/Abbr_label"
+        android:layout_above="@id/Abbr_label"
         android:text="@string/Object_name"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
         android:id="@+id/edt_Enter_abbr_Custom_modify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/edt_Enter_name_Custom_modify"
+        android:maxLength="10"
+        android:layout_toRightOf="@id/Abbr_label"
         android:layout_below="@+id/edt_Enter_name_Custom_modify"
         android:ems="10"
         android:hint="@string/enter_counter_abbr_hint"
@@ -293,36 +298,50 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/edt_Enter_abbr_Custom_modify"
         android:layout_alignBottom="@+id/edt_Enter_abbr_Custom_modify"
-        android:layout_toLeftOf="@+id/linearLayout1"
         android:text="@string/Object_abbr"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/tvChooseType_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ibSpeakerIcon"
+        android:layout_marginTop="50dp"
+        android:text="@string/choose_type"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     <RadioGroup
         android:id="@+id/radioCellType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/ibSpeakerIcon"
-        android:layout_below="@+id/SP_Sound_menu"
+        android:layout_below="@+id/tvChooseType_label"
+        android:layout_above="@id/linearLayout1"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal" >
 
         <RadioButton
             android:id="@+id/myeloidButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Myeloid" />
+            android:text="@string/Myeloid"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <RadioButton
             android:id="@+id/erythroidButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Erythroid" />
+            android:text="@string/Erythroid" 
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginLeft="5dp"/>
 
         <RadioButton
             android:id="@+id/otherButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/Other" />
+            android:text="@string/Other" 
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginLeft="5dp"/>
     </RadioGroup>
 
 </RelativeLayout>

@@ -134,6 +134,7 @@
     <string name="Choose_color">Select a Color: </string>
     <string name="Choose_Sound">Select a Sound: </string>
     <string name="create_button">Create</string>
+    <string name="choose_type">Select a Type: </string>
     <string name="Exit_custome_button">Exit</string>
 
     <!-- Counting_Activity -->

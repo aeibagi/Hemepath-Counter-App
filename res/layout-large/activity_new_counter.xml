@@ -37,6 +37,7 @@
         android:layout_alignBottom="@+id/tvName"
         android:layout_centerHorizontal="true"
         android:ems="10"
+        android:maxLength="30"
         android:hint="@string/enter_counter_name_hint" 
         android:textColorHint="@android:color/holo_blue_light">
     </EditText>
@@ -57,18 +58,24 @@
         android:id="@+id/expandable_list_New_Counters"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/Button_New_counters_backTo_MainMenu"
+        android:layout_above="@+id/buttonLinearLayout"
         android:layout_below="@+id/edt_Enter_name"
         android:cacheColorHint="#00000000"
         android:listSelector="@android:color/transparent"
         android:transcriptMode="alwaysScroll" />
 
+    <LinearLayout
+        android:id="@+id/buttonLinearLayout"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+         
     <Button
         android:id="@+id/Button_New_counters_backTo_MainMenu"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:background="@drawable/button_style_yellow"
         android:text="@string/Main_Menu" />
@@ -77,8 +84,6 @@
         android:id="@+id/Button_Modify"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/Button_New_counters_backTo_MainMenu"
         android:background="@drawable/button_style_yellow"
         android:text="@string/Modify" />
 
@@ -86,8 +91,6 @@
         android:id="@+id/Button_Clear"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/Button_Modify"
         android:background="@drawable/button_style_yellow"
         android:text="@string/Clear" />
 
@@ -95,8 +98,6 @@
         android:id="@+id/Button_Custom"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/Button_Clear"
         android:background="@drawable/button_style_yellow"
         android:text="@string/Custom_button" />
 
@@ -104,9 +105,7 @@
         android:id="@+id/Button_Save"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/Button_Custom"
         android:background="@drawable/button_style_yellow"
         android:text="@string/Save" />
-
+</LinearLayout>
 </RelativeLayout>
