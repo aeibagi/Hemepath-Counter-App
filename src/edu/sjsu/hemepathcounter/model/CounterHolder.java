@@ -48,7 +48,7 @@ public class CounterHolder implements JSONable{
 
 			@Override
 			public int compare(Counter lhs, Counter rhs) {
-				return lhs.getNumUses().compareTo(rhs.getNumUses());
+				return rhs.getNumUses().compareTo(lhs.getNumUses());
 			}
 		});
 		ArrayList<Counter> favorites = new ArrayList<Counter>();

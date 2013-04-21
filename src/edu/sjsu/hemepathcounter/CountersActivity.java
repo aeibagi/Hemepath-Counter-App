@@ -74,6 +74,7 @@ public class CountersActivity extends Activity implements
 	}
 
 	private void updateCounterList() {
+		CounterListAdaptor.clear();
 		CounterListAdaptor.addAll(holder.getCounters());
 		CountersList.setAdapter(CounterListAdaptor);
 
@@ -267,6 +268,13 @@ public class CountersActivity extends Activity implements
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+	}
+	
+	@Override
+	protected void onRestart() {
+		Log.d(TAG, "Restarting Counters Activity");
+		super.onRestart();
+		updateCounterList();
 	}
 	
 }

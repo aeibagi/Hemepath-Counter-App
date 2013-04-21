@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import edu.sjsu.hemepathcounter.adapter.Favorite_counter_adapter;
 import edu.sjsu.hemepathcounter.model.Counter;
 import edu.sjsu.hemepathcounter.model.CounterHolder;
 
@@ -36,8 +35,6 @@ public class MainActivity extends Activity implements View.OnClickListener,
 	private FileManager manager;
 	private CounterHolder holder;
 	private Counter itemSelected;
-	
-	private Favorite_counter_adapter myAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,23 +43,18 @@ public class MainActivity extends Activity implements View.OnClickListener,
 		setContentView(R.layout.activity_main);
 		initialize();
 
-		/*adapter = new ArrayAdapter<Counter>(this,
-				android.R.layout.simple_list_item_1);*/
-		//adapter = new ArrayAdapter<Counter>(MainActivity.this, R.layout.activity_main, R.id.list_item_favorite_counter);
+		adapter = new ArrayAdapter<Counter>(this,
+				R.layout.list_item_favorite_counter);
 		setupFavorites();
 		favoritesListView.setOnItemClickListener(this);
 	}
 
 	private void setupFavorites() {
-		//adapter.clear();
-		if(myAdapter != null)
-			myAdapter.clearData();
+		adapter.clear();
 		manager = FileManager.getInstance(getApplicationContext());
 		holder = manager.getCounterHolder();
-		//adapter.addAll(holder.getFavoriteCounters());
-		myAdapter = new Favorite_counter_adapter(MainActivity.this, holder.getFavoriteCounters());
-	
-		favoritesListView.setAdapter(myAdapter);
+		adapter.addAll(holder.getFavoriteCounters());
+		favoritesListView.setAdapter(adapter);
 	}
 
 	private void initialize() {
