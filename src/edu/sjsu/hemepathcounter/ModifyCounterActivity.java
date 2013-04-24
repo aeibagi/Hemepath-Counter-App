@@ -1,8 +1,7 @@
 package edu.sjsu.hemepathcounter;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import edu.sjsu.hemepathcounter.adapter.modify_counter_adaptor;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -20,7 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-import edu.sjsu.hemepathcounter.model.ButtonHolder;
+import edu.sjsu.hemepathcounter.adapter.ModifyCounterAdapter;
 import edu.sjsu.hemepathcounter.model.CellButton;
 import edu.sjsu.hemepathcounter.model.Counter;
 import edu.sjsu.hemepathcounter.model.CounterHolder;
@@ -39,7 +38,7 @@ public class ModifyCounterActivity extends Activity implements
 	private Button finish_button;
 	private String originalName;
 	
-	private modify_counter_adaptor counter_adaptor;
+	private ModifyCounterAdapter counter_adaptor;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.d(TAG, "Starting new Modify Counter Activity");
@@ -63,10 +62,10 @@ public class ModifyCounterActivity extends Activity implements
 		edit_buttoninCounters_list.requestFocus();
 		edit_buttoninCounters_list.setOnItemClickListener(this);
 		
-		counter_adaptor = new modify_counter_adaptor(ModifyCounterActivity.this, mData.getCells());
+		counter_adaptor = new ModifyCounterAdapter(ModifyCounterActivity.this, mData.getCells());
 
 		// please keep this
-		/*modify_counter_adaptor = new ArrayAdapter<CellButton>(this,
+		/*ModifyCounterAdapter = new ArrayAdapter<CellButton>(this,
 				android.R.layout.simple_list_item_1, mData.getCells());*/
 
 		edit_buttoninCounters_list.setAdapter(counter_adaptor);
@@ -109,14 +108,14 @@ public class ModifyCounterActivity extends Activity implements
 				manager.updateCounterHolder(myCounterHolder);
 				if(!name.equals(originalName))
 				{
-					Toast.makeText(this, "Counter has renmed to " + name,
+					Toast.makeText(this, "Counter has renamed to " + name,
 						Toast.LENGTH_SHORT).show();
 				}
 				finish();
 			}
 			else 
 			{
-				Toast.makeText(this, "You did Not Enter a Name for the Counter",
+				Toast.makeText(this, "You did not enter a name for the counter",
 						Toast.LENGTH_SHORT).show();
 			}
 			break;
@@ -203,7 +202,7 @@ public class ModifyCounterActivity extends Activity implements
 		ArrayList<CellButton> listofButtons;
 		mData.removeaButton(itemToRemove);
 		// please keep this
-		//modify_counter_adaptor.notifyDataSetChanged();
+		//ModifyCounterAdapter.notifyDataSetChanged();
 		counter_adaptor.notifyDataSetChanged();
 		ArrayList<Counter> listofCounters = myCounterHolder.getCounters();
 		
@@ -255,9 +254,9 @@ public class ModifyCounterActivity extends Activity implements
 					}
 				}
 				// please keep this
-				/*modify_counter_adaptor.notifyDataSetChanged();
-				modify_counter_adaptor.clear();
-				modify_counter_adaptor.addAll(listofButtons);*/
+				/*ModifyCounterAdapter.notifyDataSetChanged();
+				ModifyCounterAdapter.clear();
+				ModifyCounterAdapter.addAll(listofButtons);*/
 				
 				counter_adaptor.notifyDataSetChanged();
 				counter_adaptor.clearData();

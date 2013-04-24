@@ -77,6 +77,13 @@ public class Data implements Parcelable, JSONable {
 	public double getMEratio() {
 		return MEratio;
 	}
+	/**
+	 * Check if the M:E ratio is valid
+	 * @return true if the M:E ratio is not infinity or NaN (not a number)
+	 */
+	public boolean isMEratioValid() {
+		return !Double.isInfinite(MEratio) && !Double.isNaN(MEratio);
+	}
 
 	@Override
 	public JSONObject toJSONObject() throws JSONException {
@@ -171,8 +178,11 @@ public class Data implements Parcelable, JSONable {
 					+ "%";
 			csv += '\n';
 		}
-
-		csv += "ME Ratio = " + df.format(MEratio) + ":1";
+		
+		//include MEratio only if it applies
+		if (isMEratioValid()) {
+			csv += "\"ME Ratio = " + df.format(MEratio) + ":1\"";
+		}
 		return csv;
 
 	}

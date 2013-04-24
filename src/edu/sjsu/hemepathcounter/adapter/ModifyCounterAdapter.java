@@ -14,7 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class modify_counter_adaptor extends BaseAdapter{
+public class ModifyCounterAdapter extends BaseAdapter{
 
 	private LayoutInflater inflater;
 	private ArrayList<CellButton> mCellData;
@@ -22,7 +22,7 @@ public class modify_counter_adaptor extends BaseAdapter{
     private Button preview_button;
     private MediaPlayer myMediaPlayer;
 	
-	public modify_counter_adaptor(Context context, ArrayList<CellButton> cellButtons)
+	public ModifyCounterAdapter(Context context, ArrayList<CellButton> cellButtons)
 	{
 		mCellData = cellButtons;
 		mContext = context;

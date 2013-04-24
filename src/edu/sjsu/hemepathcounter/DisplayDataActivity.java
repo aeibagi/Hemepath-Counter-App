@@ -41,11 +41,15 @@ public class DisplayDataActivity extends Activity implements
 		mAdapter = new DisplayDataAdapter(this, mData);
 		ListView listview = (ListView) findViewById(R.id.display_data_activity_listview);
 		listview.setAdapter(mAdapter);
-		
-		//Set MERatio
-		TextView MEratio = (TextView) findViewById(R.id.MEratioView);
-		MEratio.setText("ME Ratio = " + new DecimalFormat("#.##").format(mData.getMEratio()) + ":1");
 
+		// if the M:E ratio is valid for this Data
+		if (mData.isMEratioValid()) {
+			// Set MERatio
+			TextView MEratio = (TextView) findViewById(R.id.MEratioView);
+			MEratio.setText("ME Ratio = "
+					+ new DecimalFormat("#.##").format(mData.getMEratio())
+					+ ":1");
+		}
 		// Set up button
 		Button btnMain = (Button) findViewById(R.id.display_data_activity_main);
 		Button btnExport = (Button) findViewById(R.id.display_data_activity_export);
