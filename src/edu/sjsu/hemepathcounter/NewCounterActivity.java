@@ -219,16 +219,31 @@ public class NewCounterActivity extends Activity implements
 			break;
 		case R.id.Button_Save:
 			Log.d(TAG, "Save Button Selected.");
+			boolean sameName = false;
 			String name = editBox_enter_name.getText().toString().trim();
 			if (name.length() > 0) {
-				if (!userSelection.isEmpty()) {
-					CounterHolder counterHolder = manager.getCounterHolder();
-					counterHolder.addCounter(new Counter(name, userSelection));
-					manager.updateCounterHolder(counterHolder);
-					finish();
-				} else {
-					Toast.makeText(this, "You did not add any buttons.",
+				for (Counter counter : manager.getCounterHolder().getCounters())
+				{
+					if(name.equalsIgnoreCase(counter.getName()))
+					{
+						sameName = true;
+					}
+				}
+				if(sameName)
+				{
+					Toast.makeText(this, "Counter " + name + " already exists.",
 							Toast.LENGTH_SHORT).show();
+				}
+				else{
+					if (!userSelection.isEmpty()) {
+						CounterHolder counterHolder = manager.getCounterHolder();
+						counterHolder.addCounter(new Counter(name, userSelection));
+						manager.updateCounterHolder(counterHolder);
+						finish();
+					} else {
+						Toast.makeText(this, "You did not add any buttons.",
+								Toast.LENGTH_SHORT).show();
+					}
 				}
 
 			} else {

@@ -382,23 +382,40 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 			}
 			if (name.length() > 0 && abbr.length() > 0) {
 				Log.d(TAG, "Saving newly created button.");
+				boolean sameName = false;
 				CellButton customCell;
-				if (abbr.isEmpty()) {
-					customCell = new CellButton(name, name, selectedSound,
-							SelectedButtonBackground, type);
-				} else {
-					customCell = new CellButton(name, abbr, selectedSound,
-							SelectedButtonBackground, type);
+				for (CellButton cell : manager.getButtonHolder().getCustomButtons())
+				{
+					if(name.equalsIgnoreCase(cell.getName()))
+					{
+						sameName = true;
+					}
 				}
-				holder = manager.getButtonHolder();
-				holder.addCustomButton(customCell);
-				manager.updateButtonHolder(holder);
-				Intent intent = new Intent(Custom_Modify_ButtonActivity.this,
-						NewCounterActivity.class);
-				intent.putExtra("Created_custom_button", true);
-				intent.putExtra("Custom_Button", customCell);
-				setResult(Activity.RESULT_OK, intent);
-				finish();
+				if(sameName)
+				{
+					Toast.makeText(this,
+							"Button " + name + " already exists.",
+							Toast.LENGTH_SHORT).show();
+				}
+				else
+				{	
+					if (abbr.isEmpty()) {
+						customCell = new CellButton(name, name, selectedSound,
+								SelectedButtonBackground, type);
+					} else {
+						customCell = new CellButton(name, abbr, selectedSound,
+								SelectedButtonBackground, type);
+					}
+					holder = manager.getButtonHolder();
+					holder.addCustomButton(customCell);
+					manager.updateButtonHolder(holder);
+					Intent intent = new Intent(Custom_Modify_ButtonActivity.this,
+							NewCounterActivity.class);
+					intent.putExtra("Created_custom_button", true);
+					intent.putExtra("Custom_Button", customCell);
+					setResult(Activity.RESULT_OK, intent);
+					finish();
+				}
 			} else {
 				Toast.makeText(this,
 						"You did Not Enter a Name or abbreviation for the new Button",
