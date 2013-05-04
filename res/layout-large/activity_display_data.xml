@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/counting_background"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".DisplayDataActivity" >
+
+    <ListView
+        android:id="@+id/display_data_activity_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.78"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/MEratioView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textIsSelectable="true" />
+        
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_marginLeft="4dip"
+        android:layout_marginRight="4dip"
+        android:background="?android:attr/dividerVertical"/>
+    
+    <RelativeLayout
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >     
+        
+        <View
+            android:id="@+id/display_data_activity_picker_helper1"
+            android:layout_width="1dip"
+            android:layout_height="wrap_content"            
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="5dp"  
+            android:layout_marginBottom="4dip"
+            android:layout_marginTop="4dip"
+            android:background="?android:attr/dividerVertical" />
+        
+        <Button
+            android:id="@+id/display_data_activity_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/display_data_activity_picker_helper1"  
+            android:layout_marginLeft="5dp"         
+            android:text="@string/display_data_activity_main"         
+            android:background="?android:attr/selectableItemBackground"  />
+        
+        <View
+            android:id="@+id/display_data_activity_picker_helper2"
+            android:layout_width="1dip"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/display_data_activity_main"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dip"
+            android:layout_marginTop="4dip"
+            android:background="?android:attr/dividerVertical" />
+        
+        <Button
+            android:id="@+id/display_data_activity_export"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"  
+            android:layout_toRightOf="@id/display_data_activity_picker_helper2"       
+            android:text="@string/display_data_activity_export"     
+            android:background="?android:attr/selectableItemBackground" />
+        
+        <View
+            android:id="@+id/display_data_activity_picker_helper3"
+            android:layout_width="1dip"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/display_data_activity_export"
+            android:layout_marginLeft="5dp"  
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dip"
+            android:layout_marginTop="4dip"
+            android:background="?android:attr/dividerVertical" />
+        
+    </RelativeLayout>
+</LinearLayout>
