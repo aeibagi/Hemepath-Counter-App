@@ -22,19 +22,18 @@
 	    android:stretchMode="columnWidth"
 	    android:gravity="center"/>
     
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_marginLeft="4dip"
+        android:layout_marginRight="4dip"
+        android:background="?android:attr/dividerVertical"/>
+
     <RelativeLayout
-        android:layout_width="260dp"
-        android:layout_height="40dp"      
-        android:layout_marginTop="10dp"  
+        android:layout_width="310dp"
+        android:layout_height="40dp"    
         android:layout_gravity="center"
         android:orientation="horizontal" >
-        
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dip"
-            android:layout_marginLeft="4dip"
-            android:layout_marginRight="4dip"
-            android:background="?android:attr/dividerVertical"/>
         
         <View
             android:id="@+id/counting_activity_picker_helper"
@@ -42,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginLeft="5dp"  
             android:layout_marginBottom="4dip"
             android:layout_marginTop="4dip"
             android:background="?android:attr/dividerVertical" />
@@ -50,9 +50,8 @@
 	        android:id="@+id/counting_activity_undo"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_toRightOf="@id/counting_activity_picker_helper"
-	        android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
+	        android:layout_marginLeft="5dp"  
+	        android:layout_toRightOf="@id/counting_activity_picker_helper"	      
 	        android:text="@string/counting_activity_undo"         
             android:background="?android:attr/selectableItemBackground"  />
         
@@ -60,6 +59,7 @@
             android:id="@+id/counting_activity_picker_helper1"
             android:layout_width="1dip"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"  
             android:layout_toRightOf="@id/counting_activity_undo"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
@@ -71,6 +71,7 @@
 	        android:id="@+id/counting_activity_clear"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"  
 	        android:layout_toRightOf="@id/counting_activity_picker_helper1"	      
             android:text="@string/counting_activity_clear"     
             android:background="?android:attr/selectableItemBackground" />
@@ -79,6 +80,7 @@
             android:id="@+id/counting_activity_picker_helper2"
             android:layout_width="1dip"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"  
             android:layout_toRightOf="@id/counting_activity_clear"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
@@ -90,6 +92,7 @@
 	        android:id="@+id/counting_activity_save"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"  
 	        android:layout_toRightOf="@id/counting_activity_picker_helper2"	        
 	        android:text="@string/counting_activity_save"
 	        android:background="?android:attr/selectableItemBackground" />	  
@@ -98,6 +101,7 @@
             android:id="@+id/counting_activity_picker_helper3"
             android:layout_width="1dip"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"  
             android:layout_toRightOf="@id/counting_activity_save"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
@@ -109,6 +113,7 @@
 	        android:id="@+id/counting_activity_main"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"  
 	        android:layout_toRightOf="@id/counting_activity_picker_helper3"	        
 	        android:text="@string/counting_activity_main"
 	        android:background="?android:attr/selectableItemBackground" />	
@@ -117,6 +122,7 @@
             android:id="@+id/counting_activity_picker_helper4"
             android:layout_width="1dip"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"  
             android:layout_toRightOf="@id/counting_activity_main"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"

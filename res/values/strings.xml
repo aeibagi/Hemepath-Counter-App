@@ -147,7 +147,7 @@
     
     <!-- Display_Data_Activity -->
     <string name="title_activity_display_data">Display Data Activity</string>
-    <string name="display_data_activity_main">Main Menu</string>
+    <string name="display_data_activity_main">Main</string>
     <string name="display_data_activity_export">Export</string>
     
     
