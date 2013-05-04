@@ -32,6 +32,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 import edu.sjsu.hemepathcounter.model.Data;
 import edu.sjsu.hemepathcounter.model.DataHolder;
 
@@ -83,6 +84,7 @@ public class DataActivity extends Activity implements OnClickListener,
 		viewButton = (Button) findViewById(R.id.view_data_button);
 		viewButton.setBackgroundResource(R.drawable.button_style_gray);
 		viewButton.setOnClickListener(this);
+		
 	}
 
 	private void SetupSearchFilter() {
@@ -255,20 +257,32 @@ public class DataActivity extends Activity implements OnClickListener,
 			Log.d(TAG, "View button clicked");
 			// Find selected data
 			int len = DataList.getCount();
-			if (len == 0) return;
-			SparseBooleanArray checked = DataList.getCheckedItemPositions();
-			Data viewData = null;
-			for (int i = 0; i < len; i++)
-				if (checked.get(i)) {
-					viewData = (Data) DataList.getItemAtPosition(i);
+			if (len == 0){
+				Toast.makeText(this, "You don't have any data saved",
+						Toast.LENGTH_SHORT).show();
+			}
+			else
+			{
+				SparseBooleanArray checked = DataList.getCheckedItemPositions();
+				if(checked.size() !=0){
+				Data viewData = null;
+				for (int i = 0; i < len; i++)
+					if (checked.get(i)) {
+						viewData = (Data) DataList.getItemAtPosition(i);
+					}
+				
+				//Start other activity.
+				Intent intent = new Intent(DataActivity.this, DisplayDataActivity.class);
+				intent.putExtra("data", viewData);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);	
+				finish();}
+				else
+				{
+					Toast.makeText(this, "Select data from the list above to view.",
+							Toast.LENGTH_SHORT).show();
 				}
-			
-			//Start other activity.
-			Intent intent = new Intent(DataActivity.this, DisplayDataActivity.class);
-			intent.putExtra("data", viewData);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intent);	
-			finish();
+			}
 			break;
 		case R.id.export_multiple_data_button:
 			Log.d(TAG, "Export button clicked");
