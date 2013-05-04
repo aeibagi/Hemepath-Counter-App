@@ -7,4 +7,6 @@
     <color name="unread_text_color">#333333</color>
     <color name="read_text_color">#7d7d7d</color>
 
+    <color name="RoyalBlue">#4169E1</color>
+    <color name="OrangeRed">#FF4500</color>
 </resources>
