@@ -131,6 +131,7 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 				break;
 			case R.id.counting_activity_save:
 				//get name for the counter after finishing counting
+				if (mData.getTotal() == 0) break ;
 				Log.d(TAG, "Creating Data Object and saving.");
 				//Save data to database
 				FileManager manager = FileManager.getInstance(getApplicationContext()); 

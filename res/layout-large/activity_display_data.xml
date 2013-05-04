@@ -12,17 +12,19 @@
 
     <ListView
         android:id="@+id/display_data_activity_listview"
-        android:layout_width="fill_parent"
+        android:layout_width="580dp"
         android:layout_height="0dp"
         android:layout_weight="0.78"
-        android:gravity="center" />
+        android:layout_gravity="center"
+        android:dividerHeight="3.0sp" />
 
     <TextView
         android:id="@+id/MEratioView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textIsSelectable="true" />
+        android:textSize="20sp"
+        android:textColor="@color/OrangeRed" />
         
     <View
         android:layout_width="match_parent"
@@ -32,7 +34,7 @@
         android:background="?android:attr/dividerVertical"/>
     
     <RelativeLayout
-        android:layout_width="180dp"
+        android:layout_width="280dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:orientation="horizontal" >     
@@ -43,7 +45,7 @@
             android:layout_height="wrap_content"            
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="5dp"  
+            android:layout_marginLeft="15dp"  
             android:layout_marginBottom="4dip"
             android:layout_marginTop="4dip"
             android:background="?android:attr/dividerVertical" />
@@ -53,8 +55,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/display_data_activity_picker_helper1"  
-            android:layout_marginLeft="5dp"         
-            android:text="@string/display_data_activity_main"         
+            android:layout_marginLeft="15dp"         
+            android:text="@string/display_data_activity_main"     
+            android:textSize="35sp"    
+	      	android:textColor="@color/RoyalBlue"    
             android:background="?android:attr/selectableItemBackground"  />
         
         <View
@@ -64,6 +68,7 @@
             android:layout_toRightOf="@id/display_data_activity_main"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp" 
             android:layout_marginBottom="4dip"
             android:layout_marginTop="4dip"
             android:background="?android:attr/dividerVertical" />
@@ -72,9 +77,11 @@
             android:id="@+id/display_data_activity_export"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"  
+            android:layout_marginLeft="15dp"  
             android:layout_toRightOf="@id/display_data_activity_picker_helper2"       
-            android:text="@string/display_data_activity_export"     
+            android:text="@string/display_data_activity_export"
+            android:textSize="35sp"    
+	      	android:textColor="@color/RoyalBlue"     
             android:background="?android:attr/selectableItemBackground" />
         
         <View
@@ -82,7 +89,7 @@
             android:layout_width="1dip"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/display_data_activity_export"
-            android:layout_marginLeft="5dp"  
+            android:layout_marginLeft="15dp"  
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="4dip"
