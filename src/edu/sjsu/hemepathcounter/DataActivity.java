@@ -255,6 +255,7 @@ public class DataActivity extends Activity implements OnClickListener,
 			Log.d(TAG, "View button clicked");
 			// Find selected data
 			int len = DataList.getCount();
+			if (len == 0) return;
 			SparseBooleanArray checked = DataList.getCheckedItemPositions();
 			Data viewData = null;
 			for (int i = 0; i < len; i++)
@@ -324,6 +325,7 @@ public class DataActivity extends Activity implements OnClickListener,
 
 			// Find selected data
 			int len = DataList.getCount();
+			//if (len == 0) return ;
 			SparseBooleanArray checked = DataList.getCheckedItemPositions();
 			Data exportData = null;
 			for (int i = 0; i < len; i++)
