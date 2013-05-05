@@ -132,7 +132,7 @@
     <string name="Atypical_megakaryocytes_abbr">Atyp. megs</string>
     <string name="Megakaryoblasts">Megakaryoblasts</string>
     <string name="Megakaryoblasts_abbr">Meg. blasts</string>
-    <string name="Dendritic_cells">Dendritic_cells</string>
+    <string name="Dendritic_cells">Dendritic cells</string>
     <string name="Dendritic_cells_abbr">DCs</string>
     
     
@@ -145,6 +145,7 @@
     <string name="Positive_Lymph_Nodes">Positive Lymph Nodes</string>
     <string name="Positive_Lymph_Nodes_abbr">+LNs</string>
     <string name="Mitoses">Mitoses</string>
+    <string name="Mitoses_abbr">Mitoses</string>
     <string name="High_Power_fields">High Power Fields</string>
     <string name="High_Power_fields_abbr">HPFs</string>
     

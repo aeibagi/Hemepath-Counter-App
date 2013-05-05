@@ -54,16 +54,24 @@ public class NewCounterActivity extends Activity implements
 	public static Drawable listViewdefaultbackground;
 
 	private ArrayList<Parent> arrayParents = new ArrayList<Parent>();
-	private ArrayList<CellButton> defaultButtons = new ArrayList<CellButton>();
+	/*private ArrayList<CellButton> defaultButtons = new ArrayList<CellButton>();
 	private ArrayList<CellButton> highYieldButtons = new ArrayList<CellButton>();
 	private ArrayList<CellButton> midYieldButtons = new ArrayList<CellButton>();
 	private ArrayList<CellButton> lowYieldButtons = new ArrayList<CellButton>();
+	private ArrayList<CellButton> customButtons = new ArrayList<CellButton>();*/
+	
+	private ArrayList<CellButton> Granulocytic_Lineage_Buttons = new ArrayList<CellButton>();
+	private ArrayList<CellButton> Lymphocytic_Lineage_Buttons = new ArrayList<CellButton>();
+	private ArrayList<CellButton> Erythrocytic_Lineage_Buttons = new ArrayList<CellButton>();
+	private ArrayList<CellButton> Monocytic_and_Megakaryocytic_Lineages_Buttons = new ArrayList<CellButton>();
+	private ArrayList<CellButton> Miscellaneous_Buttons = new ArrayList<CellButton>();
 	private ArrayList<CellButton> customButtons = new ArrayList<CellButton>();
 
 	private Parent parent1 = new Parent();
 	private Parent parent2 = new Parent();
 	private Parent parent3 = new Parent();
 	private Parent parent4 = new Parent();
+	private Parent parent5 = new Parent();
 	private Parent CustomParent = new Parent();
 
 	private CellButton created_custom_button, ItemSelectedforContextMenuOption;
@@ -125,7 +133,7 @@ public class NewCounterActivity extends Activity implements
 		manager = FileManager.getInstance(getApplicationContext());
 		holder = manager.getButtonHolder();
 
-		parent1.setTitle(getResources().getString(R.string.Default_Basic_Panel));
+		/*parent1.setTitle(getResources().getString(R.string.Default_Basic_Panel));
 		parent2.setTitle(getResources().getString(
 				R.string.High_yield_additional));
 		parent3.setTitle(getResources()
@@ -138,19 +146,45 @@ public class NewCounterActivity extends Activity implements
 		highYieldButtons = holder.getHighYieldButtons();
 		midYieldButtons = holder.getMidYieldButtons();
 		lowYieldButtons = holder.getLowYieldButtons();
+		customButtons = holder.getCustomButtons();*/
+		
+		parent1.setTitle(getResources().getString(R.string.Granulocytic_Lineage));
+		parent2.setTitle(getResources().getString(
+				R.string.Lymphocytic_Lineage));
+		parent3.setTitle(getResources()
+				.getString(R.string.Erythrocytic_Lineage));
+		parent4.setTitle(getResources()
+				.getString(R.string.Monocytic_and_Megakaryocytic_Lineages));
+		parent5.setTitle(getResources()
+				.getString(R.string.Miscellaneous));
+		CustomParent.setTitle("Custom Cells");
+		
+		Granulocytic_Lineage_Buttons = holder.getGranulocytic_LineageButtons();
+		Lymphocytic_Lineage_Buttons = holder.getLymphocytic_LineageButtons();
+		Erythrocytic_Lineage_Buttons = holder.getErythrocytic_LineageButtons();
+		Monocytic_and_Megakaryocytic_Lineages_Buttons = holder.getMonocytic_and_Megakaryocytic_LineagesButtons();
+		Miscellaneous_Buttons = holder.getMiscellaneousButtons();
 		customButtons = holder.getCustomButtons();
 
 		// add children to basic/default panel
-		parent1.setArrayChildren(defaultButtons);
+		/*parent1.setArrayChildren(defaultButtons);
 		parent2.setArrayChildren(highYieldButtons);
 		parent3.setArrayChildren(midYieldButtons);
 		parent4.setArrayChildren(lowYieldButtons);
+		CustomParent.setArrayChildren(customButtons);*/
+		
+		parent1.setArrayChildren(Granulocytic_Lineage_Buttons);
+		parent2.setArrayChildren(Lymphocytic_Lineage_Buttons);
+		parent3.setArrayChildren(Erythrocytic_Lineage_Buttons);
+		parent4.setArrayChildren(Monocytic_and_Megakaryocytic_Lineages_Buttons);
+		parent5.setArrayChildren(Miscellaneous_Buttons);
 		CustomParent.setArrayChildren(customButtons);
 
 		arrayParents.add(parent1);
 		arrayParents.add(parent2);
 		arrayParents.add(parent3);
 		arrayParents.add(parent4);
+		arrayParents.add(parent5);
 		arrayParents.add(CustomParent);
 
 		// set the parent & child adaptor to the expandable list
