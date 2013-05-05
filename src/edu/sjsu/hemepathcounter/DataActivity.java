@@ -84,7 +84,7 @@ public class DataActivity extends Activity implements OnClickListener,
 		viewButton = (Button) findViewById(R.id.view_data_button);
 		viewButton.setBackgroundResource(R.drawable.button_style_gray);
 		viewButton.setOnClickListener(this);
-		
+
 	}
 
 	private void SetupSearchFilter() {
@@ -257,45 +257,48 @@ public class DataActivity extends Activity implements OnClickListener,
 			Log.d(TAG, "View button clicked");
 			// Find selected data
 			int len = DataList.getCount();
-			if (len == 0){
+			if (len == 0) {
 				Toast.makeText(this, "You don't have any data saved",
 						Toast.LENGTH_SHORT).show();
-			}
-			else
-			{
+			} else {
 				SparseBooleanArray checked = DataList.getCheckedItemPositions();
-				if(checked.size() !=0){
-				Data viewData = null;
-				for (int i = 0; i < len; i++)
-					if (checked.get(i)) {
-						viewData = (Data) DataList.getItemAtPosition(i);
-					}
-				
-				//Start other activity.
-				Intent intent = new Intent(DataActivity.this, DisplayDataActivity.class);
-				intent.putExtra("data", viewData);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);	
-				finish();}
-				else
-				{
-					Toast.makeText(this, "Select data from the list above to view.",
+				if (checked.size() != 0) {
+					Data viewData = null;
+					for (int i = 0; i < len; i++)
+						if (checked.get(i)) {
+							viewData = (Data) DataList.getItemAtPosition(i);
+						}
+
+					// Start other activity.
+					Intent intent = new Intent(DataActivity.this,
+							DisplayDataActivity.class);
+					intent.putExtra("data", viewData);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intent);
+					finish();
+				} else {
+					Toast.makeText(this,
+							"Select data from the list above to view.",
 							Toast.LENGTH_SHORT).show();
 				}
 			}
 			break;
 		case R.id.export_multiple_data_button:
 			Log.d(TAG, "Export button clicked");
+			// check if any data is selected data is selected.
+			SparseBooleanArray checked = DataList.getCheckedItemPositions();
+			if (checked.size() != 0) {
+				// check if exporting is enabled.
+				if (PreferenceManager.getDefaultSharedPreferences(this)
+						.getBoolean(PreferencesActivity.EXPORT, false)) {
+					Log.d(TAG, "Export enabled. Exporting now.");
+					exportSelected();
+				} else {
+					Log.d(TAG, "Export disabled.");
+					AlertDialog exportDisabledDialogBox = createExportDisabledDialogBox();
+					exportDisabledDialogBox.show();
+				}
 
-			// check if exporting is enabled.
-			if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
-					PreferencesActivity.EXPORT, false)) {
-				Log.d(TAG, "Export enabled. Exporting now.");
-				exportSelected();
-			} else {
-				Log.d(TAG, "Export disabled.");
-				AlertDialog exportDisabledDialogBox = createExportDisabledDialogBox();
-				exportDisabledDialogBox.show();
 			}
 			break;
 		}
@@ -339,7 +342,7 @@ public class DataActivity extends Activity implements OnClickListener,
 
 			// Find selected data
 			int len = DataList.getCount();
-			//if (len == 0) return ;
+			// if (len == 0) return ;
 			SparseBooleanArray checked = DataList.getCheckedItemPositions();
 			Data exportData = null;
 			for (int i = 0; i < len; i++)
@@ -355,11 +358,10 @@ public class DataActivity extends Activity implements OnClickListener,
 				openFileOutput.close();
 
 				File path = null;
-				if(PreferenceManager
-							.getDefaultSharedPreferences(this).getBoolean(PreferencesActivity.TIMESTAMP, true)){
+				if (PreferenceManager.getDefaultSharedPreferences(this)
+						.getBoolean(PreferencesActivity.TIMESTAMP, true)) {
 					path = getFileStreamPath(exportData.getTimestamp() + ".csv");
-				}
-				else{
+				} else {
 					path = getFileStreamPath(exportData.hashCode() + ".csv");
 				}
 
@@ -402,11 +404,10 @@ public class DataActivity extends Activity implements OnClickListener,
 					openFileOutput.flush();
 					openFileOutput.close();
 					File path = null;
-					if(PreferenceManager
-								.getDefaultSharedPreferences(this).getBoolean(PreferencesActivity.TIMESTAMP, true)){
+					if (PreferenceManager.getDefaultSharedPreferences(this)
+							.getBoolean(PreferencesActivity.TIMESTAMP, true)) {
 						path = getFileStreamPath(d.getTimestamp() + ".csv");
-					}
-					else{
+					} else {
 						path = getFileStreamPath(d.hashCode() + ".csv");
 					}
 					uris.add(Uri.fromFile(path));
@@ -441,7 +442,7 @@ public class DataActivity extends Activity implements OnClickListener,
 		ArrayList<String> possibleFileNames = new ArrayList<String>();
 		for (Data d : holder.getData()) {
 			possibleFileNames.add(d.getTimestamp() + ".csv");
-			possibleFileNames.add(d.hashCode()+ ".csv");
+			possibleFileNames.add(d.hashCode() + ".csv");
 		}
 		for (File actualFile : getFilesDir().listFiles()) {
 			if (possibleFileNames.contains(actualFile.getName())) {
