@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Hemepath Counter</string>
-    <string name="version_name">2012-04-24</string>
+    <string name="version_name">2013-05-05</string>
     <string name="action_settings">Settings</string>
     <string name="favorites">Favorites</string>
     <string name="counters_button_string">Counters</string>
