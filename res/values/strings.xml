@@ -109,6 +109,7 @@
     <string name="Proerythroblasts">Proerythroblasts</string>
     <string name="Proerythroblasts_abbr">Proeryth.</string>
     <string name="Monoblasts">Monoblasts</string>
+    <string name="Monoblasts_abbr">M-blasts</string>
     <string name="Reticulocytes">Reticulocytes</string>
     <string name="Reticulocytes_abbr">Retics</string>
     <string name="Red_blood_cells">Red blood cells</string>
@@ -144,8 +145,8 @@
     <string name="Positive_Lymph_Nodes">Positive Lymph Nodes</string>
     <string name="Positive_Lymph_Nodes_abbr">+LNs</string>
     <string name="Mitoses">Mitoses</string>
-    <string name="Hight_Power_fields">High Power Fields</string>
-    <string name="Hight_Power_fields_abbr">HPFs</string>
+    <string name="High_Power_fields">High Power Fields</string>
+    <string name="High_Power_fields_abbr">HPFs</string>
     
     
     

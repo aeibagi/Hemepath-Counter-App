@@ -86,159 +86,260 @@ public final class FileManager {
 
 	private void createCounterHolderFile() {
 		Log.d(TAG, "Creating counterHolder file.");
-		CellButton butt1 = new CellButton(context.getResources().getString(
-				R.string.Lymphocytes), context.getResources().getString(
-				R.string.Lymphocytes_abbr), R.raw.believe,
-				R.drawable.light_bluefamily_5ddcd3_048, CellType.OTHER);
-		CellButton butt2 = new CellButton(context.getResources().getString(
-				R.string.Monocytes), context.getResources().getString(
-				R.string.Monocytes_abbr), R.raw.attention,
-				R.drawable.gray_familyone_adafb1_048, CellType.MYELOID);
-		CellButton butt3 = new CellButton(context.getResources().getString(
-				R.string.Eosinophils), context.getResources().getString(
-				R.string.Eosinophils_abbr), R.raw.way,
-				R.drawable.blue_purple_6666cc, CellType.MYELOID);
-		CellButton butt4 = new CellButton(context.getResources().getString(
-				R.string.Basophils), context.getResources().getString(
-				R.string.Basophils_abbr), R.raw.look, R.drawable.green,
-				CellType.MYELOID);
-		CellButton butt5 = new CellButton(context.getResources().getString(
-				R.string.Neutrophils), context.getResources().getString(
-				R.string.Neutrophils_abbr), R.raw.here,
-				R.drawable.greenfamily_00cc99, CellType.MYELOID);
-		CellButton butt6 = new CellButton(context.getResources().getString(
-				R.string.Bands), context.getResources().getString(
-				R.string.Bands_abbr), R.raw.high, R.drawable.orange,
-				CellType.MYELOID);
-		CellButton butt7 = new CellButton(context.getResources().getString(
-				R.string.Blasts), context.getResources().getString(
-				R.string.Blasts_abbr), R.raw.know,
-				R.drawable.orangefamily_ffae61, CellType.MYELOID);
-		CellButton butt8 = new CellButton(context.getResources().getString(
+
+		ArrayList<CellButton> tenKeyCells = new ArrayList<CellButton>();
+		CellButton nRBC = new CellButton(context.getResources().getString(
 				R.string.Reticulocytes), context.getResources().getString(
 				R.string.Reticulocytes_abbr), R.raw.dark,
 				R.drawable.light_orange_ffae61_048, CellType.ERYTHROID);
-
-		ArrayList<CellButton> defaultCells = new ArrayList<CellButton>();
-		defaultCells.add(butt1);
-		defaultCells.add(butt2);
-		defaultCells.add(butt3);
-		defaultCells.add(butt4);
-		defaultCells.add(butt5);
-		defaultCells.add(butt6);
-		defaultCells.add(butt7);
-		defaultCells.add(butt8);
-
-		Counter counter1 = new Counter("Default Counter", defaultCells);
-
-		CellButton butt9 = new CellButton(context.getResources().getString(
-				R.string.AtypicalLymphocytes), context.getResources()
-				.getString(R.string.AtypicalLymphocytes_abbr), R.raw.sting,
-				R.drawable.light_grayblue_8387aa_048, CellType.OTHER);
-		CellButton butt10 = new CellButton(context.getResources().getString(
-				R.string.Meta_myelocytes), context.getResources().getString(
-				R.string.Meta_myelocytes_abbr), R.raw.arpeggio,
-				R.drawable.yellow, CellType.MYELOID);
-		CellButton butt11 = new CellButton(context.getResources().getString(
+		tenKeyCells.add(nRBC);
+		CellButton blasts = new CellButton(context.getResources().getString(
+				R.string.Blasts), context.getResources().getString(
+				R.string.Blasts_abbr), R.raw.know,
+				R.drawable.orangefamily_ffae61, CellType.MYELOID);
+		tenKeyCells.add(blasts);
+		CellButton basos = new CellButton(context.getResources().getString(
+				R.string.Basophils), context.getResources().getString(
+				R.string.Basophils_abbr), R.raw.look, R.drawable.green,
+				CellType.MYELOID);
+		tenKeyCells.add(basos);
+		CellButton eos = new CellButton(context.getResources().getString(
+				R.string.Eosinophils), context.getResources().getString(
+				R.string.Eosinophils_abbr), R.raw.way,
+				R.drawable.blue_purple_6666cc, CellType.MYELOID);
+		tenKeyCells.add(eos);
+		CellButton PMNs = new CellButton(context.getResources().getString(
+				R.string.Neutrophils), context.getResources().getString(
+				R.string.Neutrophils_abbr), R.raw.here,
+				R.drawable.greenfamily_00cc99, CellType.MYELOID);
+		tenKeyCells.add(PMNs);
+		CellButton bands = new CellButton(context.getResources().getString(
+				R.string.Bands), context.getResources().getString(
+				R.string.Bands_abbr), R.raw.high, R.drawable.orange,
+				CellType.MYELOID);
+		tenKeyCells.add(bands);
+		CellButton lymphs = new CellButton(context.getResources().getString(
+				R.string.Lymphocytes), context.getResources().getString(
+				R.string.Lymphocytes_abbr), R.raw.believe,
+				R.drawable.light_bluefamily_5ddcd3_048, CellType.OTHER);
+		tenKeyCells.add(lymphs);
+		CellButton atyp_lymphs = new CellButton(context.getResources()
+				.getString(R.string.AtypicalLymphocytes), context
+				.getResources().getString(R.string.AtypicalLymphocytes_abbr),
+				R.raw.sting, R.drawable.light_grayblue_8387aa_048,
+				CellType.OTHER);
+		tenKeyCells.add(atyp_lymphs);
+		CellButton monos = new CellButton(context.getResources().getString(
+				R.string.Monocytes), context.getResources().getString(
+				R.string.Monocytes_abbr), R.raw.attention,
+				R.drawable.gray_familyone_adafb1_048, CellType.MYELOID);
+		tenKeyCells.add(monos);
+		CellButton myelos = new CellButton(context.getResources().getString(
 				R.string.Myelocytes), context.getResources().getString(
 				R.string.Myelocytes_abbr), R.raw.stopper,
 				R.drawable.light_blueish_81b3ff_048, CellType.MYELOID);
-		CellButton butt12 = new CellButton(context.getResources().getString(
-				R.string.Promyelocytes), context.getResources().getString(
-				R.string.Promyelocytes_abbr), R.raw.close,
-				R.drawable.light_blueish_81b3ff_048, CellType.MYELOID);
-		CellButton butt13 = new CellButton(context.getResources().getString(
-				R.string.Promonocytes), context.getResources().getString(
-				R.string.Promonocytes_abbr), R.raw.believe,
-				R.drawable.blue_purple_6666cc, CellType.MYELOID);
-		CellButton butt14 = new CellButton(context.getResources().getString(
-				R.string.Red_blood_cells), context.getResources().getString(
-				R.string.Red_blood_cells_abbr), R.raw.beep1, R.drawable.green,
-				CellType.OTHER);
-		CellButton butt15 = new CellButton(context.getResources().getString(
+		tenKeyCells.add(myelos);
+		Counter counter1 = new Counter("10 Key", tenKeyCells);
+
+		ArrayList<CellButton> eightKeyCells = new ArrayList<CellButton>();
+		eightKeyCells.add(nRBC);
+		eightKeyCells.add(blasts);
+		eightKeyCells.add(basos);
+		eightKeyCells.add(eos);
+		eightKeyCells.add(PMNs);
+		eightKeyCells.add(monos);
+		eightKeyCells.add(lymphs);
+		eightKeyCells.add(atyp_lymphs);
+		Counter counter2 = new Counter("8 Key", eightKeyCells);
+
+		ArrayList<CellButton> MECells = new ArrayList<CellButton>();
+		MECells.add(nRBC);
+		CellButton myeloid = new CellButton(context.getResources().getString(
+				R.string.Myeloid), context.getResources().getString(
+				R.string.Myeloid_abbr), R.raw.question,
+				R.drawable.light_orange_ffae61_048, CellType.MYELOID);
+		MECells.add(myeloid);
+		Counter counter3 = new Counter("M:E", MECells);
+
+		ArrayList<CellButton> blastCells = new ArrayList<CellButton>();
+		CellButton WBCs = new CellButton(context.getResources().getString(
 				R.string.White_Blood_Cells), context.getResources().getString(
 				R.string.White_Blood_Cells_abbr), R.raw.dramatic,
 				R.drawable.greenfamily_00cc99, CellType.OTHER);
-		CellButton butt16 = new CellButton(context.getResources().getString(
-				R.string.Plasma_cells), context.getResources().getString(
-				R.string.Plasma_cells_abbr), R.raw.brake, R.drawable.orange,
-				CellType.OTHER);
-		CellButton butt17 = new CellButton(context.getResources().getString(
-				R.string.Atypical_plasma_cells), context.getResources()
-				.getString(R.string.Atypical_plasma_cells_abbr), R.raw.beep2,
-				R.drawable.orangefamily_ffae61, CellType.OTHER);
-		CellButton butt18 = new CellButton(context.getResources().getString(
-				R.string.Mast_cells), context.getResources().getString(
-				R.string.Mast_cells_abbr), R.raw.attention,
-				R.drawable.light_pink_fb97c9_048, CellType.OTHER);
-		CellButton butt19 = new CellButton(context.getResources().getString(
-				R.string.Megakaryocytes), context.getResources().getString(
-				R.string.Megakaryocytes_abbr), R.raw.question,
-				R.drawable.light_whitegray_e7d2ef_048, CellType.OTHER);
+		blastCells.add(WBCs);
+		blastCells.add(blasts);
+		Counter counter4 = new Counter("Blast Count", blastCells);
 
-		CellButton buttAddedLater = new CellButton(context.getResources()
-				.getString(R.string.Myeloid), context.getResources().getString(
-				R.string.Myeloid_abbr), R.raw.question,
-				R.drawable.light_orange_ffae61_048, CellType.MYELOID);
-
-		ArrayList<CellButton> highYield = new ArrayList<CellButton>();
-		highYield.add(butt9);
-		highYield.add(butt10);
-		highYield.add(butt11);
-		highYield.add(butt12);
-		highYield.add(butt13);
-		highYield.add(butt14);
-		highYield.add(butt15);
-		highYield.add(butt16);
-		highYield.add(butt17);
-		highYield.add(butt18);
-		highYield.add(butt19);
-		highYield.add(buttAddedLater);
-
-		Counter counter2 = new Counter("High Yield Counter", highYield);
-
-		CellButton butt20 = new CellButton(context.getResources().getString(
+		ArrayList<CellButton> erythroidCells = new ArrayList<CellButton>();
+		CellButton eBlasts = new CellButton(context.getResources().getString(
 				R.string.Erythroblasts), context.getResources().getString(
 				R.string.Erythroblasts_abbr), R.raw.arpeggio,
 				R.drawable.yellow, CellType.ERYTHROID);
-		CellButton butt21 = new CellButton(context.getResources().getString(
+		erythroidCells.add(eBlasts);
+		CellButton proeryth = new CellButton(context.getResources().getString(
 				R.string.Proerythroblasts), context.getResources().getString(
 				R.string.Proerythroblasts_abbr), R.raw.brake,
 				R.drawable.blue_purple_6666cc, CellType.ERYTHROID);
-		CellButton butt22 = new CellButton(context.getResources().getString(
-				R.string.T_cells), context.getResources().getString(
-				R.string.T_cells_abbr), R.raw.know,
-				R.drawable.light_grayblue_8387aa_048, CellType.MYELOID);
-		CellButton butt23 = new CellButton(context.getResources().getString(
-				R.string.B_Cells), context.getResources().getString(
-				R.string.B_Cells_abbr), R.raw.dark,
-				R.drawable.blue_purple_6666cc, CellType.OTHER);
-		CellButton butt24 = new CellButton(context.getResources().getString(
-				R.string.CD4Plus_T_cells), context.getResources().getString(
-				R.string.CD4Plus_T_cells_abbr), R.raw.sting, R.drawable.green,
-				CellType.OTHER);
-		CellButton butt25 = new CellButton(context.getResources().getString(
-				R.string.CD8Plus_T_cells), context.getResources().getString(
-				R.string.CD8Plus_T_cells_abbr), R.raw.way,
-				R.drawable.greenfamily_00cc99, CellType.OTHER);
-		CellButton butt26 = new CellButton(context.getResources().getString(
-				R.string.Reed_Sternberg_cells), context.getResources()
-				.getString(R.string.Reed_Sternberg_cells_abbr), R.raw.here,
-				R.drawable.orange, CellType.OTHER);
-		ArrayList<CellButton> midYield = new ArrayList<CellButton>();
-		midYield.add(butt20);
-		midYield.add(butt21);
-		midYield.add(butt22);
-		midYield.add(butt23);
-		midYield.add(butt24);
-		midYield.add(butt25);
-		midYield.add(butt26);
+		erythroidCells.add(proeryth);
+		CellButton bNormo = new CellButton(context.getResources().getString(
+				R.string.Basophilic_normoblasts), context.getResources()
+				.getString(R.string.Basophilic_normoblasts_abbr), R.raw.shoot,
+				R.drawable.light_pink_fb97c9_048, CellType.ERYTHROID);
+		erythroidCells.add(bNormo);
+		CellButton oNormo = new CellButton(context.getResources().getString(
+				R.string.Orthochromatophilic_normoblasts), context
+				.getResources().getString(
+						R.string.Orthochromatophilic_normoblasts_abbr),
+				R.raw.beep2, R.drawable.blue_purple_6666cc, CellType.OTHER);
+		erythroidCells.add(oNormo);
+		erythroidCells.add(nRBC);
+		erythroidCells.add(myelos);
+		erythroidCells.add(lymphs);
+		CellButton megs = new CellButton(context.getResources().getString(
+				R.string.Megakaryocytes), context.getResources().getString(
+				R.string.Megakaryocytes_abbr), R.raw.question,
+				R.drawable.light_whitegray_e7d2ef_048, CellType.OTHER);
+		erythroidCells.add(megs);
+		Counter counter5 = new Counter("Erythroid Series", erythroidCells);
 
-		Counter counter3 = new Counter("Mid Yield Counter", midYield);
+		ArrayList<CellButton> marrowCells = new ArrayList<CellButton>();
+		marrowCells.add(nRBC);
+		marrowCells.add(blasts);
+		marrowCells.add(basos);
+		marrowCells.add(eos);
+		CellButton mast = new CellButton(context.getResources().getString(
+				R.string.Mast_cells), context.getResources().getString(
+				R.string.Mast_cells_abbr), R.raw.attention,
+				R.drawable.light_pink_fb97c9_048, CellType.OTHER);
+		marrowCells.add(mast);
+		marrowCells.add(PMNs);
+		marrowCells.add(bands);
+		marrowCells.add(lymphs);
+		marrowCells.add(atyp_lymphs);
+		marrowCells.add(monos);
+		CellButton promonos = new CellButton(context.getResources().getString(
+				R.string.Promonocytes), context.getResources().getString(
+				R.string.Promonocytes_abbr), R.raw.believe,
+				R.drawable.blue_purple_6666cc, CellType.MYELOID);
+		marrowCells.add(promonos);
+		marrowCells.add(myelos);
+		CellButton meta = new CellButton(context.getResources().getString(
+				R.string.Meta_myelocytes), context.getResources().getString(
+				R.string.Meta_myelocytes_abbr), R.raw.arpeggio,
+				R.drawable.yellow, CellType.MYELOID);
+		marrowCells.add(meta);
+		CellButton promyelos = new CellButton(context.getResources().getString(
+				R.string.Promyelocytes), context.getResources().getString(
+				R.string.Promyelocytes_abbr), R.raw.close,
+				R.drawable.light_blueish_81b3ff_048, CellType.MYELOID);
+		marrowCells.add(promyelos);
+		Counter counter6 = new Counter("Bone Marrow", marrowCells);
+
+		ArrayList<CellButton> myelomaCells = new ArrayList<CellButton>();
+		myelomaCells.add(nRBC);
+		myelomaCells.add(blasts);
+		myelomaCells.add(basos);
+		myelomaCells.add(eos);
+		myelomaCells.add(mast);
+		myelomaCells.add(PMNs);
+		myelomaCells.add(bands);
+		myelomaCells.add(lymphs);
+		CellButton PCs = new CellButton(context.getResources().getString(
+				R.string.Plasma_cells), context.getResources().getString(
+				R.string.Plasma_cells_abbr), R.raw.brake, R.drawable.orange,
+				CellType.OTHER);
+		myelomaCells.add(PCs);
+		myelomaCells.add(monos);
+		myelomaCells.add(promonos);
+		myelomaCells.add(myelos);
+		myelomaCells.add(meta);
+		myelomaCells.add(promyelos);
+		Counter counter7 = new Counter("Myeloma", myelomaCells);
+
+		ArrayList<CellButton> myelomaQuickCells = new ArrayList<CellButton>();
+		myelomaQuickCells.add(nRBC);
+		myelomaQuickCells.add(myeloid);
+		myelomaQuickCells.add(lymphs);
+		myelomaQuickCells.add(PCs);
+		Counter counter8 = new Counter("Myeloma Quick", myelomaQuickCells);
+
+		ArrayList<CellButton> myelomonocyticCells = new ArrayList<CellButton>();
+		myelomonocyticCells.add(nRBC);
+		myelomonocyticCells.add(blasts);
+		myelomonocyticCells.add(basos);
+		myelomonocyticCells.add(eos);
+		myelomonocyticCells.add(PMNs);
+		myelomonocyticCells.add(lymphs);
+		myelomonocyticCells.add(monos);
+		myelomonocyticCells.add(promonos);
+		CellButton monoBs = new CellButton(context.getResources().getString(
+				R.string.Monoblasts), context.getResources().getString(
+				R.string.Monoblasts_abbr), R.raw.here,
+				R.drawable.light_gray_9198aa_048, CellType.MYELOID);
+		myelomonocyticCells.add(monoBs);
+		myelomonocyticCells.add(bands);
+		myelomonocyticCells.add(myelos);
+		myelomonocyticCells.add(meta);
+		Counter counter9 = new Counter("Myelomonocytic", myelomonocyticCells);
+
+		ArrayList<CellButton> mitosesCells = new ArrayList<CellButton>();
+		CellButton mitoses = new CellButton(context.getResources().getString(
+				R.string.Mitoses), context.getResources().getString(
+				R.string.Mitoses), R.raw.here,
+				R.drawable.light_pink_fb97c9_048, CellType.OTHER);
+		mitosesCells.add(mitoses);
+		CellButton HPFs = new CellButton(context.getResources().getString(
+				R.string.High_Power_fields), context.getResources().getString(
+				R.string.High_Power_fields_abbr), R.raw.here,
+				R.drawable.light_pink_fb97c9_048, CellType.OTHER);
+		mitosesCells.add(HPFs);
+		Counter counter10 = new Counter("Mitoses", mitosesCells);
+
+		ArrayList<CellButton> CLLCells = new ArrayList<CellButton>();
+		CLLCells.add(nRBC);
+		CLLCells.add(myelos);
+		CLLCells.add(lymphs);
+		CLLCells.add(atyp_lymphs);
+		CellButton pro_lymphs = new CellButton(context.getResources().getString(
+				R.string.Prolymphocytes), context.getResources().getString(
+				R.string.Prolymphocytes_abbr), R.raw.here,
+				R.drawable.darker_purple_5861be, CellType.OTHER);
+		CLLCells.add(pro_lymphs);
+		Counter counter11 = new Counter("CLL with Prolymphocytes", CLLCells);
+
+		ArrayList<CellButton> FLCells = new ArrayList<CellButton>();
+		FLCells.add(lymphs);
+		FLCells.add(atyp_lymphs);
+		FLCells.add(HPFs);
+		Counter counter12 = new Counter("Follicular Lymphoma", FLCells);
+
+		ArrayList<CellButton> nodeCells = new ArrayList<CellButton>();
+		CellButton lymph_nodes = new CellButton(context.getResources().getString(
+				R.string.Lymph_Nodes), context.getResources().getString(
+				R.string.Lymph_Nodes_abbr), R.raw.here,
+				R.drawable.veylight_green_ffff99_048, CellType.OTHER);
+		nodeCells.add(lymph_nodes);
+		CellButton pos_lymphs = new CellButton(context.getResources().getString(
+				R.string.Positive_Lymph_Nodes), context.getResources().getString(
+				R.string.Positive_Lymph_Nodes_abbr), R.raw.here,
+				R.drawable.dark_oragne_d1692c_048, CellType.OTHER);
+		nodeCells.add(pos_lymphs);
+		Counter counter13 = new Counter("Node Count", nodeCells);
+
 		ArrayList<Counter> list = new ArrayList<Counter>();
 		list.add(counter1);
 		list.add(counter2);
 		list.add(counter3);
+		list.add(counter4);
+		list.add(counter5);
+		list.add(counter6);
+		list.add(counter7);
+		list.add(counter8);
+		list.add(counter9);
+		list.add(counter10);
+		list.add(counter11);
+		list.add(counter12);
+		list.add(counter13);
 		updateCounterHolder(new CounterHolder(list));
 	}
 
@@ -488,6 +589,10 @@ public final class FileManager {
 				R.string.Proerythroblasts), context.getResources().getString(
 				R.string.Proerythroblasts_abbr), R.raw.brake,
 				R.drawable.blue_purple_6666cc, CellType.ERYTHROID);
+		CellButton monoBs = new CellButton(context.getResources().getString(
+				R.string.Monoblasts), context.getResources().getString(
+				R.string.Monoblasts_abbr), R.raw.here,
+				R.drawable.light_gray_9198aa_048, CellType.MYELOID);
 		CellButton butt22 = new CellButton(context.getResources().getString(
 				R.string.T_cells), context.getResources().getString(
 				R.string.T_cells_abbr), R.raw.know,
@@ -511,6 +616,7 @@ public final class FileManager {
 		ArrayList<CellButton> midYield = new ArrayList<CellButton>();
 		midYield.add(butt20);
 		midYield.add(butt21);
+		midYield.add(monoBs);
 		midYield.add(butt22);
 		midYield.add(butt23);
 		midYield.add(butt24);
@@ -568,6 +674,10 @@ public final class FileManager {
 				R.string.Dendritic_cells_abbr), R.raw.way,
 				R.drawable.orangefamily_ffae61, CellType.OTHER);
 		CellButton butt39 = new CellButton(context.getResources().getString(
+				R.string.NK_cells), context.getResources().getString(
+				R.string.NK_cells_abbr), R.raw.dark,
+				R.drawable.light_whitegray_e7d2ef_048, CellType.OTHER);
+		CellButton butt40 = new CellButton(context.getResources().getString(
 				R.string.NK_cells), context.getResources().getString(
 				R.string.NK_cells_abbr), R.raw.dark,
 				R.drawable.light_whitegray_e7d2ef_048, CellType.OTHER);
