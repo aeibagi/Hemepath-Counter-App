@@ -11,7 +11,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -86,14 +85,7 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 		Button btnMain = (Button) findViewById(R.id.counting_activity_main);
 		btnMain.setOnClickListener(this);
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.counting, menu);
-		return true;
-	}
-
+	
 	@Override
 	public void onClick(View v) {
 		Intent intent;

@@ -240,7 +240,7 @@
     
     
     <string name="save">Save</string>
-    <string name="title_activity_counting">Counting Activity</string>
+    <string name="title_activity_counting">Counting</string>
     <string name="title_activity_preferences">Preferences Activity</string>
     <string name="enter_counter_name_hint">Enter name for Counter</string>
     <string name="enter_counter_abbr_hint">Enter abbreviation</string>
@@ -262,7 +262,7 @@
     <string name="counting_activity_cancel">Cancel</string>
     
     <!-- Display_Data_Activity -->
-    <string name="title_activity_display_data">Display Data Activity</string>
+    <string name="title_activity_display_data">Counting Result</string>
     <string name="display_data_activity_main">Main</string>
     <string name="display_data_activity_export">Export</string>
     

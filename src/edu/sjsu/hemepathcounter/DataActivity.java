@@ -111,13 +111,6 @@ public class DataActivity extends Activity implements OnClickListener,
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.data, menu);
-		return true;
-	}
-
-	@Override
 	public boolean onItemLongClick(AdapterView<?> arg0, View v, int position,
 			long id) {
 		Log.d(TAG, "Data selected with long-click.");

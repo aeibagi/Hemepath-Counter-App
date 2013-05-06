@@ -9,7 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -187,13 +186,6 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 		}
 		
 		cellTypeGroup = (RadioGroup) findViewById(R.id.radioCellType);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.custom__modify__button, menu);
-		return true;
 	}
 
 	@Override
