@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -30,7 +29,7 @@ public class ModifyCounterActivity extends Activity implements
 	private static final String TAG = "ModifyCounterActivity";
 	private EditText modify_counter_name;
 	private ListView edit_buttoninCounters_list;
-	private ArrayAdapter<CellButton> modify_counter_adaptor;
+	//private ArrayAdapter<CellButton> modify_counter_adaptor;
 	private Counter mData;
 	private CellButton ItemSelectedforContextMenuOption;
 	private FileManager manager;

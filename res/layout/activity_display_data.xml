@@ -15,7 +15,8 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="0.78"
-        android:gravity="center" />
+        android:gravity="center"
+        android:dividerHeight="3.0sp" />
 
     <TextView
         android:id="@+id/MEratioView"
@@ -32,7 +33,7 @@
         android:background="?android:attr/dividerVertical"/>
     
     <RelativeLayout
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:orientation="horizontal" >     

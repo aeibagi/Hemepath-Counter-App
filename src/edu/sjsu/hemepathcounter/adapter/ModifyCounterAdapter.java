@@ -2,9 +2,6 @@ package edu.sjsu.hemepathcounter.adapter;
 
 import java.util.ArrayList;
 
-import edu.sjsu.hemepathcounter.NewCounterActivity;
-import edu.sjsu.hemepathcounter.R;
-import edu.sjsu.hemepathcounter.model.CellButton;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.view.LayoutInflater;
@@ -13,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import edu.sjsu.hemepathcounter.R;
+import edu.sjsu.hemepathcounter.model.CellButton;
 
 public class ModifyCounterAdapter extends BaseAdapter{
 
