@@ -75,7 +75,7 @@
     <string name="AtypicalLymphocytes_abbr">Atyp. lymphs</string>
     <string name="Lymphocytes">Lymphocytes</string>
     <string name="Lymphocytes_abbr">Lymphs.</string>
-    <string name=" Lymphocytic_Blasts"> Lymphocytic Blasts</string>
+    <string name="Lymphocytic_Blasts"> Lymphocytic Blasts</string>
     <string name="Lymphocytic_Blasts_abbr">L-Blasts</string>
     <string name="T_cells">T cells</string>
     <string name="T_cells_abbr">(T)</string>

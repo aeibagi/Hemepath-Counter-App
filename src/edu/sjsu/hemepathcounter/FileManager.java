@@ -1,5 +1,11 @@
 package edu.sjsu.hemepathcounter;
 
+import android.content.Context;
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,17 +15,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.content.Context;
-import android.util.Log;
 import edu.sjsu.hemepathcounter.model.ButtonHolder;
 import edu.sjsu.hemepathcounter.model.CellButton;
+import edu.sjsu.hemepathcounter.model.CellButton.CellType;
 import edu.sjsu.hemepathcounter.model.Counter;
 import edu.sjsu.hemepathcounter.model.CounterHolder;
 import edu.sjsu.hemepathcounter.model.DataHolder;
-import edu.sjsu.hemepathcounter.model.CellButton.CellType;
 
 public final class FileManager {
 	private static final String TAG = "FileManager";
@@ -595,7 +596,7 @@ public final class FileManager {
 				R.string.Lymphocytes_abbr), R.raw.arpeggio,
 				R.drawable.yellow, CellType.OTHER);
 		CellButton butt16 = new CellButton(context.getResources().getString(
-				R.string.Lymphocytic_Blasts), context.getResources().getString(
+                R.string.Lymphocytic_Blasts), context.getResources().getString(
 				R.string.Lymphocytic_Blasts_abbr), R.raw.stopper,
 				R.drawable.light_blueish_81b3ff_048, CellType.OTHER);
 		CellButton butt17 = new CellButton(context.getResources().getString(
