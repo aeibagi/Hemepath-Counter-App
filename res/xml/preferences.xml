@@ -6,8 +6,8 @@
         android:key="pref_mute"
         android:order="0"
         android:persistent="true"
-        android:summary="The sound should be muted."
-        android:title="Mute"
+        android:summary="The sound should be muted for every count of each button."
+        android:title="Mute Button"
         android:disableDependentsState="true" />
 
     <ListPreference
@@ -18,13 +18,33 @@
         android:key="pref_notify"
         android:order="1"
         android:persistent="true"
-        android:summary="Make a sound after X clicks per button."
+        android:summary="Make a sound at every X clicks per button."
         android:title="Notify at..." />
+    
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="pref_mute_total"
+        android:order="2"
+        android:persistent="true"
+        android:summary="The sound should be muted for every total count."
+        android:title="Mute Total Count"
+        android:disableDependentsState="true" />
+    
+    <ListPreference
+        android:defaultValue="100"
+        android:dependency="pref_mute_total"
+        android:entries="@array/total_notify"
+        android:entryValues="@array/total_notifyValues"
+        android:key="pref_notify_total"
+        android:order="3"
+        android:persistent="true"
+        android:summary="Make a sound at every total X clicks."
+        android:title="Total notify at..." />
 
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="pref_export"
-        android:order="2"
+        android:order="4"
         android:persistent="true"
         android:summary="Whether or not to export the data"
         android:title="Export" />
@@ -35,28 +55,30 @@
         android:dialogTitle="Email"
         android:key="pref_email"
         android:negativeButtonText="Cancel"
-        android:order="3"
+        android:order="5"
         android:persistent="true"
         android:title="Set email address" />
 
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="pref_timestamp"
-        android:order="4"
+        android:order="6"
         android:persistent="true"
         android:summary="Whether or not to include a timestamp with the data."
         android:title="Include Timestamp" />
+    
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="pref_show_percent"
-        android:order="5"
+        android:order="7"
         android:persistent="true"
         android:summary="Whether or not to show percentages on the buttons&apos; faces."
         android:title="Show %" />
+    
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="pref_show_num"
-        android:order="6"
+        android:order="8"
         android:persistent="true"
         android:summary="Whether or not to show counts on the buttons&apos; faces."
         android:title="Show #" />

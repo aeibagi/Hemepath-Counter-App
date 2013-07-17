@@ -94,7 +94,8 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 		soundHolder.add(R.raw.question);
 		soundHolder.add(R.raw.shoot);
 		soundHolder.add(R.raw.sting);
-		soundHolder.add(R.raw.stopper);
+		//use stopper for total counts
+		//soundHolder.add(R.raw.stopper); 
 		soundHolder.add(R.raw.way);
 
 		// set up the cImagebuttons for the colors:

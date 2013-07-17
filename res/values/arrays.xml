@@ -15,5 +15,22 @@
         <item name="50">50</item>
         <item name="100">100</item>
     </string-array>
+    
+    <string-array name="total_notify">
+        <item name="50">50 Click</item>
+        <item name="100">100 Clicks</item>
+        <item name="150">150 Clicks</item>
+        <item name="200">200 Clicks</item>
+        <item name="300">300 Clicks</item>
+        <item name="500">500 Clicks</item>
+    </string-array>
+    <string-array name="total_notifyValues">
+         <item name="50">50</item>
+        <item name="100">100</item>
+        <item name="150">150</item>
+        <item name="200">200</item>
+        <item name="300">300</item>
+        <item name="500">500</item>
+    </string-array>
 
 </resources>

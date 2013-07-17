@@ -27,9 +27,12 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 	private Counter mData;
 	private CountingAdapter mAdapter;
 	private ArrayList<Integer> mSequence;
-	private boolean muted;
+	private boolean muted_notify;
+	private boolean muted_notify_total;
 	private MediaPlayer player;
 	private int notify;
+	private int total_notify;
+	private int total_sound = R.raw.stopper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +41,11 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 		setContentView(R.layout.activity_counting);
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
-		muted = preferences.getBoolean(PreferencesActivity.MUTE, false);
+		muted_notify = preferences.getBoolean(PreferencesActivity.MUTE, false);
 		notify = Integer.parseInt(preferences.getString(PreferencesActivity.NOTIFY, "20"));
-
+		muted_notify_total = preferences.getBoolean(PreferencesActivity.MUTE_TOTAL, false);
+		total_notify = Integer.parseInt(preferences.getString(PreferencesActivity.TOTAL_NOTIFY, "100"));
+		
 		// Loading data from database depends New Counting or Favorites
 		mData = getIntent().getParcelableExtra("counter");
 		mAdapter = new CountingAdapter(this, mData);
@@ -54,8 +59,20 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 					int position, long id) {
 				CellButton button = mData.getCells().get(position);
 				button.incrementCount();
+				mData.incrementTotal();
+				mSequence.add(position);
+				mAdapter.notifyDataSetChanged();
+				
 				// play sound ....
-				if (!muted && ((mData.getTotal() + 1) % notify == 0)) { //(button.getCount() % notify == 0) 
+				if (!muted_notify_total && (mData.getTotal() % total_notify == 0)) {
+					if (player != null) {
+						player.release();
+					}
+					player = MediaPlayer.create(CountingActivity.this, total_sound);
+					player.start();
+				}
+			
+				if (!muted_notify && (mData.getTotal() % total_notify != 0) && (button.getCount() % notify == 0)) { 
 					if (player != null) {
 						player.release();
 					}
@@ -63,9 +80,6 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 							.getCells().get(position).getSound());
 					player.start();
 				}
-				mData.incrementTotal();
-				mSequence.add(position);
-				mAdapter.notifyDataSetChanged();
 			}
 		});
 		
