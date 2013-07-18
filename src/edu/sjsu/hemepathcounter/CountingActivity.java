@@ -35,7 +35,7 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 	private MediaPlayer player;
 	private int notify;
 	private int total_notify;
-	private int total_sound = R.raw.stopper;
+	private int total_sound = R.raw.system;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,25 +82,25 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 				
 				builder.setView(np);
 	
-				builder.setMessage("Change value of " + button.getName() + ": ")
+				builder.setMessage("Change value of \n" + button.getName() + ": ")
 		               .setPositiveButton("Set", new DialogInterface.OnClickListener() {
 		                   public void onClick(DialogInterface dialog, int id) {
 		                	   Log.d(TAG, "Change Value of Counting Activity.");
-		                	   int d =  button.getCount() - np.getValue(); 
+		                	   int d = np.getValue() - button.getCount(); 
 		                	   if (d == 0) return;
 		                	   
 		                	   mData.addTotal(d);
 		                	   button.setCount(np.getValue());
 		                	   
-		                	   if (d < 0) { //add buton to sequence
-		                		   for (int i = 0; i < -d; i++)
+		                	   if (d > 0) { //add buton to sequence
+		                		   for (int i = 0; i < d; i++)
 		                			   mSequence.add(position);
 		                	   }
 		                	   else {
 		                		   for (int i = mSequence.size() - 1; i >= 0; i--) 
 		                			   if (mSequence.get(i) == position) {
 		                				   mSequence.remove(i);
-		                				   d--;
+		                				   d++;
 		                				   if (d == 0) break;
 		                			   }
 		                	   }
