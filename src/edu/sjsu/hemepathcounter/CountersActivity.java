@@ -45,7 +45,6 @@ public class CountersActivity extends Activity implements
 		setTitle("List of Available Counters");
 		initialize();
 		SetupSearchFilter();
-
 	}
 
 	private void initialize() {

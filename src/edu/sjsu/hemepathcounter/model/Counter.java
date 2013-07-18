@@ -56,6 +56,10 @@ public class Counter implements Parcelable, JSONable {
 		total--;
 	}
 
+	public void addTotal(int number) {
+		total += number;
+	}
+	
 	public Counter(Parcel in) {
 		readFromParcel(in);
 	}

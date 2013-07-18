@@ -11,11 +11,14 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.NumberPicker;
 import edu.sjsu.hemepathcounter.adapter.CountingAdapter;
 import edu.sjsu.hemepathcounter.model.CellButton;
 import edu.sjsu.hemepathcounter.model.Counter;
@@ -53,6 +56,72 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 
 		GridView gridview = (GridView) findViewById(R.id.counting_activity_gridview);		
 		gridview.setAdapter(mAdapter);
+		gridview.setLongClickable(true);
+		
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
+		gridview.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View v, final int position, long id) {
+//				Log.d(TAG, "Long click - position: "  + position);
+				//Toast.makeText(CountingActivity.this, "Long click: " + position, Toast.LENGTH_SHORT).show();
+				final CellButton button = mData.getCells().get(position);
+				int value = button.getCount(); 
+				
+				//NumberPicker np = (NumberPicker) findViewById(R.id.numberpicker);
+				final NumberPicker np = new NumberPicker(CountingActivity.this);
+				np.setMinValue(0);
+				np.setMaxValue(value + 20);
+				String[] nums = new String[value + 21];
+				for (int i = 0; i <= value + 20; i++)
+					nums[i] = i + "";
+				np.setWrapSelectorWheel(true);
+				np.setDisplayedValues(nums);
+				np.setValue(value);
+				
+				builder.setView(np);
+	
+				builder.setMessage("Change value of " + button.getName() + ": ")
+		               .setPositiveButton("Set", new DialogInterface.OnClickListener() {
+		                   public void onClick(DialogInterface dialog, int id) {
+		                	   Log.d(TAG, "Change Value of Counting Activity.");
+		                	   int d =  button.getCount() - np.getValue(); 
+		                	   if (d == 0) return;
+		                	   
+		                	   mData.addTotal(d);
+		                	   button.setCount(np.getValue());
+		                	   
+		                	   if (d < 0) { //add buton to sequence
+		                		   for (int i = 0; i < -d; i++)
+		                			   mSequence.add(position);
+		                	   }
+		                	   else {
+		                		   for (int i = mSequence.size() - 1; i >= 0; i--) 
+		                			   if (mSequence.get(i) == position) {
+		                				   mSequence.remove(i);
+		                				   d--;
+		                				   if (d == 0) break;
+		                			   }
+		                	   }
+		                	   
+		                	   mAdapter.notifyDataSetChanged();
+		                   }
+		               })
+		               .setNegativeButton(R.string.counting_activity_cancel, new DialogInterface.OnClickListener() {
+		                   public void onClick(DialogInterface dialog, int id) {
+		                       // User cancelled the dialog
+		                	   Log.d(TAG, "User cancelled clearing the Counting Activity.");
+		                   }
+		               });
+//				builder.show();
+				
+				AlertDialog alert = builder.create();
+		        alert.show();
+		        alert.getWindow().setLayout(280, 320);
+				return true;
+			}
+		});
 
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v,
