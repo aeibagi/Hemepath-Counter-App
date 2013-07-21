@@ -29,16 +29,16 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 	private FileManager manager;
 	private ButtonHolder holder;
 	private ImageButton iB_Color_Green, iB_Color_orage,
-			iB_Color_yellow,
-			iB_blue_purple_6666cc, iB_orangefamily_ffae61,
+			iB_Color_yellow, iB_orangefamily_ffae61,
 			iB_greenfamily_00cc99, iB_dark_oragne_d1692c_072,
-			iB_darker_purple_5861be, iB_gray_familyone_adafb1_072,
+			iB_gray_familyone_adafb1_072,
 			iB_light_bluefamily_5ddcd3_072, iB_light_blueish_81b3ff_072,
 			iB_light_brown_c78540_072, iB_light_orange_ffae61_072,
-			iB_light_grayblue_8387aa_072, iB_light_pink_fb97c9_072,
+			iB_light_pink_fb97c9_072,
 			iB_light_gray_9198aa_072, iB_light_purple_d28dfa_072,
 			iB_light_whitegray_e7d2ef_072, iB_lighter_pinkpurple_cc6699_072,
-			iB_veylight_green_ffff99_072;
+			iB_veylight_green_ffff99_072, iB_greenish_family, iB_pink_family,
+			iB_red_family, iB_blue_family, iB_yellow_family;
 	private ImageButton speaker_button;
 	private Spinner sound_dropDown_menu;
 	// private int SoundIndex, selectedSound, SelectedButtonBackground;
@@ -101,44 +101,48 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 		iB_Color_Green = (ImageButton) findViewById(R.id.iB_Color_Green);
 		iB_Color_orage = (ImageButton) findViewById(R.id.iB_Color_orage);
 		iB_Color_yellow = (ImageButton) findViewById(R.id.iB_Color_yellow);
-		iB_blue_purple_6666cc = (ImageButton) findViewById(R.id.iB_blue_purple_6666cc);
 		iB_orangefamily_ffae61 = (ImageButton) findViewById(R.id.iB_orangefamily_ffae61);
 		iB_greenfamily_00cc99 = (ImageButton) findViewById(R.id.iB_greenfamily_00cc99);
 		iB_dark_oragne_d1692c_072 = (ImageButton) findViewById(R.id.iB_dark_oragne_d1692c_048);
-		iB_darker_purple_5861be = (ImageButton) findViewById(R.id.iB_darker_purple_5861be);
 		iB_gray_familyone_adafb1_072 = (ImageButton) findViewById(R.id.iB_gray_familyone_adafb1_072);
 		iB_light_bluefamily_5ddcd3_072 = (ImageButton) findViewById(R.id.iB_light_bluefamily_5ddcd3_072);
 		iB_light_blueish_81b3ff_072 = (ImageButton) findViewById(R.id.iB_light_blueish_81b3ff_072);
 		iB_light_brown_c78540_072 = (ImageButton) findViewById(R.id.iB_light_brown_c78540_072);
 		iB_light_orange_ffae61_072 = (ImageButton) findViewById(R.id.iB_light_orange_ffae61_072);
-		iB_light_grayblue_8387aa_072 = (ImageButton) findViewById(R.id.iB_light_grayblue_8387aa_072);
 		iB_light_pink_fb97c9_072 = (ImageButton) findViewById(R.id.iB_light_pink_fb97c9_072);
 		iB_light_gray_9198aa_072 = (ImageButton) findViewById(R.id.iB_light_gray_9198aa_072);
 		iB_light_purple_d28dfa_072 = (ImageButton) findViewById(R.id.iB_light_purple_d28dfa_072);
 		iB_light_whitegray_e7d2ef_072 = (ImageButton) findViewById(R.id.iB_light_whitegray_e7d2ef_072);
 		iB_lighter_pinkpurple_cc6699_072 = (ImageButton) findViewById(R.id.iB_lighter_pinkpurple_cc6699_072);
 		iB_veylight_green_ffff99_072 = (ImageButton) findViewById(R.id.iB_veylight_green_ffff99_072);
+		iB_greenish_family = (ImageButton) findViewById(R.id.iB_greenish_family);
+		iB_red_family = (ImageButton) findViewById(R.id.iB_red_family);
+		iB_pink_family = (ImageButton) findViewById(R.id.iB_pink_family);
+		iB_blue_family = (ImageButton) findViewById(R.id.iB_blue_family);
+		iB_yellow_family = (ImageButton) findViewById(R.id.iB_yellow_family);
 
 		iB_Color_Green.setOnClickListener(this);
 		iB_Color_orage.setOnClickListener(this);
 		iB_Color_yellow.setOnClickListener(this);
-		iB_blue_purple_6666cc.setOnClickListener(this);
 		iB_orangefamily_ffae61.setOnClickListener(this);
 		iB_greenfamily_00cc99.setOnClickListener(this);
 		iB_dark_oragne_d1692c_072.setOnClickListener(this);
-		iB_darker_purple_5861be.setOnClickListener(this);
 		iB_gray_familyone_adafb1_072.setOnClickListener(this);
 		iB_light_bluefamily_5ddcd3_072.setOnClickListener(this);
 		iB_light_blueish_81b3ff_072.setOnClickListener(this);
 		iB_light_brown_c78540_072.setOnClickListener(this);
 		iB_light_orange_ffae61_072.setOnClickListener(this);
-		iB_light_grayblue_8387aa_072.setOnClickListener(this);
 		iB_light_pink_fb97c9_072.setOnClickListener(this);
 		iB_light_gray_9198aa_072.setOnClickListener(this);
 		iB_light_purple_d28dfa_072.setOnClickListener(this);
 		iB_light_whitegray_e7d2ef_072.setOnClickListener(this);
 		iB_lighter_pinkpurple_cc6699_072.setOnClickListener(this);
 		iB_veylight_green_ffff99_072.setOnClickListener(this);
+		iB_greenish_family.setOnClickListener(this);
+		iB_blue_family.setOnClickListener(this);
+		iB_pink_family.setOnClickListener(this);
+		iB_red_family.setOnClickListener(this);
+		iB_yellow_family.setOnClickListener(this);
 
 		SaveBackGroundresource = iB_Color_Green.getBackground();
 
@@ -236,11 +240,11 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 			iB_Color_yellow.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.drawable.yellow;
 			break;
-		case R.id.iB_blue_purple_6666cc:
+		case R.id.iB_greenish_family:
 			selectedButton.setBackground(SaveBackGroundresource);
-			selectedButton = iB_blue_purple_6666cc;
-			iB_blue_purple_6666cc.setBackgroundResource(R.drawable.ib_border);
-			SelectedButtonBackground = R.drawable.blue_purple_6666cc;
+			selectedButton = iB_greenish_family;
+			iB_greenish_family.setBackgroundResource(R.drawable.ib_border);
+			SelectedButtonBackground = R.drawable.greenish_family;
 			break;
 		case R.id.iB_orangefamily_ffae61:
 			selectedButton.setBackground(SaveBackGroundresource);
@@ -261,11 +265,11 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 					.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.drawable.dark_oragne_d1692c_048;
 			break;
-		case R.id.iB_darker_purple_5861be:
+		case R.id.iB_blue_family:
 			selectedButton.setBackground(SaveBackGroundresource);
-			selectedButton = iB_darker_purple_5861be;
-			iB_darker_purple_5861be.setBackgroundResource(R.drawable.ib_border);
-			SelectedButtonBackground = R.drawable.darker_purple_5861be;
+			selectedButton = iB_blue_family;
+			iB_blue_family.setBackgroundResource(R.drawable.ib_border);
+			SelectedButtonBackground = R.drawable.blue_family;
 			break;
 		case R.id.iB_gray_familyone_adafb1_072:
 			selectedButton.setBackground(SaveBackGroundresource);
@@ -302,54 +306,59 @@ public class Custom_Modify_ButtonActivity extends Activity implements
 					.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.drawable.light_orange_ffae61_048;
 			break;
-		case R.id.iB_light_grayblue_8387aa_072:
+		case R.id.iB_red_family:
 			selectedButton.setBackground(SaveBackGroundresource);
-			selectedButton = iB_light_grayblue_8387aa_072;
-			iB_light_grayblue_8387aa_072
-					.setBackgroundResource(R.drawable.ib_border);
-			SelectedButtonBackground = R.drawable.light_grayblue_8387aa_048;
+			selectedButton = iB_red_family;
+			iB_red_family.setBackgroundResource(R.drawable.ib_border);
+			SelectedButtonBackground = R.drawable.red_family;
 			break;
 		case R.id.iB_light_pink_fb97c9_072:
 			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_pink_fb97c9_072;
-			iB_light_pink_fb97c9_072
-					.setBackgroundResource(R.drawable.ib_border);
+			iB_light_pink_fb97c9_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.drawable.light_pink_fb97c9_048;
 			break;
 		case R.id.iB_light_gray_9198aa_072:
 			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_gray_9198aa_072;
-			iB_light_gray_9198aa_072
-					.setBackgroundResource(R.drawable.ib_border);
+			iB_light_gray_9198aa_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.drawable.light_gray_9198aa_048;
 			break;
 		case R.id.iB_light_purple_d28dfa_072:
 			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_purple_d28dfa_072;
-			iB_light_purple_d28dfa_072
-					.setBackgroundResource(R.drawable.ib_border);
+			iB_light_purple_d28dfa_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.drawable.light_purple_d28dfa_048;
 			break;
 		case R.id.iB_light_whitegray_e7d2ef_072:
 			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_light_whitegray_e7d2ef_072;
-			iB_light_whitegray_e7d2ef_072
-					.setBackgroundResource(R.drawable.ib_border);
+			iB_light_whitegray_e7d2ef_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.drawable.light_whitegray_e7d2ef_048;
 			break;
 		case R.id.iB_lighter_pinkpurple_cc6699_072:
 			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_lighter_pinkpurple_cc6699_072;
-			iB_lighter_pinkpurple_cc6699_072
-					.setBackgroundResource(R.drawable.ib_border);
+			iB_lighter_pinkpurple_cc6699_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.drawable.lighter_pinkpurple_cc6699_048;
 			break;
 		case R.id.iB_veylight_green_ffff99_072:
 			selectedButton.setBackground(SaveBackGroundresource);
 			selectedButton = iB_veylight_green_ffff99_072;
-			iB_veylight_green_ffff99_072
-					.setBackgroundResource(R.drawable.ib_border);
+			iB_veylight_green_ffff99_072.setBackgroundResource(R.drawable.ib_border);
 			SelectedButtonBackground = R.drawable.veylight_green_ffff99_048;
+			break;
+		case R.id.iB_pink_family:
+			selectedButton.setBackground(SaveBackGroundresource);
+			selectedButton = iB_pink_family;
+			iB_pink_family.setBackgroundResource(R.drawable.ib_border);
+			SelectedButtonBackground = R.drawable.pink_family;
+			break;
+		case R.id.iB_yellow_family:
+			selectedButton.setBackground(SaveBackGroundresource);
+			selectedButton = iB_yellow_family;
+			iB_yellow_family.setBackgroundResource(R.drawable.ib_border);
+			SelectedButtonBackground = R.drawable.yellow_family;
 			break;
 
 		case R.id.btn_create_custom_Button:

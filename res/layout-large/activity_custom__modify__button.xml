@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <ImageButton
+			<ImageButton
                 android:id="@+id/iB_Color_Green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,12 +48,12 @@
                 android:src="@drawable/yellow" />
 
             <ImageButton
-                android:id="@+id/iB_blue_purple_6666cc"
+                android:id="@+id/iB_blue_family"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
-                android:src="@drawable/blue_purple_6666cc" />
+                android:src="@drawable/blue_family" />
 
             <ImageButton
                 android:id="@+id/iB_orangefamily_ffae61"
@@ -80,12 +80,12 @@
                 android:src="@drawable/dark_oragne_d1692c_048" />
 
             <ImageButton
-                android:id="@+id/iB_darker_purple_5861be"
+                android:id="@+id/iB_red_family"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
-                android:src="@drawable/darker_purple_5861be" />
+                android:src="@drawable/red_family" />
 
             <ImageButton
                 android:id="@+id/iB_gray_familyone_adafb1_072"
@@ -128,12 +128,12 @@
                 android:src="@drawable/light_orange_ffae61_048" />
 
             <ImageButton
-                android:id="@+id/iB_light_grayblue_8387aa_072"
+                android:id="@+id/iB_greenish_family"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
-                android:src="@drawable/light_grayblue_8387aa_048" />
+                android:src="@drawable/greenish_family" />
 
             <ImageButton
                 android:id="@+id/iB_light_pink_fb97c9_072"
@@ -182,7 +182,24 @@
                 android:layout_marginLeft="5dp"
                 android:background="?android:selectableItemBackground"
                 android:src="@drawable/veylight_green_ffff99_048" />
-        </LinearLayout>
+            
+            <ImageButton
+                android:id="@+id/iB_pink_family"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/pink_family" />
+            
+            <ImageButton
+                android:id="@+id/iB_yellow_family"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/yellow_family" />
+    
+                 </LinearLayout>
     </HorizontalScrollView>
 
     <TextView
