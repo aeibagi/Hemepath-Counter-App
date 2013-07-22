@@ -11,7 +11,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -79,6 +78,7 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 				np.setWrapSelectorWheel(true);
 				np.setDisplayedValues(nums);
 				np.setValue(value);
+				np.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 				
 				builder.setView(np);
 	

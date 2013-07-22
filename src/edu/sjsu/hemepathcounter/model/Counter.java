@@ -6,8 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.sjsu.hemepathcounter.R;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
