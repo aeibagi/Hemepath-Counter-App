@@ -1,10 +1,13 @@
 package edu.sjsu.hemepathcounter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,7 +26,7 @@ import edu.sjsu.hemepathcounter.model.CounterHolder;
  * user can view favorite button presets, launch a Counting Activity, Data
  * Activity, or Settings Activity.
  * 
- * @author Jake Karnes
+ * @author Jake Karnes, Minh H Dang, Amir Eibagi
  * 
  */
 public class MainActivity extends Activity implements View.OnClickListener,
@@ -91,7 +94,22 @@ public class MainActivity extends Activity implements View.OnClickListener,
 		switch (item.getItemId()) {
 		case R.id.menu_options_about:
 			Log.d(TAG, "Showing App About Dialog.");
-			DialogPrompt.showAppAboutDialog(this);
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		    // Get the layout inflater
+		    LayoutInflater inflater = getLayoutInflater();
+
+		    // Inflate and set the layout for the dialog
+		    // Pass null as the parent view because its going in the dialog layout
+		    builder.setTitle(R.string.about_title);
+		    builder.setView(inflater.inflate(R.layout.about_dialog, null))
+		    // Add action buttons
+		           .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		               @Override
+		               public void onClick(DialogInterface dialog, int id) {
+		                   // sign in the user ...
+		               }
+		           });      
+		    builder.show();
 			return true;
 
 		default:

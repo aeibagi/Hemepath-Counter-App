@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name">Hemepath Counter</string>
-    <string name="version_name">2013-05-05</string>
     <string name="action_settings">Settings</string>
     <string name="favorites">Favorites</string>
     <string name="counters_button_string">Counters</string>
@@ -10,12 +9,11 @@
     <string name="preferences_button_string">Preferences</string>
     <string name="data_button_string">Data</string>
     <string name="title_activity_counters">CountersActivity</string>
-    <string name="about_screen_credits">Dr. Ben Beulow\n
-      Amir Eibagi\n
-      Minh Dang\n
-      Jake Karnes\n
-      Professor Cay Horstmann\n
-      Prabhjeet Ghuman\n</string>
+    <string name="about_credit_1">Minh H Dang</string>
+    <string name="about_credit_2">Amir Eibagi</string>
+    <string name="about_credit_3">Jake Karnes</string> 
+    <string name="about_credit_4">Dr. Ben Beulow</string>
+    <string name="about_credit_5">Dr. Cay Horstmann</string>
     <string name="cancel_button_string">Cancel</string>
     <string name="about_title">Hemepath Counter</string>
     <string name="menu_about_string">About</string>
