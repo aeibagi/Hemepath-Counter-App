@@ -5,32 +5,44 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/about_dialog_version"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal|center_vertical" 
-        android:textIsSelectable="false"/>
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingTop="15dip"
+        android:text="@string/about_credit_1"
+        android:textSize="16sp" />
 
-    <ScrollView
-        android:id="@+id/about_dialog_scrollview"
+    <TextView
         android:layout_width="fill_parent"
-        android:layout_height="175dip" >
-
-        <TextView
-            android:id="@+id/about_dialog_credits"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal|center_vertical"
-            android:lineSpacingMultiplier="1.4"
-            android:paddingTop="20dip"
-            android:text="@string/about_screen_credits" />
-
-    </ScrollView>
-
-    <Button
-        android:id="@+id/about_dialog_okbutton"
-        android:layout_width="80dip"
         android:layout_height="wrap_content"
-        android:text="@string/cancel_button_string" />
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingTop="15dip"
+        android:text="@string/about_credit_2"
+        android:textSize="16sp" />
+    
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingTop="15dip"
+        android:text="@string/about_credit_3"
+        android:textSize="16sp" />
+    
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingTop="15dip"
+        android:text="@string/about_credit_4"
+        android:textSize="16sp" />
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingTop="15dip"
+        android:paddingBottom="15dip"
+        android:text="@string/about_credit_5"
+        android:textSize="16sp" />
+    
 </LinearLayout>
