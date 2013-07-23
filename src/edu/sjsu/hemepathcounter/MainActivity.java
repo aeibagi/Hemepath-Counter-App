@@ -94,7 +94,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
 		switch (item.getItemId()) {
 		case R.id.menu_options_about:
 			Log.d(TAG, "Showing App About Dialog.");
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT);
 		    // Get the layout inflater
 		    LayoutInflater inflater = getLayoutInflater();
 

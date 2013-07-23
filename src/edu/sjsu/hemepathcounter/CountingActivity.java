@@ -57,7 +57,7 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 		gridview.setAdapter(mAdapter);
 		gridview.setLongClickable(true);
 		
-		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_LIGHT);
 		
 		gridview.setOnItemLongClickListener(new OnItemLongClickListener() {
 
@@ -82,7 +82,7 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 				
 				builder.setView(np);
 	
-				builder.setMessage("Change value of \n" + button.getName() + ": ")
+				builder.setTitle("Set " + button.getName() + ": ")
 		               .setPositiveButton("Set", new DialogInterface.OnClickListener() {
 		                   public void onClick(DialogInterface dialog, int id) {
 		                	   Log.d(TAG, "Change Value of Counting Activity.");
