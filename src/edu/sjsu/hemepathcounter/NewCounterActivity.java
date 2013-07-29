@@ -4,17 +4,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -75,6 +79,7 @@ public class NewCounterActivity extends Activity implements
 
 	private CellButton created_custom_button, ItemSelectedforContextMenuOption;
     private String mode = null;
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -85,6 +90,55 @@ public class NewCounterActivity extends Activity implements
 		    mode = getIntent().getStringExtra("mode");}
 		initialize();
 		initializeCells();
+		
+		if (this.getWindow().getWindowManager().getDefaultDisplay()
+                .getOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+			Toast.makeText(this, "portrait orientation",Toast.LENGTH_LONG).show();
+			
+			DisplayMetrics metrics = new DisplayMetrics();
+			getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+			float widthInInches = metrics.widthPixels / metrics.xdpi;
+			float heightInInches = metrics.heightPixels / metrics.ydpi;
+			
+			double sizeInInches = Math.sqrt(Math.pow(widthInInches, 2) + Math.pow(heightInInches, 2));
+			//0.5" buffer for 7" devices
+			boolean is7inchTablet = sizeInInches >= 6.5 && sizeInInches <= 7.5; 
+			
+			if(is7inchTablet)
+			{
+				ViewGroup.LayoutParams params = mainMenu.getLayoutParams();
+			    params.width = 110;
+				mainMenu.setLayoutParams(params);
+				
+				params = ModifyButton.getLayoutParams();
+				params.width = 100;
+				ModifyButton.setLayoutParams(params);
+				
+				params = SaveButton.getLayoutParams();
+				params.width = 100;
+				SaveButton.setLayoutParams(params);
+				
+				params = CustomButton.getLayoutParams();
+				params.width = 120;
+				params.height = 79;
+				CustomButton.setLayoutParams(params);
+				
+				params = ClearButton.getLayoutParams();
+				params.width = 100;
+				ClearButton.setLayoutParams(params);
+				
+				
+				
+			}
+			
+			
+        } else if (this.getWindow().getWindowManager().getDefaultDisplay()
+                .getOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+        	
+        }
+		
+		
 	}
 
 	private void initialize() {
