@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -34,7 +35,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
 	private static final String TAG = "MainActivity";
 	private ListView favoritesListView;
 	private ArrayAdapter<Counter> adapter;
-	private Button counterButton, newButton, preferenceButton, dataButton;
+	private Button counterButton, newButton, preferenceButton, dataButton, resumeButton;
 	private FileManager manager;
 	private CounterHolder holder;
 	private Counter itemSelected;
@@ -46,6 +47,12 @@ public class MainActivity extends Activity implements View.OnClickListener,
 		setContentView(R.layout.activity_main);
 		initialize();
 
+//		SharedPreferences.Editor editor = PreferenceManager
+//				.getDefaultSharedPreferences(this).edit();
+//		editor.putBoolean("resume", false);
+//		editor.commit();
+		FileManager.resume = 0;
+		
 		adapter = new ArrayAdapter<Counter>(this,
 				R.layout.list_item_favorite_counter);
 		setupFavorites();
@@ -67,12 +74,19 @@ public class MainActivity extends Activity implements View.OnClickListener,
 		newButton = (Button) findViewById(R.id.new_button);
 		preferenceButton = (Button) findViewById(R.id.preferences_button);
 		dataButton = (Button) findViewById(R.id.data_button);
+		resumeButton = (Button) findViewById(R.id.resume_button);
 		// setting up click action listeners for each buttons
 		counterButton.setOnClickListener(this);
 		newButton.setOnClickListener(this);
 		preferenceButton.setOnClickListener(this);
 		dataButton.setOnClickListener(this);
-
+		resumeButton.setOnClickListener(this);
+		
+		if (FileManager.resume == -1) {
+			resumeButton.setBackgroundResource(R.drawable.button_style_gray);
+			resumeButton.setClickable(false);
+		}
+		
 		// Set default values if not set already.
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 	}
@@ -121,22 +135,31 @@ public class MainActivity extends Activity implements View.OnClickListener,
 	public void onClick(View v) { // handler for click listener
 		Intent intent;
 		switch (v.getId()) {
-		case R.id.counters_button:
-			intent = new Intent(MainActivity.this, CountersActivity.class);
-			startActivity(intent);
-			break;
-		case R.id.new_button:
-			intent = new Intent(MainActivity.this, NewCounterActivity.class);
-			startActivity(intent);
-			break;
-		case R.id.preferences_button:
-			intent = new Intent(MainActivity.this, PreferencesActivity.class);
-			startActivity(intent);
-			break;
-		case R.id.data_button:
-			intent = new Intent(MainActivity.this, DataActivity.class);
-			startActivity(intent);
-			break;
+			case R.id.counters_button:
+				intent = new Intent(MainActivity.this, CountersActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.new_button:
+				intent = new Intent(MainActivity.this, NewCounterActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.preferences_button:
+				Log.d(TAG, "preferences");
+				intent = new Intent(MainActivity.this, PreferencesActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.data_button:
+				Log.d(TAG, "data");
+				intent = new Intent(MainActivity.this, DataActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.resume_button: 
+				FileManager.resume = 1;
+				intent = new Intent(MainActivity.this, CountingActivity.class);
+				startActivity(intent);
+				break;
+			default:
+				break;
 		}
 	}
 

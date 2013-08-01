@@ -2,6 +2,9 @@ package edu.sjsu.hemepathcounter;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -48,8 +51,22 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 		muted_notify_total = preferences.getBoolean(PreferencesActivity.MUTE_TOTAL, false);
 		total_notify = Integer.parseInt(preferences.getString(PreferencesActivity.TOTAL_NOTIFY, "100"));
 		
+		boolean resume = FileManager.resume == 1; //getIntent().getBooleanExtra("resume", false);
 		// Loading data from database depends New Counting or Favorites
-		mData = getIntent().getParcelableExtra("counter");
+		if (!resume)
+			mData = getIntent().getParcelableExtra("counter");
+		else
+			try {
+				mData = new Counter();
+				String JSONString = preferences.getString("data", "");
+				Log.d(TAG, "Here is JSON: " + JSONString);
+				if (JSONString.length() > 0)
+					mData.fromJSONObject(new JSONObject(JSONString));
+				
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}		
+			
 		mAdapter = new CountingAdapter(this, mData);
 		mSequence = new ArrayList<Integer>();
 
@@ -173,6 +190,8 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 	public void onClick(View v) {
 		Intent intent;
 		AlertDialog.Builder builder;
+		SharedPreferences.Editor editor = PreferenceManager
+				.getDefaultSharedPreferences(this).edit();
 		
 		switch (v.getId()) {
 			case R.id.counting_activity_undo:
@@ -208,6 +227,8 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 				//get name for the counter after finishing counting
 				if (mData.getTotal() == 0) break ;
 				Log.d(TAG, "Creating Data Object and saving.");
+				FileManager.resume = -1;
+				
 				//Save data to database
 				FileManager manager = FileManager.getInstance(getApplicationContext()); 
 				DataHolder mDataHolder = manager.getDataHolder();
@@ -222,7 +243,18 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 				startActivity(intent);				
 				break;
 			case R.id.counting_activity_main:
-				Log.d(TAG, "Main Menu Button clicked.");
+				try {
+//					Log.d(TAG, mData.toJSONObject().toString());
+//					editor.putBoolean("resume", true);
+					
+					FileManager.resume = 1;
+					editor.putString("data", mData.toJSONObject().toString());
+					editor.commit();
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 				finish();
 				intent = new Intent(CountingActivity.this, MainActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -231,7 +263,10 @@ public class CountingActivity extends Activity implements View.OnClickListener {
 			default:
 				break;
 		}
-		
 	}
-
+	
+	@Override
+	public void onBackPressed() {
+	}
+	
 }

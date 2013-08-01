@@ -166,6 +166,7 @@ public class CellButton implements Parcelable, JSONable {
 		jo.put("sound_id", sound_id);
 		jo.put("color_id", color_id);
 		jo.put("type", type.getText());
+		jo.put("count", count);
 		return jo;
 	}
 
@@ -176,6 +177,7 @@ public class CellButton implements Parcelable, JSONable {
 		this.sound_id = src.getInt("sound_id");
 		this.color_id = src.getInt("color_id");
 		this.type = CellType.fromString(src.getString("type"));
-		this.count = 0;
+		//this.count = 0;
+		this.count = src.getInt("count");
 	}
 }

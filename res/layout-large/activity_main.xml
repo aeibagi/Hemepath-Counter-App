@@ -63,6 +63,17 @@
         android:layout_below="@+id/preferences_button"
         android:background="@drawable/button_style_yellow"
         android:text="@string/data_button_string" />
+    
+    <Button
+        android:id="@+id/resume_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/new_button"
+        android:layout_marginTop="5dp"
+        android:layout_alignRight="@+id/preferences_button"
+        android:layout_below="@+id/data_button"
+        android:background="@drawable/button_style_yellow"
+        android:text="@string/resume_button_string" />
 
     <TextView
         android:id="@+id/TextView1"

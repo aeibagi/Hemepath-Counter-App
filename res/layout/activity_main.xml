@@ -50,6 +50,15 @@
             android:background="@drawable/button_style_yellow"
             android:layout_marginTop="5dp"
             android:text="@string/data_button_string" />
+        
+        <Button
+            android:id="@+id/resume_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style_yellow"
+            android:layout_marginTop="5dp"
+            android:text="@string/resume_button_string"/>
+        
     </LinearLayout>
 
     <TextView

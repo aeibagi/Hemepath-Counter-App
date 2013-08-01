@@ -33,6 +33,7 @@ public final class FileManager {
 	private ButtonHolder buttonHolder = null;
 	private Context context;
 	private static FileManager sInstance;
+	public static int resume = -1;
 
 	private FileManager(Context c) {
 		Log.d(TAG, "Creating new FileManager.");

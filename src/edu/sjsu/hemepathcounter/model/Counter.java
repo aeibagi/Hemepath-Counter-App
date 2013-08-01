@@ -14,7 +14,7 @@ public class Counter implements Parcelable, JSONable {
 	private int total;
 	private String name;
 	private int numUses;
-
+	
 	public Counter(String inName, ArrayList<CellButton> inButtons) {
 		this.name = inName;
 		this.buttons = inButtons;
