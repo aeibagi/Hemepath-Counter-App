@@ -93,7 +93,7 @@ public class NewCounterActivity extends Activity implements
 		
 		if (this.getWindow().getWindowManager().getDefaultDisplay()
                 .getOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-			Toast.makeText(this, "portrait orientation",Toast.LENGTH_LONG).show();
+			
 			
 			DisplayMetrics metrics = new DisplayMetrics();
 			getWindowManager().getDefaultDisplay().getMetrics(metrics);

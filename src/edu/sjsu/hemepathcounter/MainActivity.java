@@ -5,18 +5,23 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import edu.sjsu.hemepathcounter.model.Counter;
 import edu.sjsu.hemepathcounter.model.CounterHolder;
 
@@ -57,6 +62,61 @@ public class MainActivity extends Activity implements View.OnClickListener,
 				R.layout.list_item_favorite_counter);
 		setupFavorites();
 		favoritesListView.setOnItemClickListener(this);
+		
+		// adjust screen size for 7inch and 10inch tablets
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+		float widthInInches = metrics.widthPixels / metrics.xdpi;
+		float heightInInches = metrics.heightPixels / metrics.ydpi;
+		
+		double sizeInInches = Math.sqrt(Math.pow(widthInInches, 2) + Math.pow(heightInInches, 2));
+		//0.5" buffer for 7" devices
+		boolean is7inchTablet = sizeInInches >= 6.5 && sizeInInches <= 7.5; 
+		boolean is10InchTablet = sizeInInches >= 7.6 && sizeInInches <= 10.5;
+		
+		if (this.getWindow().getWindowManager().getDefaultDisplay()
+                .getOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+			
+			if(is7inchTablet)
+			{
+				ViewGroup.LayoutParams params = favoritesListView.getLayoutParams();
+				params.height = 210;
+				favoritesListView.setLayoutParams(params);
+				
+				
+			}
+			else if(is10InchTablet)
+			{
+				
+				
+				ViewGroup.LayoutParams params = favoritesListView.getLayoutParams();
+				params.height = 210;
+				favoritesListView.setLayoutParams(params);
+				
+			}
+			
+        } else if (this.getWindow().getWindowManager().getDefaultDisplay()
+                .getOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+        	
+        	if(is7inchTablet)
+			{
+				ViewGroup.LayoutParams params = favoritesListView.getLayoutParams();
+				params.height = 100;
+				favoritesListView.setLayoutParams(params);
+			}
+			else if(is10InchTablet)
+			{
+				
+				ViewGroup.LayoutParams params = favoritesListView.getLayoutParams();
+				params.height = 210;
+				favoritesListView.setLayoutParams(params);
+			}
+        	
+        }
+		
+		
+		
 	}
 
 	private void setupFavorites() {
