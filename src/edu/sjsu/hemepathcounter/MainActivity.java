@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,8 +19,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import edu.sjsu.hemepathcounter.model.Counter;
 import edu.sjsu.hemepathcounter.model.CounterHolder;
 
@@ -52,10 +49,6 @@ public class MainActivity extends Activity implements View.OnClickListener,
 		setContentView(R.layout.activity_main);
 		initialize();
 
-//		SharedPreferences.Editor editor = PreferenceManager
-//				.getDefaultSharedPreferences(this).edit();
-//		editor.putBoolean("resume", false);
-//		editor.commit();
 		FileManager.resume = 0;
 		
 		adapter = new ArrayAdapter<Counter>(this,
