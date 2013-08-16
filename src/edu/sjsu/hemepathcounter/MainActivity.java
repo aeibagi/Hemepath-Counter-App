@@ -76,17 +76,12 @@ public class MainActivity extends Activity implements View.OnClickListener,
 				ViewGroup.LayoutParams params = favoritesListView.getLayoutParams();
 				params.height = 210;
 				favoritesListView.setLayoutParams(params);
-				
-				
 			}
 			else if(is10InchTablet)
 			{
-				
-				
 				ViewGroup.LayoutParams params = favoritesListView.getLayoutParams();
 				params.height = 210;
 				favoritesListView.setLayoutParams(params);
-				
 			}
 			
         } else if (this.getWindow().getWindowManager().getDefaultDisplay()
@@ -99,17 +94,12 @@ public class MainActivity extends Activity implements View.OnClickListener,
 				favoritesListView.setLayoutParams(params);
 			}
 			else if(is10InchTablet)
-			{
-				
+			{	
 				ViewGroup.LayoutParams params = favoritesListView.getLayoutParams();
 				params.height = 210;
 				favoritesListView.setLayoutParams(params);
 			}
-        	
         }
-		
-		
-		
 	}
 
 	private void setupFavorites() {
@@ -218,7 +208,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
-		Log.d(TAG, "Favorite Selected.");
+		//Log.d(TAG, "Favorite Selected.");
 		itemSelected = (Counter) favoritesListView.getItemAtPosition(position);
 		Intent i = new Intent(MainActivity.this, CountingActivity.class);
 		i.putExtra("counter", itemSelected);
@@ -229,7 +219,7 @@ public class MainActivity extends Activity implements View.OnClickListener,
 
 	@Override
 	protected void onRestart() {
-		Log.d(TAG, "Restarting Main Activity");
+		//Log.d(TAG, "Restarting Main Activity");
 		super.onRestart();
 		setupFavorites();
 	}
